@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("com.sanmina.webapps.controller")
+@ComponentScan("com.sdms.controller")
 public class WebConfig  extends WebMvcConfigurerAdapter {
 
 	@Bean

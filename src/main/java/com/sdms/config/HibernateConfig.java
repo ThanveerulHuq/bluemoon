@@ -64,7 +64,7 @@ public class HibernateConfig {
 
 	        factory.setDataSource(dataSource());
 	        factory.setJpaVendorAdapter(vendorAdapter);
-	        factory.setPackagesToScan("com.sanmina.webapps.entity");
+	        factory.setPackagesToScan("com.sdms.entity");
 
 	        Properties jpaProperties = new Properties();
 	        jpaProperties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
