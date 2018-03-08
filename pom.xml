@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.sanmina.webapps</groupId>
-	<artifactId>Library</artifactId>
+	<artifactId>SDMS</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Library Maven Webapp</name>
+	<name>SDMS Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -27,7 +27,7 @@
 				<spring.profile>prod</spring.profile>
 			</properties>
 			<build>
-				<finalName>Library</finalName>
+				<finalName>SDMS</finalName>
 				<filters>
 					<filter>profiles/prod.properties</filter>
 				</filters>
@@ -42,7 +42,7 @@
 				<spring.profile>test</spring.profile>
 			</properties>
 			<build>
-				<finalName>Library_UAT</finalName>
+				<finalName>SDMS_UAT</finalName>
 
 				<filters>
 					<filter>profiles/test.properties</filter>
@@ -58,7 +58,7 @@
 				<spring.profile>dev</spring.profile>
 			</properties>
 			<build>
-				<finalName>Library</finalName>
+				<finalName>SDMS</finalName>
 				<filters>
 					<filter>profiles/dev.properties</filter>
 				</filters>
@@ -380,7 +380,7 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<configuration>
 					<webApp>
-						<contextPath>/Library</contextPath>
+						<contextPath>/SDMS</contextPath>
 					</webApp>
 				</configuration>
 				<version>9.2.0.v20140526</version>
