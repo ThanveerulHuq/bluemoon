@@ -20,8 +20,6 @@ public class AcademicYear {
 	@Column(name="year",nullable=false,length=15)
 	private String year;
 
-	
-	
 	public Long getId() {
 		return id;
 	}
