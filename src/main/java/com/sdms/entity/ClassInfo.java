@@ -22,6 +22,8 @@ public class ClassInfo {
 	public Long getClassId() {
 		return classId;
 	}
+	
+	
 
 	public void setClassId(Long classId) {
 		this.classId = classId;
