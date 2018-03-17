@@ -61,7 +61,7 @@ public class StudentsInfo {
 	@Column(name="address",nullable=false,length=1000)
 	private String address;
 	
-	@Column(name="previous_school",nullable=false,length=100)
+	@Column(name="previous_school",nullable=true,length=100)
 	private String previousSchool;
 	
 	@Column(name="active",nullable=false,length=1)

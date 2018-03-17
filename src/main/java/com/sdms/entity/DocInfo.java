@@ -6,12 +6,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "doc_info")
-public class docInfo {
+public class DocInfo {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +22,10 @@ public class docInfo {
 	@ManyToOne 
 	@JoinColumn(name="student_id")
 	private StudentsInfo studentsInfo;
+	
+	@Lob
+    @Column(name="s_file")
+    private byte[] sFile;
 	
 	public Long getDocId() {
 		return docId;
@@ -38,15 +43,13 @@ public class docInfo {
 		this.studentsInfo = studentsInfo;
 	}
 
-	public String getDocName() {
-		return docName;
+
+	public byte[] getsFile() {
+		return sFile;
 	}
 
-	public void setDocName(String docName) {
-		this.docName = docName;
+	public void setsFile(byte[] sFile) {
+		this.sFile = sFile;
 	}
-
-	@Column(name="doc_name",nullable=false,length=50)
-	private String docName;
 
 }

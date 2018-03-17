@@ -2,6 +2,8 @@ package com.sdms.model;
 
 import java.util.Date;
 import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 public class StudentInfoModel {
@@ -18,7 +20,7 @@ public class StudentInfoModel {
 	private String gender;
 
 	private Long age;
-
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dob;
 
 	private String community;
@@ -38,7 +40,7 @@ public class StudentInfoModel {
 	private String previousSchool;
 
 	private String active;
-
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date admissionDate;
 
 	private List<MultipartFile> images;

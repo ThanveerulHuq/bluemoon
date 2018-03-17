@@ -19,7 +19,7 @@ import java.util.Properties;
 
 
 @Configuration
-@EnableJpaRepositories(basePackages = {"com.sanmina.webapps.repository"})
+@EnableJpaRepositories(basePackages = {"com.sdms.repository"})
 @EnableTransactionManagement
 @PropertySource("classpath:hibernate.properties")
 public class HibernateConfig {
