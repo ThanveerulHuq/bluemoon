@@ -1,0 +1,15 @@
+.content {
+	width: 100%;
+	overflow: auto;
+	margin-top: 50px;
+}
+.gridWrapper {
+	height: 100%;
+	width: 95%;
+	overflow: auto;
+	margin: 5px;
+}
+
+.gridContent {
+
+}
