@@ -40,7 +40,7 @@ public class StudentsInfo {
 	@Column(name="dob",columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP",nullable=false)
 	private Timestamp dob;
 	
-	@Column(name="community",nullable=false,length=10)
+	@Column(name="community",nullable=false,length=30)
 	private String community;
 	
 	@Column(name="mother_tongue",nullable=false,length=10)

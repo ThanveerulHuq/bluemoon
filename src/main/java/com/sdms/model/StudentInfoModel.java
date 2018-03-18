@@ -44,6 +44,8 @@ public class StudentInfoModel {
 	private Date admissionDate;
 
 	private List<MultipartFile> images;
+	
+	private List<String> fileNames;
 
 	public Long getStudentId() {
 		return studentId;
@@ -195,6 +197,14 @@ public class StudentInfoModel {
 
 	public void setImages(List<MultipartFile> images) {
 		this.images = images;
+	}
+
+	public List<String> getFileNames() {
+		return fileNames;
+	}
+
+	public void setFileNames(List<String> fileNames) {
+		this.fileNames = fileNames;
 	}
 
 }

@@ -2,6 +2,7 @@ package com.sdms.controller;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,7 +42,7 @@ public class HomeController {
 			@ModelAttribute("StudentsInfo") StudentInfoModel studentmodel,
 			HttpServletRequest request, HttpServletResponse response) {
 		StudentsInfo studentInfo = new StudentsInfo();
-		// studentInfo.setStudentId((long)0);
+		studentInfo.setStudentId(studentmodel.getStudentId());
 		studentInfo.setAadharNo(studentmodel.getAadharNo());
 		studentInfo.setAdmissionNo(studentmodel.getAdmissionNo());
 		studentInfo.setEmisNo(studentmodel.getEmisNo());
@@ -59,15 +60,17 @@ public class HomeController {
 		studentInfo.setPreviousSchool(studentmodel.getPreviousSchool());
 		studentInfo.setAdmissionDate(new Timestamp(studentmodel
 				.getAdmissionDate().getTime()));
-		studentInfo.setActive("Y");
+		studentInfo.setActive(studentmodel.getActive());
 		StudentsInfo student = studentInfoRepo.save(studentInfo);
 		List<MultipartFile> images = studentmodel.getImages();
+		if(!images.isEmpty()){
 		for (int i = 0; i < images.size(); i++) {
 			if (!images.get(i).isEmpty()) {
 				DocInfo docInfo = new DocInfo();
 				docInfo.setStudentsInfo(student);
 				try {
 					docInfo.setsFile(images.get(i).getBytes());
+					docInfo.setFileName(studentmodel.getFileNames().get(i));
 					docInfoRepo.save(docInfo);
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -75,8 +78,39 @@ public class HomeController {
 				}
 			}
 		}
+		}
 
 		return "Library/Home";
 	}
 
+	
+	@RequestMapping(value = { "/EditStudent" }, method = RequestMethod.GET)
+	public String editStudent(@ModelAttribute("student_id")Long studentId,HttpServletRequest request, HttpServletResponse response) {
+		StudentInfoModel studentModel = new StudentInfoModel();
+		System.out.println(studentId);
+		StudentsInfo studentsInfo=studentInfoRepo.getOne(studentId);
+		studentModel.setStudentId(studentId);
+		studentModel.setAadharNo(studentsInfo.getAadharNo());
+		studentModel.setAdmissionNo(studentsInfo.getAdmissionNo());
+		studentModel.setEmisNo(studentsInfo.getEmisNo());
+		studentModel.setName(studentsInfo.getName());
+		studentModel.setGender(studentsInfo.getGender());
+		studentModel.setAge(studentsInfo.getAge());
+		studentModel.setDob(new Date(studentsInfo.getDob().getTime()));
+		studentModel.setCommunity(studentsInfo.getCommunity());
+		studentModel.setMotherTongue(studentsInfo.getMotherTongue());
+		studentModel.setMobileNo1(studentsInfo.getMobileNo1());
+		studentModel.setMobileNo2(studentsInfo.getMobileNo2());
+		studentModel.setFatherName(studentsInfo.getFatherName());
+		studentModel.setMotherName(studentsInfo.getMotherName());
+		studentModel.setAddress(studentsInfo.getAddress());
+		studentModel.setPreviousSchool(studentsInfo.getPreviousSchool());
+		studentModel.setAdmissionDate(new Date(studentsInfo.getAdmissionDate().getTime()));
+		studentModel.setActive(studentsInfo.getActive());
+		
+		request.setAttribute("StudentsInfo", studentModel);
+		return "Library/Home";
+	}
+	
+	
 }
