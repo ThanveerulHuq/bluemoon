@@ -17,17 +17,17 @@
 <body>
 <c:import url="/views/shared/header.jsp"></c:import>
 <div class="content">
-	<label class="label">Students Info</label>
+	<h4><span class="label label-primary">Students Info</span></h4>
 	<div class="gridWrapper">
-		<table class="gridContent" id="dataTable"></table>
+		<table class="gridContent" id="dataGrid"></table>
+		<div id="gridPager"></div>
 	</div>
 </div>
-</body>
 <script type="text/javascript">
 	$(document).ready(function(){
 		colArr = [
             { label: 'Student Id', name: 'studentId', key: true, width: 100 },
-            { label: 'Student Name', name: 'name', width: 150 },
+            { label: 'Student Name', name: 'name', width: 150, frozen: true },
             { label: 'Gender', name: 'gender', width: 150 },
             { label: 'D.O.B', name: 'dob', width: 150 },
             { label: 'Age', name: 'age', width: 150 },
@@ -45,7 +45,8 @@
             { label: 'Previous School', name: 'previousSchool', width: 150 },
             { label: 'Active', name: 'active', width: 150 },
         ];
-		loadGrid('#dataTable', '/SDMS/GetStudentInfo', colArr);
+		loadGrid('#dataGrid', '#gridPager', '/SDMS/GetStudentInfo', colArr);
 	});
 </script>
+</body>
 </html>

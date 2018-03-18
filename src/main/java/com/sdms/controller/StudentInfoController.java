@@ -32,7 +32,7 @@ public class StudentInfoController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value={"/GetStudentInfo"},method = RequestMethod.GET)
+	@RequestMapping(value={"/GetStudentInfo"},method = RequestMethod.POST)
 	public List getStudentInfo(HttpServletRequest request, HttpServletResponse response) {
 		List<StudentsInfo> studentInfoList = new ArrayList<StudentsInfo>();
 		studentInfoList = studentInfoRepo.findAll();
@@ -43,6 +43,8 @@ public class StudentInfoController {
 //		Iterator studentInfoItr = studentInfoList.iterator();
 //		StudentsInfo studentInfoObj = (StudentsInfo)studentInfoItr.next();
 //		studentInfoObj.getClass().getDeclaredFields();
+		
+		//TODO: handle sorting and filtering
 		
 		return studentInfoList;
 	}

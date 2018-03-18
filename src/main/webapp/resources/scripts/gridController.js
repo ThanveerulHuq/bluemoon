@@ -1,11 +1,16 @@
-function loadGrid(element, url, colArr){
+$.jgrid.defaults.width = 1000;
+$.jgrid.defaults.responsive = true;
+$.jgrid.defaults.styleUI = 'Bootstrap';
+
+function loadGrid(element, pager, url, colArr){
         $(element).jqGrid({
             url: url,
-            mtype: "GET",
-			styleUI : 'Bootstrap',
+            mtype: "POST",
             datatype: "json",
             colModel: colArr,
-			viewrecords: true,
-            height: 250,
+            rownumbers: true,
+            rownumWidth: 35,
+            viewrecords: true,
+            shrinkToFit: false,
         });
 }

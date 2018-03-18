@@ -6,10 +6,10 @@
 .gridWrapper {
 	height: 100%;
 	width: 95%;
-	overflow: auto;
 	margin: 5px;
 }
 
 .gridContent {
-
+	height: 100%;
+	width: 100%;
 }
