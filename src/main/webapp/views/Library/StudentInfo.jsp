@@ -17,6 +17,7 @@
 <body>
 <c:import url="/views/shared/header.jsp"></c:import>
 <div class="content">
+	<label class="label">Students Info</label>
 	<div class="gridWrapper">
 		<table class="gridContent" id="dataTable"></table>
 	</div>
