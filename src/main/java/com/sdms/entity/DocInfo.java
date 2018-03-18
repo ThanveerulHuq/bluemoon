@@ -23,6 +23,10 @@ public class DocInfo {
 	@JoinColumn(name="student_id")
 	private StudentsInfo studentsInfo;
 	
+	
+	@Column(name="file_name",nullable=false,length=40)
+	private String fileName;
+	
 	@Lob
     @Column(name="s_file")
     private byte[] sFile;
@@ -50,6 +54,14 @@ public class DocInfo {
 
 	public void setsFile(byte[] sFile) {
 		this.sFile = sFile;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 
 }

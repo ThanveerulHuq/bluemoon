@@ -139,30 +139,48 @@
 						style="height:90px" />
 				</div>
 			</div>
-			<div class="form-group col-md-12">
+			<!-- <div class="form-group col-md-12">
 				<label class="col-md-2"><span class="pull-right">Student Image:</span> </label>
 				<div class="col-md-3">
-					<input type="file" path="images" name="images" multiple="multiple">
+					<input type="file" path="images" name="images" multiple="multiple" accept="image/*" >
 				</div>
 			</div>
 				<div class="form-group col-md-12">
 				<label class="col-md-2"><span class="pull-right">Birth Certificate or TC:</span> </label>
 				<div class="col-md-3">
-					<input type="file" path="images" name="images" multiple="multiple">
+					<input type="file" path="images" name="images" multiple="multiple" accept="image/*" >
 				</div>
 			</div>
 				<div class="form-group col-md-12">
 				<label class="col-md-2"><span class="pull-right">Address Proof:</span> </label>
 				<div class="col-md-3">
-					<input type="file" path="images" name="images" multiple="multiple">
+					<input type="file" path="images" name="images" multiple="multiple" accept="image/*" >
 				</div>
 			</div>
 				<div class="form-group col-md-12">
 				<label class="col-md-2"><span class="pull-right">Other Document:</span> </label>
 				<div class="col-md-3">
-					<input type="file" path="images" name="images" multiple="multiple">
+					<input type="file" path="images" name="images" multiple="multiple" accept="image/*" >
+				</div>
+			</div> -->
+			<div class="form-group col-md-12">
+				<label class="col-md-2"><span class="pull-right">Active Status:</span>
+				</label>
+				<div class="col-md-3">
+					<form:select path="active" class="form-control">
+						<option value="Y">Active</option>
+						<option value="N">In-Active</option>
+					</form:select>
 				</div>
 			</div>
+			<div class="form-group col-md-12">
+				<label class="col-md-2"><span class="pull-right">Documents:</span>
+				</label>
+				<div class="col-md-3">
+					<button class="btn btn-info" type="button" onclick="addDoc()"><span class="glyphicon glyphicon-plus text-biggest"></span>Add Document</button>
+				</div>
+			</div>
+			<div class="form-group col-md-12" id="document_area"></div>
 			<div class="col-md-10"><div class="pull-right"><form:button type="button" class="btn btn-danger btn-md" onclick="clearInput()">Reset</form:button> <form:button type="submit" class="btn btn-success" onclick="validateForm()">Submit</form:button>   </div></div>
 	</form:form> </section>
 		<div class="container" style="margin-top: 25px;">
@@ -186,7 +204,24 @@
 		$('#gender').val('-1');
 		alert('All fields cleared')
 	}
-	
+	function addDoc(){
+		var html=`<div class="form-group col-md-12">
+		<label class="col-md-2"><span class="pull-right">Document Type:</span></label>
+		<div class="col-md-3">
+		<input type="text" path="fileName" required="true">
+	</div>
+		<div class="col-md-3">
+			<input type="file" path="images" name="images" multiple="multiple" accept="image/*" >
+		</div>
+		<div class="col-md-3">
+		<button class="btn-danger pull-left" onclick="removeMe(this)">remove</button>
+	</div>
+	</div>`;
+	$('#document_area').append(html);
+	}
+	function removeMe(el){
+		console.log($(el).parent().parent().remove());
+	}
 	</script>	
 </body>
 
