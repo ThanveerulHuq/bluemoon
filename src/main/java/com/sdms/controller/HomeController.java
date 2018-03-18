@@ -2,6 +2,7 @@ package com.sdms.controller;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,6 +21,7 @@ import com.sdms.entity.StudentsInfo;
 import com.sdms.model.StudentInfoModel;
 import com.sdms.repository.DocInfoRepo;
 import com.sdms.repository.StudentsInfoRepo;
+
 
 @Controller
 public class HomeController {
@@ -65,7 +67,8 @@ public class HomeController {
 		List<MultipartFile> images = studentmodel.getImages();
 		if(!images.isEmpty()){
 		for (int i = 0; i < images.size(); i++) {
-			if (!images.get(i).isEmpty()) {
+			System.out.println(i);
+			if (!images.get(i).isEmpty() ) {
 				DocInfo docInfo = new DocInfo();
 				docInfo.setStudentsInfo(student);
 				try {
@@ -88,7 +91,7 @@ public class HomeController {
 	public String editStudent(@ModelAttribute("student_id")Long studentId,HttpServletRequest request, HttpServletResponse response) {
 		StudentInfoModel studentModel = new StudentInfoModel();
 		System.out.println(studentId);
-		StudentsInfo studentsInfo=studentInfoRepo.getOne(studentId);
+		StudentsInfo studentsInfo=studentInfoRepo.findOne(studentId);
 		studentModel.setStudentId(studentId);
 		studentModel.setAadharNo(studentsInfo.getAadharNo());
 		studentModel.setAdmissionNo(studentsInfo.getAdmissionNo());
@@ -107,7 +110,16 @@ public class HomeController {
 		studentModel.setPreviousSchool(studentsInfo.getPreviousSchool());
 		studentModel.setAdmissionDate(new Date(studentsInfo.getAdmissionDate().getTime()));
 		studentModel.setActive(studentsInfo.getActive());
-		
+		List<DocInfo> docInfos=docInfoRepo.findByStudentId(studentId);
+		List<String> fileNames = new ArrayList<String>();
+		List<Long> fileIds= new ArrayList<Long>();
+		for(int i=0; i<docInfos.size();i++) {
+			DocInfo docInfo= docInfos.get(i);
+			fileNames.add(docInfo.getFileName());
+			fileIds.add(docInfo.getDocId());
+		}
+		studentModel.setFileNames(fileNames);
+		studentModel.setFileIds(fileIds);
 		request.setAttribute("StudentsInfo", studentModel);
 		return "Library/Home";
 	}
