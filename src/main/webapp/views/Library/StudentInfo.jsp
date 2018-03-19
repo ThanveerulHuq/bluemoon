@@ -45,7 +45,7 @@
             { label: 'Previous School', name: 'previousSchool', width: 150 },
             { label: 'Active', name: 'active', width: 150 },
         ];
-		loadGrid('#dataGrid', '#gridPager', '/SDMS/GetStudentInfo', colArr);
+		loadGrid('#dataGrid', '/SDMS/GetStudentInfo', colArr);
 	});
 </script>
 </body>
