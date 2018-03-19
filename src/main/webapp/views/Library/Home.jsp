@@ -157,7 +157,7 @@
 		</div>
 		<input type="file" path="images" name="images" multiple="multiple"
 			accept="image/*" style="display: none;">
-			<input type="text" path="fileNames" name="fileNames" required="true" style="display: none;">
+			<input type="text" path="fileNames" name="fileNames" style="display: none;">
 		<div class="form-group col-md-12">
 			<label class="col-md-2"><span class="pull-right">Active
 					Status:</span> </label>

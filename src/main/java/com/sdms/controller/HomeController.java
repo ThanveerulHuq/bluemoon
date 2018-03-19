@@ -32,7 +32,7 @@ public class HomeController {
 	@Autowired
 	DocInfoRepo docInfoRepo;
 
-	@RequestMapping(value = { "/Home" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/AddStudent" }, method = RequestMethod.GET)
 	public String Home(HttpServletRequest request, HttpServletResponse response) {
 		StudentInfoModel studentsInfo = new StudentInfoModel();
 		request.setAttribute("StudentsInfo", studentsInfo);
@@ -83,7 +83,7 @@ public class HomeController {
 		}
 		}
 
-		return "Library/Home";
+		return "redirect:StudentInfo";
 	}
 
 	
