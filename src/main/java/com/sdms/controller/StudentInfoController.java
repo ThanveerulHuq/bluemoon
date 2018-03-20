@@ -32,7 +32,7 @@ public class StudentInfoController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value={"/GetStudentInfo"},method = RequestMethod.POST)
+	@RequestMapping(value={"/GetStudentInfo"},method = RequestMethod.GET)
 	public List getStudentInfo(HttpServletRequest request, HttpServletResponse response) {
 		List<StudentsInfo> studentInfoList = new ArrayList<StudentsInfo>();
 		studentInfoList = studentInfoRepo.findAll();

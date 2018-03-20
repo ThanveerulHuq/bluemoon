@@ -1,4 +1,10 @@
-<<style>
+<style>
+.ui-jqgrid tr.jqgrow td{
+    height: 3em !important;
+}
+body{
+font-family: 'Open Sans', serif;
+}
 header .main-nav{
 	position: fixed;
 	top: 0;
