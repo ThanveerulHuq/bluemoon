@@ -1,8 +1,4 @@
 
-
-
-
-
 <script src="<%=request.getContextPath()%>/resources/scripts/jquery-3.3.1.min.js" type="text/javascript"></script> 
 <script src="<%=request.getContextPath()%>/resources/scripts/bootstrap.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/resources/scripts/jquery-ui.min.js" type="text/javascript"></script>
