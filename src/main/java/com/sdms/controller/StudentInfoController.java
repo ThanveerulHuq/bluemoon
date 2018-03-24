@@ -49,5 +49,9 @@ public class StudentInfoController {
 		return studentInfoList;
 	}
 
+	@RequestMapping(value={"/PrintStudentInfo"},method = RequestMethod.GET)
+	public String printStudentInfo(HttpServletRequest request, HttpServletResponse response) {
+		return "Library/StudentInfoPrint";
+	}
 
 }
