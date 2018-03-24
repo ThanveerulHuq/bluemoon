@@ -22,7 +22,7 @@ public class FeeTxn {
 	
 	@ManyToOne 
 	@JoinColumn(name="student_id")
-	private StudentsInfo studentsInfo;
+	private StudentYear studentYear;
 	
 	@Column(name="amount_paid",nullable=false,length=15)
 	private Long amountPaid;
@@ -38,12 +38,13 @@ public class FeeTxn {
 		this.id = id;
 	}
 
-	public StudentsInfo getStudentsInfo() {
-		return studentsInfo;
+
+	public StudentYear getStudentYear() {
+		return studentYear;
 	}
 
-	public void setStudentsInfo(StudentsInfo studentsInfo) {
-		this.studentsInfo = studentsInfo;
+	public void setStudentYear(StudentYear studentYear) {
+		this.studentYear = studentYear;
 	}
 
 	public Long getAmountPaid() {
@@ -58,8 +59,8 @@ public class FeeTxn {
 		return paymentDate;
 	}
 
-	public void setPaymentDate(Timestamp paymentDate) {
-		this.paymentDate = paymentDate;
+	public void setPaymentDate(Timestamp timestamp) {
+		this.paymentDate = timestamp;
 	}
 
 }
