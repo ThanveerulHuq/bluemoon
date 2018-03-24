@@ -26,11 +26,9 @@ public class CommonFee {
 	@Column(name="school_fee",nullable=false,length=15)
 	private Long schoolFee;
 	
-
-
 	@ManyToOne 
 	@JoinColumn(name="academic_year")
-	private ClassInfo academicYear;
+	private AcademicYear academicYear;
 
 	public Long getId() {
 		return id;
@@ -56,11 +54,11 @@ public class CommonFee {
 		this.schoolFee = schoolFee;
 	}
 
-	public ClassInfo getAcademicYear() {
+	public AcademicYear getAcademicYear() {
 		return academicYear;
 	}
 
-	public void setAcademicYear(ClassInfo academicYear) {
+	public void setAcademicYear(AcademicYear academicYear) {
 		this.academicYear = academicYear;
 	}
 	
