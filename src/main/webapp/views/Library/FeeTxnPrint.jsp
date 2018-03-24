@@ -13,6 +13,10 @@
 </head>
 <body>
 <div id="printArea"class="container">
+	<img src="<%=request.getContextPath()%>/resources/images/dummy_logo_school.png" height="30" width="30" style="margin-right:20px"/><span style="font-size:large"><strong>BlueMoon School</strong></span>
+	<p><span>No.6, Vivekanandhar Street,</span>
+	<span>Five Roads,</span>
+	<span>Salem.</span></p>
 	<table width="890" cellspacing="0" cellpadding="7" style="border:4px double;border-collapse:collapse;">
 	<tbody>
 	<tr valign="top">
@@ -35,11 +39,11 @@
 	<div class="western">&nbsp;</div>
 	</td>
 	<td style="background: #e6eed5;" colspan="2" bgcolor="#e6eed5" width="498">
-	<div class="western">&nbsp;</div>
-	<div class="western"><span style="color: #365f91;"><span style="font-size: medium;"><strong>${Print.studentYear.studentsInfo.name}</strong></span></span></div>
-	<div class="western"><span style="color: #365f91;"><span style="font-size: medium;"><strong>${Print.studentYear.commonFee.classInfo.className}</strong></span></span></div>
-	<div class="western"><span style="color: #365f91;"><span style="font-size: medium;"><strong>${Print.studentYear.section}</strong></span></span></div>
-	<div class="western"><span style="color: #365f91;"><span style="font-size: medium;"><strong>${Print.studentYear.commonFee.academicYear.year}</strong></span></span></div>
+	<div class="western"><strong>&nbsp;</strong></div>
+	<div class="western" align="center"><span style="color: #365f91;"><span style="font-size: medium;"><strong>${Print.studentYear.studentsInfo.name}</strong></span></span></div>
+	<div class="western" align="center"><span style="color: #365f91;"><span style="font-size: medium;"><strong>${Print.studentYear.commonFee.classInfo.className}</strong></span></span></div>
+	<div class="western" align="center"><span style="color: #365f91;"><span style="font-size: medium;"><strong>${Print.studentYear.section}</strong></span></span></div>
+	<div class="western" align="center"><span style="color: #365f91;"><span style="font-size: medium;"><strong>${Print.studentYear.commonFee.academicYear.year}</strong></span></span></div>
 	<div class="western">&nbsp;</div>
 	</td>
 	</tr>
@@ -57,15 +61,15 @@
 	<div class="western" align="right">&nbsp;</div>
 	</td>
 	<td colspan="2" width="498">
-	<div class="western">&nbsp;</div>
-	<div class="western"><span style="color: #365f91;"><span style="font-family: Calibri, sans-serif;"><span style="font-size: medium;"><strong>${Print.studentYear.commonFee.schoolFee}</strong></span></span></span></div>
-	<div class="western"><span style="color: #365f91;"><span style="font-family: Calibri, sans-serif;"><span style="font-size: medium;"><strong>${Print.studentYear.bookFee}</strong></span></span></span></div>
-	<div class="western"><span style="color: #365f91;"><span style="font-family: Calibri, sans-serif;"><span style="font-size: medium;"><strong>${Print.studentYear.uniformFee}</strong></span></span></span></div>
-	<div class="western"><span style="color: #365f91;"><span style="font-family: Calibri, sans-serif;"><span style="font-size: medium;"><strong>${Print.studentYear.islamicStudies}</strong></span></span></span></div>
-	<div class="western"><span style="color: #365f91;"><span style="font-family: Calibri, sans-serif;"><span style="font-size: medium;"><strong>${Print.studentYear.vanFee}</strong></span></span></span></div>
-	<div class="western"><span style="color: #365f91;"><span style="font-family: Calibri, sans-serif;"><span style="font-size: medium;"><strong>${Print.studentYear.scholorship}</strong></span></span></span></div>
-	<div class="western"><span style="color: #365f91;"><span style="font-family: Calibri, sans-serif;"><span style="font-size: medium;"><strong>${Print.studentYear.total}</strong></span></span></span></div>
-	<div class="western"><span style="color: #365f91;"><span style="font-family: Calibri, sans-serif;"><span style="font-size: medium;"><strong>${Print.studentYear.balance}</strong></span></span></span></div>
+	<div class="western"><strong>&nbsp;</strong></div>
+	<div class="western" align="center"><span style="color: #365f91;"><span style="font-family: Calibri, sans-serif;"><span style="font-size: medium;"><strong>${Print.studentYear.commonFee.schoolFee}</strong></span></span></span></div>
+	<div class="western" align="center"><span style="color: #365f91;"><span style="font-family: Calibri, sans-serif;"><span style="font-size: medium;"><strong>${Print.studentYear.bookFee}</strong></span></span></span></div>
+	<div class="western" align="center"><span style="color: #365f91;"><span style="font-family: Calibri, sans-serif;"><span style="font-size: medium;"><strong>${Print.studentYear.uniformFee}</strong></span></span></span></div>
+	<div class="western" align="center"><span style="color: #365f91;"><span style="font-family: Calibri, sans-serif;"><span style="font-size: medium;"><strong>${Print.studentYear.islamicStudies}</strong></span></span></span></div>
+	<div class="western" align="center"><span style="color: #365f91;"><span style="font-family: Calibri, sans-serif;"><span style="font-size: medium;"><strong>${Print.studentYear.vanFee}</strong></span></span></span></div>
+	<div class="western" align="center"><span style="color: #365f91;"><span style="font-family: Calibri, sans-serif;"><span style="font-size: medium;"><strong>${Print.studentYear.scholorship}</strong></span></span></span></div>
+	<div class="western" align="center"><span style="color: #365f91;"><span style="font-family: Calibri, sans-serif;"><span style="font-size: medium;"><strong>${Print.studentYear.total}</strong></span></span></span></div>
+	<div class="western" align="center"><span style="color: #365f91;"><span style="font-family: Calibri, sans-serif;"><span style="font-size: medium;"><strong>${Print.studentYear.balance}</strong></span></span></span></div>
 	<div class="western">&nbsp;</div>
 	</td>
 	</tr>
@@ -76,7 +80,7 @@
 	<div class="western">&nbsp;</div>
 	</td>
 	<td colspan="2" width="376">
-	<div class="western"><span style="font-size: medium;"><span style="color: #365f91;"><strong>${Print.amountPaid}</strong></span><span style="color: #365f91;"></span></span></div>
+	<div class="western"><span style="font-size: medium;"><span style="color: #365f91;"><strong>Rs. ${Print.amountPaid}</strong></span><span style="color: #365f91;"></span></span></div>
 	</td>
 	<td width="348" style="border:1px dashed">
 	<div class="western"><span style="color: #365f91;"><span style="font-size: medium;"><strong>Received By:</strong></span></span></div>
