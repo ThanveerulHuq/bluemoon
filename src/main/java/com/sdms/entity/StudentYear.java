@@ -40,9 +40,6 @@ public class StudentYear {
 	@Column(name="islamic_studies",nullable=false,length=15)
 	private Long islamicStudies;
 	
-	@Column(name="school_fee",nullable=false,length=15)
-	private Long schoolFee;
-	
 	@Column(name="van_fee",nullable=false,length=15)
 	private Long vanFee;
 	
@@ -112,14 +109,6 @@ public class StudentYear {
 
 	public void setIslamicStudies(Long islamicStudies) {
 		this.islamicStudies = islamicStudies;
-	}
-
-	public Long getSchoolFee() {
-		return schoolFee;
-	}
-
-	public void setSchoolFee(Long schoolFee) {
-		this.schoolFee = schoolFee;
 	}
 
 	public Long getVanFee() {
