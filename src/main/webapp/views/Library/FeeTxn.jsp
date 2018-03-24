@@ -143,7 +143,8 @@
 	
 	function clearInput(){
 		$(':input').val('');
-		alert('All fields cleared')
+		alert('All fields cleared');
+		window.location.reload();
 	}
 	
 	</script>

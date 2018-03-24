@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sdms.entity.FeeTxn;
 import com.sdms.entity.StudentYear;
@@ -35,9 +36,8 @@ public class FeeTxnController {
 		return "Library/FeeTxn";
 	}
 	
-	@ResponseBody
 	@RequestMapping(value={"/SaveFeeTxn"},method = RequestMethod.POST)
-	public FeeTxn saveFeeTxn(@ModelAttribute("FeeTxn") FeeTxnModel feeTxnModel, HttpServletRequest request, HttpServletResponse response) {
+	public String saveFeeTxn(@ModelAttribute("FeeTxn") FeeTxnModel feeTxnModel, HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes) {
 		FeeTxn feeTxn = new FeeTxn();
 		StudentYear studentYear = studentYearRepo.getStudentById(feeTxnModel.getStudentYearId());
 		feeTxn.setStudentYear(studentYear);
@@ -47,6 +47,14 @@ public class FeeTxnController {
 		studentYear.setBalance(studentYear.getBalance()-feeTxnModel.getAmountPaid());
 		studentYear.setPaid(studentYear.getPaid()+feeTxnModel.getAmountPaid());
 		studentYearRepo.save(studentYear);
-		return feeTxnSaved;
+		//request.setAttribute("Print", feeTxnSaved);
+		redirectAttributes.addFlashAttribute("Print", feeTxnSaved);
+		return "redirect:/PrintReceipt";
 	}
+	
+	@RequestMapping(value={"/PrintReceipt"},method = RequestMethod.GET)
+	public String printReceipt( HttpServletRequest request, HttpServletResponse response) {
+		return "Library/FeeTxnPrint";
+	}
+	
 }
