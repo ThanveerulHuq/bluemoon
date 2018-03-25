@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -50,7 +52,9 @@ public class StudentInfoController {
 	}
 
 	@RequestMapping(value={"/PrintStudentInfo"},method = RequestMethod.GET)
-	public String printStudentInfo(HttpServletRequest request, HttpServletResponse response) {
+	public String printStudentInfo(@ModelAttribute("studentId") Long studentId, HttpServletRequest request, HttpServletResponse response) {
+		StudentsInfo studentInfo = studentInfoRepo.findOne(studentId);
+		request.setAttribute("Print", studentInfo);
 		return "Library/StudentInfoPrint";
 	}
 

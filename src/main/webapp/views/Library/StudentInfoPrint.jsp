@@ -25,7 +25,7 @@
 	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Admission no:</strong></span></span></p>
 	</td>
 	<td style="background: transparent;" width="262">
-	<p align="left">&nbsp;</p>
+	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>${Print.admissionNo}</strong></span></span></p>
 	</td>
 	<td colspan="2" width="183">
 	<p align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Photograph</strong></span></span></p>
@@ -36,7 +36,7 @@
 	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Student name:</strong></span></span></p>
 	</td>
 	<td style="background: transparent;" width="262">
-	<p align="left">&nbsp;</p>
+	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>${Print.name}</strong></span></span></p>
 	</td>
 	<td colspan="2" rowspan="6" width="183" style="border:1px dashed">
 	<p align="left">&nbsp;</p>
@@ -47,7 +47,7 @@
 	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Age:</strong></span></span></p>
 	</td>
 	<td style="background: transparent;" width="262">
-	<p align="left">&nbsp;</p>
+	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>${Print.age}</strong></span></span></p>
 	</td>
 	</tr>
 	<tr>
@@ -55,7 +55,7 @@
 	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Gender:</strong></span></span></p>
 	</td>
 	<td style="background: transparent;" width="262">
-	<p align="left">&nbsp;</p>
+	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong id="gender"></strong></span></span></p>
 	</td>
 	</tr>
 	<tr>
@@ -63,7 +63,7 @@
 	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Date of birth:</strong></span></span></p>
 	</td>
 	<td style="background: transparent;" width="262">
-	<p align="left">&nbsp;</p>
+	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong id="dob"></strong></span></span></p></p>
 	</td>
 	</tr>
 	<tr>
@@ -71,7 +71,7 @@
 	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Aadhar no:</strong></span></span></p>
 	</td>
 	<td style="background: transparent;" width="262">
-	<p align="left">&nbsp;</p>
+	<p align="left"><p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>${Print.aadharNo}</strong></span></span></p>
 	</td>
 	</tr>
 	<tr>
@@ -79,7 +79,7 @@
 	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>EMIS no:</strong></span></span></p>
 	</td>
 	<td style="background: transparent;" width="262">
-	<p align="left">&nbsp;</p>
+	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>${Print.emisNo}</strong></span></span></p>
 	</td>
 	</tr>
 	<tr>
@@ -87,7 +87,7 @@
 	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Admission date:</strong></span></span></p>
 	</td>
 	<td style="background: transparent;" width="262">
-	<p align="left">&nbsp;</p>
+	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong id="admissionDate"></strong></span></span></p>
 	</td>
 	<td colspan="2" width="183">
 	<p align="left">&nbsp;</p>
@@ -98,7 +98,7 @@
 	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Community:</strong></span></span></p>
 	</td>
 	<td style="background: transparent;" width="262">
-	<p align="left">&nbsp;</p>
+	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>${Print.community}</strong></span></span></p>
 	</td>
 	<td width="100">
 	<p align="left">&nbsp;</p>
@@ -112,7 +112,7 @@
 	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Father name:</strong></span></span></p>
 	</td>
 	<td style="background: transparent;" width="262">
-	<p align="left">&nbsp;</p>
+	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>${Print.fatherName}</strong></span></span></p>
 	</td>
 	<td width="100">
 	<p align="left">&nbsp;</p>
@@ -126,7 +126,7 @@
 	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Mother name:</strong></span></span></p>
 	</td>
 	<td style="background: transparent;" width="262">
-	<p align="left">&nbsp;</p>
+	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>${Print.motherName}</strong></span></span></p>
 	</td>
 	<td width="100">
 	<p align="left">&nbsp;</p>
@@ -140,7 +140,7 @@
 	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Address:</strong></span></span></p>
 	</td>
 	<td style="background: transparent;" colspan="3" rowspan="3" width="453">
-	<p align="left">&nbsp;</p>
+	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>${Print.address}</strong></span></span></p>
 	</td>
 	</tr>
 	<tr>
@@ -158,7 +158,7 @@
 	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Mobile no.1:</strong></span></span></p>
 	</td>
 	<td style="background: transparent;" width="262">
-	<p align="left">&nbsp;</p>
+	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>${Print.mobileNo1}</strong></span></span></p>
 	</td>
 	<td width="100">
 	<p align="left">&nbsp;</p>
@@ -172,7 +172,7 @@
 	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Mobile no.2:</strong></span></span></p>
 	</td>
 	<td style="background: transparent;" width="262">
-	<p align="left">&nbsp;</p>
+	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>${Print.mobileNo2}</strong></span></span></p>
 	</td>
 	<td width="100">
 	<p align="left">&nbsp;</p>
@@ -186,7 +186,7 @@
 	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Previous school:</strong></span></span></p>
 	</td>
 	<td style="background: transparent;" width="262">
-	<p align="left">&nbsp;</p>
+	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>${Print.previousSchool}</strong></span></span></p>
 	</td>
 	<td width="100">
 	<p align="left">&nbsp;</p>
@@ -201,5 +201,34 @@
 	</dl>
 	<p align="left">&nbsp;</p>
 </div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		var studentId = "${Print.studentId}";
+		var genderObj = {"m":"male","f":"female"};
+		
+		if(studentId != ''){
+			$('#gender').html(genderObj["${Print.gender}"]);
+			var admissionDate = new Date("${Print.admissionDate}");
+			var dob = new Date("${Print.dob}");
+			$('#admissionDate').html(admissionDate.toLocaleDateString('en-GB'));
+			$('#dob').html(dob.toLocaleDateString('en-GB'));
+			printDiv('printArea');
+		} else {
+			window.location = "/SDMS/AddStudent";
+		}
+		
+		function printDiv(div) 
+		{
+		  var divToPrint=document.getElementById(div);
+		  var newWin=window.open('','Print-Window');
+		  newWin.document.open();
+		  newWin.document.write('<html><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
+		  newWin.document.close();
+		  setTimeout(function(){newWin.close();},10);
+		}
+	});
+</script>
+
 </body>
 </html>
