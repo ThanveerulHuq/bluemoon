@@ -1,18 +1,19 @@
 package com.sdms.model;
 
 import com.sdms.entity.AcademicYear;
-import com.sdms.entity.CommonFee;
 
 public class StudentYearModel {
 	
 	
 	private AcademicYear academicYear;
 	
-	private CommonFee commonFee;
+//	private CommonFee commonFee;
+	
+	private Long FeeId;
 	
 	private Long StudentId;
 	
-	private Long AdmissionNo;
+	private Long admissionNo;
 	
 	private String section;
 	
@@ -32,14 +33,6 @@ public class StudentYearModel {
 
 	public void setAcademicYear(AcademicYear academicYear) {
 		this.academicYear = academicYear;
-	}
-
-	public CommonFee getCommonFee() {
-		return commonFee;
-	}
-
-	public void setCommonFee(CommonFee commonFee) {
-		this.commonFee = commonFee;
 	}
 
 	public String getSection() {
@@ -99,11 +92,19 @@ public class StudentYearModel {
 	}
 
 	public Long getAdmissionNo() {
-		return AdmissionNo;
+		return admissionNo;
 	}
 
 	public void setAdmissionNo(Long admissionNo) {
-		AdmissionNo = admissionNo;
+		this.admissionNo = admissionNo;
+	}
+
+	public Long getFeeId() {
+		return FeeId;
+	}
+
+	public void setFeeId(Long FeeId) {
+		this.FeeId = FeeId;
 	}
 	
 }

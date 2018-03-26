@@ -23,21 +23,17 @@
 		<div class="mtop-20 col-md-offset-4 col-md-4">
 			<h2 class="">Student Class and Fees</h2>
 		</div>
-		<form:form method="POST" action="/SDMS/MapStudent"
-		commandName="StudentsYear" class="mtop-15"
-		enctype="multipart/form-data">
 		
 		<div class="form-group col-md-12 mtop-20">
 			<!-- 			<span class="pull-right" style="color:red">*</span> -->
 			<label class="col-md-2"><span class="pull-right">Academic Year:</span></label>
 			<div class="col-md-2">
-<%-- 				<form:input path="name" class="form-control" required="true" /> --%>
-<form:select path="academicYear" name="active" class="form-control"
-					id="active" value="${StudentsInfo.active}">
+<select path="academicYear" name="academicYear" class="form-control"
+					id="academicYear" value="${StudentsInfo.active}">
 				<c:forEach items="${academicYear}" var="year" varStatus="status">
 				<option value="${year.id}">${year.year}</option>
 				</c:forEach>
-				</form:select>
+				</select>
 			</div>
 			
 
@@ -45,34 +41,206 @@
 		<div class="form-group col-md-12">
 			<label class="col-md-2"><span class="pull-right">Admission No:</span> </label>
 			<div class="col-md-3">
-				<form:input path="admissionNo" id="admissionNo" class="form-control" />
+				<input path="admissionNo" id="admissionNo" class="form-control" mandatory="true" value="${StudentsYear.admissionNo}"/>
 			</div>
 			<div class="row col-md-2">
-				<button class="btn btn-success"><span class="glyphicon glyphicon-search"></span> Search</button>
+				<button class="btn btn-success" onclick="SearchStudent()" ><span class="glyphicon glyphicon-search"></span> Search</button>
 		</div>
 		</div>
 		<div class="form-group col-md-12">
 			<label class="col-md-2"><span class="pull-right">Student Name:</span> </label>
 			<div class="col-md-3">
-				<input class="form-control" id="studentName" />
+				<input class="form-control" id="studentName" disabled="true"  value="${studentName}"/>
+			</div>
+			<div class="row">
+			<label class="col-md-2"><span class="pull-right">Father Name:</span> </label>
+			<div class="col-md-3">
+				<input  class="form-control" id="fatherName" disabled="true" value="${fatherName}" />
+			</div>
+			</div>
+		</div>
+		
+		<form:form method="POST" action="/SDMS/MapStudent"
+		commandName="StudentsYear" class="mtop-15"
+		enctype="multipart/form-data">
+		<div class="form-group col-md-12">
+			<label class="col-md-2"><span class="pull-right">Class:</span> </label>
+			<div class="col-md-3">
+				<form:hidden path="StudentId" name="StudentId" id="StudentId"/>
+				<form:hidden path="FeeId" name="FeeId" id="FeeId"/>
+		<select  class="form-control"
+					id="classId" onchange="getFee()">
+					<option value="-1">---SELECT---</option>
+		<c:forEach items="${classes}" var="classInfo" varStatus="status">
+				<option value="${classInfo.classId}">${classInfo.className}</option>
+				</c:forEach>
+				</select>
+			</div>
+			<div class="row">
+				<label class="col-md-2"><span class="pull-right">Section:</span> </label>
+				<div class="col-md-3">
+				<form:select path="section" name="section" class="form-control" >
+				<option value="-1">---SELECT---</option>
+				<option value="A">A</option>
+				<option value="B">B</option>
+				<option value="C">C</option>
+				<option value="D">D</option>
+				</form:select>
+			</div>
 			</div>
 		</div>
 		<div class="form-group col-md-12">
-			<label class="col-md-2"><span class="pull-right">Father Name:</span> </label>
+			<label class="col-md-2"><span class="pull-right">Tution Fee:</span> </label>
 			<div class="col-md-3">
-				<input  class="form-control" id="fatherName" />
+				<input id="tutionFee" class="form-control feeinput" disabled="true" type="number" />
+			</div>
+			<div class="row">
+			<label class="col-md-2"><span class="pull-right">Book Fee:</span> </label>
+			<div class="col-md-3">
+				<form:input path="book_fee" name="book_fee" class="form-control feeinput" type="number" />
+			</div>
 			</div>
 		</div>
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		<div class="form-group col-md-12">
+			<label class="col-md-2"><span class="pull-right">Van Fee:</span> </label>
+			<div class="col-md-3">
+				<form:input path="van_fee" name="van_fee" class="form-control feeinput" type="number" />
+			</div>
+			<div class="row">
+			<label class="col-md-2"><span class="pull-right">Islamic Studies:</span> </label>
+			<div class="col-md-3">
+				<form:input path="islamic_studies" name="islamic_studies" class="form-control feeinput" type="number" />
+			</div>
+			</div>
+		</div>
+
+		<div class="form-group col-md-12">
+			<label class="col-md-2"><span class="pull-right">Uniform Fee:</span> </label>
+			<div class="col-md-3">
+				<form:input path="uniform_fee" name="uniform_fee" class="form-control feeinput" type="number" />
+			</div>
+			<div class="row">
+			<label class="col-md-2"><span class="pull-right">Scholorship:</span> </label>
+			<div class="col-md-3">
+				<form:input path="scholorship" name="scholorship" class="form-control" id="scholorship"  type="number" />
+			</div></div>
+			
+		</div>
+
+		<div class="form-group col-md-12">
+			<label class="col-md-2"><span class="pull-right">Total Fee:</span> </label>
+			<div class="col-md-3">
+				<input id="total" name="scholorship" class="form-control" disabled="true"/>
+			</div>
+		</div>
+		<div class="col-md-10">
+			<div class="pull-right">
+				<form:button type="button" class="btn btn-danger btn-md"
+					onclick="clearInput()">Reset</form:button>
+				<form:button type="submit" class="btn btn-success"
+					onclick="validateForm()">Submit</form:button>
+			</div>
+		</div>
 		</form:form>
 	</div>
+	<div class="container" style="margin-top: 25px;">
+		<div class="row">
+			<legend></legend>
+			<p>
+				<span class="pull-right"><a href="#">Privacy</a> |</span>
+			</p>
+		</div>
+	</div>
+	
+	<script>
+	$('document').ready(function(){
+		var academicYr='${StudentsYear.academicYear.id}';
+		var classId= '${classId}';
+		var section = '${StudentsYear.section}';
+		if(academicYr == ''){
+		var d= new Date();
+		var year= d.getFullYear();
+		year = year -2017;
+		if(d.getMonth()<2){
+				year = year-1;
+			}
+		$('#academicYear').val(year);
+		console.log('in loop');
+		}
+		if(classId != ''){
+			$('#classId').val(classId);
+		}
+		if(section != ''){
+			$('#section').val(section);
+		}
+		computeTotal();
+		
+	});
+
+	
+	function SearchStudent(){
+		var admissionNo = $('#admissionNo').val();
+		$.ajax({
+		url: '/SDMS/getStudentInfoByAdNo?admissionNo='+admissionNo,
+		method: 'GET',
+		success: function(res){
+			console.log(res);
+		if(res.studentId != undefined){
+			$('#studentName').val(res.name);
+			$('#fatherName').val(res.fatherName);
+			$('#StudentId').val(res.studentId);
+		$('.errMsgForAdmissionNo').hide();
+		$('.searchStudentDialog').hide();
+		$('.saveFeeDialog').show();
+		} else {
+		$('.errMsgForAdmissionNo').show();
+		}
+		},
+		error: function(){
+		alert('Server error please contact Admin');
+		}
+		});
+	}
+	function getFee(){
+		var academicYearId = $('#academicYear').val();
+		var classId= $('#classId').val();
+		
+		$.ajax({
+			url: '/SDMS/getCommonFeeByClass?classId='+classId+'&academicYearId='+academicYearId,
+			method: 'GET',
+			success: function(res){
+				console.log(res);
+			if(res.id != undefined){
+			$('#tutionFee').val(res.schoolFee).change();	
+			$('#FeeId').val(res.id);
+			$('.errMsgForAdmissionNo').hide();
+			$('.searchStudentDialog').hide();
+			$('.saveFeeDialog').show();
+			} else {
+			$('.errMsgForAdmissionNo').show();
+			}
+			},
+			error: function(){
+			alert('Server error please contact Admin');
+			}
+			});
+	}
+	$('.feeinput,#scholorship').change(function(){
+		computeTotal();
+		});
+		function computeTotal(){
+			var total=0;
+			$('.feeinput').each(function(){
+			if($(this).val() != ''){
+			total+=parseInt($(this).val());
+			}
+			});
+			if($('#scholorship').val() !=''){
+			total-=parseInt($('#scholorship').val());
+			}
+			$('#total').val(total);
+		}
+	
+	</script>
 </body>
 </html>
