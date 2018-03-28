@@ -1,5 +1,7 @@
 package com.sdms.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -14,5 +16,8 @@ public interface StudentYearRepo extends JpaRepository<StudentYear,Long> {
 	
 	@Query("SELECT a FROM StudentYear a WHERE a.id = :id")
     public StudentYear getStudentById(@Param("id") Long id);
+	
+	@Query("SELECT a FROM StudentYear a WHERE a.commonFee.academicYear.id = :academicYear")
+	public List<com.sdms.entity.StudentYear> getStudentByYear(@Param("academicYear")Long academicYear);
 
 }

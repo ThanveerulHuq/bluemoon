@@ -66,6 +66,7 @@
 		<div class="form-group col-md-12">
 			<label class="col-md-2"><span class="pull-right">Class:</span> </label>
 			<div class="col-md-3">
+			<form:hidden path="studentYearId" name="studentYearId" id="studentYearId"/>
 				<form:hidden path="StudentId" name="StudentId" id="StudentId"/>
 				<form:hidden path="FeeId" name="FeeId" id="FeeId"/>
 		<select  class="form-control"
@@ -92,24 +93,24 @@
 		<div class="form-group col-md-12">
 			<label class="col-md-2"><span class="pull-right">Tution Fee:</span> </label>
 			<div class="col-md-3">
-				<input id="tutionFee" class="form-control feeinput" disabled="true" type="number" />
+				<input id="tutionFee" class="form-control feeinput" disabled="true" type="number" value="${tutionfee}" />
 			</div>
 			<div class="row">
 			<label class="col-md-2"><span class="pull-right">Book Fee:</span> </label>
 			<div class="col-md-3">
-				<form:input path="book_fee" name="book_fee" class="form-control feeinput" type="number" />
+				<form:input path="book_fee" name="book_fee" class="form-control feeinput" type="number" required="true" />
 			</div>
 			</div>
 		</div>
 		<div class="form-group col-md-12">
 			<label class="col-md-2"><span class="pull-right">Van Fee:</span> </label>
 			<div class="col-md-3">
-				<form:input path="van_fee" name="van_fee" class="form-control feeinput" type="number" />
+				<form:input path="van_fee" name="van_fee" class="form-control feeinput" type="number" required="true"/>
 			</div>
 			<div class="row">
 			<label class="col-md-2"><span class="pull-right">Islamic Studies:</span> </label>
 			<div class="col-md-3">
-				<form:input path="islamic_studies" name="islamic_studies" class="form-control feeinput" type="number" />
+				<form:input path="islamic_studies" name="islamic_studies" class="form-control feeinput" type="number" required="true"/>
 			</div>
 			</div>
 		</div>
@@ -117,12 +118,12 @@
 		<div class="form-group col-md-12">
 			<label class="col-md-2"><span class="pull-right">Uniform Fee:</span> </label>
 			<div class="col-md-3">
-				<form:input path="uniform_fee" name="uniform_fee" class="form-control feeinput" type="number" />
+				<form:input path="uniform_fee" name="uniform_fee" class="form-control feeinput" type="number" required="true" />
 			</div>
 			<div class="row">
 			<label class="col-md-2"><span class="pull-right">Scholorship:</span> </label>
 			<div class="col-md-3">
-				<form:input path="scholorship" name="scholorship" class="form-control" id="scholorship"  type="number" />
+				<form:input path="scholorship" name="scholorship" class="form-control" id="scholorship"  type="number" required="true" />
 			</div></div>
 			
 		</div>
@@ -165,7 +166,6 @@
 				year = year-1;
 			}
 		$('#academicYear').val(year);
-		console.log('in loop');
 		}
 		if(classId != ''){
 			$('#classId').val(classId);
@@ -239,6 +239,27 @@
 			total-=parseInt($('#scholorship').val());
 			}
 			$('#total').val(total);
+		}
+		
+		function validateForm(){
+			if($('#studentName').val() == ''){
+				event.preventDefault();
+				alert('Please select a student');
+			}
+			if($('#classId').val() == '-1'){
+				event.preventDefault();
+				alert('Please select a class');
+			}
+			if($('#section').val() == '-1'){
+				event.preventDefault();
+				alert('Please select a section');
+			}
+			
+		}
+		function clearInput(){
+			$(':input').not('#classId,#section,#academicYear').val('');
+			$('#classId,#section').val('-1');
+			alert('All fields cleared')
 		}
 	
 	</script>

@@ -5,6 +5,8 @@ import com.sdms.entity.AcademicYear;
 public class StudentYearModel {
 	
 	
+	private Long studentYearId;
+	
 	private AcademicYear academicYear;
 	
 //	private CommonFee commonFee;
@@ -105,6 +107,14 @@ public class StudentYearModel {
 
 	public void setFeeId(Long FeeId) {
 		this.FeeId = FeeId;
+	}
+
+	public Long getStudentYearId() {
+		return studentYearId;
+	}
+
+	public void setStudentYearId(Long studentYearId) {
+		this.studentYearId = studentYearId;
 	}
 	
 }

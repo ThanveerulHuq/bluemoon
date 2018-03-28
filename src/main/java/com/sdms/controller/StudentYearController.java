@@ -59,6 +59,9 @@ public class StudentYearController {
 			HttpServletResponse response,@ModelAttribute("studentYrId") Long studentYrId) {
 		StudentYearModel studentsYearModel = new StudentYearModel();
 		StudentYear studentYear = studentYearRepo.findOne(studentYrId);
+		studentsYearModel.setStudentYearId(studentYrId);
+		studentsYearModel.setFeeId(studentYear.getCommonFee().getId());
+		studentsYearModel.setStudentId(studentYear.getStudentsInfo().getStudentId());
 		studentsYearModel.setAcademicYear(studentYear.getCommonFee().getAcademicYear());
 		studentsYearModel.setAdmissionNo(studentYear.getStudentsInfo().getAdmissionNo());
 		studentsYearModel.setSection(studentYear.getSection());
@@ -76,6 +79,8 @@ public class StudentYearController {
 		request.setAttribute("studentName", studentYear.getStudentsInfo().getName());
 		request.setAttribute("fatherName", studentYear.getStudentsInfo().getFatherName());
 		request.setAttribute("classId", studentYear.getCommonFee().getClassInfo().getClassId());
+		request.setAttribute("tutionfee", studentYear.getCommonFee().getSchoolFee());
+		
 		return "StudentYear/StudentYear";
 	}
 
@@ -83,10 +88,12 @@ public class StudentYearController {
 	public String MapStudent(
 			@ModelAttribute("StudentsYear") StudentYearModel studentYearModel,
 			HttpServletRequest request, HttpServletResponse response) {
-		System.out.println(studentYearModel.getBook_fee());
+		Long newStudentYrId =studentYearModel.getStudentYearId();
+		System.out.println(studentYearModel.getStudentId());
 		StudentYear studentYear = new StudentYear();
 		StudentsInfo studentsInfo = studentsInfoRepo.findOne(studentYearModel.getStudentId());
 		CommonFee commonFee = commonFeeRepo.findOne(studentYearModel.getFeeId());
+		studentYear.setId(newStudentYrId);
 		studentYear.setStudentsInfo(studentsInfo);
 		studentYear.setCommonFee(commonFee);
 		studentYear.setSection(studentYearModel.getSection());
@@ -97,10 +104,16 @@ public class StudentYearController {
 		studentYear.setIslamicStudies(studentYearModel.getIslamic_studies());
 		Long total=getTotal(studentYearModel,commonFee.getSchoolFee());
 		studentYear.setTotal(total);
-		studentYear.setPaid((long) 0);
-		studentYear.setBalance(total);		
+		if(newStudentYrId!=null){
+			StudentYear oldStudentYr =studentYearRepo.findOne(newStudentYrId);
+			studentYear.setPaid(oldStudentYr.getPaid());
+			studentYear.setBalance(total - oldStudentYr.getPaid());
+		}else{
+			studentYear.setPaid((long) 0);
+			studentYear.setBalance(total);	
+		}
 		studentYearRepo.save(studentYear);
-		return "redirect:/StudentYear";
+		return "redirect:/CurrentStudents";
 	}
 	private Long getTotal(StudentYearModel studentYearModel,Long schoolFee) {
 		Long total=schoolFee+studentYearModel.getVan_fee()+studentYearModel.getBook_fee()+studentYearModel.getUniform_fee()+studentYearModel.getIslamic_studies()-studentYearModel.getScholorship();
@@ -133,4 +146,23 @@ public class StudentYearController {
 			HttpServletRequest request, HttpServletResponse response){
 		return commonFeeRepo.getFeeByClass(classId,academicYearId);
 	}
+	
+	@RequestMapping(value = { "/CurrentStudents" }, method = RequestMethod.GET)
+	public String currentStudents(HttpServletRequest request,
+			HttpServletResponse response) {
+		List<AcademicYear> academicYear = academicYearRepo.findAll();
+		request.setAttribute("academicYear", academicYear);
+		return "currentstudents";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = { "/getStudentYearByYear" }, method = RequestMethod.GET)
+	public List<StudentYear> getStudentYearByYear(HttpServletRequest request,
+			HttpServletResponse response,@ModelAttribute("academicYear") Long academicYear) {
+		List<StudentYear> students= studentYearRepo.getStudentByYear(academicYear);	
+		
+		return students;
+	}
+	
+	
 }
