@@ -254,11 +254,11 @@ list-style: none;
 <header>
        <nav class="navbar navbar-expand-lg navbar-light text-light main-nav">
           <div class="container" style="width:1330px!important;">
-            <a class="navbar-brand padding-0" href="#"><img src="https://cdn.iconscout.com/public/images/icon/premium/png-512/student-group-team-study-education-write-35271133e5a673a1-512x512.png" width="45" alt="Logo"></a>
+            <a class="navbar-brand padding-0" href="#"><img src="<%=request.getContextPath()%>/resources/images/scool_logo.png" width="45" alt="Logo"></a>
               <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button> -->
-				<h3 class="col-md-6">DARUSSALAM STUDENTS DATABASE</h3>
+				<h3 class="col-md-5">DARUSSALAM STUDENTS DATABASE</h3>
               <div class="collapse navbar-collapse nav navbar-nav navbar-right " id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto nav ">
                   <li class="nav-tab active">

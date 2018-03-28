@@ -123,10 +123,10 @@ public class StudentYearController {
 	@ResponseBody
 	@RequestMapping(value = { "/getStudentByAdNo" }, method = RequestMethod.GET)
 	public StudentYear getStudentByAdNo(
-			@ModelAttribute("admissionNo") Long admissionNo,
+			@ModelAttribute("admissionNo") Long admissionNo,@ModelAttribute("academicYearId") Long academicYearId,
 			HttpServletRequest request, HttpServletResponse response) {
 		System.out.println(admissionNo);
-		StudentYear studentYear = studentYearRepo.getStudentByAdNo(admissionNo);
+		StudentYear studentYear = studentYearRepo.getStudentByAdNo(admissionNo,academicYearId);
 		return studentYear;
 	}
 	
@@ -135,7 +135,6 @@ public class StudentYearController {
 	public StudentsInfo getStudentInfoByAdNo(
 			@ModelAttribute("admissionNo") Long admissionNo,
 			HttpServletRequest request, HttpServletResponse response) {
-		System.out.println(admissionNo);
 		StudentsInfo studentsInfo= studentsInfoRepo.getStudentByAdNo(admissionNo);
 		return studentsInfo;
 	}
