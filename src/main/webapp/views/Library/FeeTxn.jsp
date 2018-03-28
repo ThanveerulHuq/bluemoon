@@ -26,6 +26,15 @@
 			<input id="admissionNo" name="admissionNo" class="form-control" required="true" />
 		</div>
 		<label class="col-md-2"><span class="pull-right errMsgForAdmissionNo" style="color:red;display:none">Please enter valid admission number...</span></label>
+		<label class="col-md-2"><span class="pull-right">Academic Year:</span></label>
+			<div class="col-md-2">
+<select name="academicYear" class="form-control"
+					id="academicYear" >
+				<c:forEach items="${academicYear}" var="year" varStatus="status">
+				<option value="${year.id}">${year.year}</option>
+				</c:forEach>
+				</select>
+			</div>		
 		<div class="col-md-10">
 			<div class="pull-right">
 				<button type="submit" class="btn btn-success">Search</button>
@@ -60,6 +69,7 @@
 				</div>
 				
 				<form:hidden path="studentYearId" name="studentYearId" id="studentYearId" value="" />
+							
 				
 				<label class="col-md-2"><span class="pull-right">Amount Paid:</span></label>
 				<div class="col-md-3">
@@ -98,9 +108,10 @@
 		$('#searchStudentForm').submit(function(event){
 			event.preventDefault();
 			var admissionNo = $('#admissionNo').val();
+			var academicYear= $('#academicYear').val();
 			$.ajax({
 				url: '/SDMS/getStudentByAdNo',
-				data: {admissionNo: admissionNo},
+				data: {admissionNo: admissionNo, academicYearId : academicYear },
 				method: 'GET',
 				success: function(res){
 					if(res.id != undefined){

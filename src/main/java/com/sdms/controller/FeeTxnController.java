@@ -1,6 +1,8 @@
 package com.sdms.controller;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.sdms.entity.AcademicYear;
 import com.sdms.entity.FeeTxn;
 import com.sdms.entity.StudentYear;
 import com.sdms.model.FeeTxnModel;
 import com.sdms.model.StudentInfoModel;
+import com.sdms.repository.AcademicYearRepo;
 import com.sdms.repository.FeeTxnRepo;
 import com.sdms.repository.StudentYearRepo;
 
@@ -28,10 +32,14 @@ public class FeeTxnController {
 	FeeTxnRepo feeTxnRepo;
 	@Autowired
 	StudentYearRepo studentYearRepo;
+	@Autowired
+	AcademicYearRepo academicYearRepo;
 	
 	@RequestMapping(value={"/FeeTxn"},method = RequestMethod.GET)
 	public String feeTxn( HttpServletRequest request, HttpServletResponse response) {
 		FeeTxnModel feeTxnModel = new FeeTxnModel();
+		List<AcademicYear> academicYear = academicYearRepo.findAll();
+		request.setAttribute("academicYear", academicYear);
 		request.setAttribute("FeeTxn", feeTxnModel);
 		return "Library/FeeTxn";
 	}
@@ -55,6 +63,18 @@ public class FeeTxnController {
 	@RequestMapping(value={"/PrintReceipt"},method = RequestMethod.GET)
 	public String printReceipt( HttpServletRequest request, HttpServletResponse response) {
 		return "Library/FeeTxnPrint";
+	}
+	
+	@RequestMapping(value={"/FeeReport"}, method = RequestMethod.GET)
+	public String feeReport( HttpServletRequest request, HttpServletResponse response) {
+		return "Library/FeeReport";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value={"/GetFeeReport"}, method = RequestMethod.GET)
+	public List getFeeReport( HttpServletRequest request, HttpServletResponse response) {
+		List feeReport = feeTxnRepo.findAll();
+		return feeReport;
 	}
 	
 }
