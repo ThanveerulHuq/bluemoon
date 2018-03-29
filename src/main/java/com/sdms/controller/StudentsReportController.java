@@ -16,7 +16,7 @@ import com.sdms.model.StudentYearModel;
 import com.sdms.repository.AcademicYearRepo;
 import com.sdms.repository.ClassInfoRepo;
 @Controller
-public class StudentsReport {
+public class StudentsReportController {
 	
 	@Autowired
 	AcademicYearRepo academicYearRepo;
@@ -30,9 +30,7 @@ public class StudentsReport {
 			HttpServletResponse response) {
 		StudentYearModel StudentsYear = new StudentYearModel();
 		List<AcademicYear> academicYear = academicYearRepo.findAll();
-		List<ClassInfo> classes = classInfoRepo.findAll();
 		request.setAttribute("academicYear", academicYear);
-		request.setAttribute("classes", classes);
 		request.setAttribute("StudentsYear", StudentsYear);
 		return "StudentReport";
 	}
