@@ -26,6 +26,7 @@
 <form:form method="POST" action="/SDMS/SetFee"
 			commandName="CommonFee" class="mtop-15"
 			enctype="multipart/form-data">
+			<form:hidden path="id" name="id"/>
 		<div class="form-group col-md-12 mtop-20">
 			<!-- 			<span class="pull-right" style="color:red">*</span> -->
 			<label class="col-md-2"><span class="pull-right">Academic
@@ -88,9 +89,8 @@
 
 	<script>
 		$('document').ready(function() {
-			var academicYr = '${StudentsYear.academicYear.id}';
-			var classId = '${classId}';
-			var section = '${StudentsYear.section}';
+			var academicYr = '${CommonFee.academicYear.id}';
+			var classId = '${CommonFee.classInfo.classId}';
 			if (academicYr == '') {
 				var d = new Date();
 				var year = d.getFullYear();
@@ -99,14 +99,13 @@
 					year = year - 1;
 				}
 				$('#academicYear').val(year);
+			}else{
+				$('#academicYear').val(academicYr);
 			}
 			if (classId != '') {
 				$('#classId').val(classId);
 			}
-			if (section != '') {
-				$('#section').val(section);
-			}
-			computeTotal();
+
 
 		});
 		function validateForm() {

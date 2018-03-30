@@ -14,12 +14,12 @@
 </head>
 <body>
 	<c:import url="/views/shared/header.jsp"></c:import>
-	<section class="container mtop-20">
+	<section class="container mtop-50">
 	<center>
 		<h2>Admission Form</h2>
 	</center>
 	<form:form method="POST" action="/SDMS/SaveStudent"
-		commandName="StudentsInfo" class="mtop-15"
+		commandName="StudentsInfo" class="mtop-25"
 		enctype="multipart/form-data">
 		<form:hidden path="studentId" name="studentId" id="studentId" />
 		<div class="form-group col-md-12">

@@ -34,7 +34,7 @@ function () {
 var grid=$("#Grid");
 grid.jqGrid({
 url:'GetStudentInfo',
-colNames:['Edit','name', 'gender', 'DOB','Age','Father Name','Mother Name','Community','Mobile No','Mobile No2','Aadhar No','Admission No','Admission Date','EMIS No','Previous School','Active Status'],
+colNames:['Edit','name', 'gender', 'DOB','Age','Father Name','Mother Name','Community','Mobile No','Mobile No2','Aadhar No','Admission No','Admission Date','EMIS No','Previous School','Active Status','Print'],
 colModel:[
 {name:'studentId',index:'studentId', width:60,align:"center", sorttype:"int",search: false,formatter:formatEdit},
 {name:'name',index:'name', width:200, align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
@@ -52,6 +52,7 @@ colModel:[
 {name:'emisNo',index:'emisNo', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 {name:'previousSchool',index:'previousSchool', width:200,align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 {name:'active',index:'active', width:200,align:"center", searchoptions: { sopt: ['eq', 'ne']},formatter:formatActive},
+{name:'studentId',index:'studentId', width:60,align:"center",search: false,formatter:formatPrint},
 ],
 
 search:true,
@@ -279,7 +280,10 @@ function formatEdit (cell,option,row){
 	
 	return "<a href='/SDMS/EditStudent?student_id="+cell+"' ><span class='glyphicon glyphicon-edit'></span></a>"
 }
-
+function formatPrint (cell,option,row){
+	
+	return "<a href='/SDMS/PrintStudentInfo?studentId="+cell+"' ><span class='glyphicon glyphicon-print'></span></a>"
+}
 
 </script>
 

@@ -1,5 +1,6 @@
 package com.sdms.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,10 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sdms.entity.AcademicYear;
 import com.sdms.entity.ClassInfo;
 import com.sdms.entity.CommonFee;
+import com.sdms.entity.StudentsInfo;
 import com.sdms.model.StudentYearModel;
 import com.sdms.repository.AcademicYearRepo;
 import com.sdms.repository.ClassInfoRepo;
@@ -43,12 +46,41 @@ public class TutionFeeController {
 		return "TutionFeeForm";
 	}
 	
+	@RequestMapping(value = { "/EditTutionFee" }, method = RequestMethod.GET)
+	public String editTutionFee(HttpServletRequest request,
+			HttpServletResponse response,@ModelAttribute("Feeid") Long Feeid) {
+		List<AcademicYear> academicYear = academicYearRepo.findAll();
+		List<ClassInfo> classes = classInfoRepo.findAll();
+		CommonFee commonFee = commonFeeRepo.findOne(Feeid);
+		request.setAttribute("academicYear", academicYear);
+		request.setAttribute("classes", classes);
+		request.setAttribute("CommonFee", commonFee);
+		return "TutionFeeForm";
+	}
+	
 	
 	@RequestMapping(value = { "/SetFee" }, method = RequestMethod.POST)
 	public String setFee(HttpServletRequest request,
 			HttpServletResponse response,@ModelAttribute("CommonFee") CommonFee commonFee) {
 		System.out.println(commonFee.getClassInfo().getClassId());
 		commonFeeRepo.save(commonFee);
-		return "TutionFeeForm";
+		return "redirect:/TutionFee";
 	}
+	
+	@RequestMapping(value = { "/TutionFee" }, method = RequestMethod.GET)
+	public String tutionFee(HttpServletRequest request,
+			HttpServletResponse response) {
+		List<AcademicYear> academicYear = academicYearRepo.findAll();
+		request.setAttribute("academicYear", academicYear);
+		return "TutionFee";
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value={"/getCommonFee"},method = RequestMethod.GET)
+	public List<CommonFee> getCommonFee(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("academicYear") Long academicYear) {
+		List<CommonFee> commonFee = commonFeeRepo.getFeeByYr(academicYear);;
+		return commonFee;
+	}
+	
 }

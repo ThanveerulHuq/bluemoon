@@ -247,6 +247,10 @@ list-style: none;
 .padbottom-20{padding-bottom: 20px;}
 .padbottom-25{padding-bottom: 25px;}
 .padbottom-30{padding-bottom: 30px;}
+.nav>li>a:focus, .nav>li>a:hover {
+    background-color: #eee;
+    color:rgb(0, 153, 0)!important;
+}
 
 </style>
 
@@ -258,29 +262,26 @@ list-style: none;
               <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button> -->
-				<h3 class="col-md-5" style="color:white;">DARUSSALAM STUDENTS DATABASE</h3>
-              <div class="collapse navbar-collapse nav navbar-nav navbar-right " id="navbarSupportedContent">
+				<h3 class="col-md-5" style="color:white;width:35%;">DARUSSALAM STUDENTS DATABASE</h3>
+              <div class="collapse navbar-collapse nav navbar-nav navbar-right mtop-10" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto nav ">
-                  <li class="nav-tab active">
-                    <a class="nav-link text-uppercase" href="index.html">Home <span class="sr-only">(current)</span></a>
+                  <li class="nav-tab active" >
+                    <a class="nav-link text-uppercase" href="/SDMS/StudentInfo">All Students <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-tab">
-                    <a class="nav-link text-uppercase" href="#story">about</a>
+                    <a class="nav-link text-uppercase" href="/SDMS/CurrentStudents">Studnents by Year</a>
                   </li>
                   <li class="nav-tab">
-                    <a class="nav-link text-uppercase" href="#expertise">expertise</a>
+                    <a class="nav-link text-uppercase" href="/SDMS/FeeTxn">Pay Fee</a>
                   </li>
                   <li class="nav-tab">
-                    <a class="nav-link text-uppercase" href="#team">teams</a>
+                    <a class="nav-link text-uppercase" href="/SDMS/StudentReport">Students Report</a>
                   </li>
                   <li class="nav-tab">
-                    <a class="nav-link text-uppercase" href="#works">works</a>
+                    <a class="nav-link text-uppercase" href="/SDMS/FeeReport">Fee Report</a>
                   </li>
                   <li class="nav-tab">
-                    <a class="nav-link text-uppercase" href="#people-say">pepole say</a>
-                  </li>
-                  <li class="nav-tab">
-                    <a class="nav-link  text-uppercase" href="#contact">contact</a>
+                    <a class="nav-link text-uppercase" href="/SDMS/TutionFee">School Fee</a>
                   </li>
                 </ul>
               </div>
