@@ -139,7 +139,6 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="form-group col-md-12">
 			<label class="col-md-2"><span class="pull-right">Previous
 					School:</span> </label>
@@ -178,6 +177,9 @@
 					Document
 				</button>
 			</div>
+			<div class="col-md-3"> 
+				<button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#addPhotoModel" onclick="takePhoto()">Add Photo</button>
+			</div>
 		</div>
 		<div class="form-group col-md-12" id="doc_area">
 					<c:forEach items="${StudentsInfo.fileNames}" var="name" varStatus="status">
@@ -188,15 +190,12 @@
 									<legend>${name}</legend>
 								</div>
 								<div class="col-md-1">
-									<button class="btn btn-info" onclick="downloadFile('${StudentsInfo.fileIds[status.index]}')">Download</button>
+									<button class="btn btn-info" onclick="getFile('${StudentsInfo.fileIds[status.index]}')">Download</button>
 								</div>
 								<div class="col-md-1">
-									<button class="btn btn-danger pull-left" onclick="removeMe(this)">remove</button>
+									<button class="btn btn-danger pull-left" onclick="removeMe(this)">Remove</button>
 								</div>
 							</div>
-
-
-
 					</c:forEach>
 		</div>
 		<div class="form-group col-md-12" id="document_area"></div>
@@ -208,7 +207,30 @@
 					onclick="validateForm()">Submit</form:button>
 			</div>
 		</div>
-	</form:form> </section>
+	</form:form> 
+	</section>
+	
+	<div id="addPhotoModel" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+				<button type="button" class="close closeStream" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Add Photo</h4>
+				</div>
+				<div class="modal-body">
+				<video id="video"></video>
+				<canvas id="photoCanvas" style="display:none;"></canvas>
+				<div id="buttoncontent">
+				</div>
+				<button id="startbutton" class="btn btn-info">CAPTURE</button>
+					</div>
+				<div class="modal-footer">
+				<button type="button" class="btn btn-default closeStream" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 	<div class="container" style="margin-top: 25px;">
 		<div class="row">
 			<legend></legend>
@@ -269,6 +291,100 @@
 	function removeMe(el){
 		console.log($(el).parent().parent().remove());
 	}
+	
+	function getFile(docId) {
+		event.preventDefault();
+		$.ajax({
+			url: 'GetFile?docId='+docId,
+			method: 'GET',
+			success: function(res){
+			},
+			error: function(res){
+				console.log(res);
+				alert('There was an issue downloading the file. Contact Admin.')
+			}
+		});
+	}
+	
+	var localstream;
+	
+	function takePhoto() 
+	{
+	  	var streaming = false,
+	    video = document.querySelector('#video'),
+	    canvas = document.querySelector('#photoCanvas'),
+	    buttoncontent = document.querySelector('#buttoncontent'),
+	    photo = document.querySelector('#photo'),
+	    startbutton = document.querySelector('#startbutton'),
+	    width = 320,
+	    height = 0;
+
+	  navigator.getMedia = (navigator.getUserMedia ||
+	    navigator.webkitGetUserMedia ||
+	    navigator.mozGetUserMedia ||
+	    navigator.msGetUserMedia);
+
+	  navigator.getMedia({
+	      video: true,
+	      audio: false
+	    },
+	    function(stream) {
+	      if (navigator.mozGetUserMedia) {
+	        video.mozSrcObject = stream;
+	      } else {
+	        var vendorURL = window.URL || window.webkitURL;
+	        video.src = vendorURL.createObjectURL(stream);
+	      }
+	      localstream = stream;
+	      video.play();
+	    },
+	    function(err) {
+	      console.log("An error occured! " + err);
+	    }
+	  );
+
+	  video.addEventListener('canplay', function(ev) {
+	    if (!streaming) {
+	      height = video.videoHeight / (video.videoWidth / width);
+	      video.setAttribute('width', width);
+	      video.setAttribute('height', height);
+	      canvas.setAttribute('width', width);
+	      canvas.setAttribute('height', height);
+	      streaming = true;
+	    }
+	  }, false);
+
+	  function takepicture() {
+	  	video.style.display = "none";
+	    canvas.style.display = "block";
+	    startbutton.innerText= "RETAKE";
+	  	canvas.width = width;
+	    canvas.height = height;
+	    canvas.getContext('2d').drawImage(video, 0, 0, width, height);
+	    var data = canvas.toDataURL('image/png');
+	    photo.setAttribute('src', data);
+	  }
+
+	  startbutton.addEventListener('click', function(ev) {
+	  	if(startbutton.innerText==="CAPTURE")
+	    {
+	    	takepicture();
+	    }
+	    else
+	    {
+	    	video.style.display = "block";
+	    	canvas.style.display = "none";
+	      startbutton.innerText= "CAPTURE";
+	    }
+	    ev.preventDefault();
+	  }, false);
+	}
+	
+	$('.closeStream').on('click', function() {
+		  video.pause();
+		  video.src = "";
+		  localstream.getTracks()[0].stop();
+	});
 	</script>
 </body>
 

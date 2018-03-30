@@ -1,6 +1,8 @@
 package com.sdms.controller;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,10 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sdms.entity.DocInfo;
@@ -124,5 +128,19 @@ public class HomeController {
 		return "Library/Home";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = { "/GetFile" }, method = RequestMethod.GET)
+	public void getFile(@ModelAttribute("docId")Long docId, HttpServletRequest request, HttpServletResponse response) {
+	    try {
+	    	DocInfo docInfo =  docInfoRepo.findOne(docId);
+	    	ByteArrayInputStream file = new ByteArrayInputStream(docInfo.getsFile());
+	    	response.setContentType("application/octet-stream");
+	        org.apache.commons.io.IOUtils.copy(file, response.getOutputStream());
+	        response.flushBuffer();
+	        file.close();
+	      } catch (IOException ex) {
+	        throw new RuntimeException("IOError writing file to output stream");
+	      }
+	}
 	
 }
