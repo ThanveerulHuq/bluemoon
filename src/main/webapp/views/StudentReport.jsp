@@ -12,7 +12,7 @@
 
 <script src="<%=request.getContextPath()%>/resources/scripts/gridController.js" type="text/javascript"></script> 
 <link href="<%=request.getContextPath()%>/resources/styles/main.css" rel='stylesheet' type='text/css'/>
-<title>Students Current Year</title>
+<title>Fee Pending Report</title>
 </head>
 <body>
 <c:import url="/views/shared/header.jsp"></c:import>
@@ -29,7 +29,7 @@
 				</div>
 				</div>
 			<div class="mtop-20 col-md-4">
-				<h2 class="mleft-20">Students Current Year</h2>
+				<h2 class="mleft-20">Fee Pending Report</h2>
 			</div>
 		</div>
 

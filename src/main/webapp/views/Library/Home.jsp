@@ -177,9 +177,9 @@
 					Document
 				</button>
 			</div>
-			<div class="col-md-3"> 
+			<!-- <div class="col-md-3"> 
 				<button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#addPhotoModel" onclick="takePhoto()">Add Photo</button>
-			</div>
+			</div> -->
 		</div>
 		<div class="form-group col-md-12" id="doc_area">
 					<c:forEach items="${StudentsInfo.fileNames}" var="name" varStatus="status">
@@ -192,8 +192,8 @@
 								<div class="col-md-1">
 									<button class="btn btn-info" onclick="getFile('${StudentsInfo.fileIds[status.index]}')">Download</button>
 								</div>
-								<div class="col-md-1">
-									<button class="btn btn-danger pull-left" onclick="removeMe(this)">Remove</button>
+								<div class="col-md-1 mleft-10">
+									<button class="btn btn-danger pull-left" onclick="removeMe(this,'${StudentsInfo.fileIds[status.index]}')">Remove</button>
 								</div>
 							</div>
 					</c:forEach>
@@ -201,9 +201,9 @@
 		<div class="form-group col-md-12" id="document_area"></div>
 		<div class="col-md-10">
 			<div class="pull-right">
-				<form:button type="button" class="btn btn-danger btn-md"
+				<form:button type="button" class="btn btn-danger btn-md" 
 					onclick="clearInput()">Reset</form:button>
-				<form:button type="submit" class="btn btn-success"
+				<form:button type="submit" class="btn btn-success" id="btn_submit"
 					onclick="validateForm()">Submit</form:button>
 			</div>
 		</div>
@@ -253,7 +253,32 @@
 		$('#gender').val(gender);
 		$('#active').val(active);
 		}
-	})
+		if('${StudentsInfo.admissionNo}' == ''){
+			$('#btn_submit').prop('disabled','true');
+		}else{
+			$('#admissionNo').prop('disabled','true');
+		}
+		
+		$('#admissionNo').change(function(){
+			var adNo =$('#admissionNo').val();
+			if(adNo!=''){
+			$.ajax({
+				url: 'studentbyAdNo?admissionNo='+adNo,
+				method: 'GET',
+				success: function(res){
+					console.log(res);
+					if(res=='not exist'){
+						$('#btn_submit').removeAttr( "disabled" );
+					}
+				},
+				error: function(res){
+					console.log(res);
+					alert('error deleting file')
+				}
+			});
+			}
+		});
+	});
 	function formatDate(date){
 		date=date.split(' ');
 	let fmt_date=date[1]+' '+date[2]+' '+date[5];
@@ -288,22 +313,45 @@
 	</div>`;
 	$('#document_area').append(html);
 	}
-	function removeMe(el){
-		console.log($(el).parent().parent().remove());
-	}
-	
-	function getFile(docId) {
+	function removeMe(el,docId){
 		event.preventDefault();
+		if(window.confirm("Do You want to delete the file")){
 		$.ajax({
-			url: 'GetFile?docId='+docId,
+			url: 'deleteFile?docId='+docId,
 			method: 'GET',
 			success: function(res){
+				console.log(res);
+				console.log($(el).parent().parent().remove());
 			},
 			error: function(res){
 				console.log(res);
-				alert('There was an issue downloading the file. Contact Admin.')
+				alert('error deleting file')
 			}
 		});
+		}
+		
+	}
+	
+	function getFile(docId){
+		event.preventDefault();
+		  var win = window.open('GetFile?docId='+docId, '_blank');
+		  return false;
+		}
+	function remove(docId,elem){
+		event.preventDefault();
+		if(window.confirm("Do You want to delete the file")){
+		$.ajax({
+			url: 'deleteFile?docId='+docId,
+			method: 'GET',
+			success: function(res){
+				console.log(res);
+			},
+			error: function(res){
+				console.log(res);
+				alert('error deleting file')
+			}
+		});
+		}
 	}
 	
 	var localstream;

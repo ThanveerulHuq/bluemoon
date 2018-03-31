@@ -3,6 +3,8 @@ package com.sdms.controller;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,8 +13,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -130,17 +132,41 @@ public class HomeController {
 	
 	@ResponseBody
 	@RequestMapping(value = { "/GetFile" }, method = RequestMethod.GET)
-	public void getFile(@ModelAttribute("docId")Long docId, HttpServletRequest request, HttpServletResponse response) {
-	    try {
+	public void getFile(@ModelAttribute("docId")Long docId, HttpServletRequest request, HttpServletResponse response) throws IOException {
 	    	DocInfo docInfo =  docInfoRepo.findOne(docId);
-	    	ByteArrayInputStream file = new ByteArrayInputStream(docInfo.getsFile());
-	    	response.setContentType("application/octet-stream");
-	        org.apache.commons.io.IOUtils.copy(file, response.getOutputStream());
-	        response.flushBuffer();
-	        file.close();
-	      } catch (IOException ex) {
-	        throw new RuntimeException("IOError writing file to output stream");
-	      }
+	    	byte[] file = docInfo.getsFile();
+	    	InputStream input = new ByteArrayInputStream(file);
+	    	response.setContentLength((int) file.length);
+	    	try {
+				response.setHeader("Content-Disposition", "inline;filename=\"" +docInfo.getFileName()+ ".png\"");
+				OutputStream out = response.getOutputStream();
+				response.setContentType("application/octet-stream");
+				IOUtils.copy(input, out);
+				out.flush();
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value = { "/deleteFile" }, method = RequestMethod.GET)
+	public String deleteFile(@ModelAttribute("docId")Long docId, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		docInfoRepo.delete(docId);
+		return "successfully deleted";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = { "/studentbyAdNo" }, method = RequestMethod.GET)
+	public String studentbyAdNo(@ModelAttribute("admissionNo")Long admissionNo, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		if(studentInfoRepo.getStudentByAdNo(admissionNo)!= null){
+		return "exist";
+		}
+		else{
+			return "not exist";
+		}
+	}
+	
 	
 }

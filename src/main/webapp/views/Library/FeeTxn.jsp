@@ -21,12 +21,7 @@
 
 	<div class="searchStudentDialog mtop-15">
 	<form id="searchStudentForm">
-		<label class="col-md-2"><span class="pull-right">Admission No:</span></label>
-		<div class="col-md-3">
-			<input id="admissionNo" name="admissionNo" class="form-control" required="true" />
-		</div>
-		<label class="col-md-2"><span class="pull-right errMsgForAdmissionNo" style="color:red;display:none">Please enter valid admission number...</span></label>
-		<label class="col-md-2"><span class="pull-right">Academic Year:</span></label>
+	<div class="form-group col-md-12"><label class="col-md-2"><span class="pull-right">Academic Year:</span></label>
 			<div class="col-md-2">
 <select name="academicYear" class="form-control"
 					id="academicYear" >
@@ -34,12 +29,21 @@
 				<option value="${year.id}">${year.year}</option>
 				</c:forEach>
 				</select>
-			</div>		
-		<div class="col-md-10">
-			<div class="pull-right">
+			</div></div>
+	<div class="form-group col-md-12">
+		<label class="col-md-2"><span class="pull-right">Admission No:</span></label>
+		<div class="col-md-3">
+			<input id="admissionNo" name="admissionNo" class="form-control" required="true" />
+		</div>
+		<div class="col-md-2">
+			<div class="pull-left">
 				<button type="submit" class="btn btn-success">Search</button>
 			</div>
 		</div>
+		</div>
+		<label class="col-md-2"><span class="pull-right errMsgForAdmissionNo" style="color:red;display:none">Please enter valid admission number...</span></label>
+				
+		
 	</form>	
 	</div>
 	
@@ -60,12 +64,12 @@
 						<input  class="form-control" id="studentName" value="" readonly="true" />
 					</div>
 				</div>	
+				</div>
+				<div class="form-group col-md-12">
 				
-				<div class="row">
 				<label class="col-md-2"><span class="pull-right">Balance:</span></label>
 				<div class="col-md-3">
 					<input class="form-control" id="balance" type="number" readonly="true" />
-				</div>
 				</div>
 				
 				<form:hidden path="studentYearId" name="studentYearId" id="studentYearId" value="" />
@@ -76,7 +80,8 @@
 					<form:input path="amountPaid" id="amountPaid" class="form-control" type="number"
 						required="true" />
 				</div>
-				
+				</div>
+				<div class="form-group col-md-12">
 					<label class="col-md-2"><span class="pull-right">Payment Date:</span> </label>
 					<div class="col-md-3">
 						<form:input path="paymentDate" id="paymentDate" name="dob" class="form-control" type="Date"
