@@ -163,5 +163,19 @@ public class StudentYearController {
 		return students;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = { "/CheckStdFrUnique" }, method = RequestMethod.GET)
+	public String CheckStdFrUnique(HttpServletRequest request,
+			HttpServletResponse response,@ModelAttribute("academicYear") Long academicYear,@ModelAttribute("admissionNo") Long admissionNo) {
+		StudentYear student= studentYearRepo.getStudentByAdNo(admissionNo, academicYear);	
+		if(student == null){
+			return "not exist";
+		}
+		else{
+			return "exist";
+		}
+		
+	}
+	
 	
 }

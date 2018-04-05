@@ -10,11 +10,25 @@
 <c:import url="/views/shared/header_includes.jsp"></c:import>
 <script src="<%=request.getContextPath()%>/resources/scripts/gridController.js" type="text/javascript"></script> 
 <title>Fee Report</title>
+<style type="text/css">
+	.ui-datepicker{
+		z-index: 100 !important
+	}
+</style>
 </head>
 <body>
 <c:import url="/views/shared/header.jsp"></c:import>
 <div class="mtop-50">
 	<div class="mtop-20 col-md-offset-5 col-md-2"><h2>Fee Report</h2></div>
+	<div class="mtop-40 col-md-5">
+		<div class="row">
+			<label class="padding-10">From:</label>
+				<input class="datepicker" id="startTime" />
+			<label class="padding-10">To:</label>
+			<input class="datepicker" id="endTime" />
+			<button class="btn btn-success mleft-10" onclick="loadGrid()">Go</button>
+		</div>
+	</div>
 	<div class="mtop-20 col-md-11" style="width:99%">
 		<div class="grid-items">
 			<table class="gridContent" id="Grid"></table>
@@ -29,6 +43,7 @@ function () {
 var grid=$("#Grid");
 grid.jqGrid({
 url:'GetFeeReport',
+
 colNames:['Admission No', 'Student Name', 'Academic Year','Class','Section','Fee Amount', 'Amount Paid','Payment Date'],
 colModel:[
 {name:'studentYear.studentsInfo.admissionNo',index:'studentYear.studentsInfo.admissionNo', width:180,align:"center", sorttype:"int",searchoptions: { sopt: ['cn','bw','eq', 'ne']}},
@@ -50,9 +65,8 @@ rowList: [10,25,50],
 viewrecords: true,
 height: 350,
 width:$(".grid-items").width(),
-
-
 loadonce:true,
+navOptions: { reloadGridOptions: { fromServer: true } },
 datatype: 'json',
 // datastr:data,
 shrinkToFit: false,
@@ -249,6 +263,25 @@ function dobFormatter (cell,option,row){
 	return date.getDate()+ '/'+ (date.getMonth()+1) + '/'+date.getFullYear();
 }
 
+$(document).ready(function(){
+	$('.datepicker').datepicker({ dateFormat: 'dd-mm-yy' });
+});
+
+function loadGrid(){
+	var start = $('#startTime').val();
+	var end = $('#endTime').val();
+	if(start != '' && end != ''){
+		var url = 'GetFeeReport?startTime='+start+'&endTime='+end;
+		 //$("#Grid").setGridParam({url: url});
+		 //$("#Grid").trigger("reloadGrid", {fromServer: true, page : 1});
+		$("#Grid").jqGrid().setGridParam({'url' : url}).jqGrid('setGridParam',{datatype:'json'}).trigger('reloadGrid');
+	} else {
+		$('.datepicker').val('');
+		//$("#Grid").setGridParam({url: 'GetFeeReport'});
+		//$("#Grid").trigger("reloadGrid", {fromServer: true, page : 1});
+		$("#Grid").jqGrid().setGridParam({'url' : 'GetFeeReport'}).jqGrid('setGridParam',{datatype:'json'}).trigger('reloadGrid');
+	}
+}
 </script>
 
 

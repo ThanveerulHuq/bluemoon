@@ -2,16 +2,19 @@ package com.sdms.repository;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.sdms.entity.FeeTxn;
 
 public interface FeeTxnRepo extends JpaRepository<FeeTxn, Long>{
 
 	
-//	@Query("select a from FeeTxn a where ")
-//    public ArrayList<FeeTxn> getFilterData();
+	@Query("select a from FeeTxn a where a.paymentDate between :startTime and :endTime")
+    public ArrayList<FeeTxn> getFilterData(@Param("startTime") Date startTime, @Param("endTime") Date endTime);
+
 	
 }

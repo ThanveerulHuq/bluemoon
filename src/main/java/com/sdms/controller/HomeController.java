@@ -69,6 +69,10 @@ public class HomeController {
 		studentInfo.setAdmissionDate(new Timestamp(studentmodel
 				.getAdmissionDate().getTime()));
 		studentInfo.setActive(studentmodel.getActive());
+		studentInfo.setReligion(studentmodel.getReligion());
+		studentInfo.setCaste(studentmodel.getCaste());
+		studentInfo.setNationality(studentmodel.getNationality());
+		studentInfo.setRemarks(studentmodel.getRemarks());
 		StudentsInfo student = studentInfoRepo.save(studentInfo);
 		List<MultipartFile> images = studentmodel.getImages();
 		if(!images.isEmpty()){
@@ -116,6 +120,10 @@ public class HomeController {
 		studentModel.setPreviousSchool(studentsInfo.getPreviousSchool());
 		studentModel.setAdmissionDate(new Date(studentsInfo.getAdmissionDate().getTime()));
 		studentModel.setActive(studentsInfo.getActive());
+		studentModel.setReligion(studentsInfo.getReligion());
+		studentModel.setCaste(studentsInfo.getCaste());
+		studentModel.setNationality(studentsInfo.getNationality());
+		studentModel.setRemarks(studentsInfo.getRemarks());
 		List<DocInfo> docInfos=docInfoRepo.findByStudentId(studentId);
 		List<String> fileNames = new ArrayList<String>();
 		List<Long> fileIds= new ArrayList<Long>();

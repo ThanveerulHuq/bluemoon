@@ -269,7 +269,7 @@ list-style: none;
                     <a class="nav-link text-uppercase" href="/SDMS/StudentInfo">All Students <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-tab">
-                    <a class="nav-link text-uppercase" href="/SDMS/CurrentStudents">Studnents by Year</a>
+                    <a class="nav-link text-uppercase" href="/SDMS/CurrentStudents">Students by Year</a>
                   </li>
                   <li class="nav-tab">
                     <a class="nav-link text-uppercase" href="/SDMS/FeeTxn">Pay Fee</a>

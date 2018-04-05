@@ -74,7 +74,7 @@
 						Number:</span> </label>
 				<div class="col-md-3">
 					<form:input path="emisNo" class="form-control" type="number"
-						required="true" maxlength="15"
+						required="true" maxlength="16"
 						oninput="javascript: if (this.value.length > this.maxLength) alert('length should not be more than'+this.maxLength);this.value = this.value.slice(0, this.maxLength);" />
 				</div>
 			</div>
@@ -83,14 +83,14 @@
 			<label class="col-md-2"><span class="pull-right">Admission
 					Number:</span> </label>
 			<div class="col-md-3">
-				<form:input path="admissionNo" class="form-control" required="true" />
+				<form:input path="admissionNo" name="admissionNo" class="form-control" required="true" />
 			</div>
 			<div class="row">
 				<label class="col-md-2"><span class="pull-right">Admission
 						Date:</span> </label>
 				<div class="col-md-3">
 					<form:input path="admissionDate" name="admissionDate"
-						class="form-control" type="Date" pattern="YYYY-MM-DD"
+						class="form-control" 
 						required="true" id="admissionDate" />
 				</div>
 			</div>
@@ -99,13 +99,32 @@
 			<label class="col-md-2"><span class="pull-right">Community:</span>
 			</label>
 			<div class="col-md-3">
-				<form:input path="community" class="form-control" required="true" />
+				<form:select path="community" class="form-control" id="community">
+				<option value="-1">SELECT</option>
+				<option value="BCM">BCM</option>
+				<option value="SC">SC</option>
+				<option value="ST">ST</option>				
+				</form:select>
 			</div>
 			<div class="row">
-				<label class="col-md-2"><span class="pull-right">Mother
-						Tongue:</span> </label>
+				<label class="col-md-2"><span class="pull-right">Religion:</span> </label>
 				<div class="col-md-3">
-					<form:input path="motherTongue" class="form-control"
+					<form:input path="religion" class="form-control"
+						required="true" />
+				</div>
+			</div>
+			
+		</div>
+		<div class="form-group col-md-12">
+			<label class="col-md-2"><span class="pull-right">Caste:</span>
+			</label>
+			<div class="col-md-3">
+				<form:input path="caste" class="form-control" required="true" />
+			</div>
+			<div class="row">
+				<label class="col-md-2"><span class="pull-right">Nationality:</span> </label>
+				<div class="col-md-3">
+					<form:input path="nationality" class="form-control"
 						required="true" />
 				</div>
 			</div>
@@ -121,7 +140,7 @@
 				<label class="col-md-2"><span class="pull-right">Mobile
 						Number 2:</span> </label>
 				<div class="col-md-3">
-					<form:input path="mobileNo2" class="form-control" type="number" />
+					<form:input path="mobileNo2" class="form-control" type="number" required="true" />
 				</div>
 			</div>
 		</div>
@@ -145,13 +164,29 @@
 			<div class="col-md-3">
 				<form:input path="previousSchool" class="form-control" />
 			</div>
+			<div class="row">
+				<label class="col-md-2"><span class="pull-right">Mother
+						Tongue:</span> </label>
+				<div class="col-md-3">
+					<form:input path="motherTongue" class="form-control"
+						required="true" />
+				</div>
+				
+			</div>
 		</div>
 		<div class="form-group col-md-12">
 			<label class="col-md-2"><span class="pull-right">Residential
 					Address:</span> </label>
-			<div class="col-md-5">
+			<div class="col-md-3">
 				<form:textarea path="address" class="form-control" required="true"
 					style="height:90px" />
+			</div>
+			<div class="row">
+				<label class="col-md-2"><span class="pull-right">Remarks:</span> </label>
+				<div class="col-md-3">
+					<form:textarea path="remarks" class="form-control" required="true"
+						style="height:90px" />
+				</div>
 			</div>
 		</div>
 		<input type="file" path="images" name="images" multiple="multiple"
@@ -243,6 +278,7 @@
 	<script type="text/javascript">
 	
 	$('document').ready(function(){
+		 $('#admissionDate').datepicker({ dateFormat: 'yy-mm-dd' }).datepicker("setDate", new Date());
 		var dob="${StudentsInfo.dob}";
 		var adm_date= "${StudentsInfo.admissionDate}";
 		var gender="${StudentsInfo.gender}"
@@ -256,6 +292,7 @@
 		if('${StudentsInfo.admissionNo}' == ''){
 			$('#btn_submit').prop('disabled','true');
 		}else{
+			
 			$('#admissionNo').prop('disabled','true');
 		}
 		
@@ -273,7 +310,7 @@
 				},
 				error: function(res){
 					console.log(res);
-					alert('error deleting file')
+					alert('server error please contact admin')
 				}
 			});
 			}
@@ -286,11 +323,17 @@
 	return fmt_date;
 	}
 	function validateForm(){
-		if($('#gender').val() == '-1'){
-			event.preventDefault();
+		if($('#gender').val() == '-1' ){
+		event.preventDefault();
 		alert('please select a valid gender');
 		return false;
 		}	
+		if($('#community').val() == '-1' ){
+			event.preventDefault();
+		alert('please select a valid gender');
+		return false;
+		}
+		$('#admissionNo').removeAttr('disabled');
 		}
 	function clearInput(){
 		$(':input').not('#gender').val('');
@@ -353,6 +396,43 @@
 		});
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	var localstream;
 	

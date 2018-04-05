@@ -3,6 +3,8 @@ package com.sdms.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -42,6 +44,46 @@ public class StudentInfoModel {
 	private String active;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date admissionDate;
+	
+	private String religion;
+	
+	private String caste;
+	
+	private String nationality;
+	
+	public String getReligion() {
+		return religion;
+	}
+
+	public void setReligion(String religion) {
+		this.religion = religion;
+	}
+
+	public String getCaste() {
+		return caste;
+	}
+
+	public void setCaste(String caste) {
+		this.caste = caste;
+	}
+
+	public String getNationality() {
+		return nationality;
+	}
+
+	public void setNationality(String nationality) {
+		this.nationality = nationality;
+	}
+
+	public String getRemarks() {
+		return remarks;
+	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+
+	private String remarks;
 
 	private List<MultipartFile> images;
 	

@@ -1,6 +1,11 @@
 package com.sdms.controller;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -69,9 +74,18 @@ public class FeeTxnController {
 	
 	@ResponseBody
 	@RequestMapping(value={"/GetFeeReport"}, method = RequestMethod.GET)
-	public List getFeeReport( HttpServletRequest request, HttpServletResponse response) {
-		List feeReport = feeTxnRepo.findAll();
+	public List getFeeReport( @ModelAttribute("startTime") String startTime, @ModelAttribute("endTime") String endTime, HttpServletRequest request, HttpServletResponse response) throws ParseException {
+		List feeReport = new ArrayList();		
+		if(startTime.isEmpty() || endTime.isEmpty()){
+			feeReport = feeTxnRepo.findAll();
+		} else {
+			DateFormat dF = new SimpleDateFormat("dd-MM-yyyy");
+			Date startDate = dF.parse(startTime);
+			Date endDate = dF.parse(endTime);
+			feeReport = feeTxnRepo.getFilterData(startDate, endDate);
+		}
 		return feeReport;
 	}
+
 	
 }

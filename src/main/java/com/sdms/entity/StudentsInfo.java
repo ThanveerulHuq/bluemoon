@@ -69,6 +69,20 @@ public class StudentsInfo {
 	
 	@Column(name="admission_date",columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP",nullable=false)
 	private Timestamp admissionDate;
+	
+	@Column(name="religion",nullable=false,length=15)
+	private String religion;
+	
+	@Column(name="caste",nullable=false,length=30)
+	private String caste;
+	
+	@Column(name="nationality",nullable=false,length=15)
+	private String nationality;
+	
+	@Column(name="remarks",nullable=false,length=15)
+	private String remarks;
+
+
 
 	public Long getStudentId() {
 		return studentId;
@@ -213,9 +227,39 @@ public class StudentsInfo {
 	public void setAdmissionDate(Timestamp admissionDate) {
 		this.admissionDate = admissionDate;
 	}
+
+	public String getReligion() {
+		return religion;
+	}
+
+	public void setReligion(String religion) {
+		this.religion = religion;
+	}
+
+	public String getCaste() {
+		return caste;
+	}
+
+	public void setCaste(String caste) {
+		this.caste = caste;
+	}
+
+	public String getNationality() {
+		return nationality;
+	}
+
+	public void setNationality(String nationality) {
+		this.nationality = nationality;
+	}
 	
 	
-	
+	public String getRemarks() {
+		return remarks;
+	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
 	
 	
 	

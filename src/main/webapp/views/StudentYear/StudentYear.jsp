@@ -121,7 +121,7 @@
 				<form:input path="uniform_fee" name="uniform_fee" class="form-control feeinput" type="number" required="true" />
 			</div>
 			<div class="row">
-			<label class="col-md-2"><span class="pull-right">Scholorship:</span> </label>
+			<label class="col-md-2"><span class="pull-right">(-)Scholorship:</span> </label>
 			<div class="col-md-3">
 				<form:input path="scholorship" name="scholorship" class="form-control" id="scholorship"  type="number" required="true" />
 			</div></div>
@@ -138,7 +138,7 @@
 			<div class="pull-right">
 				<form:button type="button" class="btn btn-danger btn-md"
 					onclick="clearInput()">Reset</form:button>
-				<form:button type="submit" class="btn btn-success"
+				<form:button type="submit" class="btn btn-success" id="btn_submit"
 					onclick="validateForm()">Submit</form:button>
 			</div>
 		</div>
@@ -189,6 +189,7 @@
 			$('#studentName').val(res.name);
 			$('#fatherName').val(res.fatherName);
 			$('#StudentId').val(res.studentId);
+			checkforUnique();
 		$('.errMsgForAdmissionNo').hide();
 		$('.searchStudentDialog').hide();
 		$('.saveFeeDialog').show();
@@ -260,6 +261,32 @@
 			$(':input').not('#classId,#section,#academicYear').val('');
 			$('#classId,#section').val('-1');
 			alert('All fields cleared')
+		}
+		
+		
+		function checkforUnique(){
+			var academicYr= $('#academicYear').val();
+			var admissionNo= $('#admissionNo').val();
+			var oldAdmissionNo= "${StudentsYear.admissionNo}";
+			if(admissionNo != oldAdmissionNo){
+			$.ajax({
+				url: '/SDMS/CheckStdFrUnique?academicYear='+academicYr+'&&admissionNo='+admissionNo,
+				method: 'GET',
+				success: function(res){
+				if(res == "exist"){
+				$('#btn_submit').attr('disabled','true');
+				alert('This student already exist for the current academic year');
+				} else {
+				$('#btn_submit').removeAttr( "disabled" );
+				}
+				},
+				error: function(){
+				alert('Server error please contact Admin');
+				}
+				});
+			}else{
+				$('#btn_submit').removeAttr( "disabled" );
+			}
 		}
 	
 	</script>

@@ -84,9 +84,8 @@
 				<div class="form-group col-md-12">
 					<label class="col-md-2"><span class="pull-right">Payment Date:</span> </label>
 					<div class="col-md-3">
-						<form:input path="paymentDate" id="paymentDate" name="dob" class="form-control" type="Date"
-							pattern="MM-dd-yyyy" required='true'
-							value="<fmt:formatDate value='${FeeTxn.paymentDate}' pattern='yyyy-MM-dd'/>" />
+						
+      <form:input path="paymentDate" id="paymentDate" name="paymentDate" class="form-control" required='true' />
 					</div>
 	
 			</div>
@@ -107,8 +106,9 @@
 	<script type="text/javascript">
 	
 	$('document').ready(function(){
-		var payment_date= "${FeeTxn.paymentDate}";
-		document.getElementById("paymentDate").valueAsDate = formatDate(payment_date);
+		  $('#paymentDate').datepicker({ dateFormat: 'yy-mm-dd' }).datepicker("setDate", new Date());
+// 		var payment_date= "${FeeTxn.paymentDate}";
+// 		document.getElementById("paymentDate").valueAsDate = formatDate(payment_date);
 		
 		$('#searchStudentForm').submit(function(event){
 			event.preventDefault();

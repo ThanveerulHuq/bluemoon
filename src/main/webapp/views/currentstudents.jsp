@@ -280,7 +280,7 @@ if(d.getMonth()<2){
 $('#academicYear').val(year);
 createGrid(year);
 $('#academicYear').change(function(){
-	console.log('changed');
+// 	console.log('changed');
 	var academicYear =$('#academicYear').val();
 	jQuery("#Grid").jqGrid().setGridParam({url : 'getStudentYearByYear?academicYear='+academicYear}).jqGrid('setGridParam',{datatype:'json'}).trigger('reloadGrid');
 });
