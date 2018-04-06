@@ -21,7 +21,7 @@ public class StudentYearModel {
 	
 	private Long van_fee;
 	
-	private Long book_fee;
+//	private Long book_fee;
 	
 	private Long uniform_fee;
 	
@@ -53,13 +53,13 @@ public class StudentYearModel {
 		this.van_fee = van_fee;
 	}
 
-	public Long getBook_fee() {
-		return book_fee;
-	}
-
-	public void setBook_fee(Long book_fee) {
-		this.book_fee = book_fee;
-	}
+//	public Long getBook_fee() {
+//		return book_fee;
+//	}
+//
+//	public void setBook_fee(Long book_fee) {
+//		this.book_fee = book_fee;
+//	}
 
 	public Long getUniform_fee() {
 		return uniform_fee;

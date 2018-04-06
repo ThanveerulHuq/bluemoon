@@ -5,23 +5,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="common_fee")
-public class CommonFee {
-	
+@Table(name = "paid_fee")
+public class PaidFee {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name = "id")
 	private Long id;
-	
-	@ManyToOne 
-	@JoinColumn(name="class_id")
-	private ClassInfo classInfo;
 	
 	@Column(name="school_fee",nullable=false,length=15)
 	private Long schoolFee;
@@ -29,10 +22,14 @@ public class CommonFee {
 	@Column(name="book_fee",nullable=false,length=15)
 	private Long bookFee;
 
-
-	@ManyToOne 
-	@JoinColumn(name="academic_year")
-	private AcademicYear academicYear;
+	@Column(name="uniform_fee",nullable=false,length=15)
+	private Long uniformFee;
+	
+	@Column(name="islamic_studies",nullable=false,length=15)
+	private Long islamicStudies;
+	
+	@Column(name="van_fee",nullable=false,length=15)
+	private Long vanFee;
 
 	public Long getId() {
 		return id;
@@ -40,14 +37,6 @@ public class CommonFee {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public ClassInfo getClassInfo() {
-		return classInfo;
-	}
-
-	public void setClassInfo(ClassInfo classInfo) {
-		this.classInfo = classInfo;
 	}
 
 	public Long getSchoolFee() {
@@ -58,14 +47,6 @@ public class CommonFee {
 		this.schoolFee = schoolFee;
 	}
 
-	public AcademicYear getAcademicYear() {
-		return academicYear;
-	}
-
-	public void setAcademicYear(AcademicYear academicYear) {
-		this.academicYear = academicYear;
-	}
-	
 	public Long getBookFee() {
 		return bookFee;
 	}
@@ -74,4 +55,29 @@ public class CommonFee {
 		this.bookFee = bookFee;
 	}
 
+	public Long getUniformFee() {
+		return uniformFee;
+	}
+
+	public void setUniformFee(Long uniformFee) {
+		this.uniformFee = uniformFee;
+	}
+
+	public Long getIslamicStudies() {
+		return islamicStudies;
+	}
+
+	public void setIslamicStudies(Long islamicStudies) {
+		this.islamicStudies = islamicStudies;
+	}
+
+	public Long getVanFee() {
+		return vanFee;
+	}
+
+	public void setVanFee(Long vanFee) {
+		this.vanFee = vanFee;
+	}
+	
+	
 }

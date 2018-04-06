@@ -34,7 +34,7 @@
 			
 			<div class="col-md-4 mtop-35">
 				<a href="StudentYear" class="btn btn-primary pull-right mright-35"><span
-					class="glyphicon glyphicon-plus"></span> New Admission</a>
+					class="glyphicon glyphicon-plus"></span> Add Student</a>
 			</div>
 		</div>
 

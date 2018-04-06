@@ -107,7 +107,7 @@
 	<div align="right"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">Book Fee:</span></span></div>
 	</td>
 	<td colspan="2" width="48%">
-	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">${Print.studentYear.bookFee}</span></span></div>
+	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">${Print.studentYear.commonFee.bookFee}</span></span></div>
 	</td>
 	</tr>
 	<tr valign="top">
@@ -155,7 +155,7 @@
 	<div align="right"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">Previously Paid:</span></span></div>
 	</td>
 	<td colspan="2" width="48%">
-	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">${Print.studentYear.paid}</span></span></div>
+	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">${Print.studentYear.paidFee.bookFee}</span></span></div>
 	</td>
 	</tr>
 	<tr valign="top">
@@ -163,7 +163,7 @@
 	<div align="right"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">Balance Due:</span></span></div>
 	</td>
 	<td colspan="2" width="48%">
-	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">${Print.studentYear.balance}</span></span></div>
+	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">${Print.studentYear.paidFee.bookFee}</span></span></div>
 	</td>
 	</tr>
 	<tr valign="top">

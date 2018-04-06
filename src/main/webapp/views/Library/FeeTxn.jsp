@@ -67,34 +67,71 @@
 				</div>
 				<div class="form-group col-md-12">
 				
-				<label class="col-md-2"><span class="pull-right">Balance:</span></label>
-				<div class="col-md-3">
-					<input class="form-control" id="balance" type="number" readonly="true" />
-				</div>
-				
-				<form:hidden path="studentYearId" name="studentYearId" id="studentYearId" value="" />
-							
-				
-				<label class="col-md-2"><span class="pull-right">Amount Paid:</span></label>
-				<div class="col-md-3">
-					<form:input path="amountPaid" id="amountPaid" class="form-control" type="number"
-						required="true" />
-				</div>
-				</div>
-				<div class="form-group col-md-12">
-					<label class="col-md-2"><span class="pull-right">Payment Date:</span> </label>
+<!-- 				<label class="col-md-2"><span class="pull-right">Balance:</span></label> -->
+<!-- 				<div class="col-md-3"> -->
+<!-- 					<input class="form-control" id="balance" type="number" readonly="true" /> -->
+<!-- 				</div> -->
+<label class="col-md-2"><span class="pull-right">Payment Date:</span> </label>
 					<div class="col-md-3">
 						
       <form:input path="paymentDate" id="paymentDate" name="paymentDate" class="form-control" required='true' />
 					</div>
+				
+				<form:hidden path="studentYearId" name="studentYearId" id="studentYearId" value="" />
+							
+				
+				<%-- <label class="col-md-2"><span class="pull-right">Amount Paid:</span></label>
+				<div class="col-md-3">
+					<form:input path="amountPaid" id="amountPaid" class="form-control" type="number"
+						required="true" />
+				</div> --%>
+				</div>
+			<div class="form-group col-md-8 col-md-offset-2">
+		<table class="table table-bordered">
+			<tr>
+				<th class="col-md-1">
+					<h5>DESCRIPTION</h5>
+				</th>
+				<th class="col-md-1" >
+					<h5>AMOUNT (INR)</h5>
+				</th>
+				<th class="col-md-1">
+					<h5>BALANCE (INR)</h5>
+				</th>
+				<th class="col-md-2">
+					<h5>PAID (INR)</h5>
+				</th>
+			</tr>
+			<tr><td>TUTION FEE</td><td><p id="tot_tution"></p></td><td><p id="bal_tution"></p></td><td><form:input path="schoolFee" id="schoolFee" class="form-control fee-input" type="number"
+						required="true" /></td>
+			</tr>
+			<tr><td>BOOK FEE</td><td><p id="tot_book"></p></td><td><p id="bal_book"></p></td><td><form:input path="bookFee" id="bookFee" class="form-control fee-input" type="number"
+						required="true" /></td>
+			</tr>
+			<tr><td>UNIFORM FEE</td><td><p id="tot_uniform"></p></td><td><p id="bal_uniform"></p></td><td><form:input path="uniformFee" id="uniformFee" class="form-control fee-input" type="number"
+						required="true" /></td>
+			</tr>
+			<tr><td>ISLAMIC STUDIES</td><td><p id="tot_islamic"></p></td><td><p id="bal_islamic"></p></td><td><form:input path="islamicStudies" id="islamicStudies" class="form-control fee-input" type="number"
+						required="true" /></td>
+			</tr>
+			<tr><td>VAN FEE</td><td><p id="tot_van"></p></td><td><p id="bal_van"></p></td><td><form:input path="vanFee" id="vanFee" class="form-control fee-input" type="number"
+						required="true" /></td>
+			</tr>
+			<tr><td>(-)SCHOLORSHIP</td><td colspan=2><p id="scholarship"></p></td><td></td>
+			</tr>
+			<tr><td>TOTAL</td><td><p id="total_fee"></p></td><td><p id="tot_balance"></p></td><td><form:input path="amountPaid" id="tot_paid" class="form-control" disabled="true"/></td>
+			</tr>
+			<tbody>
+				<tr>
+				</tr></tbody></table></div>
 	
-			</div>
+	
 			
 			<div class="col-md-10">
 				<div class="pull-right">
 					<form:button type="button" class="btn btn-danger btn-md"
 						onclick="clearInput()">Reset</form:button>
-					<form:button type="submit" class="btn btn-success"
+					<form:button type="submit" class="btn btn-success" 
 						onclick="validateForm()">Submit</form:button>
 				</div>
 			</div>
@@ -107,6 +144,9 @@
 	
 	$('document').ready(function(){
 		  $('#paymentDate').datepicker({ dateFormat: 'yy-mm-dd' }).datepicker("setDate", new Date());
+		  $('.fee-input').val(0).focus(function(){
+			  $(this).val('');
+		  });
 // 		var payment_date= "${FeeTxn.paymentDate}";
 // 		document.getElementById("paymentDate").valueAsDate = formatDate(payment_date);
 		
@@ -135,9 +175,24 @@
 		});
 		
 		function setupSaveFeeForm(data){
+			console.log(data);
 			$('#admissionIdFound').val(data.studentsInfo.admissionNo);
 			$('#studentName').val(data.studentsInfo.name);
 			$('#studentYearId').val(data.id);
+			$('#tot_tution').text(data.commonFee.schoolFee);
+			$('#bal_tution').text(data.commonFee.schoolFee-data.paidFee.schoolFee);
+			$('#tot_book').text(data.commonFee.bookFee);
+			$('#bal_book').text(data.commonFee.bookFee-data.paidFee.bookFee);
+			$('#tot_uniform').text(data.uniformFee);
+			$('#bal_uniform').text(data.uniformFee-data.paidFee.uniformFee);
+			$('#tot_islamic').text(data.islamicStudies);
+			$('#bal_islamic').text(data.islamicStudies-data.paidFee.islamicStudies);
+			$('#tot_van').text(data.vanFee);
+			$('#bal_van').text(data.vanFee-data.paidFee.vanFee);
+			$('#scholarship').text(data.scholorship);
+			$('#total_fee').text(data.total);
+			paidfee=data.paidFee.schoolFee+data.paidFee.bookFee+data.paidFee.uniformFee+data.paidFee.islamicStudies+data.paidFee.vanFee;
+			$('#tot_balance').text(data.total - paidfee);
 			$('#balance').val(data.balance);
 		} 
 		
@@ -155,6 +210,7 @@
 	}
 	
 	function validateForm(){
+		$('#tot_paid').removeAttr('disabled');
 	}
 	
 	function clearInput(){
@@ -162,6 +218,18 @@
 		alert('All fields cleared');
 		window.location.reload();
 	}
+	$('.fee-input').change(function(){
+		computeTotal();
+		});
+		function computeTotal(){
+			var total=0;
+			$('.fee-input').each(function(){
+			if($(this).val() != ''){
+			total+=parseInt($(this).val());
+			}
+			});
+			$('#tot_paid').val(total);
+		}
 	
 	</script>
 </body>

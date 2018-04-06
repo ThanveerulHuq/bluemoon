@@ -15,12 +15,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.sdms.entity.AcademicYear;
 import com.sdms.entity.ClassInfo;
 import com.sdms.entity.CommonFee;
+import com.sdms.entity.PaidFee;
 import com.sdms.entity.StudentYear;
 import com.sdms.entity.StudentsInfo;
 import com.sdms.model.StudentYearModel;
 import com.sdms.repository.AcademicYearRepo;
 import com.sdms.repository.ClassInfoRepo;
 import com.sdms.repository.CommonFeeRepo;
+import com.sdms.repository.PaidFeeRepo;
 import com.sdms.repository.StudentYearRepo;
 import com.sdms.repository.StudentsInfoRepo;
 
@@ -41,6 +43,9 @@ public class StudentYearController {
 
 	@Autowired
 	StudentsInfoRepo studentsInfoRepo;
+	
+	@Autowired
+	PaidFeeRepo paidFeeRepo;
 
 	@RequestMapping(value = { "/StudentYear" }, method = RequestMethod.GET)
 	public String StudentYear(HttpServletRequest request,
@@ -51,7 +56,6 @@ public class StudentYearController {
 		request.setAttribute("academicYear", academicYear);
 		request.setAttribute("classes", classes);
 		request.setAttribute("StudentsYear", StudentsYear);
-
 		return "StudentYear/StudentYear";
 	}
 	@RequestMapping(value = { "/editStudentYear" }, method = RequestMethod.GET)
@@ -66,7 +70,7 @@ public class StudentYearController {
 		studentsYearModel.setAdmissionNo(studentYear.getStudentsInfo().getAdmissionNo());
 		studentsYearModel.setSection(studentYear.getSection());
 		studentsYearModel.setVan_fee(studentYear.getVanFee());
-		studentsYearModel.setBook_fee(studentYear.getBookFee());
+//		studentsYearModel.setBook_fee(studentYear.getBookFee());
 		studentsYearModel.setUniform_fee(studentYear.getUniformFee());
 		studentsYearModel.setIslamic_studies(studentYear.getIslamicStudies());
 		studentsYearModel.setScholorship(studentYear.getScholorship());
@@ -99,24 +103,31 @@ public class StudentYearController {
 		studentYear.setSection(studentYearModel.getSection());
 		studentYear.setVanFee(studentYearModel.getVan_fee());
 		studentYear.setScholorship(studentYearModel.getScholorship());
-		studentYear.setBookFee(studentYearModel.getBook_fee());
+//		studentYear.setBookFee(studentYearModel.getBook_fee());
 		studentYear.setUniformFee(studentYearModel.getUniform_fee());
 		studentYear.setIslamicStudies(studentYearModel.getIslamic_studies());
 		Long total=getTotal(studentYearModel,commonFee.getSchoolFee());
 		studentYear.setTotal(total);
 		if(newStudentYrId!=null){
 			StudentYear oldStudentYr =studentYearRepo.findOne(newStudentYrId);
-			studentYear.setPaid(oldStudentYr.getPaid());
-			studentYear.setBalance(total - oldStudentYr.getPaid());
+			studentYear.setPaidFee(oldStudentYr.getPaidFee());
 		}else{
-			studentYear.setPaid((long) 0);
-			studentYear.setBalance(total);	
+			PaidFee paidFee = new PaidFee();
+			paidFee.setBookFee((long) 0);
+			paidFee.setVanFee((long) 0);
+			paidFee.setIslamicStudies((long) 0);
+			paidFee.setUniformFee((long) 0);
+			paidFee.setSchoolFee((long) 0);
+			PaidFee paidFeenew = paidFeeRepo.save(paidFee);
+			System.out.println("paidfee id"+paidFeenew.getId().toString());
+			studentYear.setPaidFee(paidFeenew);
 		}
 		studentYearRepo.save(studentYear);
 		return "redirect:/CurrentStudents";
 	}
 	private Long getTotal(StudentYearModel studentYearModel,Long schoolFee) {
-		Long total=schoolFee+studentYearModel.getVan_fee()+studentYearModel.getBook_fee()+studentYearModel.getUniform_fee()+studentYearModel.getIslamic_studies()-studentYearModel.getScholorship();
+//		+studentYearModel.getBook_fee()
+		Long total=schoolFee+studentYearModel.getVan_fee()+studentYearModel.getUniform_fee()+studentYearModel.getIslamic_studies()-studentYearModel.getScholorship();
 		return total;
 	}
 

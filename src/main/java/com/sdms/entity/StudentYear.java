@@ -31,9 +31,6 @@ public class StudentYear {
 	@Column(name="section",nullable=false,length=1)
 	private String section;
 	
-	@Column(name="book_fee",nullable=false,length=15)
-	private Long bookFee;
-	
 	@Column(name="uniform_fee",nullable=false,length=15)
 	private Long uniformFee;
 	
@@ -49,11 +46,10 @@ public class StudentYear {
 	@Column(name="total",nullable=false,length=15)
 	private Long total;
 	
-	@Column(name="paid",nullable=false,length=15)
-	private Long paid;
+	@ManyToOne 
+	@JoinColumn(name="paid_fee")
+	private PaidFee paidFee;
 	
-	@Column(name="balance",nullable=false,length=15)
-	private Long balance;
 
 	public Long getId() {
 		return id;
@@ -87,13 +83,6 @@ public class StudentYear {
 		this.section = section;
 	}
 
-	public Long getBookFee() {
-		return bookFee;
-	}
-
-	public void setBookFee(Long bookFee) {
-		this.bookFee = bookFee;
-	}
 
 	public Long getUniformFee() {
 		return uniformFee;
@@ -135,20 +124,12 @@ public class StudentYear {
 		this.total = total;
 	}
 
-	public Long getPaid() {
-		return paid;
+	public PaidFee getPaidFee() {
+		return paidFee;
 	}
 
-	public void setPaid(Long paid) {
-		this.paid = paid;
-	}
-
-	public Long getBalance() {
-		return balance;
-	}
-
-	public void setBalance(Long balance) {
-		this.balance = balance;
+	public void setPaidFee(PaidFee paidFee) {
+		this.paidFee = paidFee;
 	}
 	
 	

@@ -262,7 +262,7 @@ list-style: none;
               <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button> -->
-				<h3 class="col-md-5" style="color:white;width:35%;">DARUSSALAM STUDENTS DATABASE</h3>
+				<h3 class="col-md-5" style="color:white;width:38%;">DHAARUS SALAAM STUDENTS DATABASE</h3>
               <div class="collapse navbar-collapse nav navbar-nav navbar-right mtop-10" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto nav ">
                   <li class="nav-tab active" >

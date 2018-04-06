@@ -98,7 +98,7 @@
 			<div class="row">
 			<label class="col-md-2"><span class="pull-right">Book Fee:</span> </label>
 			<div class="col-md-3">
-				<form:input path="book_fee" name="book_fee" class="form-control feeinput" type="number" required="true" />
+				<input id="bookFee"  class="form-control feeinput" type="number" required="true"  disabled="true" value=""/>
 			</div>
 			</div>
 		</div>
@@ -144,14 +144,14 @@
 		</div>
 		</form:form>
 	</div>
-	<div class="container" style="margin-top: 25px;">
-		<div class="row">
-			<legend></legend>
-			<p>
-				<span class="pull-right"><a href="#">Privacy</a> |</span>
-			</p>
-		</div>
-	</div>
+<!-- 	<div class="container" style="margin-top: 25px;"> -->
+<!-- 		<div class="row"> -->
+<!-- 			<legend></legend> -->
+<!-- 			<p> -->
+<!-- 				<span class="pull-right"><a href="#">Privacy</a> |</span> -->
+<!-- 			</p> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 	
 	<script>
 	$('document').ready(function(){
@@ -212,13 +212,16 @@
 			success: function(res){
 				console.log(res);
 			if(res.id != undefined){
-			$('#tutionFee').val(res.schoolFee).change();	
+			$('#tutionFee').val(res.schoolFee);
+			$('#bookFee').val(res.bookFee).change();
 			$('#FeeId').val(res.id);
 			$('.errMsgForAdmissionNo').hide();
 			$('.searchStudentDialog').hide();
 			$('.saveFeeDialog').show();
 			} else {
-			$('.errMsgForAdmissionNo').show();
+			alert('Fee Not defined for the given Class')
+			$('#tutionFee').val('');
+			$('#bookFee').val('').change();
 			}
 			},
 			error: function(){

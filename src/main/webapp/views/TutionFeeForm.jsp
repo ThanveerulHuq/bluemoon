@@ -68,6 +68,14 @@
 						required="true" type="number"  />
 				</div>
 			</div>
+			<div class="form-group col-md-12">
+				<label class="col-md-2"><span class="pull-right">Book
+						Fee:</span> </label>
+				<div class="col-md-3">
+					<form:input id="bookFee" class="form-control feeinput" path="bookFee"
+						required="true" type="number"  />
+				</div>
+			</div>
 			<div class="col-md-7">
 				<div class="pull-right">
 					<form:button type="button" class="btn btn-danger btn-md"

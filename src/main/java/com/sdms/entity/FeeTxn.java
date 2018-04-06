@@ -24,6 +24,21 @@ public class FeeTxn {
 	@JoinColumn(name="student_id")
 	private StudentYear studentYear;
 	
+	@Column(name="school_fee",nullable=false,length=15)
+	private Long schoolFee;
+	
+	@Column(name="book_fee",nullable=false,length=15)
+	private Long bookFee;
+
+	@Column(name="uniform_fee",nullable=false,length=15)
+	private Long uniformFee;
+	
+	@Column(name="islamic_studies",nullable=false,length=15)
+	private Long islamicStudies;
+	
+	@Column(name="van_fee",nullable=false,length=15)
+	private Long vanFee;
+	
 	@Column(name="amount_paid",nullable=false,length=15)
 	private Long amountPaid;
 	
@@ -61,6 +76,46 @@ public class FeeTxn {
 
 	public void setPaymentDate(Timestamp timestamp) {
 		this.paymentDate = timestamp;
+	}
+
+	public Long getSchoolFee() {
+		return schoolFee;
+	}
+
+	public void setSchoolFee(Long schoolFee) {
+		this.schoolFee = schoolFee;
+	}
+
+	public Long getBookFee() {
+		return bookFee;
+	}
+
+	public void setBookFee(Long bookFee) {
+		this.bookFee = bookFee;
+	}
+
+	public Long getUniformFee() {
+		return uniformFee;
+	}
+
+	public void setUniformFee(Long uniformFee) {
+		this.uniformFee = uniformFee;
+	}
+
+	public Long getIslamicStudies() {
+		return islamicStudies;
+	}
+
+	public void setIslamicStudies(Long islamicStudies) {
+		this.islamicStudies = islamicStudies;
+	}
+
+	public Long getVanFee() {
+		return vanFee;
+	}
+
+	public void setVanFee(Long vanFee) {
+		this.vanFee = vanFee;
 	}
 
 }
