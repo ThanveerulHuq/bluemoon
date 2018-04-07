@@ -43,14 +43,19 @@ public class HomeController {
 //	HttpSession httpSession;
 	
 	@RequestMapping(value = { "/Home" }, method = RequestMethod.GET)
-	public String Home(HttpServletRequest request, HttpServletResponse response,HttpSession session) {
-		session.setAttribute("name", "thanveer");
+	public String Home(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		if(!SessionController.checkSession(request, response, session)) {
+			return "redirect:Login";
+		}
+		
 		return "Library/HomePage";
 	}
 
 	@RequestMapping(value = { "/AddStudent" }, method = RequestMethod.GET)
-	public String AddStudent(HttpServletRequest request, HttpServletResponse response,HttpSession session) {
-		System.out.println(session.getAttribute("name"));
+	public String AddStudent(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws NullPointerException {
+		if(!SessionController.checkSession(request, response, session)) {
+			return "redirect:Login";
+		}
 		StudentInfoModel studentsInfo = new StudentInfoModel();
 		request.setAttribute("StudentsInfo", studentsInfo);
 		return "Library/AddStudent";
@@ -109,7 +114,10 @@ public class HomeController {
 
 	
 	@RequestMapping(value = { "/EditStudent" }, method = RequestMethod.GET)
-	public String editStudent(@ModelAttribute("student_id")Long studentId,HttpServletRequest request, HttpServletResponse response) {
+	public String editStudent(@ModelAttribute("student_id")Long studentId,HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		if(!SessionController.checkSession(request, response, session)) {
+			return "redirect:Login";
+		}
 		StudentInfoModel studentModel = new StudentInfoModel();
 		System.out.println(studentId);
 		StudentsInfo studentsInfo=studentInfoRepo.findOne(studentId);

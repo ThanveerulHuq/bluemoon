@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,7 +50,10 @@ public class StudentYearController {
 
 	@RequestMapping(value = { "/StudentYear" }, method = RequestMethod.GET)
 	public String StudentYear(HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response, HttpSession session) {
+		if(!SessionController.checkSession(request, response, session)) {
+			return "redirect:Login";
+		}
 		StudentYearModel StudentsYear = new StudentYearModel();
 		List<AcademicYear> academicYear = academicYearRepo.findAll();
 		List<ClassInfo> classes = classInfoRepo.findAll();
@@ -60,7 +64,10 @@ public class StudentYearController {
 	}
 	@RequestMapping(value = { "/editStudentYear" }, method = RequestMethod.GET)
 	public String editStudentYear(HttpServletRequest request,
-			HttpServletResponse response,@ModelAttribute("studentYrId") Long studentYrId) {
+			HttpServletResponse response,@ModelAttribute("studentYrId") Long studentYrId, HttpSession session) {
+		if(!SessionController.checkSession(request, response, session)) {
+			return "redirect:Login";
+		}
 		StudentYearModel studentsYearModel = new StudentYearModel();
 		StudentYear studentYear = studentYearRepo.findOne(studentYrId);
 		studentsYearModel.setStudentYearId(studentYrId);

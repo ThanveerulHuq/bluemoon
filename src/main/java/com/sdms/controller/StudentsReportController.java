@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +28,10 @@ public class StudentsReportController {
 	
 	@RequestMapping(value = { "/StudentReport" }, method = RequestMethod.GET)
 	public String StudentReport(HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response, HttpSession session) {
+		if(!SessionController.checkSession(request, response, session)) {
+			return "redirect:Login";
+		}
 		StudentYearModel StudentsYear = new StudentYearModel();
 		List<AcademicYear> academicYear = academicYearRepo.findAll();
 		request.setAttribute("academicYear", academicYear);
