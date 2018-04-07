@@ -17,173 +17,228 @@
    }
    
    td {
+   	margin: 0;
+   	padding-top: 0;
+   	padding-top: 0;
    	padding-left: 10px;
    	padding-right: 10px;
-   	border-bottom: 1px dashed;
+   	border-bottom: 1px solid;
    }
+   
 </style>
 </head>
 <body>
 <div id="printArea" class="container" style="margin-top:10px">
-	<table width="100%" cellspacing="0" cellpadding="4" align="center" style="border:4px double;border-collapse:collapse;padding:0">
-	<tbody>
-	<tr valign="middle" style="border-bottom: 4px double;">
-	<td width="14%" height="63">
-	<div>	<img src="<%=request.getContextPath()%>/resources/images/school_logo.jpg" height="50" width="50" style="margin-left: 20px;"/>
-	</div>
-	</td>
-	<td colspan="3" width="86%">
-	<div align="center"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: large;"><strong>DHAARUS-SALAAM MATRICULATION SCHOOL</strong></span></span></div>
-	<div align="center"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">(Managed by : Dhaarus-Salaam Trust, Salem &ndash; 636 005)</span></span></div>
-	<div align="center"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">Ph: (0427) 2442018, </span></span><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">+91 98942 50320 | E-mail: <a>dhaarussalaam1@gmail.com</a></span></span></div>
-	</td>
-	</tr>
-	<tr valign="top" style="border-bottom:1px solid;">
-	<td width="14%">
-	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;"><strong>Date:</strong></span></span></div>
-	</td>
-	<td width="38%" style="border-right:1px dashed;">
-	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;"><strong id="paymentDate"></strong></span></span></div>
-	</td>
-	<td width="15%">
-	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;"><strong>Receipt # </strong></span></span></div>
-	</td>
-	<td width="38%">
-	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;"><strong id="feeTxnId"></strong></span></span></div>
-	</td>
-	</tr>
-	<tr>
-	<td colspan="4" valign="top" width="100%">
-	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;"><strong>Received From:</strong></span></span></div>
-	</td>
-	</tr>
-	<tr valign="top">
-	<td colspan="2" width="52%">
-	<div align="right"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">Student Name:</span></span></div>
-	</td>
-	<td colspan="2" width="48%">
-	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">${Print.studentYear.studentsInfo.name}</span></span></div>
-	</td>
-	</tr>
-	<tr valign="top">
-	<td colspan="2" width="52%">
-	<div align="right"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">Class:</span></span></div>
-	</td>
-	<td colspan="2" width="48%">
-	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">${Print.studentYear.commonFee.classInfo.className}</span></span></div>
-	</td>
-	</tr>
-	<tr valign="top">
-	<td colspan="2" width="52%">
-	<div align="right"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">Section:</span></span></div>
-	</td>
-	<td colspan="2" width="48%">
-	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">${Print.studentYear.section}</span></span></div>
-	</td>
-	</tr>
-	<tr valign="top" style="border-bottom:1px solid;">
-	<td colspan="2" width="52%">
-	<div align="right"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">Academic Year:</span></span></div>
-	</td>
-	<td colspan="2" width="48%">
-	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">${Print.studentYear.commonFee.academicYear.year}</span></span></div>
-	</td>
-	</tr>
-	<tr>
-	<td colspan="4" valign="top" width="100%">
-	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;"><strong>Payment Details:</strong></span></span></div>
-	</td>
-	</tr>
-	<tr valign="top">
-	<td colspan="2" width="52%">
-	<div align="right"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">Tuition Fee:</span></span></div>
-	</td>
-	<td colspan="2" width="48%">
-	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">${Print.studentYear.commonFee.schoolFee}</span></span></div>
-	</td>
-	</tr>
-	<tr valign="top">
-	<td colspan="2" width="52%">
-	<div align="right"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">Book Fee:</span></span></div>
-	</td>
-	<td colspan="2" width="48%">
-	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">${Print.studentYear.commonFee.bookFee}</span></span></div>
-	</td>
-	</tr>
-	<tr valign="top">
-	<td colspan="2" width="52%">
-	<div align="right"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">Uniform Fee:</span></span></div>
-	</td>
-	<td colspan="2" width="48%">
-	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">${Print.studentYear.uniformFee}</span></span></div>
-	</td>
-	</tr>
-	<tr valign="top">
-	<td colspan="2" width="52%">
-	<div align="right"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">Islamic Studies:</span></span></div>
-	</td>
-	<td colspan="2" width="48%">
-	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">${Print.studentYear.islamicStudies}</span></span></div>
-	</td>
-	</tr>
-	<tr valign="top">
-	<td colspan="2" width="52%">
-	<div align="right"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">Van Fee:</span></span></div>
-	</td>
-	<td colspan="2" width="48%">
-	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">${Print.studentYear.vanFee}</span></span></div>
-	</td>
-	</tr>
-	<tr valign="top">
-	<td colspan="2" width="52%">
-	<div align="right"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">Scholarship:</span></span></div>
-	</td>
-	<td colspan="2" width="48%">
-	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">${Print.studentYear.scholorship}</span></span></div>
-	</td>
-	</tr>
-	<tr valign="top">
-	<td colspan="2" width="52%">
-	<div align="right"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">Total:</span></span></div>
-	</td>
-	<td colspan="2" width="48%">
-	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">${Print.studentYear.total}</span></span></div>
-	</td>
-	</tr>
-	<tr valign="top">
-	<td colspan="2" width="52%">
-	<div align="right"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">Previously Paid:</span></span></div>
-	</td>
-	<td colspan="2" width="48%">
-	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">${Print.studentYear.paidFee.bookFee}</span></span></div>
-	</td>
-	</tr>
-	<tr valign="top">
-	<td colspan="2" width="52%">
-	<div align="right"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">Balance Due:</span></span></div>
-	</td>
-	<td colspan="2" width="48%">
-	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">${Print.studentYear.paidFee.bookFee}</span></span></div>
-	</td>
-	</tr>
-	<tr valign="top">
-	<td width="14%">
-	<div align="right"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;"><strong>Amount:</strong></span></span></div>
-	<div align="right"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">Amount in words:</span></span></div>
-	</td>
-	<td width="38%" style="border-right:1px dashed;">
-	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;font-style:bold;">Rs. ${Print.amountPaid}</span></span></div>
-	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">Rs. <span id="amountInWords"></span></span></span></div>
-	</td>
-	<td colspan="2" width="48%">
-	<div><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;"><strong>Received By:</strong></span></span></div>
-	</td>
-	</tr>
-	</tbody>
-	</table>
-	<div style="text-align:center;margin-top:15px;">
+
+	<div style="text-align:center;margin:15px;">
 		<button id="printButton" class="btn btn-lg btn-info" onclick="window.print();return false;" >Print Receipt</button>
 	</div>
+	<div id='mainReceipt'>
+		<table  width="100%" cellspacing="0" cellpadding="4" align="center" style="border:4px double;border-collapse:collapse;padding:0">
+		<tbody>
+		<tr valign="middle" style="border-bottom: 4px double;">
+		<td width="14%" height="63">
+		<div>
+		<img src="<%=request.getContextPath()%>/resources/images/school_logo.jpg" height="50" width="50" style="margin-left: 20px;"/>
+		</div>
+		</td>
+			<td colspan="5" width="86%">
+		<div align="center"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: large;"><strong>DHAARUS-SALAAM MATRICULATION SCHOOL</strong></span></span></div>
+		<div align="center"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">(Managed by : Dhaarus-Salaam Trust, Salem &ndash; 636 005)</span></span></div>
+		<div align="center"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">Ph: (0427) 2442018, </span></span><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">+91 98942 50320 | E-mail: <a>dhaarussalaam1@gmail.com</a></span></span></div>
+		</td>
+		</tr>
+		<tr valign="top" style="border-bottom:1px solid;">
+		<td width="14%">
+		<div><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;"><strong>DATE:</strong></span></span></div>
+		</td>
+		<td colspan="2" width="38%" style="border-right:1px solid;">
+		<div><span style="font-family: 'Calibri', serif;"><span style="font-size: small;"><strong class="paymentDate"></strong></span></span></div>
+		</td>
+		<td width="15%">
+		<div><span style="font-family: 'Calibri', sans-serif;"><span style="font-size: small;"><strong>RECEIPT # </strong></span></span></div>
+		</td>
+		<td colspan="2" width="38%">
+			<div><span style="font-family: 'Calibri', serif;"><span style="font-size: small;"><strong class="feeTxnId"></strong></span></span></div>
+		</td>
+		</tr>
+		<tr>
+		<td colspan="6" valign="top" width="100%">
+		<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;"><strong>RECEIVED FROM</strong></span></span></div>
+		</td>
+		</tr>
+		<tr valign="top">
+		<td colspan="3" width="52%">
+		<div align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">ACADEMIC YEAR:</span></span></div>
+		</td>
+		<td colspan="3" width="48%">
+		<div align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">${Print.studentYear.commonFee.academicYear.year}</span></span></div>
+		</td>
+		</tr>
+		<tr valign="top">
+		<td colspan="3" width="52%">
+		<div align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">STUDENT NAME :</span></span></div>
+		</td>
+		<td colspan="3" width="48%">
+		<div align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">${Print.studentYear.studentsInfo.name}</span></span></div>
+		</td>
+		</tr>
+		<tr valign="top">
+		<td colspan="2" width="26%">
+		<div align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">CLASS:</span></span></div>
+		</td>
+		<td width="26%">
+		<div align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">${Print.studentYear.commonFee.classInfo.className}</span></span></div>
+		</td>
+		<td colspan="2" width="24%">
+		<div align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">SECTION:</span></span></div>
+		</td>
+		<td width="24%">
+		<div align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">${Print.studentYear.section}</span></span></div>
+		</td>
+		</tr>
+		<tr>
+		<td colspan="6" valign="top" width="100%">
+		<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;"><strong>PAYMENT DETAILS</strong></span></span></div>
+		</td>
+		</tr>
+		<tr valign="top">
+		<td colspan="2" width="26%" style="border: 1px solid">
+		<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;"><strong>DESCRIPTION</strong></span></span></div>
+		</td>
+		<td width="26%" style="border: 1px solid">
+		<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;"><strong>AMOUNT (INR)</strong></span></span></div>
+		</td>
+		<td colspan="2" width="24%" style="border: 1px solid">
+		<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;"><strong>PAID (INR)</strong></span></span></div>
+		</td>
+		<td width="24%">
+		<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;"><strong>BALANCE (INR)</strong></span></span></div>
+		</td>
+		</tr>
+		<tr valign="top">
+		<td colspan="2" width="26%" style="border: 1px solid">
+		<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">TUITION FEE</span></span></div>
+		</td>
+		<td width="26%" style="border: 1px solid">
+		<div align="center">${Print.studentYear.commonFee.schoolFee}</div>
+		</td>
+		<td colspan="2" width="24%" style="border: 1px solid">
+		<div align="center">${Print.schoolFee}</div>
+		</td>
+		<td width="24%">
+		<div align="center">${Print.studentYear.commonFee.schoolFee - (Print.schoolFee + Print.studentYear.paidFee.schoolFee)}</div>
+		</td>
+		</tr>
+		<tr valign="top">
+		<td colspan="2" width="26%" style="border: 1px solid">
+		<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">BOOK FEE</span></span></div>
+		</td>
+		<td width="26%" style="border: 1px solid">
+		<div align="center">${Print.studentYear.commonFee.bookFee}</div>
+		</td>
+		<td colspan="2" width="24%" style="border: 1px solid">
+		<div align="center">${Print.bookFee}</div>
+		</td>
+		<td width="24%">
+		<div align="center">${Print.studentYear.commonFee.bookFee - (Print.bookFee + Print.studentYear.paidFee.bookFee)}</div>
+		</td>
+		</tr>
+		<tr valign="top">
+		<td colspan="2" width="26%" style="border: 1px solid">
+		<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">UNIFORM FEE</span></span></div>
+		</td>
+		<td width="26%" style="border: 1px solid">
+		<div align="center">${Print.studentYear.uniformFee}</div>
+		</td>
+		<td colspan="2" width="24%" style="border: 1px solid">
+		<div align="center">${Print.uniformFee}</div>
+		</td>
+		<td width="24%">
+		<div align="center">${Print.studentYear.uniformFee - (Print.uniformFee + Print.studentYear.paidFee.uniformFee)}</div>
+		</td>
+		</tr>
+		<tr valign="top">
+		<td colspan="2" width="26%" style="border: 1px solid">
+		<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">ISLAMIC STUDIES</span></span></div>
+		</td>
+		<td width="26%" style="border: 1px solid">
+		<div align="center">${Print.studentYear.islamicStudies}</div>
+		</td>
+		<td colspan="2" width="24%" style="border: 1px solid">
+		<div align="center">${Print.islamicStudies}</div>
+		</td>
+		<td width="24%">
+		<div align="center">${Print.studentYear.islamicStudies - (Print.islamicStudies + Print.studentYear.paidFee.islamicStudies)}</div>
+		</td>
+		</tr>
+		<tr valign="top">
+		<td colspan="2" width="26%" style="border: 1px solid">
+		<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">VAN FEE</span></span></div>
+		</td>
+		<td width="26%" style="border: 1px solid">
+		<div align="center">${Print.studentYear.vanFee}</div>
+		</td>
+		<td colspan="2" width="24%" style="border: 1px solid">
+		<div align="center">${Print.vanFee}</div>
+		</td>
+		<td width="24%">
+		<div align="center">${Print.studentYear.vanFee - (Print.vanFee + Print.studentYear.paidFee.vanFee)}</div>
+		</td>
+		</tr>
+		<tr valign="top">
+		<td colspan="2" width="26%" style="border: 1px solid">
+		<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">SCHOLARSHIP(-)</span></span></div>
+		</td>
+		<td width="26%" style="border: 1px solid">
+		<div align="center">${Print.studentYear.scholorship}</div>
+		</td>
+		<td colspan="2" width="24%" style="border: 1px solid">
+		<div>&nbsp;</div>
+		</td>
+		<td width="24%">
+		<div>&nbsp;</div>
+		</td>
+		</tr>
+		<tr valign="top">
+		<td colspan="3" width="52%" style="border: 1px solid">
+		<div align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;"><strong>TOTAL FEE</strong></span></span></div>
+		</td>
+		<td colspan="3" width="48%" style="border: 1px solid">
+		<div><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">${Print.studentYear.total}</span></span></div>
+		</td>
+		</tr>
+		<tr valign="top">
+		<td colspan="3" width="52%" style="border: 1px solid">
+		<div align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;"><strong>TOTAL PAID</strong></span></span></div>
+		</td>
+		<td colspan="3" width="48%">
+		<div><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">${Print.amountPaid}</span></span></div>
+		</td>
+		</tr>
+		<tr valign="top">
+		<td colspan="3" width="52%" style="border: 1px solid">
+		<div align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;"><strong>BALANCE</strong></span></span></div>
+		</td>
+		<td colspan="3" width="48%">
+		<div><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">${Print.studentYear.total - (Print.amountPaid + Print.studentYear.paidFee.vanFee + Print.studentYear.paidFee.islamicStudies + Print.studentYear.paidFee.uniformFee + Print.studentYear.paidFee.bookFee + Print.studentYear.paidFee.schoolFee)}</span></span></div>
+		</td>
+		</tr>
+		<tr valign="top">
+		<td width="14%" style="border: 1px solid">
+		<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;"><strong>AMOUNT IN WORDS:</strong></span></span></div>
+		</td>
+		<td colspan="2" width="38%">
+		<div><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">Rs. <span class="amountInWords"></span></span></span></div>
+		</td>
+		<td colspan="3" width="48%" style="border: 1px solid">
+		<div><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;"><strong>RECEIVED BY :</strong></span></span></div>
+		</td>
+		</tr>
+		</tbody>
+		</table>
+	</div>
+	<hr width="100%" style="border: 1px dashed black;">
 </div>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -193,10 +248,12 @@
 		
 		if(feeTxnId != ''){
 			var d = new Date("${Print.paymentDate}");
-			$('#feeTxnId').html(feeTxnId);
-			$('#paymentDate').html(d.toLocaleDateString('en-GB'));
+			$('.feeTxnId').html(feeTxnId);
+			$('.paymentDate').html(d.toLocaleDateString('en-GB'));
 			var amountInWords = inWords("${Print.amountPaid}");
-			$('#amountInWords').html(amountInWords);
+			$('.amountInWords').html(amountInWords);
+			var mainReceipt = $('#mainReceipt').html();
+			$('hr').after(mainReceipt);
 			//setTimeout(function(){printDiv('printArea');},10);
 			//printDiv('printArea');
 		} else {

@@ -10,196 +10,231 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Student Info</title>
 <c:import url="/views/shared/header_includes.jsp"></c:import>
+<style type="text/css">
+@media print
+   {
+      #printButton {display:none;}
+   }
+   
+   td {
+   	margin: 0;
+   	padding-top: 5px;
+   	padding-top: 5px;
+   	padding-left: 10px;
+   	padding-right: 10px;
+   	border-bottom: 1px solid;
+   }
+   
+   .rightBorder {
+   	border-right: 1px solid black;
+   }
+   
+</style>
 </head>
 <body>
 <div id="printArea" class="container">
-	<p align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: xx-large;"><strong>Student Information Form</strong></span></span></p>
-	<p align="center">&nbsp;</p>
-	<p align="center">&nbsp;</p>
-	<dl>
-	<dd>
-	<table width="600" cellspacing="0" cellpadding="4" style="border-collapse:collapse;border:4px double">
+	<div style="text-align:center;margin:15px;">
+		<button id="printButton" class="btn btn-lg btn-info" onclick="window.print();return false;" >Print Document</button>
+	</div>
+
+	<table width="100%" cellspacing="0" cellpadding="4" align="center" style="border:4px double;border-collapse:collapse;padding:0">
 	<tbody>
-	<tr>
-	<td style="background: transparent;" width="129">
-	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Admission no:</strong></span></span></p>
+	<tr valign="top">
+	<td width="75" height="57">
+	<div align="left"><img src="<%=request.getContextPath()%>/resources/images/school_logo.jpg" height="50" width="50" style="margin-left: 20px;"/></div>
 	</td>
-	<td style="background: transparent;" width="262">
-	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>${Print.admissionNo}</strong></span></span></p>
-	</td>
-	<td colspan="2" width="183">
-	<p align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Photograph</strong></span></span></p>
-	</td>
-	</tr>
-	<tr>
-	<td style="background: transparent;" width="129">
-	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Student name:</strong></span></span></p>
-	</td>
-	<td style="background: transparent;" width="262">
-	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>${Print.name}</strong></span></span></p>
-	</td>
-	<td colspan="2" rowspan="6" width="183" style="border:1px dashed">
-	<p align="left">&nbsp;</p>
+	<td colspan="3" width="572">
+	<div align="center"><span style="font-family: 'Calibri', serif;"><span style="font-size: large;"><strong>DHAARUS-SALAAM MATRICULATION SCHOOL</strong></span></span></div>
+	<div align="center"><span style="font-family: 'Calibri', serif;"><span style="font-size: small;">(Managed by : Dhaarus-Salaam Trust, Salem &ndash; 636 005)</span></span></div>
+	<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><span style="font-family: 'Calibri', serif;"><span style="font-size: small;">Ph: (0427) 2442018, </span></span><span style="font-family: 'Calibri', serif;"><span style="font-size: small;">+91 98942 50320 | E-mail: <a>dhaarussalaam1@gmail.com</a></span></span></span></span></div>
 	</td>
 	</tr>
 	<tr>
-	<td style="background: transparent;" width="129">
-	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Age:</strong></span></span></p>
-	</td>
-	<td style="background: transparent;" width="262">
-	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>${Print.age}</strong></span></span></p>
+	<td colspan="4" valign="top" width="655">
+	<div align="center"><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: large;"><strong>STUDENT PROFILE</strong></span></span></span></div>
 	</td>
 	</tr>
-	<tr>
-	<td style="background: transparent;" width="129">
-	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Gender:</strong></span></span></p>
+	<tr valign="top">
+	<td colspan="2" width="135" class="rightBorder">
+	<div align="left"><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">ADMISSION NO </span></span></span></div>
 	</td>
-	<td style="background: transparent;" width="262">
-	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong id="gender"></strong></span></span></p>
+	<td width="334" class="rightBorder">
+	<div align="left">${Print.admissionNo}</div>
 	</td>
-	</tr>
-	<tr>
-	<td style="background: transparent;" width="129">
-	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Date of birth:</strong></span></span></p>
-	</td>
-	<td style="background: transparent;" width="262">
-	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong id="dob"></strong></span></span></p></p>
+	<td width="170">
+	<div align="center"><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">PHOTO</span></span></span></div>
 	</td>
 	</tr>
-	<tr>
-	<td style="background: transparent;" width="129">
-	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Aadhar no:</strong></span></span></p>
+	<tr valign="top">
+	<td colspan="2" width="135" class="rightBorder">
+	<div align="left"><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">STUDENT NAME</span></span></span></div>
 	</td>
-	<td style="background: transparent;" width="262">
-	<p align="left"><p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>${Print.aadharNo}</strong></span></span></p>
+	<td width="334" class="rightBorder">
+	<div align="left">${Print.name}</div>
 	</td>
-	</tr>
-	<tr>
-	<td style="background: transparent;" width="129">
-	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>EMIS no:</strong></span></span></p>
-	</td>
-	<td style="background: transparent;" width="262">
-	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>${Print.emisNo}</strong></span></span></p>
+	<td rowspan="8" width="170">
+	<div align="left">&nbsp;</div>
 	</td>
 	</tr>
-	<tr>
-	<td style="background: transparent;" width="129">
-	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Admission date:</strong></span></span></p>
+	<tr valign="top">
+	<td colspan="2" width="135" class="rightBorder">
+	<div><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">AGE</span></span></span></div>
 	</td>
-	<td style="background: transparent;" width="262">
-	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong id="admissionDate"></strong></span></span></p>
-	</td>
-	<td colspan="2" width="183">
-	<p align="left">&nbsp;</p>
+	<td width="334" class="rightBorder">
+	<div align="left">${Print.age}</div>
 	</td>
 	</tr>
-	<tr>
-	<td style="background: transparent;" width="129">
-	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Community:</strong></span></span></p>
+	<tr valign="top">
+	<td colspan="2" width="135" class="rightBorder">
+	<div><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">GENDER</span></span></span></div>
 	</td>
-	<td style="background: transparent;" width="262">
-	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>${Print.community}</strong></span></span></p>
-	</td>
-	<td width="100">
-	<p align="left">&nbsp;</p>
-	</td>
-	<td width="75">
-	<p align="left">&nbsp;</p>
+	<td width="334" class="rightBorder">
+	<div align="left"><span id="gender"></span></div>
 	</td>
 	</tr>
-	<tr>
-	<td style="background: transparent;" width="129">
-	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Father name:</strong></span></span></p>
+	<tr valign="top">
+	<td colspan="2" width="135" class="rightBorder">
+	<div><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">DATE OF BIRTH</span></span></span></div>
 	</td>
-	<td style="background: transparent;" width="262">
-	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>${Print.fatherName}</strong></span></span></p>
-	</td>
-	<td width="100">
-	<p align="left">&nbsp;</p>
-	</td>
-	<td width="75">
-	<p align="left">&nbsp;</p>
+	<td width="334" class="rightBorder">
+	<div align="left"><span id="dob"></span></div>
 	</td>
 	</tr>
-	<tr>
-	<td style="background: transparent;" width="129">
-	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Mother name:</strong></span></span></p>
+	<tr valign="top">
+	<td colspan="2" width="135" class="rightBorder">
+	<div><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">AADHAR NUMBER</span></span></span></div>
 	</td>
-	<td style="background: transparent;" width="262">
-	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>${Print.motherName}</strong></span></span></p>
-	</td>
-	<td width="100">
-	<p align="left">&nbsp;</p>
-	</td>
-	<td width="75">
-	<p align="left">&nbsp;</p>
+	<td width="334" class="rightBorder">
+	<div align="left">${Print.aadharNo}</div>
 	</td>
 	</tr>
-	<tr>
-	<td style="background: transparent;" width="129">
-	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Address:</strong></span></span></p>
+	<tr valign="top">
+	<td colspan="2" width="135" class="rightBorder">
+	<div><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">EMIS NUMBER</span></span></span></div>
 	</td>
-	<td style="background: transparent;" colspan="3" rowspan="3" width="453">
-	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>${Print.address}</strong></span></span></p>
-	</td>
-	</tr>
-	<tr>
-	<td style="background: transparent;" width="129">
-	<p align="right">&nbsp;</p>
+	<td width="334" class="rightBorder">
+	<div align="left">${Print.emisNo}</div>
 	</td>
 	</tr>
-	<tr>
-	<td style="background: transparent;" width="129">
-	<p align="right">&nbsp;</p>
+	<tr valign="top">
+	<td colspan="2" width="135" class="rightBorder">
+	<div><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">ADMISSION DATE</span></span></span></div>
+	</td>
+	<td width="334" class="rightBorder">
+	<div align="left"><span id="admissionDate"></span></div>
 	</td>
 	</tr>
-	<tr>
-	<td style="background: transparent;" width="129">
-	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Mobile no.1:</strong></span></span></p>
+	<tr valign="top">
+	<td colspan="2" width="135" class="rightBorder">
+	<div><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">COMMUNITY</span></span></span></div>
 	</td>
-	<td style="background: transparent;" width="262">
-	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>${Print.mobileNo1}</strong></span></span></p>
-	</td>
-	<td width="100">
-	<p align="left">&nbsp;</p>
-	</td>
-	<td width="75">
-	<p align="left">&nbsp;</p>
+	<td width="334">
+	<div align="left">${Print.community}</div>
 	</td>
 	</tr>
-	<tr>
-	<td style="background: transparent;" width="129">
-	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Mobile no.2:</strong></span></span></p>
+	<tr valign="top">
+	<td colspan="2" width="135" class="rightBorder">
+	<div><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">RELIGION</span></span></span></div>
 	</td>
-	<td style="background: transparent;" width="262">
-	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>${Print.mobileNo2}</strong></span></span></p>
+	<td width="334">
+	<div align="left">${Print.religion}</div>
 	</td>
-	<td width="100">
-	<p align="left">&nbsp;</p>
-	</td>
-	<td width="75">
-	<p align="left">&nbsp;</p>
+	<td width="170">
 	</td>
 	</tr>
-	<tr>
-	<td style="background: transparent;" width="129">
-	<p align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>Previous school:</strong></span></span></p>
+	<tr valign="top">
+	<td colspan="2" width="135" class="rightBorder">
+	<div><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">CASTE</span></span></span></div>
 	</td>
-	<td style="background: transparent;" width="262">
-	<p align="left"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><strong>${Print.previousSchool}</strong></span></span></p>
+	<td width="334">
+	<div align="left">${Print.caste}</div>
 	</td>
-	<td width="100">
-	<p align="left">&nbsp;</p>
+	<td width="170">
 	</td>
-	<td width="75">
-	<p align="left">&nbsp;</p>
+	</tr>
+	<tr valign="top">
+	<td colspan="2" width="135" class="rightBorder">
+	<div><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">NATIONALITY</span></span></span></div>
+	</td>
+	<td width="334">
+	<div align="left">${Print.nationality}</div>
+	</td>
+	<td width="170">
+	</td>
+	</tr>
+	<tr valign="top">
+	<td colspan="2" width="135" class="rightBorder">
+	<div><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">FATHER NAME</span></span></span></div>
+	</td>
+	<td width="334">
+	<div align="left">${Print.fatherName}</div>
+	</td>
+	<td width="170">
+	</td>
+	</tr>
+	<tr valign="top">
+	<td colspan="2" width="135" class="rightBorder">
+	<div><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">MOTHER NAME</span></span></span></div>
+	</td>
+	<td width="334">
+	<div align="left">${Print.motherName}</div>
+	</td>
+	<td width="170">
+	</td>
+	</tr>
+	<tr valign="top">
+	<td colspan="2" width="135" class="rightBorder">
+	<div><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">ADDRESS</span></span></span></div>
+	</td>
+	<td width="334">
+	<div align="left">${Print.address}</div>
+	</td>
+	<td width="170">
+	</td>
+	</tr>
+	<tr valign="top">
+	<td colspan="2" width="135" class="rightBorder">
+	<div><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">MOBILE NUMBER1</span></span></span></div>
+	</td>
+	<td width="334">
+	<div align="left">${Print.mobileNo1}</div>
+	</td>
+	<td width="170">
+	</td>
+	</tr>
+	<tr valign="top">
+	<td colspan="2" width="135" class="rightBorder">
+	<div><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">MOBILE NUMBER2</span></span></span></div>
+	</td>
+	<td width="334">
+	<div align="left">${Print.mobileNo2}</div>
+	</td>
+	<td width="170">
+	</td>
+	</tr>
+	<tr valign="top">
+	<td colspan="2" width="135" class="rightBorder">
+	<div><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">PREVIOUS SCHOOL</span></span></span></div>
+	</td>
+	<td width="334">
+	<div align="left">${Print.previousSchool}</div>
+	</td>
+	<td width="170">
+	</td>
+	</tr>
+	<tr valign="top">
+	<td colspan="2" width="135" class="rightBorder">
+	<div><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">REMARKS</span></span></span></div>
+	</td>
+	<td width="334">
+	<div align="left">&nbsp;</div>
+	<div align="left">&nbsp;</div>
+	</td>
+	<td width="170">
 	</td>
 	</tr>
 	</tbody>
 	</table>
-	</dd>
-	</dl>
-	<p align="left">&nbsp;</p>
 </div>
 
 <script type="text/javascript">
@@ -213,7 +248,7 @@
 			var dob = new Date("${Print.dob}");
 			$('#admissionDate').html(admissionDate.toLocaleDateString('en-GB'));
 			$('#dob').html(dob.toLocaleDateString('en-GB'));
-			printDiv('printArea');
+			//printDiv('printArea');
 		} else {
 			window.location = "/SDMS/AddStudent";
 		}
