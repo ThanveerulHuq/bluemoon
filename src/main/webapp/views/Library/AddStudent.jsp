@@ -100,8 +100,10 @@
 			</label>
 			<div class="col-md-3">
 				<form:select path="community" class="form-control" id="community">
-				<option value="-1">SELECT</option>
+				<option value="-1">---SELECT---</option>
 				<option value="BCM">BCM</option>
+				<option value="BCM">BC</option>
+				<option value="BCM">MBC</option>
 				<option value="SC">SC</option>
 				<option value="ST">ST</option>				
 				</form:select>

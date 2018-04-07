@@ -49,7 +49,6 @@
 $('document').ready(
 function () {
 'use strict';
-
 function createGrid(academicYear){
 var grid=$("#Grid");
 grid.jqGrid({
@@ -67,7 +66,6 @@ colModel:[
 {name:'scholorship',index:'scholorship', width:200,align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 {name:'total',index:'section', width:200,align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 ],
-
 search:true,
 pager: '#Pager',
 pageable: true,
@@ -77,8 +75,6 @@ rowList: [10,25,50],
 viewrecords: true,
 height: 350,
 width:$(".grid-items").width(),
-
-
 loadonce:true,
 datatype: 'json',
 // datastr:data,
@@ -90,13 +86,8 @@ sort:'id',
 // gridview: true,
 scrollOffset: 0,
 altRows:true,
-altclass:'altrow',
-
-
+altclass:'altrow'
 });
-
-
-
 
 $("#Grid").jqGrid('navGrid','#Pager', {
 view: false, del: false, add: false, edit: false, cloneToTop: false,search:false,refresh:true},

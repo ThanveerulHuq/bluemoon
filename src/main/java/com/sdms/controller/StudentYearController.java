@@ -106,7 +106,7 @@ public class StudentYearController {
 //		studentYear.setBookFee(studentYearModel.getBook_fee());
 		studentYear.setUniformFee(studentYearModel.getUniform_fee());
 		studentYear.setIslamicStudies(studentYearModel.getIslamic_studies());
-		Long total=getTotal(studentYearModel,commonFee.getSchoolFee());
+		Long total=getTotal(studentYearModel,commonFee.getSchoolFee(),commonFee.getBookFee());
 		studentYear.setTotal(total);
 		if(newStudentYrId!=null){
 			StudentYear oldStudentYr =studentYearRepo.findOne(newStudentYrId);
@@ -125,9 +125,9 @@ public class StudentYearController {
 		studentYearRepo.save(studentYear);
 		return "redirect:/CurrentStudents";
 	}
-	private Long getTotal(StudentYearModel studentYearModel,Long schoolFee) {
+	private Long getTotal(StudentYearModel studentYearModel,Long schoolFee,Long BookFee) {
 //		+studentYearModel.getBook_fee()
-		Long total=schoolFee+studentYearModel.getVan_fee()+studentYearModel.getUniform_fee()+studentYearModel.getIslamic_studies()-studentYearModel.getScholorship();
+		Long total=schoolFee+BookFee+studentYearModel.getVan_fee()+studentYearModel.getUniform_fee()+studentYearModel.getIslamic_studies()-studentYearModel.getScholorship();
 		return total;
 	}
 

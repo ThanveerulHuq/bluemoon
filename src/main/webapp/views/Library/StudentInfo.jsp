@@ -179,9 +179,14 @@ if (ReportTitle == "csv") {
 if (typeof arrData.items[i][index] === "undefined") {
 row += '' + '' + ',';
 } else {
-var celldata = arrData.items[i][index]
-.toString()
-.replace(/(<([^>]+)>)/ig, '');
+	if(index == 'dob' || index == 'admissionDate'){
+		var celldata=formatDate(arrData.items[i][index]).toString()
+		.replace(/(<([^>]+)>)/ig, '');
+		}else{
+		var celldata = arrData.items[i][index]
+		.toString()
+		.replace(/(<([^>]+)>)/ig, '');
+		}
 row += '' + celldata.indexOf(",") > -1 ? '"'
 + celldata + '"' + ',' : celldata + ',';
 }
@@ -189,9 +194,14 @@ row += '' + celldata.indexOf(",") > -1 ? '"'
 if (typeof arrData.items[i][index] === "undefined") {
 row += '' + '' + '\t';
 } else {
-var celldata = arrData.items[i][index]
-.toString()
-.replace(/(<([^>]+)>)/ig, '');
+	if(index == 'dob' || index == 'admissionDate'){
+		var celldata=formatDate(arrData.items[i][index]).toString()
+		.replace(/(<([^>]+)>)/ig, '');
+		}else{
+		var celldata = arrData.items[i][index]
+		.toString()
+		.replace(/(<([^>]+)>)/ig, '');
+		}
 row += '' + celldata.indexOf(",") > -1 ? '"'
 + celldata + '"' + '\t' : celldata
 + '\t';
@@ -217,14 +227,14 @@ var filename;
 var uri;
 if (id == "#Grid") {
 if (ReportTitle == "csv") {
-filename = 'Grid.csv';
+filename = 'AllStudentsLog.csv';
 uri = 'data:text/csv;charset=utf-8,' + escape(ext);
 }
 else if (ReportTitle == "xls") {
-filename = 'Grid.xls';
+filename = 'AllStudentsLog.xls';
 uri = 'data:text/xls;charset=utf-8,' + escape(ext);
 } else {
-filename = 'Grid.ods';
+filename = 'AllStudentsLog.ods';
 uri = 'data:text/xls;charset=utf-8,' + escape(ext);
 }
 }
@@ -236,7 +246,7 @@ rv = parseFloat(RegExp.$1);
 }
 if (navigator.appName == 'Netscape' & rv >= 11) {
 if (ReportTitle == "ods") {
-filename = 'Grid.csv';
+filename = 'AllStudentsLog.csv';
 alert('Since IE does not support .ods download format, Please save the file as <Filename>.ods')
 }
 var oExpWin = window.open();
@@ -284,7 +294,11 @@ function formatPrint (cell,option,row){
 	
 	return "<a href='/SDMS/PrintStudentInfo?studentId="+cell+"' ><span class='glyphicon glyphicon-print'></span></a>"
 }
-
+function formatDate(paymentdate){
+	var date=new Date(paymentdate);
+	return date.getDate()+ '/'+ (date.getMonth()+1) + '/'+date.getFullYear();
+	
+}
 </script>
 
 </body>

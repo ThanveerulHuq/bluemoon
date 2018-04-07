@@ -147,6 +147,7 @@
 		  $('.fee-input').val(0).focus(function(){
 			  $(this).val('');
 		  });
+		  
 // 		var payment_date= "${FeeTxn.paymentDate}";
 // 		document.getElementById("paymentDate").valueAsDate = formatDate(payment_date);
 		

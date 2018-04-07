@@ -49,16 +49,20 @@ function createGrid(academicYear){
 var grid=$("#Grid");
 grid.jqGrid({
 url:'getStudentYearByYear?academicYear='+academicYear,
-colNames:['StudentName','Class','Section', 'gender','Admission No','Total','Balance','Paid'],
+colNames:['StudentName','Class','Section', 'gender','Admission No','Total','Total Balance','Balance Tution Fee','Balance Book Fee','Balance Islamic Studies Fee','Balance Uniform Fee','Balance Van Fee'],
 colModel:[
 {name:'studentsInfo.name',index:'studentsInfo.name', width:230, align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 {name:'commonFee.classInfo.className',index:'commonFee.classInfo.className', width:100,align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 {name:'section',index:'section', width:110,align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 {name:'studentsInfo.gender',index:'studentsInfo.gender', width:100,align:"center",searchoptions: { sopt: ['eq', 'ne']},formatter:formatGender},
 {name:'studentsInfo.admissionNo',index:'studentsInfo.admissionNo', width:180, align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
-{name:'total',index:'section', width:200,align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
-{name:'balance',index:'balance', width:200,align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
-{name:'paid',index:'paid', width:200,align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
+{name:'total',index:'section', width:200,align:"center", searchoptions: { sopt: ['lt','gt']}},
+{name:'paidFee.schoolFee',index:'paidFee.schoolFee', width:200,align:"center", searchoptions: { sopt: ['eq','lt','gt']},formatter:totalBalance},
+{name:'paidFee.schoolFee',index:'paidFee.schoolFee', width:200,align:"center", searchoptions: { sopt: ['eq','lt','gt']},formatter:tutionBalance},
+{name:'paidFee.schoolFee',index:'paidFee.schoolFee', width:200,align:"center", searchoptions: { sopt: ['eq','lt','gt']},formatter:bookBalance},
+{name:'paidFee.schoolFee',index:'paidFee.schoolFee', width:200,align:"center", searchoptions: { sopt: ['eq','lt','gt']},formatter:islamicBalance},
+{name:'paidFee.schoolFee',index:'paidFee.schoolFee', width:200,align:"center", searchoptions: { sopt: ['eq','lt','gt']},formatter:uniformBalance},
+{name:'paidFee.schoolFee',index:'paid', width:200,align:"center", searchoptions: { sopt: ['eq','lt','gt']},formatter:vanBalance}
 // {name:'studentsInfo.fatherName',index:'studentsInfo.fatherName', width:180,align:"center",sorttype:"string", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 // {name:'studentsInfo.emisNo',index:'studentsInfo.emisNo', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 // {name:'scholorship',index:'scholorship', width:200,align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
@@ -180,6 +184,7 @@ row += index + ',';
 EXT += row + '\r\n';
 }
 //1st loop is to extract each row
+// debugger;
 for (var i = 0; i < arrData.items.length; i++) {
 var row = "";
 //2nd loop will extract each column and convert it in string tab-seprated
@@ -290,13 +295,27 @@ function formatGender(cell,option,row){
 }
 
 function formatEdit (cell,option,row){
-	
 	return "<a href='/SDMS/editStudentYear?studentYrId="+cell+"' ><span class='glyphicon glyphicon-edit'></span></a>"
 }
-
-
-
-
+function totalBalance(cell,option,row){
+	var paid=parseInt(row.paidFee.schoolFee)+parseInt(row.paidFee.bookFee)+parseInt(row.paidFee.islamicStudies)+parseInt(row.paidFee.uniformFee)+parseInt(row.paidFee.vanFee);
+	return parseInt(row.total)-paid;
+}
+function tutionBalance(cell,option,row){
+	return parseInt(row.commonFee.schoolFee) - parseInt(row.paidFee.schoolFee);
+}
+function bookBalance(cell,option,row){
+	return parseInt(row.commonFee.bookFee) - parseInt(row.paidFee.bookFee);
+}
+function islamicBalance(cell,option,row){
+	return parseInt(row.islamicStudies) - parseInt(row.paidFee.islamicStudies);
+}
+function uniformBalance(cell,option,row){
+	return parseInt(row.uniformFee) - parseInt(row.paidFee.uniformFee);
+}
+function vanBalance(cell,option,row){
+	return parseInt(row.vanFee) - parseInt(row.paidFee.vanFee);
+}
 </script>
 
 </body>

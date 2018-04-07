@@ -12,6 +12,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,12 +38,22 @@ public class HomeController {
 
 	@Autowired
 	DocInfoRepo docInfoRepo;
+	
+//	@Autowired 
+//	HttpSession httpSession;
+	
+	@RequestMapping(value = { "/Home" }, method = RequestMethod.GET)
+	public String Home(HttpServletRequest request, HttpServletResponse response,HttpSession session) {
+		session.setAttribute("name", "thanveer");
+		return "Library/HomePage";
+	}
 
 	@RequestMapping(value = { "/AddStudent" }, method = RequestMethod.GET)
-	public String Home(HttpServletRequest request, HttpServletResponse response) {
+	public String AddStudent(HttpServletRequest request, HttpServletResponse response,HttpSession session) {
+		System.out.println(session.getAttribute("name"));
 		StudentInfoModel studentsInfo = new StudentInfoModel();
 		request.setAttribute("StudentsInfo", studentsInfo);
-		return "Library/Home";
+		return "Library/AddStudent";
 	}
 
 	@RequestMapping(value = { "/SaveStudent" }, method = RequestMethod.POST)
@@ -174,6 +185,12 @@ public class HomeController {
 		else{
 			return "not exist";
 		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = { "/getAllStudentsName" }, method = RequestMethod.GET)
+	public List<StudentsInfo> getAllStudentsName(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	return studentInfoRepo.findAll();
 	}
 	
 	

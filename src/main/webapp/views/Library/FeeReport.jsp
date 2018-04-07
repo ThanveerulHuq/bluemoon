@@ -44,7 +44,7 @@ var grid=$("#Grid");
 grid.jqGrid({
 url:'GetFeeReport',
 
-colNames:['Admission No', 'Student Name', 'Academic Year','Class','Section','Fee Amount', 'Amount Paid','Payment Date'],
+colNames:['Admission No', 'Student Name', 'Academic Year','Class','Section','Fee Amount', 'Total Amount Paid','Payment Date','School Fee','Book Fee','Islamic Studies Fee','Uniform Fee','Van Fee'],
 colModel:[
 {name:'studentYear.studentsInfo.admissionNo',index:'studentYear.studentsInfo.admissionNo', width:180,align:"center", sorttype:"int",searchoptions: { sopt: ['cn','bw','eq', 'ne']}},
 {name:'studentYear.studentsInfo.name',index:'studentYear.studentsInfo.name', width:200, align:"center", searchoptions: { sopt: ['cn','bw','cn','bw','eq', 'ew']}},
@@ -53,7 +53,12 @@ colModel:[
 {name:'studentYear.section',index:'studentYear.section', width:90,align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ne']}},
 {name:'studentYear.total',index:'studentYear.total', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 {name:'amountPaid',index:'amountPaid', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
-{name:'paymentDate',index:'paymentDate', width:180,align:"center",sorttype:"date", searchoptions: { sopt: ['cn','bw','eq', 'ew']}, formatter:dobFormatter},
+{name:'paymentDate',index:'pamentDate', width:180,align:"center",sorttype:"date", searchoptions: { sopt: ['cn','bw','eq', 'ew']}, formatter:dobFormatter},
+{name:'schoolFee',index:'schoolFee', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
+{name:'bookFee',index:'bookFee', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
+{name:'islamicStudies',index:'islamicStudies', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
+{name:'uniformFee',index:'uniformFee', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
+{name:'vanFee',index:'vanFee', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 ],
 
 search:true,
@@ -91,7 +96,7 @@ view: false, del: false, add: false, edit: false, cloneToTop: false,search:false
 {}, // delete
 {
 }).navSeparatorAdd('#Pager');
-jQuery("#Grid").jqGrid('filterToolbar',{searchOperators : true});
+// jQuery("#Grid").jqGrid('filterToolbar',{searchOperators : true});
 $('#refresh_Grid div').append("<span>Reload</span>");
 $('INPUT[id^="gs_"]').addClass('form-control input-sm');
 
@@ -179,9 +184,14 @@ if (ReportTitle == "csv") {
 if (typeof arrData.items[i][index] === "undefined") {
 row += '' + '' + ',';
 } else {
+if(index === 'paymentDate'){
+var celldata=formatDate(arrData.items[i][index]).toString()
+.replace(/(<([^>]+)>)/ig, '');
+}else{
 var celldata = arrData.items[i][index]
 .toString()
 .replace(/(<([^>]+)>)/ig, '');
+}
 row += '' + celldata.indexOf(",") > -1 ? '"'
 + celldata + '"' + ',' : celldata + ',';
 }
@@ -189,9 +199,14 @@ row += '' + celldata.indexOf(",") > -1 ? '"'
 if (typeof arrData.items[i][index] === "undefined") {
 row += '' + '' + '\t';
 } else {
+	if(index === 'paymentDate'){
+		var celldata=formatDate(arrData.items[i][index]).toString()
+		.replace(/(<([^>]+)>)/ig, '');
+		}else{
 var celldata = arrData.items[i][index]
 .toString()
 .replace(/(<([^>]+)>)/ig, '');
+		}
 row += '' + celldata.indexOf(",") > -1 ? '"'
 + celldata + '"' + '\t' : celldata
 + '\t';
@@ -217,14 +232,14 @@ var filename;
 var uri;
 if (id == "#Grid") {
 if (ReportTitle == "csv") {
-filename = 'Grid.csv';
+filename = 'FeeTransactionReport.csv';
 uri = 'data:text/csv;charset=utf-8,' + escape(ext);
 }
 else if (ReportTitle == "xls") {
-filename = 'Grid.xls';
+filename = 'FeeTransactionReport.xls';
 uri = 'data:text/xls;charset=utf-8,' + escape(ext);
 } else {
-filename = 'Grid.ods';
+filename = 'FeeTransactionReport.ods';
 uri = 'data:text/xls;charset=utf-8,' + escape(ext);
 }
 }
@@ -236,7 +251,7 @@ rv = parseFloat(RegExp.$1);
 }
 if (navigator.appName == 'Netscape' & rv >= 11) {
 if (ReportTitle == "ods") {
-filename = 'Grid.csv';
+filename = 'FeeTransactionReport.csv';
 alert('Since IE does not support .ods download format, Please save the file as <Filename>.ods')
 }
 var oExpWin = window.open();
@@ -281,6 +296,12 @@ function loadGrid(){
 		//$("#Grid").trigger("reloadGrid", {fromServer: true, page : 1});
 		$("#Grid").jqGrid().setGridParam({'url' : 'GetFeeReport'}).jqGrid('setGridParam',{datatype:'json'}).trigger('reloadGrid');
 	}
+}
+
+function formatDate(paymentdate){
+	var date=new Date(paymentdate);
+	return date.getDate()+ '/'+ (date.getMonth()+1) + '/'+date.getFullYear();
+	
 }
 </script>
 
