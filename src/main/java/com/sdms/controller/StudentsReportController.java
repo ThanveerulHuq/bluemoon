@@ -1,5 +1,6 @@
 package com.sdms.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,7 @@ import com.sdms.entity.StudentYear;
 import com.sdms.model.StudentYearModel;
 import com.sdms.repository.AcademicYearRepo;
 import com.sdms.repository.ClassInfoRepo;
+import com.sdms.repository.StudentYearRepo;
 @Controller
 public class StudentsReportController {
 	
@@ -26,6 +28,8 @@ public class StudentsReportController {
 	AcademicYearRepo academicYearRepo;
 	@Autowired
 	ClassInfoRepo classInfoRepo;
+	@Autowired
+	StudentYearRepo studentYearRepo;
 	
 	@RequestMapping(value = { "/StudentReport" }, method = RequestMethod.GET)
 	public String StudentReport(HttpServletRequest request,
@@ -41,12 +45,42 @@ public class StudentsReportController {
 		request.setAttribute("classes", classes);
 		return "StudentReport";
 	}
+
 	@ResponseBody
-	@RequestMapping(value={"/getstudentyearbyclass"},method = RequestMethod.GET)
-	public List<StudentYear> getstudentyearbyclass(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("academicYear") Long academicYear,@ModelAttribute("classId") Long classId,@ModelAttribute("section") String section){
-		List<StudentYear> studentYear= studentYearRepo.getbyclass(academicYear,classId,section);
+	@RequestMapping(value = { "/getstudentyearbyclass" }, method = RequestMethod.GET)
+	public List<StudentYear> getstudentyearbyclass(HttpServletRequest request,
+			HttpServletResponse response,
+			@ModelAttribute("academicYear") Long academicYear,
+			@ModelAttribute("classId") Long classId,
+			@ModelAttribute("section") String section) {
+		System.out.println(section);
+		List<StudentYear> studentYear = new ArrayList<StudentYear>();
+		if (classId == -1 && section.contentEquals("all")) {
+			studentYear = studentYearRepo.getStudentByYear(academicYear);
+			return studentYear;
+		} else {
+			if (classId == -1 && !section.contentEquals("all")) {
+				studentYear = studentYearRepo.getbysection(academicYear,
+						section);
+				return studentYear;
+			} 
+			if (section.contentEquals("all"))
+			{
+				System.out.println("in side out");
+				studentYear = studentYearRepo.getbyclassId(academicYear,
+						classId);
+				return studentYear;
+			}
+			if (classId != -1 && !section.contentEquals("all")) {
+				studentYear = studentYearRepo.getbyclass(academicYear, classId,
+						section);
+				return studentYear;
+			}
+		}
 		return studentYear;
+	}
+		
 	}
 	
 	
-}
+

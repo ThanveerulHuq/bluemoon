@@ -114,7 +114,7 @@ jQuery("#btnUserExport").click(function() {
 if ($("#Grid").getRowData().length != 0) {
 exportData('#Grid');
 } else {
-alert("No Data Available to Export");
+	showalert("No Data Available to Export",'error');
 }
 });
 function exportData(id) {
@@ -214,7 +214,7 @@ row.slice(0, row.length - 1);
 EXT += row + '\r\n';
 }
 if (EXT == '') {
-alert("Invalid data");
+	showalert("Invalid data",'error');
 return;
 }
 /*
@@ -247,7 +247,7 @@ rv = parseFloat(RegExp.$1);
 if (navigator.appName == 'Netscape' & rv >= 11) {
 if (ReportTitle == "ods") {
 filename = 'AllStudentsLog.csv';
-alert('Since IE does not support .ods download format, Please save the file as <Filename>.ods')
+showalert('Since IE does not support .ods download format, Please save the file as <Filename>.ods','error')
 }
 var oExpWin = window.open();
 oExpWin.document.write(ext);

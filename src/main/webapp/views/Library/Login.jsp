@@ -109,7 +109,7 @@
 					}
 				},
 				error : function(){
-					alert('Server error please contact Admin');
+					showalert('Server error please contact Admin','error');
 				}
 			});
 			return false;

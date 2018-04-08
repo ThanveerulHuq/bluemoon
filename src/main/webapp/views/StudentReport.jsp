@@ -40,6 +40,59 @@
 	</div>
 </div>
 </div>
+<div class="modal fade" id="searchmodal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+			<h3 class="modal-title" id="lineModalLabel">My Modal</h3>
+		</div>
+		<div class="modal-body">
+			
+            <!-- content goes here -->
+			<form>
+						<div class="form-group">
+							<label for="classId">Class</label> <select class="form-control"
+								id="classId"><option value="-1">All Classes</option>
+								<option value="1">L.K.G</option>
+								<option value="2">U.K.G</option>
+								<option value="3">1</option>
+								<option value="4">2</option>
+								<option value="5">3</option>
+								<option value="6">4</option>
+								<option value="7">5</option>
+								<option value="8">6</option>
+								<option value="9">7</option>
+								<option value="10">8</option>
+								<option value="11">9</option>
+								<option value="12">10</option>
+								<option value="13">11</option>
+								<option value="14">12</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="section">Section</label> <select class="form-control"
+								id="section"><option value='all'>ALL SECTION</option>
+								<option value='A'>A</option>
+								<option value='B'>B</option>
+								<option value='C'>C</option>
+								<option value='D'>D</option></select>
+						</div>
+						<div class="">
+						<button type="button" class="btn btn-success" onclick="searchStudent()">Search</button>
+          </div>  </form>
+
+		</div>
+		<div class="modal-footer">
+			<div class="btn-group btn-group-justified" role="group" aria-label="group button">
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+  </div>
+</div>
 <script type="text/javascript">
 $('document').ready(
 function () {
@@ -52,8 +105,8 @@ url:'getStudentYearByYear?academicYear='+academicYear,
 colNames:['StudentName','Class','Section', 'gender','Admission No','Total','Total Balance','Balance Tution Fee','Balance Book Fee','Balance Islamic Studies Fee','Balance Uniform Fee','Balance Van Fee'],
 colModel:[
 {name:'studentsInfo.name',index:'studentsInfo.name', width:230, align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
-{name:'commonFee.classInfo.className',index:'commonFee.classInfo.className', width:100,align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
-{name:'section',index:'section', width:110,align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
+{name:'commonFee.classInfo.className',index:'commonFee.classInfo.className', width:100,align:"center", search:false},
+{name:'section',index:'section', width:110,align:"center",search:false},
 {name:'studentsInfo.gender',index:'studentsInfo.gender', width:100,align:"center",searchoptions: { sopt: ['eq', 'ne']},formatter:formatGender},
 {name:'studentsInfo.admissionNo',index:'studentsInfo.admissionNo', width:180, align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 {name:'total',index:'section', width:200,align:"center", searchoptions: { sopt: ['lt','gt']}},
@@ -77,8 +130,6 @@ rowList: [10,25,50],
 viewrecords: true,
 height: 350,
 width:$(".grid-items").width(),
-
-
 loadonce:true,
 datatype: 'json',
 // datastr:data,
@@ -91,24 +142,31 @@ sort:'id',
 scrollOffset: 0,
 altRows:true,
 altclass:'altrow',
-
-
 });
 
 
 
 
 $("#Grid").jqGrid('navGrid','#Pager', {
-view: false, del: false, add: false, edit: false, cloneToTop: false,search:false,refresh:true},
+view: false, del: false, add: false, edit: false, cloneToTop: false,search:false,refresh:false},
 
 {}, {}, // default settings for add
 {}, // delete
 {
 }).navSeparatorAdd('#Pager');
-jQuery("#Grid").jqGrid('filterToolbar',{searchOperators : true});
+// jQuery("#Grid").jqGrid('filterToolbar',{searchOperators : true});
 $('#refresh_Grid div').append("<span>Reload</span>");
 $('INPUT[id^="gs_"]').addClass('form-control input-sm');
-
+jQuery("#Grid").jqGrid('navButtonAdd', "#Pager", {
+	caption : "Search",
+	title : "Search students",
+	buttonicon : 'ui-icon ui-icon-search',
+	id : "btnSearch",
+	onClickButton : function() {
+		searchClicked();
+	},
+	position : "last"
+	}).navSeparatorAdd('#Pager');
 
 //Export data code
 jQuery("#Grid").jqGrid('navButtonAdd', "#Pager", {
@@ -232,14 +290,14 @@ var filename;
 var uri;
 if (id == "#Grid") {
 if (ReportTitle == "csv") {
-filename = 'Grid.csv';
+filename = 'FeePendingReport.csv';
 uri = 'data:text/csv;charset=utf-8,' + escape(ext);
 }
 else if (ReportTitle == "xls") {
-filename = 'Grid.xls';
+filename = 'FeePendingReport.xls';
 uri = 'data:text/xls;charset=utf-8,' + escape(ext);
 } else {
-filename = 'Grid.ods';
+filename = 'FeePendingReport.ods';
 uri = 'data:text/xls;charset=utf-8,' + escape(ext);
 }
 }
@@ -251,7 +309,7 @@ rv = parseFloat(RegExp.$1);
 }
 if (navigator.appName == 'Netscape' & rv >= 11) {
 if (ReportTitle == "ods") {
-filename = 'Grid.csv';
+filename = 'FeePendingReport.csv';
 alert('Since IE does not support .ods download format, Please save the file as <Filename>.ods')
 }
 var oExpWin = window.open();
@@ -298,6 +356,7 @@ function formatEdit (cell,option,row){
 	return "<a href='/SDMS/editStudentYear?studentYrId="+cell+"' ><span class='glyphicon glyphicon-edit'></span></a>"
 }
 function totalBalance(cell,option,row){
+	console.log(row.paidFee.schoolFee);
 	var paid=parseInt(row.paidFee.schoolFee)+parseInt(row.paidFee.bookFee)+parseInt(row.paidFee.islamicStudies)+parseInt(row.paidFee.uniformFee)+parseInt(row.paidFee.vanFee);
 	return parseInt(row.total)-paid;
 }
@@ -315,6 +374,20 @@ function uniformBalance(cell,option,row){
 }
 function vanBalance(cell,option,row){
 	return parseInt(row.vanFee) - parseInt(row.paidFee.vanFee);
+}
+function searchClicked(){
+	$('#searchmodal').modal('show');
+	$('#classId').val('-1');
+	$('#section').val('all');
+}
+function searchStudent(){
+	var classId=$('#classId').val();
+	var section=$('#section').val();
+	var academicYear=$('#academicYear').val();
+	jQuery("#Grid").jqGrid().setGridParam({url : 'getstudentyearbyclass?academicYear='+academicYear+'&classId='+classId+'&section='+section}).jqGrid('setGridParam',{datatype:'json'}).trigger('reloadGrid');
+	$('#classId').val(-1);
+	$('#section').val(-1);
+	$('#searchmodal').modal('hide');
 }
 </script>
 

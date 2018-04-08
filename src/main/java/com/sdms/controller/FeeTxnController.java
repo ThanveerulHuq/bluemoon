@@ -98,6 +98,12 @@ public class FeeTxnController {
 		}
 		return feeReport;
 	}
+	@ResponseBody
+	@RequestMapping(value = { "/getAllStudentyearq" }, method = RequestMethod.GET)
+	public List<StudentYear> getAllStudentyearq(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("q") String q,@ModelAttribute("academicYear") Long academicYear) {
+	return studentYearRepo.getstudentbyname(academicYear,q);
+	}
+	
 
 	
 }

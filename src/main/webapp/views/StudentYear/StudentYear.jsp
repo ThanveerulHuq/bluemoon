@@ -41,7 +41,7 @@
 		<div class="form-group col-md-12">
 			<label class="col-md-2"><span class="pull-right">Student Name:</span> </label>
 			<div class="col-md-3">
-				<select  id="admissionNo" class="form-control" mandatory="true"  class="form-control"></select>
+				<select  id="admissionNo" class="form-control" mandatory="true"  class="form-control"><option>${studentName} ${fatherName}</option></select>
 			</div>
 			<div class="row col-md-2">
 <!-- 				<button class="btn btn-success" onclick="SearchStudent()" ><span class="glyphicon glyphicon-search"></span> Search</button> -->
@@ -184,15 +184,14 @@
 		      return {
 		        results: results
 		      };
-		}},
-		 select: function (event, ui){
-			 alert(ui);
-// 			 window.location.href = baseUrlVal+"application/dashboard/change-user?email="+ui.item.value;
-		 }
+		}}
 		  });
 		$('#admissionNo').on('select2:select', function (e) {
 			$('#StudentId').val(e.params.data.id);
 			});
+// 		if('${studentName}''!=''){
+// 			$('#admissionNo').val('${studentName}'+','+'${fatherName}')
+// 		}
 	});
 
 	
@@ -216,7 +215,7 @@
 // 		}
 // 		},
 // 		error: function(){
-// 		alert('Server error please contact Admin');
+// 		showalert('Server error please contact Admin');
 // 		}
 // 		});
 // 	}
@@ -237,13 +236,13 @@
 			$('.searchStudentDialog').hide();
 			$('.saveFeeDialog').show();
 			} else {
-			alert('Fee Not defined for the given Class')
+				showalert('Fee Not defined for the given Class','error')
 			$('#tutionFee').val('');
 			$('#bookFee').val('').change();
 			}
 			},
 			error: function(){
-			alert('Server error please contact Admin');
+				showalert('Server error please contact Admin','error');
 			}
 			});
 	}
@@ -266,15 +265,15 @@
 		function validateForm(){
 			if($('#studentName').val() == ''){
 				event.preventDefault();
-				alert('Please select a student');
+				showalert('Please select a student','error');
 			}
 			if($('#classId').val() == '-1'){
 				event.preventDefault();
-				alert('Please select a class');
+				showalert('Please select a class','error');
 			}
 			if($('#section').val() == '-1'){
 				event.preventDefault();
-				alert('Please select a section');
+				showalert('Please select a section','error');
 			}
 			
 		}
@@ -296,13 +295,13 @@
 				success: function(res){
 				if(res == "exist"){
 				$('#btn_submit').attr('disabled','true');
-				alert('This student already exist for the current academic year');
+				showalert('This student already exist for the current academic year','error');
 				} else {
 				$('#btn_submit').removeAttr( "disabled" );
 				}
 				},
 				error: function(){
-				alert('Server error please contact Admin');
+				showalert('Server error please contact Admin','error');
 				}
 				});
 			}else{

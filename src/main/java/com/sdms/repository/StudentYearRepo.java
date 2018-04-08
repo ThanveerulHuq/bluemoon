@@ -22,5 +22,17 @@ public interface StudentYearRepo extends JpaRepository<StudentYear,Long> {
 	
 	@Query("SELECT a FROM StudentYear a WHERE a.commonFee.academicYear.id = :academicYear and a.commonFee.classInfo.classId like :classId and a.section like :section")
 	public List<StudentYear> getbyclass(@Param("academicYear")Long academicYear,@Param("classId") Long classId,	@Param("section")String section);
+	
+	@Query("SELECT a FROM StudentYear a WHERE a.commonFee.academicYear.id = :academicYear and a.section like :section")
+	public List<StudentYear> getbysection(@Param("academicYear")Long academicYear,	@Param("section")String section);
+	
+	@Query("SELECT a FROM StudentYear a WHERE a.commonFee.academicYear.id = :academicYear and a.commonFee.classInfo.classId like :classId")
+	public List<StudentYear> getbyclassId(@Param("academicYear")Long academicYear,@Param("classId") Long classId);
 
+	@Query("SELECT a FROM StudentYear a WHERE a.commonFee.academicYear.id = :academicYear and a.studentsInfo.name like %:q%")
+	public List<StudentYear> getstudentbyname(@Param("academicYear")Long academicYear,@Param("q")String q);
+	
+	
 }
+
+

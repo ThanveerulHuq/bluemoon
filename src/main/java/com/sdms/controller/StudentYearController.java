@@ -88,7 +88,7 @@ public class StudentYearController {
 		request.setAttribute("academicYear", academicYear);
 		request.setAttribute("classes", classes);
 		request.setAttribute("StudentsYear", studentsYearModel);
-		request.setAttribute("studentName", studentYear.getStudentsInfo().getName());
+		request.setAttribute("studentName", studentYear.getStudentsInfo().getName()+",");
 		request.setAttribute("fatherName", studentYear.getStudentsInfo().getFatherName());
 		request.setAttribute("classId", studentYear.getCommonFee().getClassInfo().getClassId());
 		request.setAttribute("tutionfee", studentYear.getCommonFee().getSchoolFee());

@@ -119,7 +119,7 @@
 		function validateForm() {
 			if ($('#classId').val() == '-1') {
 				event.preventDefault();
-				alert('Please select a class');
+				showalert('Please select a class','error');
 			}
 	
 
@@ -127,7 +127,7 @@
 		function clearInput() {
 			$(':input').not('#classId,#section,#academicYear').val('');
 			$('#classId,#section').val('-1');
-			alert('All fields cleared')
+			showalert('All fields cleared','error')
 		}
 	</script>
 </body>

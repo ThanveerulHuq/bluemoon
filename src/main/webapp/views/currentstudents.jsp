@@ -154,20 +154,8 @@ view: false, del: false, add: false, edit: false, cloneToTop: false,search:false
 jQuery("#Grid").jqGrid('filterToolbar',{searchOperators : true});
 $('#refresh_Grid div').append("<span>Reload</span>");
 $('INPUT[id^="gs_"]').addClass('form-control input-sm');
-$('.ui-pg-div .ui-icon-search').parent().append(' Search').parent().attr('id','searchonmodal').click(function(){
-	searchClicked();
-})
 
-jQuery("#Grid").jqGrid('navButtonAdd', "#Pager", {
-caption : "Search",
-title : "Search students",
-buttonicon : 'ui-icon ui-icon-search',
-id : "btnSearch",
-onClickButton : function() {
-	searchClicked();
-},
-position : "last"
-}).navSeparatorAdd('#Pager');
+
 //Export data code
 jQuery("#Grid").jqGrid('navButtonAdd', "#Pager", {
 caption : "Export",
@@ -186,7 +174,8 @@ jQuery("#btnUserExport").click(function() {
 if ($("#Grid").getRowData().length != 0) {
 exportData('#Grid');
 } else {
-alert("No Data Available to Export");
+	showalert("No Data Available to Export",'error');
+	
 }
 });
 function exportData(id) {

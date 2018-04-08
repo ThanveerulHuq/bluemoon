@@ -34,7 +34,7 @@
 				<div class="col-md-3">
 					<form:input path="age" class="form-control" type="number"
 						required="true" maxlength="2"
-						oninput="javascript: if (this.value.length > this.maxLength) alert('length should not be more than'+this.maxLength);this.value = this.value.slice(0, this.maxLength);" />
+						oninput="javascript: if (this.value.length > this.maxLength) showalert('length should not be more than'+this.maxLength,'error');this.value = this.value.slice(0, this.maxLength);" />
 				</div>
 			</div>
 
@@ -67,7 +67,7 @@
 			<div class="col-md-3">
 				<form:input path="aadharNo" class="form-control" type="number"
 					required="true" maxlength="12"
-					oninput="javascript: if (this.value.length > this.maxLength) alert('length should not be more than'+this.maxLength);this.value = this.value.slice(0, this.maxLength);" />
+					oninput="javascript: if (this.value.length > this.maxLength) showalert('length should not be more than'+this.maxLength,'error');this.value = this.value.slice(0, this.maxLength);" />
 			</div>
 			<div class="row">
 				<label class="col-md-2"><span class="pull-right">EMIS
@@ -75,7 +75,7 @@
 				<div class="col-md-3">
 					<form:input path="emisNo" class="form-control" type="number"
 						required="true" maxlength="16"
-						oninput="javascript: if (this.value.length > this.maxLength) alert('length should not be more than'+this.maxLength);this.value = this.value.slice(0, this.maxLength);" />
+						oninput="javascript: if (this.value.length > this.maxLength) showalert('length should not be more than'+this.maxLength,'error');this.value = this.value.slice(0, this.maxLength);" />
 				</div>
 			</div>
 		</div>
@@ -312,7 +312,7 @@
 				},
 				error: function(res){
 					console.log(res);
-					alert('server error please contact admin')
+					showalert('server error please contact admin','error')
 				}
 			});
 			}
@@ -327,12 +327,12 @@
 	function validateForm(){
 		if($('#gender').val() == '-1' ){
 		event.preventDefault();
-		alert('please select a valid gender');
+		showalert('please select a valid gender','error');
 		return false;
 		}	
 		if($('#community').val() == '-1' ){
 			event.preventDefault();
-		alert('please select a valid gender');
+		showalert('please select a valid community','error');
 		return false;
 		}
 		$('#admissionNo').removeAttr('disabled');
@@ -341,7 +341,7 @@
 		$(':input').not('#gender').val('');
 		$('#gender').val('-1');
 		$('#active').val('Y');
-		alert('All fields cleared')
+		showalert('All fields cleared','warning')
 	}
 	function addDoc(){
 		var html=`<div class="form-group col-md-12">
@@ -370,7 +370,7 @@
 			},
 			error: function(res){
 				console.log(res);
-				alert('error deleting file')
+				showalert('error deleting file','error');
 			}
 		});
 		}
@@ -393,7 +393,7 @@
 			},
 			error: function(res){
 				console.log(res);
-				alert('error deleting file')
+				showalert('error deleting file','error');
 			}
 		});
 		}
