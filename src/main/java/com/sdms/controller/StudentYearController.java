@@ -1,9 +1,11 @@
 package com.sdms.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,7 +51,10 @@ public class StudentYearController {
 
 	@RequestMapping(value = { "/StudentYear" }, method = RequestMethod.GET)
 	public String StudentYear(HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response, HttpSession session) {
+		if(!SessionController.checkSession(request, response, session)) {
+			return "redirect:Login";
+		}
 		StudentYearModel StudentsYear = new StudentYearModel();
 		List<AcademicYear> academicYear = academicYearRepo.findAll();
 		List<ClassInfo> classes = classInfoRepo.findAll();
@@ -60,7 +65,10 @@ public class StudentYearController {
 	}
 	@RequestMapping(value = { "/editStudentYear" }, method = RequestMethod.GET)
 	public String editStudentYear(HttpServletRequest request,
-			HttpServletResponse response,@ModelAttribute("studentYrId") Long studentYrId) {
+			HttpServletResponse response,@ModelAttribute("studentYrId") Long studentYrId, HttpSession session) {
+		if(!SessionController.checkSession(request, response, session)) {
+			return "redirect:Login";
+		}
 		StudentYearModel studentsYearModel = new StudentYearModel();
 		StudentYear studentYear = studentYearRepo.findOne(studentYrId);
 		studentsYearModel.setStudentYearId(studentYrId);
@@ -84,6 +92,7 @@ public class StudentYearController {
 		request.setAttribute("fatherName", studentYear.getStudentsInfo().getFatherName());
 		request.setAttribute("classId", studentYear.getCommonFee().getClassInfo().getClassId());
 		request.setAttribute("tutionfee", studentYear.getCommonFee().getSchoolFee());
+		request.setAttribute("bookfee", studentYear.getCommonFee().getBookFee());
 		
 		return "StudentYear/StudentYear";
 	}
@@ -187,6 +196,16 @@ public class StudentYearController {
 		}
 		
 	}
+	@ResponseBody
+	@RequestMapping(value = { "/getAllStudentsNamebyq" }, method = RequestMethod.GET)
+	public List<StudentsInfo> getAllStudentsName(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("q") String q) throws IOException {
+	return studentsInfoRepo.getstudentbyname(q);
+	}
 	
+	@ResponseBody
+	@RequestMapping(value = { "/getStudentbyId" }, method = RequestMethod.GET)
+	public StudentsInfo getStudentbyId(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("id") Long id) throws IOException {
+	return studentsInfoRepo.findOne(id);
+	}
 	
 }
