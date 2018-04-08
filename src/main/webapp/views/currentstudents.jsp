@@ -45,6 +45,61 @@
 	</div>
 </div>
 </div>
+
+<!-- line modal -->
+<div class="modal fade" id="searchmodal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+			<h3 class="modal-title" id="lineModalLabel">My Modal</h3>
+		</div>
+		<div class="modal-body">
+			
+            <!-- content goes here -->
+			<form>
+						<div class="form-group">
+							<label for="classId">Class</label> <select class="form-control"
+								id="classId"><option>--SELECT--</option>
+								<option value="-1">---SELECT---</option>
+								<option value="1">L.K.G</option>
+								<option value="2">U.K.G</option>
+								<option value="3">1</option>
+								<option value="4">2</option>
+								<option value="5">3</option>
+								<option value="6">4</option>
+								<option value="7">5</option>
+								<option value="8">6</option>
+								<option value="9">7</option>
+								<option value="10">8</option>
+								<option value="11">9</option>
+								<option value="12">10</option>
+								<option value="13">11</option>
+								<option value="14">12</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="section">Section</label> <select class="form-control"
+								id="section"><option value='-1'>--SELECT--</option>
+								<option value='A'>A</option>
+								<option value='B'>B</option>
+								<option value='C'>C</option>
+								<option value='D'>D</option></select>
+						</div>
+						<button type="button" class="btn btn-default" onclick="searchStudent()">Search</button>
+            </form>
+
+		</div>
+		<div class="modal-footer">
+			<div class="btn-group btn-group-justified" role="group" aria-label="group button">
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+  </div>
+</div>
 <script type="text/javascript">
 $('document').ready(
 function () {
@@ -99,8 +154,20 @@ view: false, del: false, add: false, edit: false, cloneToTop: false,search:false
 jQuery("#Grid").jqGrid('filterToolbar',{searchOperators : true});
 $('#refresh_Grid div').append("<span>Reload</span>");
 $('INPUT[id^="gs_"]').addClass('form-control input-sm');
+$('.ui-pg-div .ui-icon-search').parent().append(' Search').parent().attr('id','searchonmodal').click(function(){
+	searchClicked();
+})
 
-
+jQuery("#Grid").jqGrid('navButtonAdd', "#Pager", {
+caption : "Search",
+title : "Search students",
+buttonicon : 'ui-icon ui-icon-search',
+id : "btnSearch",
+onClickButton : function() {
+	searchClicked();
+},
+position : "last"
+}).navSeparatorAdd('#Pager');
 //Export data code
 jQuery("#Grid").jqGrid('navButtonAdd', "#Pager", {
 caption : "Export",
@@ -285,8 +352,21 @@ function formatGender(cell,option,row){
 }
 
 function formatEdit (cell,option,row){
-	
 	return "<a href='/SDMS/editStudentYear?studentYrId="+cell+"' ><span class='glyphicon glyphicon-edit'></span></a>"
+}
+
+function searchClicked(){
+	$('#searchmodal').modal('show');
+	
+}
+function searchStudent(){
+	var classId=$('#classId').val();
+	var section=$('#section').val();
+	var academicYear=$('#academicYear').val();
+	jQuery("#Grid").jqGrid().setGridParam({url : 'getstudentyearbyclass?academicYear='+academicYear+'&classId='+classId+'&section='+section}).jqGrid('setGridParam',{datatype:'json'}).trigger('reloadGrid');
+	$('#classId').val(-1);
+	$('#section').val(-1);
+	$('#searchmodal').modal('hide');
 }
 
 

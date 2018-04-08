@@ -156,7 +156,7 @@
                             <div class="card">
                                 <div class="card-body text-center">
 <%--                                     <p><img class=" img-fluid" src="<%=request.getContextPath()%>/resources/images/transactionreport.png" alt="card image"></p> --%>
-                                    <p><img class=" img-fluid" src="http://www.ezschoolerp.com/Uploads/Photos/financial-aid-5-ezWEBCMS_636570782256186206.png" alt="card image"></p>
+                                    <p><img class=" img-fluid" src="<%=request.getContextPath()%>/resources/images/schoolfee.png" alt="card image"></p>
                                     <h4 class="card-title">Set Common Fee</h4>
                                    
                                 </div>

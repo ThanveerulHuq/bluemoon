@@ -39,26 +39,26 @@
 
 		</div>
 		<div class="form-group col-md-12">
-			<label class="col-md-2"><span class="pull-right">Admission No:</span> </label>
-			<div class="col-md-3">
-				<input path="admissionNo" id="admissionNo" class="form-control" mandatory="true" value="${StudentsYear.admissionNo}"/>
-			</div>
-			<div class="row col-md-2">
-				<button class="btn btn-success" onclick="SearchStudent()" ><span class="glyphicon glyphicon-search"></span> Search</button>
-		</div>
-		</div>
-		<div class="form-group col-md-12">
 			<label class="col-md-2"><span class="pull-right">Student Name:</span> </label>
 			<div class="col-md-3">
-				<input class="form-control" id="studentName" disabled="true"  value="${studentName}"/>
+				<select  id="admissionNo" class="form-control" mandatory="true"  class="form-control"></select>
 			</div>
-			<div class="row">
-			<label class="col-md-2"><span class="pull-right">Father Name:</span> </label>
-			<div class="col-md-3">
-				<input  class="form-control" id="fatherName" disabled="true" value="${fatherName}" />
-			</div>
-			</div>
+			<div class="row col-md-2">
+<!-- 				<button class="btn btn-success" onclick="SearchStudent()" ><span class="glyphicon glyphicon-search"></span> Search</button> -->
 		</div>
+		</div>
+<!-- 		<div class="form-group col-md-12"> -->
+<!-- 			<label class="col-md-2"><span class="pull-right">Student Name:</span> </label> -->
+<!-- 			<div class="col-md-3"> -->
+<%-- 				<input class="form-control" id="studentName" disabled="true"  value="${studentName}"/> --%>
+<!-- 			</div> -->
+<!-- 			<div class="row"> -->
+<!-- 			<label class="col-md-2"><span class="pull-right">Father Name:</span> </label> -->
+<!-- 			<div class="col-md-3"> -->
+<%-- 				<input  class="form-control" id="fatherName" disabled="true" value="${fatherName}" /> --%>
+<!-- 			</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
 		
 		<form:form method="POST" action="/SDMS/MapStudent"
 		commandName="StudentsYear" class="mtop-15"
@@ -98,7 +98,7 @@
 			<div class="row">
 			<label class="col-md-2"><span class="pull-right">Book Fee:</span> </label>
 			<div class="col-md-3">
-				<input id="bookFee"  class="form-control feeinput" type="number" required="true"  disabled="true" value=""/>
+				<input id="bookFee"  class="form-control feeinput" type="number" required="true"  disabled="true" value="${bookfee}"/>
 			</div>
 			</div>
 		</div>
@@ -174,34 +174,52 @@
 			$('#section').val(section);
 		}
 		computeTotal();
-		
+		$('#admissionNo').select2({ajax: {
+		    url: 'getAllStudentsNamebyq',
+		    dataType: 'json',   
+		processResults: function (data) {
+			var results=[];
+		for(index in data){
+		    results.push({'id':data[index].studentId,"text":data[index].name+','+data[index].fatherName})}
+		      return {
+		        results: results
+		      };
+		}},
+		 select: function (event, ui){
+			 alert(ui);
+// 			 window.location.href = baseUrlVal+"application/dashboard/change-user?email="+ui.item.value;
+		 }
+		  });
+		$('#admissionNo').on('select2:select', function (e) {
+			$('#StudentId').val(e.params.data.id);
+			});
 	});
 
 	
-	function SearchStudent(){
-		var admissionNo = $('#admissionNo').val();
-		$.ajax({
-		url: '/SDMS/getStudentInfoByAdNo?admissionNo='+admissionNo,
-		method: 'GET',
-		success: function(res){
-			console.log(res);
-		if(res.studentId != undefined){
-			$('#studentName').val(res.name);
-			$('#fatherName').val(res.fatherName);
-			$('#StudentId').val(res.studentId);
-			checkforUnique();
-		$('.errMsgForAdmissionNo').hide();
-		$('.searchStudentDialog').hide();
-		$('.saveFeeDialog').show();
-		} else {
-		$('.errMsgForAdmissionNo').show();
-		}
-		},
-		error: function(){
-		alert('Server error please contact Admin');
-		}
-		});
-	}
+// 	function SearchStudent(){
+// 		var admissionNo = $('#admissionNo').val();
+// 		$.ajax({
+// 		url: '/SDMS/getStudentInfoByAdNo?admissionNo='+admissionNo,
+// 		method: 'GET',
+// 		success: function(res){
+// 			console.log(res);
+// 		if(res.studentId != undefined){
+// 			$('#studentName').val(res.name);
+// 			$('#fatherName').val(res.fatherName);
+// 			$('#StudentId').val(res.studentId);
+// 			checkforUnique();
+// 		$('.errMsgForAdmissionNo').hide();
+// 		$('.searchStudentDialog').hide();
+// 		$('.saveFeeDialog').show();
+// 		} else {
+// 		$('.errMsgForAdmissionNo').show();
+// 		}
+// 		},
+// 		error: function(){
+// 		alert('Server error please contact Admin');
+// 		}
+// 		});
+// 	}
 	function getFee(){
 		var academicYearId = $('#academicYear').val();
 		var classId= $('#classId').val();
