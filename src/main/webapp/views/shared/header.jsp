@@ -412,6 +412,9 @@ section .section-title {
                   <li class="nav-tab">
                     <a class="nav-link text-uppercase" href="/SDMS/TutionFee">School Fee</a>
                   </li>
+                  <li class="nav-tab">
+                    <a class="nav-link text-uppercase" href="/SDMS/Logout"><img src="<%=request.getContextPath()%>/resources/images/logout.png" width="25" alt="Logout"></a>
+                  </li>
                 </ul>
               </div>
           </div>

@@ -12,7 +12,6 @@
 <title>SDMS Login</title>
 <c:import url="/views/shared/header_includes.jsp"></c:import>
 <style type="text/css">
-	@import url(http://fonts.googleapis.com/css?family=Roboto:400);
 	body {
 	  background-color:#fff;
 	  -webkit-font-smoothing: antialiased;
@@ -58,7 +57,7 @@
 <c:import url="/views/shared/header.jsp"></c:import>
 <div class="loginContainer container">
     <div class="row">
-        <div class="col-md-offset-5 col-md-3">
+        <div class="col-md-offset-5 col-md-4">
             <div class="form-login">
             <h4>Login</h4>
             <form id="loginForm">
@@ -66,7 +65,10 @@
             </br>
             <input type="password" id="password" class="form-control input-sm chat-input" placeholder="Password" required="true"/>
             </br>
-            <span class="errMsg" style="display:none;color:red;">Username or Password Incorrect</span>
+            <div style="text-align:center">
+            	<span class="errMsg" style="display:none;color:red;">Username or Password Incorrect</span>
+            </div>
+            </br>
             <div class="wrapper">
             </form>
             <span class="group-btn">     
@@ -81,28 +83,36 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('loginForm').on('submit', function(){
-			event.preventDefault();
+		$('.nav').hide();
+		$('#loginForm').submit(function(e){
+			e.preventDefault();
 			var uname = $('#username').val();
 			var pass = $('#password').val();
-			if(uname == 'admin' && password == 'admin') {
-				$('errMsg').hide();
+/* 			if(uname == 'admin' && pass == 'admin') {
+				$('.errMsg').hide();
 				window.location = "/SDMS/Home";
 			} else {
-				$('errMsg').show();
+				$('.errMsg').show();
 				$('input').val('');
-			}
-			/* $.ajax({
+			} */
+			$.ajax({
 				url:'/SDMS/GetLogin',
-				data: {username : uname, password: pass},
+				data: {'username' : uname, 'password': pass},
 				method: 'POST',
 				success: function(res){
-					
+					if(res == 'SUCCESS') {
+						$('.errMsg').hide();
+						window.location = "/SDMS/Home";
+					} else {
+						$('.errMsg').show();
+						$('input').val('');
+					}
 				},
 				error : function(){
 					alert('Server error please contact Admin');
 				}
-			}); */
+			});
+			return false;
 		});
 	});
 

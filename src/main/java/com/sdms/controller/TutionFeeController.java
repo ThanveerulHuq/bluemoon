@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,7 +37,10 @@ public class TutionFeeController {
 	
 	@RequestMapping(value = { "/TutionFeeForm" }, method = RequestMethod.GET)
 	public String tutionFeeForm(HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response, HttpSession session) {
+		if(!SessionController.checkSession(request, response, session)) {
+			return "redirect:Login";
+		}
 		List<AcademicYear> academicYear = academicYearRepo.findAll();
 		List<ClassInfo> classes = classInfoRepo.findAll();
 		CommonFee commonFee = new CommonFee();
@@ -48,7 +52,10 @@ public class TutionFeeController {
 	
 	@RequestMapping(value = { "/EditTutionFee" }, method = RequestMethod.GET)
 	public String editTutionFee(HttpServletRequest request,
-			HttpServletResponse response,@ModelAttribute("Feeid") Long Feeid) {
+			HttpServletResponse response,@ModelAttribute("Feeid") Long Feeid, HttpSession session) {
+		if(!SessionController.checkSession(request, response, session)) {
+			return "redirect:Login";
+		}
 		List<AcademicYear> academicYear = academicYearRepo.findAll();
 		List<ClassInfo> classes = classInfoRepo.findAll();
 		CommonFee commonFee = commonFeeRepo.findOne(Feeid);
@@ -69,7 +76,10 @@ public class TutionFeeController {
 	
 	@RequestMapping(value = { "/TutionFee" }, method = RequestMethod.GET)
 	public String tutionFee(HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response, HttpSession session) {
+		if(!SessionController.checkSession(request, response, session)) {
+			return "redirect:Login";
+		}
 		List<AcademicYear> academicYear = academicYearRepo.findAll();
 		request.setAttribute("academicYear", academicYear);
 		return "TutionFee";

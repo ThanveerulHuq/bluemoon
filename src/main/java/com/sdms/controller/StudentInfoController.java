@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +29,10 @@ public class StudentInfoController {
 	StudentsInfoRepo studentInfoRepo;
 
 	@RequestMapping(value={"/StudentInfo"},method = RequestMethod.GET)
-	public String studentInfo(ModelMap map,HttpServletRequest request, HttpServletResponse response) {
+	public String studentInfo(ModelMap map,HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		if(!SessionController.checkSession(request, response, session)) {
+			return "redirect:Login";
+		}
 		//request.setAttribute("dummy", dummy);
 		return "Library/StudentInfo";
 	}
