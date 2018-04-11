@@ -27,7 +27,7 @@
 			<label class="col-md-2"><span class="pull-right">Student
 					Name:</span></label>
 			<div class="col-md-3">
-				<form:input path="name" class="form-control" required="true" />
+				<form:input path="name" class="form-control" required="true" type="text" maxlength="40" />
 			</div>
 			<div class="row">
 				<label class="col-md-2"><span class="pull-right">Age:</span></label>
@@ -83,7 +83,7 @@
 			<label class="col-md-2"><span class="pull-right">Admission
 					Number:</span> </label>
 			<div class="col-md-3">
-				<form:input path="admissionNo" name="admissionNo" class="form-control" required="true" />
+				<form:input path="admissionNo" name="admissionNo" class="form-control" required="true" type="number" maxlength="15"/>
 			</div>
 			<div class="row">
 				<label class="col-md-2"><span class="pull-right">Admission
@@ -111,7 +111,7 @@
 			<div class="row">
 				<label class="col-md-2"><span class="pull-right">Religion:</span> </label>
 				<div class="col-md-3">
-					<form:input path="religion" class="form-control"
+					<form:input path="religion" class="form-control" type="text" maxlength="15"
 						required="true" />
 				</div>
 			</div>
@@ -121,12 +121,12 @@
 			<label class="col-md-2"><span class="pull-right">Caste:</span>
 			</label>
 			<div class="col-md-3">
-				<form:input path="caste" class="form-control" required="true" />
+				<form:input path="caste" class="form-control" required="true" type="text" maxlength="30"/>
 			</div>
 			<div class="row">
 				<label class="col-md-2"><span class="pull-right">Nationality:</span> </label>
 				<div class="col-md-3">
-					<form:input path="nationality" class="form-control"
+					<form:input path="nationality" class="form-control" type="text" maxlength="15"
 						required="true" />
 				</div>
 			</div>
@@ -135,14 +135,14 @@
 			<label class="col-md-2"><span class="pull-right">Mobile
 					Number 1:</span> </label>
 			<div class="col-md-3">
-				<form:input path="mobileNo1" class="form-control" required="true"
+				<form:input path="mobileNo1" class="form-control" required="true" maxlength="15"
 					type="number" />
 			</div>
 			<div class="row">
 				<label class="col-md-2"><span class="pull-right">Mobile
 						Number 2:</span> </label>
 				<div class="col-md-3">
-					<form:input path="mobileNo2" class="form-control" type="number" required="true" />
+					<form:input path="mobileNo2" class="form-control" type="number" maxlength="15" required="true" />
 				</div>
 			</div>
 		</div>
@@ -150,13 +150,13 @@
 			<label class="col-md-2"><span class="pull-right">Father
 					Name:</span> </label>
 			<div class="col-md-3">
-				<form:input path="fatherName" class="form-control" required="true" />
+				<form:input path="fatherName" class="form-control" required="true" type="text" maxlength="40"/>
 			</div>
 			<div class="row">
 				<label class="col-md-2"><span class="pull-right">Mother
 						Name:</span> </label>
 				<div class="col-md-3">
-					<form:input path="motherName" class="form-control" required="true" />
+					<form:input path="motherName" class="form-control" type="text" maxlength="40" required="true" />
 				</div>
 			</div>
 		</div>
@@ -164,13 +164,13 @@
 			<label class="col-md-2"><span class="pull-right">Previous
 					School:</span> </label>
 			<div class="col-md-3">
-				<form:input path="previousSchool" class="form-control" />
+				<form:input path="previousSchool" type="text" maxlength="100" class="form-control" />
 			</div>
 			<div class="row">
 				<label class="col-md-2"><span class="pull-right">Mother
 						Tongue:</span> </label>
 				<div class="col-md-3">
-					<form:input path="motherTongue" class="form-control"
+					<form:input path="motherTongue" class="form-control" type="text" maxlength="10"
 						required="true" />
 				</div>
 				
@@ -180,13 +180,13 @@
 			<label class="col-md-2"><span class="pull-right">Residential
 					Address:</span> </label>
 			<div class="col-md-3">
-				<form:textarea path="address" class="form-control" required="true"
+				<form:textarea path="address" class="form-control" required="true" maxlength="1000"
 					style="height:90px" />
 			</div>
 			<div class="row">
 				<label class="col-md-2"><span class="pull-right">Remarks:</span> </label>
 				<div class="col-md-3">
-					<form:textarea path="remarks" class="form-control" required="true"
+					<form:textarea path="remarks" class="form-control" required="true" maxlength="100"
 						style="height:90px" />
 				</div>
 			</div>
@@ -214,6 +214,12 @@
 					Document
 				</button>
 			</div>
+			<div class="col-md-3">
+				<button class="btn btn-info" type="button" id="addPhoto" onclick="addProfilePhoto()">
+					<span class="glyphicon glyphicon-plus text-biggest"></span>Add
+					Photo
+				</button>
+			</div>
 			<!-- <div class="col-md-3"> 
 				<button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#addPhotoModel" onclick="takePhoto()">Add Photo</button>
 			</div> -->
@@ -224,7 +230,7 @@
 								<label class="col-md-2"><span class="pull-right">Document
 										Name:</span></label>
 								<div class="col-md-2">
-									<legend>${name}</legend>
+									<legend name="${name}">${name}</legend>
 								</div>
 								<div class="col-md-1">
 									<button class="btn btn-info" onclick="getFile('${StudentsInfo.fileIds[status.index]}')">Download</button>
@@ -280,22 +286,27 @@
 	<script type="text/javascript">
 	
 	$('document').ready(function(){
-		 $('#admissionDate').datepicker({ dateFormat: 'yy-mm-dd' }).datepicker("setDate", new Date());
+		$('#admissionDate').datepicker({ dateFormat: 'yy-mm-dd' }).datepicker("setDate", new Date());
+		//$('#dob').datepicker({ dateFormat: 'yy-mm-dd' })
 		var dob="${StudentsInfo.dob}";
 		var adm_date= "${StudentsInfo.admissionDate}";
 		var gender="${StudentsInfo.gender}"
+		var community = "${StudentsInfo.community}";
 		var active="${StudentsInfo.active}"
 		document.getElementById("dob").valueAsDate = formatDate(dob);
-		document.getElementById("admissionDate").valueAsDate = formatDate(adm_date);
-		if(gender != '' && active != ''){
-		$('#gender').val(gender);
-		$('#active').val(active);
+		$("admissionDate").val(formatDate(adm_date));
+		if(gender != '' && active != '' && community != ''){
+			$('#gender').val(gender);
+			$('#active').val(active);
+			$('#community').val(community);
 		}
 		if('${StudentsInfo.admissionNo}' == ''){
 			$('#btn_submit').prop('disabled','true');
 		}else{
-			
 			$('#admissionNo').prop('disabled','true');
+		}
+		if($('legend[name=profile_photo]').text()){
+			$('#addPhoto').hide();
 		}
 		
 		$('#admissionNo').change(function(){
@@ -324,6 +335,7 @@
 	fmt_date = new Date(fmt_date);
 	return fmt_date;
 	}
+	
 	function validateForm(){
 		if($('#gender').val() == '-1' ){
 		event.preventDefault();
@@ -337,17 +349,19 @@
 		}
 		$('#admissionNo').removeAttr('disabled');
 		}
+	
 	function clearInput(){
 		$(':input').not('#gender').val('');
 		$('#gender').val('-1');
 		$('#active').val('Y');
 		showalert('All fields cleared','warning')
 	}
+	
 	function addDoc(){
 		var html=`<div class="form-group col-md-12">
 		<label class="col-md-2"><span class="pull-right">Document Type:</span></label>
 		<div class="col-md-3">
-		<input type="text" path="fileNames" name="fileNames" required="true">
+		<input type="text" path="fileNames" class="inputFileName" name="fileNames" required="true">
 	</div>
 		<div class="col-md-3">
 			<input type="file" path="images" name="images" multiple="multiple" accept="image/*" >
@@ -357,7 +371,31 @@
 	</div>
 	</div>`;
 	$('#document_area').append(html);
+	$('.inputFileName').change(function(){
+		 if($(this).val().indexOf('profile_photo') != -1){
+			 $(this).val('');
+			 showalert("File name can't contain 'profile_photo'");
+		 }
+	 });
 	}
+	
+	function addProfilePhoto(){
+		var html=`<div class="form-group col-md-12">
+		<label class="col-md-2"><span class="pull-right">Document Type:</span></label>
+		<div class="col-md-3">
+		<input type="text" path="fileNames" id="profilePhoto" name="fileNames" value="profile_photo" readonly="true">
+	</div>
+		<div class="col-md-3">
+			<input type="file" path="images" name="images" multiple="multiple" accept="image/*" >
+		</div>
+		<div class="col-md-3">
+		<button class="btn btn-danger pull-left" id="removePhoto" onclick="removeMe(this)">remove</button>
+	</div>
+	</div>`;
+	$('#document_area').append(html);
+	$('#addPhoto').hide();
+	}
+	
 	function removeMe(el,docId){
 		event.preventDefault();
 		if(window.confirm("Do You want to delete the file")){
@@ -367,6 +405,9 @@
 			success: function(res){
 				console.log(res);
 				console.log($(el).parent().parent().remove());
+				if(!$('legend[name=profile_photo]').text()){
+					$('#addPhoto').show();
+				}
 			},
 			error: function(res){
 				console.log(res);

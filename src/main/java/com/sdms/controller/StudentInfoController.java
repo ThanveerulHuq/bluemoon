@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sdms.entity.DocInfo;
 import com.sdms.entity.StudentsInfo;
+import com.sdms.repository.DocInfoRepo;
 import com.sdms.repository.StudentsInfoRepo;
 
 
@@ -27,6 +29,9 @@ public class StudentInfoController {
 	
 	@Autowired
 	StudentsInfoRepo studentInfoRepo;
+	
+	@Autowired
+	DocInfoRepo docInfoRepo;
 
 	@RequestMapping(value={"/StudentInfo"},method = RequestMethod.GET)
 	public String studentInfo(ModelMap map,HttpServletRequest request, HttpServletResponse response, HttpSession session) {
@@ -59,6 +64,12 @@ public class StudentInfoController {
 	public String printStudentInfo(@ModelAttribute("studentId") Long studentId, HttpServletRequest request, HttpServletResponse response) {
 		StudentsInfo studentInfo = studentInfoRepo.findOne(studentId);
 		request.setAttribute("Print", studentInfo);
+		DocInfo docInfo = docInfoRepo.getProfilePhoto(studentId);
+		try{
+			request.setAttribute("PhotoId", docInfo.getDocId());
+		} catch (NullPointerException e) {
+			request.setAttribute("PhotoId", "");
+		}
 		return "Library/StudentInfoPrint";
 	}
 

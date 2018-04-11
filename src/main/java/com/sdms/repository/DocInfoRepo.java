@@ -16,6 +16,10 @@ public interface DocInfoRepo extends JpaRepository<DocInfo,Long> {
 	@Query("SELECT a FROM DocInfo a WHERE a.studentsInfo.studentId = :studentId")
     public List<DocInfo> findByStudentId(@Param("studentId") Long studentId);
 	
+	@Query("SELECT a FROM DocInfo a WHERE a.fileName = 'profile_photo' AND a.studentsInfo.studentId = :studentId")
+    public DocInfo getProfilePhoto(@Param("studentId") Long studentId);
+	
+	
 //	@Transactional
 //	@Modifying(clearAutomatically = true)
 //	@Query("SELECT a FROM DocInfo a WHERE a.studentsInfo.studentId = :studentId")

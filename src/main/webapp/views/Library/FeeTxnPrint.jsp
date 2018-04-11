@@ -31,6 +31,7 @@
 <div id="printArea" class="container" style="margin-top:10px">
 
 	<div style="text-align:center;margin:15px;">
+		<button id="printButton" class="btn btn-lg btn-default pull-left" onclick="window.location='/SDMS/FeeTxn'" >Go Back</button>
 		<button id="printButton" class="btn btn-lg btn-info" onclick="window.print();return false;" >Print Receipt</button>
 	</div>
 	<div id='mainReceipt'>
@@ -43,8 +44,8 @@
 		</div>
 		</td>
 			<td colspan="5" width="86%">
-		<div align="center"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: large;"><strong>DHAARUS-SALAAM MATRICULATION SCHOOL</strong></span></span></div>
-		<div align="center"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">(Managed by : Dhaarus-Salaam Trust, Salem &ndash; 636 005)</span></span></div>
+		<div align="center"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: large;"><strong>DHAARUS SALAAM MATRICULATION SCHOOL</strong></span></span></div>
+		<div align="center"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">(Managed by : Dhaarus Salaam Trust, Salem &ndash; 636 005)</span></span></div>
 		<div align="center"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">Ph: (0427) 2442018, </span></span><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">+91 98942 50320 | E-mail: <a>dhaarussalaam1@gmail.com</a></span></span></div>
 		</td>
 		</tr>

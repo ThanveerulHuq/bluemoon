@@ -19,7 +19,7 @@
    td {
    	margin: 0;
    	padding-top: 5px;
-   	padding-top: 5px;
+   	padding-bottom: 5px;
    	padding-left: 10px;
    	padding-right: 10px;
    	border-bottom: 1px solid;
@@ -34,6 +34,7 @@
 <body>
 <div id="printArea" class="container">
 	<div style="text-align:center;margin:15px;">
+		<button id="printButton" class="btn btn-lg btn-default pull-left" onclick="window.location='/SDMS/StudentInfo'" >Go Back</button>
 		<button id="printButton" class="btn btn-lg btn-info" onclick="window.print();return false;" >Print Document</button>
 	</div>
 
@@ -44,8 +45,8 @@
 	<div align="left"><img src="<%=request.getContextPath()%>/resources/images/school_logo.jpg" height="50" width="50" style="margin-left: 20px;"/></div>
 	</td>
 	<td colspan="3" width="572">
-	<div align="center"><span style="font-family: 'Calibri', serif;"><span style="font-size: large;"><strong>DHAARUS-SALAAM MATRICULATION SCHOOL</strong></span></span></div>
-	<div align="center"><span style="font-family: 'Calibri', serif;"><span style="font-size: small;">(Managed by : Dhaarus-Salaam Trust, Salem &ndash; 636 005)</span></span></div>
+	<div align="center"><span style="font-family: 'Calibri', serif;"><span style="font-size: large;"><strong>DHAARUS SALAAM MATRICULATION SCHOOL</strong></span></span></div>
+	<div align="center"><span style="font-family: 'Calibri', serif;"><span style="font-size: small;">(Managed by : Dhaarus Salaam Trust, Salem &ndash; 636 005)</span></span></div>
 	<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><span style="font-family: 'Calibri', serif;"><span style="font-size: small;">Ph: (0427) 2442018, </span></span><span style="font-family: 'Calibri', serif;"><span style="font-size: small;">+91 98942 50320 | E-mail: <a>dhaarussalaam1@gmail.com</a></span></span></span></span></div>
 	</td>
 	</tr>
@@ -72,8 +73,19 @@
 	<td width="334" class="rightBorder">
 	<div align="left">${Print.name}</div>
 	</td>
-	<td rowspan="8" width="170">
-	<div align="left">&nbsp;</div>
+	<td rowspan="8" width="170" height="250" valign="middle">
+	<div align="center">
+	<c:choose>
+    	<c:when test="${not empty PhotoId}">
+			<img src="/SDMS/GetFile?docId=${PhotoId}" alt="No Photo Available"/>    
+		</c:when>
+    	<c:otherwise>
+        	No Photo Available
+    	</c:otherwise>
+	</c:choose>
+	
+	
+	</div>
 	</td>
 	</tr>
 	<tr valign="top">
@@ -182,7 +194,7 @@
 	<td width="170">
 	</td>
 	</tr>
-	<tr valign="top">
+	<tr valign="top" height="100px">
 	<td colspan="2" width="135" class="rightBorder">
 	<div><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">ADDRESS</span></span></span></div>
 	</td>
@@ -222,13 +234,12 @@
 	<td width="170">
 	</td>
 	</tr>
-	<tr valign="top">
+	<tr valign="top" height="100px">
 	<td colspan="2" width="135" class="rightBorder">
 	<div><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">REMARKS</span></span></span></div>
 	</td>
 	<td width="334">
-	<div align="left">&nbsp;</div>
-	<div align="left">&nbsp;</div>
+	<div align="left">${Print.aadharNo}</div>
 	</td>
 	<td width="170">
 	</td>
@@ -240,10 +251,11 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		var studentId = "${Print.studentId}";
-		var genderObj = {"m":"male","f":"female"};
+		var genderObj = {"m":"Male","f":"Female"};
+		var gender = "${Print.gender}";
 		
 		if(studentId != ''){
-			$('#gender').html(genderObj["${Print.gender}"]);
+			$('#gender').html(genderObj[gender.toLowerCase()]);
 			var admissionDate = new Date("${Print.admissionDate}");
 			var dob = new Date("${Print.dob}");
 			$('#admissionDate').html(admissionDate.toLocaleDateString('en-GB'));
