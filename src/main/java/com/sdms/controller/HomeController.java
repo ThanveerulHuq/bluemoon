@@ -119,7 +119,7 @@ public class HomeController {
 			return "redirect:Login";
 		}
 		StudentInfoModel studentModel = new StudentInfoModel();
-		System.out.println(studentId);
+//		System.out.println(studentId);
 		StudentsInfo studentsInfo=studentInfoRepo.findOne(studentId);
 		studentModel.setStudentId(studentId);
 		studentModel.setAadharNo(studentsInfo.getAadharNo());
@@ -154,7 +154,7 @@ public class HomeController {
 		studentModel.setFileNames(fileNames);
 		studentModel.setFileIds(fileIds);
 		request.setAttribute("StudentsInfo", studentModel);
-		return "Library/Home";
+		return "Library/AddStudent";
 	}
 	
 	@ResponseBody

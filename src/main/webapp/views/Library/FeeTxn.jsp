@@ -70,7 +70,17 @@
 					<div class="col-md-3">
 						<select  class="form-control" id="studentName" ></select>	
 					</div>
-				</div>	
+						<label class="col-md-1 text-bigger"><span
+							class="pull-right">Class:</span> </label>
+						<div class="col-md-1">
+							<legend class="text-bigger" id="className"></legend>
+						</div>
+						<label class="col-md-1 text-bigger"><span
+							class="pull-right">Section:</span> </label>
+						<div class="col-md-1">
+							<legend class="text-bigger" id="section"></legend>
+						</div>
+					</div>	
 				</div>
 				<div class="form-group col-md-12">
 				
@@ -199,6 +209,8 @@
 		
 		function setupSaveFeeForm(data){
 			console.log(data);
+			$('#className').html(data.commonFee.classInfo.className);
+			$('#section').html(data.section);
 			$('#admissionIdFound').val(data.studentsInfo.admissionNo);
 			$('#studentName').val(data.studentsInfo.name);
 			$('#studentYearId').val(data.id);

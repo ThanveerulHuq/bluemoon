@@ -68,7 +68,7 @@ $('document').ready(
 		rowNum: 10,
 		rowList: [10,25,50],
 		viewrecords: true,
-		height: 300,
+		height: 400,
 		width:$(".grid-items").width(),
 
 

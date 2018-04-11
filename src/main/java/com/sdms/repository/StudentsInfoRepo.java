@@ -13,7 +13,7 @@ public interface StudentsInfoRepo extends JpaRepository<StudentsInfo,Long>{
 	@Query("SELECT a FROM StudentsInfo a WHERE a.admissionNo = :admissionNo")
     public StudentsInfo getStudentByAdNo(@Param("admissionNo") Long admissionNo);
 	
-	@Query("SELECT a FROM StudentsInfo a WHERE a.name like %:q%")
+	@Query("SELECT a FROM StudentsInfo a WHERE a.name like %:q% and a.active='Y'")
 	public List<StudentsInfo> getstudentbyname(@Param("q")String q);
 	
 }

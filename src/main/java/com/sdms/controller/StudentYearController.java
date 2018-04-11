@@ -186,8 +186,8 @@ public class StudentYearController {
 	@ResponseBody
 	@RequestMapping(value = { "/CheckStdFrUnique" }, method = RequestMethod.GET)
 	public String CheckStdFrUnique(HttpServletRequest request,
-			HttpServletResponse response,@ModelAttribute("academicYear") Long academicYear,@ModelAttribute("admissionNo") Long admissionNo) {
-		StudentYear student= studentYearRepo.getStudentByAdNo(admissionNo, academicYear);	
+			HttpServletResponse response,@ModelAttribute("academicYear") Long academicYear,@ModelAttribute("studentId") Long studentId) {
+		StudentYear student= studentYearRepo.getStudentById(studentId, academicYear);	
 		if(student == null){
 			return "not exist";
 		}

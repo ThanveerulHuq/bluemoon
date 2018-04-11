@@ -187,11 +187,14 @@
 		}}
 		  });
 		$('#admissionNo').on('select2:select', function (e) {
+			var studentId='${StudentsYear.studentId}';
+			var newId=e.params.data.id;
+			var academicYear=$('#academicYear').val();
+			if(studentId != newId){
+				checkUnique(newId,academicYear);
+			}
 			$('#StudentId').val(e.params.data.id);
 			});
-// 		if('${studentName}''!=''){
-// 			$('#admissionNo').val('${studentName}'+','+'${fatherName}')
-// 		}
 	});
 
 	
@@ -284,13 +287,10 @@
 		}
 		
 		
-		function checkforUnique(){
-			var academicYr= $('#academicYear').val();
-			var admissionNo= $('#admissionNo').val();
-			var oldAdmissionNo= "${StudentsYear.admissionNo}";
-			if(admissionNo != oldAdmissionNo){
+		
+		function checkUnique(id,year){
 			$.ajax({
-				url: '/SDMS/CheckStdFrUnique?academicYear='+academicYr+'&&admissionNo='+admissionNo,
+				url: '/SDMS/CheckStdFrUnique?academicYear='+year+'&&studentId='+id,
 				method: 'GET',
 				success: function(res){
 				if(res == "exist"){
@@ -304,10 +304,33 @@
 				showalert('Server error please contact Admin','error');
 				}
 				});
-			}else{
-				$('#btn_submit').removeAttr( "disabled" );
-			}
 		}
+		
+		
+// 		function checkforUnique(){
+// 			var academicYr= $('#academicYear').val();
+// 			var admissionNo= $('#admissionNo').val();
+// 			var oldAdmissionNo= "${StudentsYear.admissionNo}";
+// 			if(admissionNo != oldAdmissionNo){
+// 			$.ajax({
+// 				url: '/SDMS/CheckStdFrUnique?academicYear='+academicYr+'&&admissionNo='+admissionNo,
+// 				method: 'GET',
+// 				success: function(res){
+// 				if(res == "exist"){
+// 				$('#btn_submit').attr('disabled','true');
+// 				showalert('This student already exist for the current academic year','error');
+// 				} else {
+// 				$('#btn_submit').removeAttr( "disabled" );
+// 				}
+// 				},
+// 				error: function(){
+// 				showalert('Server error please contact Admin','error');
+// 				}
+// 				});
+// 			}else{
+// 				$('#btn_submit').removeAttr( "disabled" );
+// 			}
+// 		}
 	
 	</script>
 </body>
