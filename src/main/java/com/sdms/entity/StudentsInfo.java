@@ -79,7 +79,7 @@ public class StudentsInfo {
 	@Column(name="nationality",nullable=false,length=15)
 	private String nationality;
 	
-	@Column(name="remarks",nullable=false,length=100)
+	@Column(name="remarks",nullable=false,length=1000)
 	private String remarks;
 
 

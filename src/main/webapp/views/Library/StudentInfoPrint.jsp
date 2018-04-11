@@ -77,7 +77,7 @@
 	<div align="center">
 	<c:choose>
     	<c:when test="${not empty PhotoId}">
-			<img src="/SDMS/GetFile?docId=${PhotoId}" alt="No Photo Available"/>    
+			<img src="/SDMS/GetFile?docId=${PhotoId}" alt="No Photo Available" width="170" height="230"/>    
 		</c:when>
     	<c:otherwise>
         	No Photo Available
@@ -239,7 +239,7 @@
 	<div><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">REMARKS</span></span></span></div>
 	</td>
 	<td width="334">
-	<div align="left">${Print.aadharNo}</div>
+	<div align="left">${Print.remarks}</div>
 	</td>
 	<td width="170">
 	</td>
