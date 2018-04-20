@@ -303,7 +303,7 @@
 		if('${StudentsInfo.admissionNo}' == ''){
 			$('#btn_submit').prop('disabled','true');
 		}else{
-			$('#admissionNo').prop('disabled','true');
+// 			$('#admissionNo').prop('disabled','true');
 		}
 		if($('legend[name=profile_photo]').text()){
 			$('#addPhoto').hide();
