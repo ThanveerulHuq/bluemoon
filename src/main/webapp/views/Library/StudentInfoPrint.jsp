@@ -73,7 +73,7 @@
 	<td width="334" class="rightBorder">
 	<div align="left">${Print.name}</div>
 	</td>
-	<td rowspan="8" width="170" height="250" valign="middle">
+	<td rowspan="11" width="170" height="250" valign="middle">
 	<div align="center">
 	<c:choose>
     	<c:when test="${not empty PhotoId}">
@@ -86,6 +86,30 @@
 	
 	
 	</div>
+	</td>
+	</tr>
+	<tr valign="top">
+	<td colspan="2" width="135" class="rightBorder">
+	<div><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">ACADEMIC YEAR</span></span></span></div>
+	</td>
+	<td width="334" class="rightBorder">
+	<div align="left"></div>
+	</td>
+	</tr>
+	<tr valign="top">
+	<td colspan="2" width="135" class="rightBorder">
+	<div><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">CLASS</span></span></span></div>
+	</td>
+	<td width="334" class="rightBorder">
+	<div align="left"></div>
+	</td>
+	</tr>
+		<tr valign="top">
+	<td colspan="2" width="135" class="rightBorder">
+	<div><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">SECTION</span></span></span></div>
+	</td>
+	<td width="334" class="rightBorder">
+	<div align="left"></div>
 	</td>
 	</tr>
 	<tr valign="top">
