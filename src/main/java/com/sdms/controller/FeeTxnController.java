@@ -107,7 +107,7 @@ public class FeeTxnController {
 	@RequestMapping(value={"/RePrintReceipt"},method = RequestMethod.GET)
 	public String RePrintReceipt( HttpServletRequest request, HttpServletResponse response,@ModelAttribute("id") Long id) {
 		request.setAttribute("Print", feeTxnRepo.findOne(id));
-		return "Library/FeeTxnPrint";
+		return "Library/FeeRePrint";
 	}
 
 	

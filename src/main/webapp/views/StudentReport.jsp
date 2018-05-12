@@ -12,12 +12,13 @@
 
 <script src="<%=request.getContextPath()%>/resources/scripts/gridController.js" type="text/javascript"></script> 
 <link href="<%=request.getContextPath()%>/resources/styles/main.css" rel='stylesheet' type='text/css'/>
+<script type="text/javascript" language="javascript" src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
 <title>Fee Pending Report</title>
 </head>
 <body>
 <c:import url="/views/shared/header.jsp"></c:import>
 <div class="mtop-50">
-		<div class="row">
+		<div class="row col-md-12">
 		<div class="col-md-4">
 				<div class="col-md-5 mtop-35 mleft-30">
 					<select name="academicYear" class="form-control" id="academicYear"
@@ -29,7 +30,7 @@
 				</div>
 				</div>
 			<div class="mtop-20 col-md-4">
-				<h2 class="mleft-20">Fee Pending Report</h2>
+				<h2 class="col-md-offset-2">Fee Pending Report</h2>
 			</div>
 		</div>
 
@@ -110,17 +111,13 @@ colModel:[
 {name:'studentsInfo.gender',index:'studentsInfo.gender', width:100,align:"center",searchoptions: { sopt: ['eq', 'ne']},formatter:formatGender},
 {name:'studentsInfo.admissionNo',index:'studentsInfo.admissionNo', width:180, align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 {name:'total',index:'section', width:200,align:"center", searchoptions: { sopt: ['lt','gt']}},
-{name:'paidFee.schoolFee',index:'paidFee.schoolFee', width:200,align:"center", searchoptions: { sopt: ['eq','lt','gt']},formatter:totalBalance},
-{name:'paidFee.schoolFee',index:'paidFee.schoolFee', width:200,align:"center", searchoptions: { sopt: ['eq','lt','gt']},formatter:tutionBalance},
-{name:'paidFee.schoolFee',index:'paidFee.schoolFee', width:200,align:"center", searchoptions: { sopt: ['eq','lt','gt']},formatter:bookBalance},
-{name:'paidFee.schoolFee',index:'paidFee.schoolFee', width:200,align:"center", searchoptions: { sopt: ['eq','lt','gt']},formatter:islamicBalance},
-{name:'paidFee.schoolFee',index:'paidFee.schoolFee', width:200,align:"center", searchoptions: { sopt: ['eq','lt','gt']},formatter:uniformBalance},
-{name:'paidFee.schoolFee',index:'paid', width:200,align:"center", searchoptions: { sopt: ['eq','lt','gt']},formatter:vanBalance}
-// {name:'studentsInfo.fatherName',index:'studentsInfo.fatherName', width:180,align:"center",sorttype:"string", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
-// {name:'studentsInfo.emisNo',index:'studentsInfo.emisNo', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
-// {name:'scholorship',index:'scholorship', width:200,align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
+{name:'commonFee',index:'commonFee', width:200,align:"center", searchoptions: { sopt: ['eq','lt','gt']},formatter:totalBalance},
+{name:'paidFee',index:'paidFee', width:200,align:"center", searchoptions: { sopt: ['eq','lt','gt']},formatter:tutionBalance},
+{name:'paidFee.bookFee',index:'paidFee.bookFee', width:200,align:"center", searchoptions: { sopt: ['eq','lt','gt']},formatter:bookBalance},
+{name:'islamicStudies',index:'islamicStudies', width:200,align:"center", searchoptions: { sopt: ['eq','lt','gt']},formatter:islamicBalance},
+{name:'uniformFee',index:'uniformFee', width:200,align:"center", searchoptions: { sopt: ['eq','lt','gt']},formatter:uniformBalance},
+{name:'vanFee',index:'vanFee', width:200,align:"center", searchoptions: { sopt: ['eq','lt','gt']},formatter:vanBalance}
 ],
-
 search:true,
 pager: '#Pager',
 pageable: true,
@@ -179,7 +176,7 @@ onClickButton : function() {
 position : "last"
 }).navSeparatorAdd('#Pager');
 jQuery(
-'<td dir="ltr"><div class="ui-pg-div"><select class="" id="ddlExportData" name="ddlExportData" style="width:90px;"><option value="1" selected="selected" >CSV</option><option value="2">Excel</option><option value="3" >OpenOffice</option></select></div></td>')
+'<td dir="ltr"><div class="ui-pg-div"><select class="" id="ddlExportData" name="ddlExportData" style="width:90px;"><option value="1" selected="selected" >CSV</option><option value="2">Excel</option></select></div></td>')
 .insertBefore('#btnUserExport');
 //Export data code
 jQuery("#btnUserExport").click(function() {
@@ -203,10 +200,44 @@ if (id == '#Grid') {
 //console.log("inside first if");
 var docType = $("#ddlExportData").val();
 }
-if (docType == "1")
-JSONToFileConvertor(obj, "csv", 1, Headerlabel, id);
-else if (docType == "2")
-JSONToFileConvertor(obj, "xls", 1, Headerlabel, id);
+if (docType == "1"){
+// JSONToFileConvertor(obj, "csv", 1, Headerlabel, id);
+let options = {
+  separator: ",",
+  separatorReplace : " ",
+  quote : '"',
+  escquote : '"',
+  newLine : "\r\n",
+  replaceNewLine : " ",
+  includeCaption : true,
+  includeLabels : true,
+  includeGroupHeader : true,
+  includeFooter: true,
+  fileName : "FeePendingReport.csv",
+  mimetype : "text/csv;charset=utf-8",
+  returnAsString : false
+};
+$('#Grid').jqGrid('exportToCsv', options);
+}
+else if (docType == "2"){
+	let options = {
+			  separator: ",",
+			  separatorReplace : " ",
+			  quote : '"',
+			  escquote : '"',
+			  newLine : "\r\n",
+			  replaceNewLine : " ",
+			  includeCaption : true,
+			  includeLabels : true,
+			  includeGroupHeader : true,
+			  includeFooter: true,
+			  fileName : "FeePendingReport.xls",
+			  mimetype : "text/csv;charset=utf-8",
+			  returnAsString : false
+			};
+			$('#Grid').jqGrid('exportToCsv', options);	
+}
+// JSONToFileConvertor(obj, "xls", 1, Headerlabel, id);
 else
 JSONToFileConvertor(obj, "ods", 1, Headerlabel, id);
 data = null;

@@ -44,7 +44,7 @@ var grid=$("#Grid");
 grid.jqGrid({
 url:'GetFeeReport',
 
-colNames:['Admission No', 'Student Name', 'Academic Year','Class','Section','Fee Amount', 'Total Amount Paid','Payment Date','School Fee','Book Fee','Islamic Studies Fee','Uniform Fee','Van Fee'],
+colNames:['Admission No', 'Student Name', 'Academic Year','Class','Section','Fee Amount', 'Total Amount Paid','Payment Date','School Fee','Book Fee','Islamic Studies Fee','Uniform Fee','Van Fee','Reprint'],
 colModel:[
 {name:'studentYear.studentsInfo.admissionNo',index:'studentYear.studentsInfo.admissionNo', width:180,align:"center", sorttype:"int",searchoptions: { sopt: ['cn','bw','eq', 'ne']}},
 {name:'studentYear.studentsInfo.name',index:'studentYear.studentsInfo.name', width:200, align:"center", searchoptions: { sopt: ['cn','bw','cn','bw','eq', 'ew']}},
@@ -59,6 +59,7 @@ colModel:[
 {name:'islamicStudies',index:'islamicStudies', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 {name:'uniformFee',index:'uniformFee', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 {name:'vanFee',index:'vanFee', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
+{name:'id',index:'id', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}, formatter:formatPrint}
 ],
 
 search:true,
@@ -302,6 +303,10 @@ function formatDate(paymentdate){
 	var date=new Date(paymentdate);
 	return date.getDate()+ '/'+ (date.getMonth()+1) + '/'+date.getFullYear();
 	
+}
+function formatPrint (cell,option,row){
+	
+	return "<a href='/SDMS/RePrintReceipt?id="+cell+"' ><span class='glyphicon glyphicon-print'></span></a>"
 }
 </script>
 

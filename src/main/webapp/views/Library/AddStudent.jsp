@@ -74,7 +74,7 @@
 						Number:</span> </label>
 				<div class="col-md-3">
 					<form:input path="emisNo" class="form-control" type="number"
-						required="true" maxlength="16"
+						required="true" maxlength="20"
 						oninput="javascript: if (this.value.length > this.maxLength) showalert('length should not be more than'+this.maxLength,'error');this.value = this.value.slice(0, this.maxLength);" />
 				</div>
 			</div>
