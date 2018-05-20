@@ -28,11 +28,19 @@ public class CommonFee {
 	
 	@Column(name="book_fee",nullable=false,length=15)
 	private Long bookFee;
+	
+	@Column(name="uniform_fee",nullable=false,length=15)
+	private Long uniformFee;
 
 
 	@ManyToOne 
 	@JoinColumn(name="academic_year")
 	private AcademicYear academicYear;
+	
+	
+	@ManyToOne 
+	@JoinColumn(name="area_info")
+	private AreaInfo areaInfo;
 
 	public Long getId() {
 		return id;
@@ -72,6 +80,22 @@ public class CommonFee {
 
 	public void setBookFee(Long bookFee) {
 		this.bookFee = bookFee;
+	}
+
+	public AreaInfo getAreaInfo() {
+		return areaInfo;
+	}
+
+	public void setAreaInfo(AreaInfo areaInfo) {
+		this.areaInfo = areaInfo;
+	}
+
+	public Long getUniformFee() {
+		return uniformFee;
+	}
+
+	public void setUniformFee(Long uniformFee) {
+		this.uniformFee = uniformFee;
 	}
 
 }

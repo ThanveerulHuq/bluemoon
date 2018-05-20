@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -85,7 +87,9 @@ public class StudentsInfo {
 	@Column(name="remarks",nullable=false,length=1000)
 	private String remarks;
 
-
+	@ManyToOne 
+	@JoinColumn(name="area_info")
+	private AreaInfo areaInfo;
 
 	public Long getStudentId() {
 		return studentId;
@@ -262,6 +266,14 @@ public class StudentsInfo {
 
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
+	}
+
+	public AreaInfo getAreaInfo() {
+		return areaInfo;
+	}
+
+	public void setAreaInfo(AreaInfo areaInfo) {
+		this.areaInfo = areaInfo;
 	}
 	
 	
