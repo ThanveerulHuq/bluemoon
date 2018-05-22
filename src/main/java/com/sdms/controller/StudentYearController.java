@@ -77,7 +77,7 @@ public class StudentYearController {
 		studentsYearModel.setAcademicYear(studentYear.getCommonFee().getAcademicYear());
 		studentsYearModel.setAdmissionNo(studentYear.getStudentsInfo().getAdmissionNo());
 		studentsYearModel.setSection(studentYear.getSection());
-		studentsYearModel.setVan_fee(studentYear.getVanFee());
+//		studentsYearModel.setVan_fee(studentYear.getVanFee());
 //		studentsYearModel.setBook_fee(studentYear.getBookFee());
 		studentsYearModel.setUniform_fee(studentYear.getUniformFee());
 		studentsYearModel.setIslamic_studies(studentYear.getIslamicStudies());
@@ -110,7 +110,7 @@ public class StudentYearController {
 		studentYear.setStudentsInfo(studentsInfo);
 		studentYear.setCommonFee(commonFee);
 		studentYear.setSection(studentYearModel.getSection());
-		studentYear.setVanFee(studentYearModel.getVan_fee());
+//		studentYear.setVanFee(studentYearModel.getVan_fee());
 		studentYear.setScholorship(studentYearModel.getScholorship());
 //		studentYear.setBookFee(studentYearModel.getBook_fee());
 		studentYear.setUniformFee(studentYearModel.getUniform_fee());
