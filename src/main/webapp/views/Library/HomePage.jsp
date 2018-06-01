@@ -175,6 +175,32 @@
             </div>
             </a>
             <!-- ./Team member -->
+            <!-- Team member -->
+             <a href="/SDMS/VanFee">
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p><img class=" img-fluid" src="<%=request.getContextPath()%>/resources/images/school_bus_ico.png" alt="card image"></p>
+                                    <h4 class="card-title">Set Van Fee</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <h4 class="card-title">Set Van Fee</h4>
+                                    <p class="card-text mtop-20">Set van route and define van fee for the routes</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </a>
+            <!-- ./Team member -->
         </section>
 		
 	
