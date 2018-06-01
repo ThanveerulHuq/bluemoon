@@ -177,6 +177,17 @@
 			</div>
 		</div>
 		<div class="form-group col-md-12">
+			<label class="col-md-2"><span class="pull-right">Area:</span> </label>
+			<div class="col-md-3">
+				<form:select path="area_info" class="form-control" id="area_info">
+				<option value="-1">---SELECT---</option>
+				<c:forEach var ="area" items="${AreaInfo}">
+					<option value="${area.id}">${area.area}</option>
+				</c:forEach>			
+				</form:select>
+			</div>
+		</div>
+		<div class="form-group col-md-12">
 			<label class="col-md-2"><span class="pull-right">Residential
 					Address:</span> </label>
 			<div class="col-md-3">
@@ -292,6 +303,7 @@
 		var adm_date= "${StudentsInfo.admissionDate}";
 		var gender="${StudentsInfo.gender}"
 		var community = "${StudentsInfo.community}";
+		var areaInfo = "${StudentsInfo.area_info}";
 		var active="${StudentsInfo.active}"
 		document.getElementById("dob").valueAsDate = formatDate(dob);
 		$("admissionDate").val(formatDate(adm_date));
@@ -299,6 +311,7 @@
 			$('#gender').val(gender);
 			$('#active').val(active);
 			$('#community').val(community);
+			$('#area_info').val(areaInfo);
 		}
 		if('${StudentsInfo.admissionNo}' == ''){
 			$('#btn_submit').prop('disabled','true');
@@ -345,6 +358,11 @@
 		if($('#community').val() == '-1' ){
 			event.preventDefault();
 		showalert('please select a valid community','error');
+		return false;
+		}
+		if($('#area_info').val() == '-1' ){
+			event.preventDefault();
+		showalert('please select a valid Area','error');
 		return false;
 		}
 		$('#admissionNo').removeAttr('disabled');

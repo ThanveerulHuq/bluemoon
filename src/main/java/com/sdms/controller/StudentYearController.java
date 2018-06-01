@@ -80,6 +80,7 @@ public class StudentYearController {
 //		studentsYearModel.setVan_fee(studentYear.getVanFee());
 //		studentsYearModel.setBook_fee(studentYear.getBookFee());
 		studentsYearModel.setUniform_fee(studentYear.getUniformFee());
+		studentsYearModel.setExtra_fee(studentYear.getExtraFee());
 		studentsYearModel.setIslamic_studies(studentYear.getIslamicStudies());
 		studentsYearModel.setScholorship(studentYear.getScholorship());
 		
@@ -114,6 +115,7 @@ public class StudentYearController {
 		studentYear.setScholorship(studentYearModel.getScholorship());
 //		studentYear.setBookFee(studentYearModel.getBook_fee());
 		studentYear.setUniformFee(studentYearModel.getUniform_fee());
+		studentYear.setExtraFee(studentYearModel.getExtra_fee());
 		studentYear.setIslamicStudies(studentYearModel.getIslamic_studies());
 		Long total=getTotal(studentYearModel,commonFee.getSchoolFee(),commonFee.getBookFee());
 		studentYear.setTotal(total);
@@ -127,6 +129,7 @@ public class StudentYearController {
 			paidFee.setIslamicStudies((long) 0);
 			paidFee.setUniformFee((long) 0);
 			paidFee.setSchoolFee((long) 0);
+			paidFee.setExtraFee((long) 0);
 			PaidFee paidFeenew = paidFeeRepo.save(paidFee);
 			System.out.println("paidfee id"+paidFeenew.getId().toString());
 			studentYear.setPaidFee(paidFeenew);

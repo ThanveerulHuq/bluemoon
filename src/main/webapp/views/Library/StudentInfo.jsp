@@ -34,7 +34,7 @@ function () {
 var grid=$("#Grid");
 grid.jqGrid({
 url:'GetStudentInfo',
-colNames:['Edit','name', 'gender', 'DOB','Age','Father Name','Mother Name','Community','Mobile No','Mobile No2','Aadhar No','Admission No','Admission Date','EMIS No','Previous School','Active Status','Print'],
+colNames:['Edit','Name', 'Gender', 'DOB','Age','Father Name','Mother Name','Community','Mobile No','Mobile No2','Area','Aadhar No','Admission No','Admission Date','EMIS No','Previous School','Active Status','Print'],
 colModel:[
 {name:'studentId',index:'studentId', width:60,align:"center", sorttype:"int",search: false,formatter:formatEdit},
 {name:'name',index:'name', width:200, align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
@@ -46,6 +46,7 @@ colModel:[
 {name:'community',index:'community', width:180, align:"center", formatter:"string", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 {name:'mobileNo1',index:'mobileNo1', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 {name:'mobileNo2',index:'mobileNo2', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
+{name:'areaInfo.area',index:'areaInfo', width:180,align:"center",sorttype:"srting", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 {name:'aadharNo',index:'aadharNo', width:200,align:"center",sorttype:"int" , searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 {name:'admissionNo',index:'admissionNo', width:180, align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 {name:'admissionDate',index:'admissionDate', width:180,align:"center",sorttype:"date",formatter:dobFormatter, searchoptions: { sopt: ['cn','bw','eq', 'ew']}},

@@ -129,10 +129,15 @@
 		</div>
 
 		<div class="form-group col-md-12">
+			<label class="col-md-2"><span class="pull-right">Extra Fee:</span> </label>
+			<div class="col-md-3">
+				<form:input path="extra_fee" name="extra_fee" class="form-control feeinput" type="number" required="true" />
+			</div>
+			<div class="row">
 			<label class="col-md-2"><span class="pull-right">Total Fee:</span> </label>
 			<div class="col-md-3">
 				<input id="total" name="scholorship" class="form-control" disabled="true"/>
-			</div>
+			</div></div>
 		</div>
 		<div class="col-md-10">
 			<div class="pull-right">

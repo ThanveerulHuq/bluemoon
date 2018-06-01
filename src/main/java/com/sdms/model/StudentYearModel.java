@@ -21,6 +21,8 @@ public class StudentYearModel {
 	
 	private Long van_fee;
 	
+	private Long extra_fee;
+	
 //	private Long book_fee;
 	
 	private Long uniform_fee;
@@ -115,6 +117,14 @@ public class StudentYearModel {
 
 	public void setStudentYearId(Long studentYearId) {
 		this.studentYearId = studentYearId;
+	}
+
+	public Long getExtra_fee() {
+		return extra_fee;
+	}
+
+	public void setExtra_fee(Long extra_fee) {
+		this.extra_fee = extra_fee;
 	}
 	
 }

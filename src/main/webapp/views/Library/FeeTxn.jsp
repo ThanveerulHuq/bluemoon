@@ -129,6 +129,9 @@
 			<tr><td>VAN FEE</td><td><p id="tot_van"></p></td><td><p id="bal_van"></p></td><td><form:input path="vanFee" id="vanFee" class="form-control fee-input" type="number"
 						required="true" /></td>
 			</tr>
+			<tr><td>EXTRA FEE</td><td><p id="tot_extra"></p></td><td><p id="bal_extra"></p></td><td><form:input path="extraFee" id="extraFee" class="form-control fee-input" type="number"
+						required="true" /></td>
+			</tr>
 			<tr><td>(-)SCHOLORSHIP</td><td colspan=2><p id="scholarship"></p></td><td></td>
 			</tr>
 			<tr><td>TOTAL</td><td><p id="total_fee"></p></td><td><p id="tot_balance"></p></td><td><form:input path="amountPaid" id="tot_paid" class="form-control" disabled="true"/></td>
@@ -224,6 +227,8 @@
 			$('#bal_islamic').text(data.islamicStudies-data.paidFee.islamicStudies);
 			$('#tot_van').text(data.vanFee);
 			$('#bal_van').text(data.vanFee-data.paidFee.vanFee);
+			$('#tot_extra').text(data.extraFee);
+			$('#bal_extra').text(data.extraFee-data.paidFee.extrafee);
 			$('#scholarship').text(data.scholorship);
 			$('#total_fee').text(data.total);
 			paidfee=data.paidFee.schoolFee+data.paidFee.bookFee+data.paidFee.uniformFee+data.paidFee.islamicStudies+data.paidFee.vanFee;
@@ -245,7 +250,11 @@
 	}
 	
 	function validateForm(){
-		$('#tot_paid').removeAttr('disabled');
+		if($('#tot_paid').val() == ''){
+			event.preventDefault();
+		} else {
+			$('#tot_paid').removeAttr('disabled');
+		}
 	}
 	
 	function clearInput(){

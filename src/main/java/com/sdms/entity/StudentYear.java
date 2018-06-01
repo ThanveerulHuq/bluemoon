@@ -41,7 +41,17 @@ public class StudentYear {
 	@JoinColumn(name="van_fee")
 	private VanFee vanFee;
 	
+	@Column(name="extra_fee")
+	private Long extraFee;
 	
+	public Long getExtraFee() {
+		return extraFee;
+	}
+
+	public void setExtraFee(Long extraFee) {
+		this.extraFee = extraFee;
+	}
+
 	@Column(name="scholorship",nullable=false,length=15)
 	private Long scholorship;
 	

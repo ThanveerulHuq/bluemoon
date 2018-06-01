@@ -58,6 +58,7 @@ public class FeeTxnModel {
 	
 	private Long vanFee;
 	
+	private Long extraFee;	
 	
 	private Long amountPaid;
 	
@@ -86,6 +87,14 @@ public class FeeTxnModel {
 
 	public void setStudentYearId(Long studentYearId) {
 		this.studentYearId = studentYearId;
+	}
+
+	public Long getExtraFee() {
+		return extraFee;
+	}
+
+	public void setExtraFee(Long extraFee) {
+		this.extraFee = extraFee;
 	}
 
 }

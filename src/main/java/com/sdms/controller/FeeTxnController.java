@@ -60,6 +60,7 @@ public class FeeTxnController {
 		feeTxn.setIslamicStudies(feeTxnModel.getIslamicStudies());
 		feeTxn.setUniformFee(feeTxnModel.getUniformFee());
 		feeTxn.setVanFee(feeTxnModel.getVanFee());
+		feeTxn.setExtraFee(feeTxnModel.getExtraFee());
 		feeTxn.setAmountPaid(feeTxnModel.getAmountPaid());
 		feeTxn.setPaymentDate(new Timestamp(feeTxnModel.getPaymentDate()));
 		FeeTxn feeTxnSaved = feeTxnRepo.save(feeTxn);

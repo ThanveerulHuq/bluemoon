@@ -30,6 +30,17 @@ public class PaidFee {
 	
 	@Column(name="van_fee",nullable=false,length=15)
 	private Long vanFee;
+	
+	@Column(name="extra_fee",nullable=false,length=15)
+	private Long extraFee;
+
+	public Long getExtraFee() {
+		return extraFee;
+	}
+
+	public void setExtraFee(Long extraFee) {
+		this.extraFee = extraFee;
+	}
 
 	public Long getId() {
 		return id;

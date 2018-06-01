@@ -230,6 +230,16 @@
 	</tr>
 	<tr valign="top">
 	<td colspan="2" width="135" class="rightBorder">
+	<div><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">Area</span></span></span></div>
+	</td>
+	<td width="334">
+	<div align="left">${Print.areaInfo}</div>
+	</td>
+	<td width="170">
+	</td>
+	</tr>
+	<tr valign="top">
+	<td colspan="2" width="135" class="rightBorder">
 	<div><span style="color: #000000;"><span style="font-family: Calibri;"><span style="font-size: small;">MOBILE NUMBER1</span></span></span></div>
 	</td>
 	<td width="334">

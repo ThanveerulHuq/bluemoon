@@ -23,9 +23,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sdms.entity.AreaInfo;
 import com.sdms.entity.DocInfo;
 import com.sdms.entity.StudentsInfo;
 import com.sdms.model.StudentInfoModel;
+import com.sdms.repository.AreaInfoRepo;
 import com.sdms.repository.DocInfoRepo;
 import com.sdms.repository.StudentsInfoRepo;
 
@@ -38,6 +40,9 @@ public class HomeController {
 
 	@Autowired
 	DocInfoRepo docInfoRepo;
+	
+	@Autowired
+	AreaInfoRepo areaInfoRepo;
 	
 //	@Autowired 
 //	HttpSession httpSession;
@@ -58,6 +63,8 @@ public class HomeController {
 		}
 		StudentInfoModel studentsInfo = new StudentInfoModel();
 		request.setAttribute("StudentsInfo", studentsInfo);
+		List<AreaInfo> areaInfo = areaInfoRepo.findAll();
+		request.setAttribute("AreaInfo", areaInfo);
 		return "Library/AddStudent";
 	}
 
@@ -85,6 +92,8 @@ public class HomeController {
 		studentInfo.setAdmissionDate(new Timestamp(studentmodel
 				.getAdmissionDate().getTime()));
 		studentInfo.setActive(studentmodel.getActive());
+		AreaInfo areaInfo = areaInfoRepo.findOne(studentmodel.getArea_info());
+		studentInfo.setAreaInfo(areaInfo);
 		studentInfo.setReligion(studentmodel.getReligion());
 		studentInfo.setCaste(studentmodel.getCaste());
 		studentInfo.setNationality(studentmodel.getNationality());
@@ -136,6 +145,8 @@ public class HomeController {
 		studentModel.setFatherName(studentsInfo.getFatherName());
 		studentModel.setMotherName(studentsInfo.getMotherName());
 		studentModel.setAddress(studentsInfo.getAddress());
+		AreaInfo areaInfo = studentsInfo.getAreaInfo();
+		studentModel.setArea_info(areaInfo.getId());
 		studentModel.setPreviousSchool(studentsInfo.getPreviousSchool());
 		studentModel.setAdmissionDate(new Date(studentsInfo.getAdmissionDate().getTime()));
 		studentModel.setActive(studentsInfo.getActive());
@@ -154,6 +165,8 @@ public class HomeController {
 		studentModel.setFileNames(fileNames);
 		studentModel.setFileIds(fileIds);
 		request.setAttribute("StudentsInfo", studentModel);
+		List<AreaInfo> areaInfoList = areaInfoRepo.findAll();
+		request.setAttribute("AreaInfo", areaInfoList);
 		return "Library/AddStudent";
 	}
 	

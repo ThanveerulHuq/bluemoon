@@ -189,6 +189,20 @@
 		</tr>
 		<tr valign="top">
 		<td colspan="2" width="26%" style="border: 1px solid">
+		<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">EXTRA FEE</span></span></div>
+		</td>
+		<td width="26%" style="border: 1px solid">
+		<div align="center">${Print.studentYear.extraFee}</div>
+		</td>
+		<td colspan="2" width="24%" style="border: 1px solid">
+		<div align="center">${Print.extraFee}</div>
+		</td>
+		<td width="24%">
+		<div align="center">${Print.studentYear.extraFee - (Print.extraFee + Print.studentYear.paidFee.extraFee)}</div>
+		</td>
+		</tr>
+		<tr valign="top">
+		<td colspan="2" width="26%" style="border: 1px solid">
 		<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">SCHOLARSHIP(-)</span></span></div>
 		</td>
 		<td width="26%" style="border: 1px solid">

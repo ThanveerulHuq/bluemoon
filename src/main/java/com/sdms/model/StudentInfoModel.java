@@ -51,6 +51,8 @@ public class StudentInfoModel {
 	
 	private String nationality;
 	
+	private Long area_info;
+	
 	public String getReligion() {
 		return religion;
 	}
@@ -257,6 +259,14 @@ public class StudentInfoModel {
 
 	public void setFileIds(List<Long> fileIds) {
 		this.fileIds = fileIds;
+	}
+
+	public Long getArea_info() {
+		return area_info;
+	}
+
+	public void setArea_info(Long area_info) {
+		this.area_info = area_info;
 	}
 
 }
