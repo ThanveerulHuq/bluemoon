@@ -37,11 +37,10 @@ public class StudentYear {
 	@Column(name="islamic_studies",nullable=false,length=15)
 	private Long islamicStudies;
 	
-	@ManyToOne 
-	@JoinColumn(name="van_fee")
-	private VanFee vanFee;
+	@Column(name="van_fee",nullable=false,length=15)
+	private Long vanFee;
 	
-	@Column(name="extra_fee")
+	@Column(name="extra_fee",nullable=false,length=15)
 	private Long extraFee;
 	
 	public Long getExtraFee() {
@@ -112,14 +111,9 @@ public class StudentYear {
 		this.islamicStudies = islamicStudies;
 	}
 
-	public VanFee getVanFee() {
-		return vanFee;
-	}
-
-	public void setVanFee(VanFee vanFee) {
+	public void setVanFee(Long vanFee) {
 		this.vanFee = vanFee;
 	}
-
 	public Long getScholorship() {
 		return scholorship;
 	}

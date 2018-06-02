@@ -36,7 +36,7 @@ public class TutionFeeController {
 	CommonFeeRepo commonFeeRepo;
 	
 	@RequestMapping(value = { "/TutionFeeForm" }, method = RequestMethod.GET)
-	public String tutionFeeForm(HttpServletRequest request,
+	public String tutionFeeForm(HttpServletRequest request,@ModelAttribute("Area") Long areaId, 
 			HttpServletResponse response, HttpSession session) {
 		if(!SessionController.checkSession(request, response, session)) {
 			return "redirect:Login";
@@ -47,12 +47,13 @@ public class TutionFeeController {
 		request.setAttribute("academicYear", academicYear);
 		request.setAttribute("classes", classes);
 		request.setAttribute("CommonFee", commonFee);
+		request.setAttribute("areaId", areaId);
 		return "TutionFeeForm";
 	}
 	
 	@RequestMapping(value = { "/EditTutionFee" }, method = RequestMethod.GET)
 	public String editTutionFee(HttpServletRequest request,
-			HttpServletResponse response,@ModelAttribute("Feeid") Long Feeid, HttpSession session) {
+			HttpServletResponse response,@ModelAttribute("Feeid") Long Feeid,@ModelAttribute("Area") Long areaId, HttpSession session) {
 		if(!SessionController.checkSession(request, response, session)) {
 			return "redirect:Login";
 		}
@@ -62,6 +63,7 @@ public class TutionFeeController {
 		request.setAttribute("academicYear", academicYear);
 		request.setAttribute("classes", classes);
 		request.setAttribute("CommonFee", commonFee);
+		request.setAttribute("areaId", areaId);
 		return "TutionFeeForm";
 	}
 	
@@ -69,7 +71,6 @@ public class TutionFeeController {
 	@RequestMapping(value = { "/SetFee" }, method = RequestMethod.POST)
 	public String setFee(HttpServletRequest request,
 			HttpServletResponse response,@ModelAttribute("CommonFee") CommonFee commonFee) {
-		System.out.println(commonFee.getClassInfo().getClassId());
 		commonFeeRepo.save(commonFee);
 		return "redirect:/TutionFee";
 	}
@@ -88,9 +89,21 @@ public class TutionFeeController {
 	
 	@ResponseBody
 	@RequestMapping(value={"/getCommonFee"},method = RequestMethod.GET)
-	public List<CommonFee> getCommonFee(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("academicYear") Long academicYear) {
-		List<CommonFee> commonFee = commonFeeRepo.getFeeByYr(academicYear);;
+	public List<CommonFee> getCommonFee(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("academicYear") Long academicYear,@ModelAttribute("Area") Long areaId) {
+		List<CommonFee> commonFee = commonFeeRepo.getFeeByYr(academicYear,areaId);
 		return commonFee;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value={"/ValidateFee"},method = RequestMethod.GET)
+	public String validateFee(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("academicYear") Long academicYear,@ModelAttribute("classId") Long classId,@ModelAttribute("Area") Long areaId) {
+		CommonFee commonFee = commonFeeRepo.validateFee(academicYear,classId,areaId);
+		if(commonFee == null){
+			return "not exist";
+		}
+		else{
+			return "exist";
+		}
 	}
 	
 }

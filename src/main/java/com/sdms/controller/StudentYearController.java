@@ -20,6 +20,7 @@ import com.sdms.entity.CommonFee;
 import com.sdms.entity.PaidFee;
 import com.sdms.entity.StudentYear;
 import com.sdms.entity.StudentsInfo;
+import com.sdms.entity.VanFee;
 import com.sdms.model.StudentYearModel;
 import com.sdms.repository.AcademicYearRepo;
 import com.sdms.repository.ClassInfoRepo;
@@ -27,6 +28,7 @@ import com.sdms.repository.CommonFeeRepo;
 import com.sdms.repository.PaidFeeRepo;
 import com.sdms.repository.StudentYearRepo;
 import com.sdms.repository.StudentsInfoRepo;
+import com.sdms.repository.VanFeeRepo;
 
 @Controller
 public class StudentYearController {
@@ -48,6 +50,9 @@ public class StudentYearController {
 	
 	@Autowired
 	PaidFeeRepo paidFeeRepo;
+	
+	@Autowired
+	VanFeeRepo vanFeeRepo;
 
 	@RequestMapping(value = { "/StudentYear" }, method = RequestMethod.GET)
 	public String StudentYear(HttpServletRequest request,
@@ -58,8 +63,10 @@ public class StudentYearController {
 		StudentYearModel StudentsYear = new StudentYearModel();
 		List<AcademicYear> academicYear = academicYearRepo.findAll();
 		List<ClassInfo> classes = classInfoRepo.findAll();
-		request.setAttribute("academicYear", academicYear);
+		List<VanFee> vanFee= vanFeeRepo.findAll();
+ 		request.setAttribute("academicYear", academicYear);
 		request.setAttribute("classes", classes);
+		request.setAttribute("vanFees", vanFee);
 		request.setAttribute("StudentsYear", StudentsYear);
 		return "StudentYear/StudentYear";
 	}
@@ -86,8 +93,10 @@ public class StudentYearController {
 		
 		List<AcademicYear> academicYear = academicYearRepo.findAll();
 		List<ClassInfo> classes = classInfoRepo.findAll();
+		List<VanFee> vanFee= vanFeeRepo.findAll();
 		request.setAttribute("academicYear", academicYear);
 		request.setAttribute("classes", classes);
+		request.setAttribute("vanFees", vanFee);
 		request.setAttribute("StudentsYear", studentsYearModel);
 		request.setAttribute("studentName", studentYear.getStudentsInfo().getName()+",");
 		request.setAttribute("fatherName", studentYear.getStudentsInfo().getFatherName());
@@ -111,11 +120,10 @@ public class StudentYearController {
 		studentYear.setStudentsInfo(studentsInfo);
 		studentYear.setCommonFee(commonFee);
 		studentYear.setSection(studentYearModel.getSection());
-//		studentYear.setVanFee(studentYearModel.getVan_fee());
+		studentYear.setVanFee(studentYearModel.getVan_fee());
 		studentYear.setScholorship(studentYearModel.getScholorship());
 //		studentYear.setBookFee(studentYearModel.getBook_fee());
 		studentYear.setUniformFee(studentYearModel.getUniform_fee());
-		studentYear.setExtraFee(studentYearModel.getExtra_fee());
 		studentYear.setIslamicStudies(studentYearModel.getIslamic_studies());
 		Long total=getTotal(studentYearModel,commonFee.getSchoolFee(),commonFee.getBookFee());
 		studentYear.setTotal(total);
@@ -129,17 +137,17 @@ public class StudentYearController {
 			paidFee.setIslamicStudies((long) 0);
 			paidFee.setUniformFee((long) 0);
 			paidFee.setSchoolFee((long) 0);
-			paidFee.setExtraFee((long) 0);
 			PaidFee paidFeenew = paidFeeRepo.save(paidFee);
 			System.out.println("paidfee id"+paidFeenew.getId().toString());
 			studentYear.setPaidFee(paidFeenew);
 		}
 		studentYearRepo.save(studentYear);
 		return "redirect:/CurrentStudents";
+
 	}
 	private Long getTotal(StudentYearModel studentYearModel,Long schoolFee,Long BookFee) {
-//		+studentYearModel.getBook_fee()
-		Long total=schoolFee+BookFee+studentYearModel.getVan_fee()+studentYearModel.getUniform_fee()+studentYearModel.getIslamic_studies()-studentYearModel.getScholorship();
+//		Long total=schoolFee+BookFee+studentYearModel.getVan_fee()+studentYearModel.getUniform_fee()+studentYearModel.getIslamic_studies()-studentYearModel.getScholorship();
+		Long total=(long) 1000;
 		return total;
 	}
 
@@ -164,9 +172,9 @@ public class StudentYearController {
 	
 	@ResponseBody
 	@RequestMapping(value = { "/getCommonFeeByClass" }, method = RequestMethod.GET)
-	public CommonFee getCommonFeeByClass (@ModelAttribute("classId") Long classId,@ModelAttribute("academicYearId") Long academicYearId,
+	public CommonFee getCommonFeeByClass (@ModelAttribute("classId") Long classId,@ModelAttribute("academicYearId") Long academicYearId,@ModelAttribute("areaId") Long areaId,
 			HttpServletRequest request, HttpServletResponse response){
-		return commonFeeRepo.getFeeByClass(classId,academicYearId);
+		return commonFeeRepo.getFeeByClass(classId,academicYearId,areaId);
 	}
 	
 	@RequestMapping(value = { "/CurrentStudents" }, method = RequestMethod.GET)
