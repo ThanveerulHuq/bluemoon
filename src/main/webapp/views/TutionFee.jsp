@@ -180,7 +180,7 @@ height:590px;
 						</select>
 					</div>
 				</div>
-				<div class="col-md-3 padding-0" style="margin-left:-50px;">
+				<div class="col-md-3 padding-0" style="">
 					<h3 class="">School Fee By Class</h3>
 				</div>
 
@@ -190,7 +190,7 @@ height:590px;
 				</div>
 			</div>
 
-			<div class="mtop-20 col-md-8 col-md-offset-1">
+			<div class="mtop-20 col-md-10 col-md-offset-1">
 				<div class="grid-items">
 					<table class="gridContent" id="Grid"></table>
 					<div id="Pager"></div>
@@ -211,17 +211,17 @@ height:590px;
 						</select>
 					</div>
 				</div>
-				<div class="col-md-3 padding-0" style="margin-left:-50px;">
+				<div class="col-md-3 padding-0" style="">
 					<h3 class="">School Fee By Class</h3>
 				</div>
 
-				<div class="col-md-3 col-md-offset-1 mtop-15"
+				<div class="col-md-3 col-md-offset-2 mtop-15"
 					style="padding: 0px;">
 					<a class="btn btn-info" href="/SDMS/TutionFeeForm?Area=2">Add</a>
 				</div>
 			</div>
 			
-<div class="mtop-20 col-md-8 col-md-offset-1">
+<div class="mtop-20 col-md-10 col-md-offset-1">
 				<div class="grid-items">
 					<table class="gridContent" id="Grid1"></table>
 					<div id="Pager1"></div>
@@ -241,12 +241,13 @@ $('document').ready(
 		var grid=$(grid);
 		grid.jqGrid({
 		url:'getCommonFee?academicYear='+academicYear+'&Area='+area,
-		colNames:['Edit','Standard', 'SchoolFee','Uniform Fee'],
+		colNames:['Edit','Standard', 'Term Fee','Book Fee','Uniform Fee'],
 		colModel:[
 		{name:'id',index:'id', width:60,align:"center", sorttype:"int",search: false,formatter:formatEdit},
 		{name:'classInfo.className',index:'classInfo.className', width:200, align:"center"},
-		{name:'schoolFee',index:'schoolFee', width:250,align:"center"},
-		{name:'uniformFee',index:'uniformFee', width:240,align:"center"}
+		{name:'termFee',index:'termFee', width:230,align:"center"},
+		{name:'bookFee',index:'bookFee', width:230,align:"center"},
+		{name:'uniformFee',index:'uniformFee', width:220,align:"center"}
 		],
 
 		search:true,

@@ -61,8 +61,8 @@
 						id="studentYearId" />
 					<form:hidden path="StudentId" name="StudentId" id="StudentId" />
 					<form:hidden path="FeeId" name="FeeId" id="FeeId" />
-					<input id="areaId" style="display:none;"/>
-					<select class="form-control" id="classId" onchange="getFee()" >
+					<input id="areaId" style="display: none;" /> <select
+						class="form-control" id="classId" onchange="getFee()">
 						<option value="-1">---SELECT---</option>
 						<c:forEach items="${classes}" var="classInfo" varStatus="status">
 							<option value="${classInfo.classId}">${classInfo.className}</option>
@@ -84,80 +84,75 @@
 				</div>
 			</div>
 			<div class="form-group col-md-12">
+				<label class="col-md-2"><span class="pull-right">Van
+						Fee:</span> </label>
+				<div class="col-md-3">
+					<div class="panel panel-default">
+						<!--   <div class="panel-heading"><h3 class="panel-title"></div> -->
+						<div class="panel-body">
+							<div class="form-group">
+								<label for="Area">Area</label> <select class="form-control"
+									id="sel_vanFee">
+									<option value="-1">---SELECT---</option>
+									<c:forEach items="${vanFees}" var="vanFee" varStatus="status">
+										<option value="${vanFee.fee}">${vanFee.route}</option>
+									</c:forEach>
+
+								</select>
+							</div>
+							<div class="form-group">
+								<form:input path="van_fee" name="van_fee"
+									class="form-control mtop-10 feeinput" id="vanFee"
+									readonly="true" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<label class="col-md-2"><span class="pull-right">Uniform
+							Fee:</span> </label>
+					<div class="col-md-3">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<div class="form-group col-md-4 padding-0">
+									<label for="no_of_sets">No of Sets</label> <select
+										class="form-control" id="uniformCount">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<form:input path="book_uniform_fee" name="book_uniform_fee"
+										class="form-control mtop-10" id="uniformFee" readonly="true" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group col-md-12">
 				<label class="col-md-2"><span class="pull-right">Tution
 						Fee:</span> </label>
 				<div class="col-md-3">
-					<input id="tutionFee" class="form-control feeinput" disabled="true"
-						type="number" value="${tutionfee}" />
+					<form:input id="tutionFee" path="term_fee" name="term_fee" class="form-control feeinput" readonly="true" type="number" value="${tutionfee}" />
 				</div>
 				<div class="row">
-					<label class="col-md-2"><span class="pull-right">Book
+					<label class="col-md-2"><span class="pull-right">Book and Uniform
 							Fee:</span> </label>
 					<div class="col-md-3">
-						<input id="bookFee" class="form-control feeinput" type="number"
+						<form:input id="bookFee" class="form-control feeinput" type="number" name="book_uniform_fee" path="book_uniform_fee"
 							required="true" disabled="true" value="${bookfee}" />
 					</div>
 				</div>
 			</div>
-			<div class="form-group col-md-12">
-				<label class="col-md-2"><span class="pull-right">Van
-						Fee:</span> </label>
-
-
-				<div class="col-md-3">
-					<div class="panel panel-default">
-						<!--   <div class="panel-heading"><h3 class="panel-title"></div> -->
-						<div class="panel-body">
-								<div class="form-group">
-								 <label for="Area">Area</label>
-									<select class="form-control" id="sel_vanFee">
-										<option value="0">---SELECT---</option>
-										<c:forEach items="${vanFees}" var="vanFee" varStatus="status">
-											<option value="${vanFee.fee}">${vanFee.route}</option>
-										</c:forEach>
-
-									</select>
-								</div>
-								<div class="form-group">
-<!-- 								<label for="Fee">Fee</label> -->
-									<form:input path="van_fee" name="van_fee" class="form-control mtop-10 feeinput" id="vanFee" readonly="true" />
-								</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-				<label class="col-md-2"><span class="pull-right">Uniform
-						Fee:</span> </label>
-				<div class="col-md-3">
-					<div class="panel panel-default">
-						<!--   <div class="panel-heading"><h3 class="panel-title"></div> -->
-						<div class="panel-body">
-								<div class="form-group col-md-4 padding-0">
-								<label for="no_of_sets">No of Sets</label>
-									<select class="form-control" id="uniformCount">
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-									</select>
-								</div>
-								<div class="form-group">
-									<form:input path="uniform_fee" name="uniform_fee" class="form-control mtop-10 feeinput" id="uniformFee" readonly="true"  />
-								</div>
-						</div>
-					</div>
-				</div>
-		</div>
-			</div>
 		
-
 			<div class="form-group col-md-12">
-
-				<label class="col-md-2"><span class="pull-right">Islamic
-						Studies:</span> </label>
+				<label class="col-md-2"><span class="pull-right">Special
+						Fee:</span> </label>
 				<div class="col-md-3">
-					<form:input path="islamic_studies" name="islamic_studies"
-						class="form-control feeinput" type="number" required="true" />
+					<form:input path="extra_fee" id="specialFee" name="extra_fee"  class="form-control feeinput" />
 				</div>
 				<div class="row">
 					<label class="col-md-2"><span class="pull-right">(-)Scholorship:</span>
@@ -169,15 +164,7 @@
 					</div>
 				</div>
 			</div>
-
-			<div class="form-group col-md-12">
-				<label class="col-md-2"><span class="pull-right">Special
-						Fee:</span> </label>
-				<div class="col-md-3">
-					<form:input path="extra_fee" id="specialFee" name="extra_fee" class="form-control" />
-				</div>
-
-				<div class="row">
+				<div class="form-group col-md-12">
 					<label class="col-md-2"><span class="pull-right">Total
 							Fee:</span> </label>
 					<div class="col-md-3">
@@ -196,21 +183,15 @@
 			</div>
 		</form:form>
 	</div>
-	<!-- 	<div class="container" style="margin-top: 25px;"> -->
-	<!-- 		<div class="row"> -->
-	<!-- 			<legend></legend> -->
-	<!-- 			<p> -->
-	<!-- 				<span class="pull-right"><a href="#">Privacy</a> |</span> -->
-	<!-- 			</p> -->
-	<!-- 		</div> -->
-	<!-- 	</div> -->
 
 	<script>
 	var uniformFee=0;
+	var bookFee=0;
 		$('document').ready(function() {
 							var academicYr = '${StudentsYear.academicYear.id}';
 							var classId = '${classId}';
 							var section = '${StudentsYear.section}';
+// 							var vanFee='${}'
 							if (academicYr == '') {
 								var d = new Date();
 								var year = d.getFullYear();
@@ -261,7 +242,9 @@
 								})
 							// 	for uniformFee count change 				
 								$('#uniformCount').change(function(){
-								$('#uniformFee').val($(this).val()*(uniformFee)).change();
+								let total=$(this).val()*(uniformFee);
+								$('#uniformFee').val(total).change();
+								$('#bookFee').val(total+bookFee).change();
 								})
 								
 							// 	total calculation
@@ -286,10 +269,11 @@
 				success : function(res) {
 					console.log(res);
 					if (res.id != undefined) {
-						$('#tutionFee').val(res.schoolFee);
-						$('#bookFee').val(res.bookFee).change();
+						$('#tutionFee').val(res.termFee);
 						$('#FeeId').val(res.id);
 						uniformFee=res.uniformFee;
+						bookFee=res.bookFee;
+						$('#bookFee').val(res.bookFee+uniformFee).change();
 						$('#uniformFee').val((res.uniformFee*$('#uniformCount').val())).change();
 					} else {
 						showalert('Fee Not defined for the given Class',
@@ -333,14 +317,14 @@
 
 		}
 		function clearInput() {
-			$(':input').not('#classId,#section,#academicYear').val('');
-			$('#classId,#section').val('-1');
+			$(':input').not('#classId,#section,#academicYear,#sel_vanFee,#uniformCount').val('');
+			$('#classId,#section,#sel_vanFee').val('-1');
+			$('#uniformCount').val('1');
 			alert('All fields cleared')
 		}
 
 		function checkUnique(id, year) {
-			$
-					.ajax({
+			$.ajax({
 						url : '/SDMS/CheckStdFrUnique?academicYear=' + year
 								+ '&&studentId=' + id,
 						method : 'GET',

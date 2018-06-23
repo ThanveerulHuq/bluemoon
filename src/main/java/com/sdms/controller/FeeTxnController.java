@@ -55,10 +55,10 @@ public class FeeTxnController {
 		FeeTxn feeTxn = new FeeTxn();
 		StudentYear studentYear = studentYearRepo.getStudentById(feeTxnModel.getStudentYearId());
 		feeTxn.setStudentYear(studentYear);
-		feeTxn.setSchoolFee(feeTxnModel.getSchoolFee());
-		feeTxn.setBookFee(feeTxnModel.getBookFee());
-		feeTxn.setIslamicStudies(feeTxnModel.getIslamicStudies());
-		feeTxn.setUniformFee(feeTxnModel.getUniformFee());
+//		feeTxn.setSchoolFee(feeTxnModel.getSchoolFee());
+//		feeTxn.setBookFee(feeTxnModel.getBookFee());
+//		feeTxn.setIslamicStudies(feeTxnModel.getIslamicStudies());
+//		feeTxn.setUniformFee(feeTxnModel.getUniformFee());
 		feeTxn.setVanFee(feeTxnModel.getVanFee());
 		feeTxn.setExtraFee(feeTxnModel.getExtraFee());
 		feeTxn.setAmountPaid(feeTxnModel.getAmountPaid());

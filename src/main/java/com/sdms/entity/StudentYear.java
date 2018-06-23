@@ -31,11 +31,11 @@ public class StudentYear {
 	@Column(name="section",nullable=false,length=1)
 	private String section;
 	
-	@Column(name="uniform_fee",nullable=false,length=15)
-	private Long uniformFee;
+	@Column(name="term_fee",nullable=false,length=15)
+	private Long termFee;
 	
-	@Column(name="islamic_studies",nullable=false,length=15)
-	private Long islamicStudies;
+	@Column(name="book_uniform_fee",nullable=false,length=15)
+	private Long bookUniformFee;
 	
 	@Column(name="van_fee",nullable=false,length=15)
 	private Long vanFee;
@@ -94,23 +94,6 @@ public class StudentYear {
 		this.section = section;
 	}
 
-
-	public Long getUniformFee() {
-		return uniformFee;
-	}
-
-	public void setUniformFee(Long uniformFee) {
-		this.uniformFee = uniformFee;
-	}
-
-	public Long getIslamicStudies() {
-		return islamicStudies;
-	}
-
-	public void setIslamicStudies(Long islamicStudies) {
-		this.islamicStudies = islamicStudies;
-	}
-
 	public void setVanFee(Long vanFee) {
 		this.vanFee = vanFee;
 	}
@@ -137,7 +120,27 @@ public class StudentYear {
 	public void setPaidFee(PaidFee paidFee) {
 		this.paidFee = paidFee;
 	}
+
+	public Long getBookUniformFee() {
+		return bookUniformFee;
+	}
+
+	public void setBookUniformFee(Long bookUniformFee) {
+		this.bookUniformFee = bookUniformFee;
+	}
+
+	public Long getVanFee() {
+		return vanFee;
+	}
 	
+	public Long getTermFee() {
+		return termFee;
+	}
+
+	public void setTermFee(Long termFee) {
+		this.termFee = termFee;
+	}
+
 	
 	
 }

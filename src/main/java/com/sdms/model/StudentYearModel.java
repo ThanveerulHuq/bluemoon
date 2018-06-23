@@ -4,12 +4,9 @@ import com.sdms.entity.AcademicYear;
 
 public class StudentYearModel {
 	
-	
 	private Long studentYearId;
 	
 	private AcademicYear academicYear;
-	
-//	private CommonFee commonFee;
 	
 	private Long FeeId;
 	
@@ -23,11 +20,9 @@ public class StudentYearModel {
 	
 	private Long extra_fee;
 	
-//	private Long book_fee;
+	private Long book_uniform_fee;
 	
-	private Long uniform_fee;
-	
-	private Long islamic_studies;
+	private Long term_fee;
 	
 	private Long scholorship;
 
@@ -53,30 +48,6 @@ public class StudentYearModel {
 
 	public void setVan_fee(Long van_fee) {
 		this.van_fee = van_fee;
-	}
-
-//	public Long getBook_fee() {
-//		return book_fee;
-//	}
-//
-//	public void setBook_fee(Long book_fee) {
-//		this.book_fee = book_fee;
-//	}
-
-	public Long getUniform_fee() {
-		return uniform_fee;
-	}
-
-	public void setUniform_fee(Long uniform_fee) {
-		this.uniform_fee = uniform_fee;
-	}
-
-	public Long getIslamic_studies() {
-		return islamic_studies;
-	}
-
-	public void setIslamic_studies(Long islamic_studies) {
-		this.islamic_studies = islamic_studies;
 	}
 
 	public Long getScholorship() {
@@ -125,6 +96,22 @@ public class StudentYearModel {
 
 	public void setExtra_fee(Long extra_fee) {
 		this.extra_fee = extra_fee;
+	}
+
+	public Long getBook_uniform_fee() {
+		return book_uniform_fee;
+	}
+
+	public void setBook_uniform_fee(Long book_uniform_fee) {
+		this.book_uniform_fee = book_uniform_fee;
+	}
+
+	public Long getTerm_fee() {
+		return term_fee;
+	}
+
+	public void setTerm_fee(Long term_fee) {
+		this.term_fee = term_fee;
 	}
 	
 }

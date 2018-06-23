@@ -68,7 +68,7 @@
 						Fee:</span> </label>
 				<div class="col-md-3">
 					<form:input id="tutionFee" class="form-control feeinput"
-						path="schoolFee" required="true" type="number" />
+						path="termFee" required="true" type="number" />
 				</div>
 			</div>
 			<div class="form-group col-md-12">
