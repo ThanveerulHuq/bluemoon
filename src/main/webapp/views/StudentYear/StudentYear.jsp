@@ -191,7 +191,6 @@
 							var academicYr = '${StudentsYear.academicYear.id}';
 							var classId = '${classId}';
 							var section = '${StudentsYear.section}';
-// 							var vanFee='${}'
 							if (academicYr == '') {
 								var d = new Date();
 								var year = d.getFullYear();

@@ -32,6 +32,7 @@
 			<div class="mtop-20 col-md-4">
 				<h2 class="col-md-offset-2">Fee Pending Report</h2>
 			</div>
+			<div class="col-md-2 mtop-40"><button id="download" class="btn btn-info">Download Excel  <span class="glyphicon glyphicon-download-alt"></span></button></div>
 		</div>
 
 		<div class="mtop-20 col-md-11" style="width:99%">
@@ -94,6 +95,7 @@
 	</div>
   </div>
 </div>
+
 <script type="text/javascript">
 $('document').ready(
 function () {
@@ -103,7 +105,7 @@ function createGrid(academicYear){
 var grid=$("#Grid");
 grid.jqGrid({
 url:'getStudentYearByYear?academicYear='+academicYear,
-colNames:['StudentName','Class','Section', 'gender','Admission No','Total','Total Balance','Balance Tution Fee','Balance Book Fee','Balance Islamic Studies Fee','Balance Uniform Fee','Balance Van Fee'],
+colNames:['StudentName','Class','Section', 'gender','Admission No','Total','Total Balance','Balance Term Fee','Balance Book Uniform Fee','Balance Extra Fee','Balance Van Fee'],
 colModel:[
 {name:'studentsInfo.name',index:'studentsInfo.name', width:230, align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 {name:'commonFee.classInfo.className',index:'commonFee.classInfo.className', width:100,align:"center", search:false},
@@ -114,8 +116,8 @@ colModel:[
 {name:'commonFee',index:'commonFee', width:200,align:"center", searchoptions: { sopt: ['eq','lt','gt']},formatter:totalBalance},
 {name:'paidFee',index:'paidFee', width:200,align:"center", searchoptions: { sopt: ['eq','lt','gt']},formatter:tutionBalance},
 {name:'paidFee.bookFee',index:'paidFee.bookFee', width:200,align:"center", searchoptions: { sopt: ['eq','lt','gt']},formatter:bookBalance},
-{name:'islamicStudies',index:'islamicStudies', width:200,align:"center", searchoptions: { sopt: ['eq','lt','gt']},formatter:islamicBalance},
-{name:'uniformFee',index:'uniformFee', width:200,align:"center", searchoptions: { sopt: ['eq','lt','gt']},formatter:uniformBalance},
+// {name:'islamicStudies',index:'islamicStudies', width:200,align:"center", searchoptions: { sopt: ['eq','lt','gt']},formatter:islamicBalance},
+{name:'uniformFee',index:'uniformFee', width:200,align:"center", searchoptions: { sopt: ['eq','lt','gt']},formatter:extraBalance},
 {name:'vanFee',index:'vanFee', width:200,align:"center", searchoptions: { sopt: ['eq','lt','gt']},formatter:vanBalance}
 ],
 search:true,
@@ -374,6 +376,17 @@ $('#academicYear').change(function(){
 	var academicYear =$('#academicYear').val();
 	jQuery("#Grid").jqGrid().setGridParam({url : 'getStudentYearByYear?academicYear='+academicYear}).jqGrid('setGridParam',{datatype:'json'}).trigger('reloadGrid');
 });
+
+$('#download').click(function(){
+	var academicYear =$('#academicYear').val();
+	var win = window.open('/SDMS/DownloadBalance?academicYear='+academicYear, '_blank');
+	return false;
+})
+
+
+
+
+
 });
 function formatGender(cell,option,row){
 	if(cell == 'M'){
@@ -388,20 +401,17 @@ function formatEdit (cell,option,row){
 }
 function totalBalance(cell,option,row){
 	console.log(row.paidFee.schoolFee);
-	var paid=parseInt(row.paidFee.schoolFee)+parseInt(row.paidFee.bookFee)+parseInt(row.paidFee.islamicStudies)+parseInt(row.paidFee.uniformFee)+parseInt(row.paidFee.vanFee);
+	var paid=parseInt(row.paidFee.termFee)+parseInt(row.paidFee.bookUniformFee)+parseInt(row.paidFee.extraFee)+parseInt(row.paidFee.vanFee);
 	return parseInt(row.total)-paid;
 }
 function tutionBalance(cell,option,row){
-	return parseInt(row.commonFee.schoolFee) - parseInt(row.paidFee.schoolFee);
+	return parseInt(row.commonFee.termFee) - parseInt(row.paidFee.termFee);
 }
 function bookBalance(cell,option,row){
-	return parseInt(row.commonFee.bookFee) - parseInt(row.paidFee.bookFee);
+	return parseInt(row.bookUniformFee) - parseInt(row.paidFee.bookUniformFee);
 }
-function islamicBalance(cell,option,row){
-	return parseInt(row.islamicStudies) - parseInt(row.paidFee.islamicStudies);
-}
-function uniformBalance(cell,option,row){
-	return parseInt(row.uniformFee) - parseInt(row.paidFee.uniformFee);
+function extraBalance(cell,option,row){
+	return parseInt(row.extraFee) - parseInt(row.paidFee.extraFee);
 }
 function vanBalance(cell,option,row){
 	return parseInt(row.vanFee) - parseInt(row.paidFee.vanFee);
