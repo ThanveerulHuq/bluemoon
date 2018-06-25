@@ -17,6 +17,7 @@
 <body>
 <c:import url="/views/shared/header.jsp"></c:import>
 <div class="mtop-50">
+<div class="col-md-2 pull-right mtop-35"><a href="ImportStudentsInfo" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Import File</a></div>
 <div class="col-md-2 pull-right mtop-35"><a href="AddStudent" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> New Admission</a></div>
 <div class="mtop-20 col-md-offset-5 col-md-2">
 <h2 class="">Students Info</h2></div>
