@@ -30,9 +30,9 @@
 				</div>
 				</div>
 			<div class="mtop-20 col-md-4">
-				<h2 class="col-md-offset-2">Fee Pending Report</h2>
+				<h2 class="col-md-offset-2">Fee Balance Report</h2>
 			</div>
-			<div class="col-md-2 mtop-40"><button id="download" class="btn btn-info">Download Excel  <span class="glyphicon glyphicon-download-alt"></span></button></div>
+			<div class="col-md-2 mtop-40"><button id="download" class="btn btn-info">Download Fee Balance Report By Class  <span class="glyphicon glyphicon-download-alt"></span></button></div>
 		</div>
 
 		<div class="mtop-20 col-md-11" style="width:99%">

@@ -32,7 +32,7 @@
 				<h2 class="mleft-20">Students Current Year</h2>
 			</div>
 			
-			<div class="col-md-4 mtop-35">
+			<div class="col-md-4 mtop-35"><button id="download" class="btn btn-info">Students Count Report <span class="glyphicon glyphicon-download-alt"></span></button>
 				<a href="StudentYear" class="btn btn-primary pull-right mright-35"><span
 					class="glyphicon glyphicon-plus"></span> Add Student</a>
 			</div>
@@ -331,6 +331,13 @@ $('#academicYear').change(function(){
 	var academicYear =$('#academicYear').val();
 	jQuery("#Grid").jqGrid().setGridParam({url : 'getStudentYearByYear?academicYear='+academicYear}).jqGrid('setGridParam',{datatype:'json'}).trigger('reloadGrid');
 });
+
+$('#download').click(function(){
+	var academicYear =$('#academicYear').val();
+	var win = window.open('/SDMS/DownloadStudentsReport?academicYear='+academicYear, '_blank');
+	return false;
+})
+
 });
 function formatGender(cell,option,row){
 	if(cell == 'M'){

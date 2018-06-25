@@ -35,6 +35,13 @@ public interface StudentYearRepo extends JpaRepository<StudentYear,Long> {
 	@Query("SELECT a FROM StudentYear a WHERE a.studentsInfo.studentId = :studentId and a.commonFee.academicYear.id = :academicYear")
     public StudentYear getStudentById(@Param("studentId") Long studentId,@Param("academicYear")Long academicYear);
 	
+	@Query("SELECT COUNT(a) FROM StudentYear a WHERE a.commonFee.academicYear.id = :academicYear and a.commonFee.classInfo.classId like :classId and a.studentsInfo.areaInfo.id = :area and a.studentsInfo.gender = :gender")
+	public int getCountByAreaGender(@Param("academicYear")Long academicYear, @Param("classId")Long classId, @Param("area")long area,
+			@Param("gender")String gender);
+	@Query("SELECT COUNT(a) FROM StudentYear a WHERE a.commonFee.academicYear.id = :academicYear and a.commonFee.classInfo.classId like :classId and a.studentsInfo.gender = :gender")
+	public int getCountByGender(@Param("academicYear")Long academicYear, @Param("classId")Long classId, 
+			@Param("gender")String gender);
+	
 }
 
 

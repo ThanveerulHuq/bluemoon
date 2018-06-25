@@ -50,6 +50,7 @@ public class HomeController {
 	@RequestMapping(value = { "/Home" }, method = RequestMethod.GET)
 	public String Home(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		if(!SessionController.checkSession(request, response, session)) {
+
 			return "redirect:Login";
 		}
 		

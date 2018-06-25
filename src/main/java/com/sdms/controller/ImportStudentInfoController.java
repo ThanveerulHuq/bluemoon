@@ -1,39 +1,30 @@
 package com.sdms.controller;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Date;
 import java.sql.Timestamp;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Iterator;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-//import org.apache.poi.sl.usermodel.*;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.DataFormatter;
-import org.apache.poi.ss.usermodel.DateUtil;
-import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,7 +32,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sdms.entity.AreaInfo;
-import com.sdms.entity.DocInfo;
 import com.sdms.entity.StudentsInfo;
 import com.sdms.repository.AreaInfoRepo;
 import com.sdms.repository.StudentsInfoRepo;
@@ -58,39 +48,15 @@ public class ImportStudentInfoController {
 	@SuppressWarnings("deprecation")
 	@RequestMapping(value={"/ImportStudentsInfo"},method = RequestMethod.GET)
 	public String importStudentsInfo(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws EncryptedDocumentException, InvalidFormatException, IOException {
-//		if(!SessionController.checkSession(request, response, session)) {
-//			return "redirect:Login";
-//		}
-		
-//		File initialFile = new File("C:/Users/ponnarsankar_annamar/Desktop/SDMS StudentInfo Upload.xls");
-//		Workbook workbook = null;
-//		try {
-//			InputStream fileStream = new FileInputStream(initialFile);
-//			workbook = WorkbookFactory.create(fs);
-//		} catch (FileNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
-		 Workbook workbook = WorkbookFactory.create(new File("C:/Users/ponnarsankar_annamar/Desktop/SDMS StudentInfo Upload.xls"));
-		
-		HSSFSheet sheet = (HSSFSheet) workbook.getSheetAt(0);
-		Iterator<Row> rowIterator = sheet.iterator();
-		rowIterator.next(); // Skip for header row
-        while (rowIterator.hasNext()) {
-            Row row = rowIterator.next();
-//            if(processRecordRow(row)) {
-////            	sheet.removeRow(row);
-//            } else {
-//            	
-//            }
-        }
-        
+		if(!SessionController.checkSession(request, response, session)) {
+			return "redirect:Login";
+		}        
 		return "ImportStudentsInfo";
 	}
 	
 	private Boolean processRecordRow(Row row) {
 		try{
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 			StudentsInfo studentInfo = new StudentsInfo();
 			studentInfo.setName(formatCell(row.getCell(0)));
 			studentInfo.setAadharNo(Long.parseUnsignedLong(formatCell(row.getCell(1))));
@@ -103,7 +69,8 @@ public class ImportStudentInfoController {
 				studentInfo.setGender("F");
 			}
 			studentInfo.setAge(Long.parseUnsignedLong(formatCell(row.getCell(5))));
-			studentInfo.setDob(new Timestamp(row.getCell(6).getDateCellValue().getTime()));
+			Date dobTime = dateFormat.parse(formatCell(row.getCell(6)));			
+			studentInfo.setDob(new Timestamp(dobTime.getTime()));
 			studentInfo.setReligion(formatCell(row.getCell(7)));
 			studentInfo.setCommunity(formatCell(row.getCell(8)));
 			studentInfo.setCaste(formatCell(row.getCell(9)));
@@ -121,7 +88,8 @@ public class ImportStudentInfoController {
 			} else if(active.toLowerCase().equals("no")) {
 				studentInfo.setActive("N");
 			}
-			studentInfo.setAdmissionDate(new Timestamp(row.getCell(19).getDateCellValue().getTime()));
+			Date admTime = dateFormat.parse(formatCell(row.getCell(19)));
+			studentInfo.setAdmissionDate(new Timestamp(admTime.getTime()));
 			String area = formatCell(row.getCell(20));
 			if(area.toLowerCase().equals("salem")){
 				area = "salem";
@@ -135,24 +103,21 @@ public class ImportStudentInfoController {
 				e.printStackTrace();
 			}
 			studentInfo.setRemarks(formatCell(row.getCell(21)));
+			System.out.println("saving row:");
 			studentInfoRepo.save(studentInfo);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
-		return false;
+		return true;
 	}
 	
 	@SuppressWarnings("deprecation")
-	private String formatCell(Cell cell) {
+	private String formatCell(Cell cell) throws Exception {
 		DataFormatter dataFormatter = new DataFormatter();
 		String cellValue = "";
-		try{
-			cell.setCellType(Cell.CELL_TYPE_STRING);
-			cellValue = dataFormatter.formatCellValue(cell);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		cell.setCellType(Cell.CELL_TYPE_STRING);
+		cellValue = dataFormatter.formatCellValue(cell);
 		return cellValue;
 	}
 	
@@ -160,58 +125,61 @@ public class ImportStudentInfoController {
 	@RequestMapping(value={"/ImportFileStudentsInfo"},method = RequestMethod.POST)
 	public String importFileStudentsInfo(HttpServletRequest request, HttpServletResponse response, HttpSession session, @RequestParam("file") MultipartFile file ) {
 		
-		HSSFWorkbook workbook;
+		HSSFWorkbook workbook = null;
 		try {
 			workbook = new HSSFWorkbook(file.getInputStream());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return "FAIL";
 		}
-			HSSFSheet sheet = (HSSFSheet) workbook.getSheetAt(0);
-			Iterator<Row> rowIterator = sheet.iterator();
-			rowIterator.next(); // Skip for header row
-			Boolean errFlag = false;
-	        while (rowIterator.hasNext()) {
-	            Row row = rowIterator.next();
-	            if(processRecordRow(row)) {
-	            	sheet.removeRow(row);
-	            } else {
-	            	errFlag = true;
-	            }
-	        if(errFlag) {
-	        	try {
-//	    			response.setHeader("Content-Disposition", "attachment;filename=SDMS_StudentInfo_Template.xls");
-//	    			OutputStream out = response.getOutputStream();
-//	    			response.setContentType("application/vnd.ms-excel");
-//	    			workbook.write(out);
-//	    			workbook.close();
-//	    			out.flush();
-//	    			out.close();
-	    		} catch (Exception e) {
-	    			e.printStackTrace();
-	    		}
-	        }
+		HSSFSheet sheet = (HSSFSheet) workbook.getSheetAt(0);
+		Boolean errFlag = false;
+		System.out.println(sheet.getLastRowNum());
+		for(int i = 1; i <= sheet.getLastRowNum(); i++) {
+			HSSFRow row = sheet.getRow(i);
+			if(processRecordRow(row)) {
+				System.out.println("Removing row: " + i);
+				//sheet.removeRow(sheet.getRow(i));
+				sheet.shiftRows(row.getRowNum() + 1, sheet.getLastRowNum() + 1, -1);
+		        i--;
+			} else {
+				System.out.println("Error row: " + i);
+				errFlag = true;
+			}
+		}
+        if(errFlag) {
+        	try {
+        		File errFile = new File("SDMS_StudentInfo_Error.xls");
+        		if(errFile.exists()){
+        			errFile.delete();
+        		}
+        		FileOutputStream out = new FileOutputStream("SDMS_StudentInfo_Error.xls");
+    			workbook.write(out);
+    			workbook.close();
+    			out.close();
+    			return errFile.getCanonicalPath();
+    		} catch (Exception e) {
+    			e.printStackTrace();
+    		}
         }
-		
 		return "FAIL";
 	}
 	
 	@ResponseBody
-	@RequestMapping(value={"/downloadTemplate"},method = RequestMethod.GET)
-	public void downloadTemplate(HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping(value={"/downloadError"},method = RequestMethod.GET)
+	public void downloadError(HttpServletRequest request, HttpServletResponse response, @RequestParam("path") String path) {
 
 		InputStream is = null;
 		try {
-			is = new FileInputStream(request.getContextPath() + "/resources/template/SDMS_StudentInfo_Template.xls");
+			is = new FileInputStream(path);
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
     	try {
-			response.setHeader("Content-Disposition", "inline;filename=SDMS_StudentInfo_Template.xls");
+			response.setHeader("Content-Disposition", "inline;filename=SDMS_StudentInfo_Error.xls");
 			OutputStream out = response.getOutputStream();
-			response.setContentType("application/octet-stream");
+			response.setContentType("application/vnd.ms-excel");
 			IOUtils.copy(is, out);
 			out.flush();
 			out.close();
