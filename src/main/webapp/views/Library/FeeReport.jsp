@@ -44,7 +44,7 @@ var grid=$("#Grid");
 grid.jqGrid({
 url:'GetFeeReport',
 
-colNames:['Admission No', 'Student Name', 'Academic Year','Class','Section','Fee Amount', 'Total Amount Paid','Payment Date','School Fee','Book Fee','Islamic Studies Fee','Uniform Fee','Van Fee','Reprint'],
+colNames:['Admission No', 'Student Name', 'Academic Year','Class','Section','Fee Amount', 'Total Amount Paid','Payment Date','Term Fee','Book and Uniform Fee','Van Fee','Extra Fee','Reprint'],
 colModel:[
 {name:'studentYear.studentsInfo.admissionNo',index:'studentYear.studentsInfo.admissionNo', width:180,align:"center", sorttype:"int",searchoptions: { sopt: ['cn','bw','eq', 'ne']}},
 {name:'studentYear.studentsInfo.name',index:'studentYear.studentsInfo.name', width:200, align:"center", searchoptions: { sopt: ['cn','bw','cn','bw','eq', 'ew']}},
@@ -54,11 +54,10 @@ colModel:[
 {name:'studentYear.total',index:'studentYear.total', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 {name:'amountPaid',index:'amountPaid', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 {name:'paymentDate',index:'pamentDate', width:180,align:"center",sorttype:"date", searchoptions: { sopt: ['cn','bw','eq', 'ew']}, formatter:dobFormatter},
-{name:'schoolFee',index:'schoolFee', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
-{name:'bookFee',index:'bookFee', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
-{name:'islamicStudies',index:'islamicStudies', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
-{name:'uniformFee',index:'uniformFee', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
+{name:'termFee',index:'termFee', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
+{name:'bookUniformFee',index:'bookUniformFee', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 {name:'vanFee',index:'vanFee', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
+{name:'extraFee',index:'extraFee', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 {name:'id',index:'id', width:180,align:"center",sorttype:"int", searchoptions: { sopt: ['cn','bw','eq', 'ew']}, formatter:formatPrint}
 ],
 

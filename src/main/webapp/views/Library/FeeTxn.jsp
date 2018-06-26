@@ -18,7 +18,6 @@
 	<center>
 		<h2>Fee Payment</h2>
 	</center>
-
 <!-- 	<div class="searchStudentDialog mtop-15"> -->
 <%-- 	<form id="searchStudentForm"> --%>
 	
@@ -47,7 +46,7 @@
 			<div class="col-md-2">
 <select name="academicYear" class="form-control"
 					id="academicYear" >
-				<c:forEach items="${academicYear}" var="year" varStatus="status">
+				<c:forEach items="${academicYear}" var="year">
 				<option value="${year.id}">${year.year}</option>
 				</c:forEach>
 				</select>
@@ -114,16 +113,10 @@
 					<h5>PAID (INR)</h5>
 				</th>
 			</tr>
-			<tr><td>TUTION FEE</td><td><p id="tot_tution"></p></td><td><p id="bal_tution"></p></td><td><form:input path="schoolFee" id="schoolFee" class="form-control fee-input" type="number"
+			<tr><td>TERM FEE</td><td><p id="tot_term"></p></td><td><p id="bal_term"></p></td><td><form:input path="termFee" id="termFee" class="form-control fee-input" type="number"
 						required="true" /></td>
 			</tr>
-			<tr><td>BOOK FEE</td><td><p id="tot_book"></p></td><td><p id="bal_book"></p></td><td><form:input path="bookFee" id="bookFee" class="form-control fee-input" type="number"
-						required="true" /></td>
-			</tr>
-			<tr><td>UNIFORM FEE</td><td><p id="tot_uniform"></p></td><td><p id="bal_uniform"></p></td><td><form:input path="uniformFee" id="uniformFee" class="form-control fee-input" type="number"
-						required="true" /></td>
-			</tr>
-			<tr><td>ISLAMIC STUDIES</td><td><p id="tot_islamic"></p></td><td><p id="bal_islamic"></p></td><td><form:input path="islamicStudies" id="islamicStudies" class="form-control fee-input" type="number"
+			<tr><td>BOOK AND UNIFORM FEE</td><td><p id="tot_book_uniform"></p></td><td><p id="bal_book_uniform"></p></td><td><form:input path="bookUniformFee" id="bookUniformFee" class="form-control fee-input" type="number"
 						required="true" /></td>
 			</tr>
 			<tr><td>VAN FEE</td><td><p id="tot_van"></p></td><td><p id="bal_van"></p></td><td><form:input path="vanFee" id="vanFee" class="form-control fee-input" type="number"
@@ -217,21 +210,17 @@
 			$('#admissionIdFound').val(data.studentsInfo.admissionNo);
 			$('#studentName').val(data.studentsInfo.name);
 			$('#studentYearId').val(data.id);
-			$('#tot_tution').text(data.commonFee.schoolFee);
-			$('#bal_tution').text(data.commonFee.schoolFee-data.paidFee.schoolFee);
-			$('#tot_book').text(data.commonFee.bookFee);
-			$('#bal_book').text(data.commonFee.bookFee-data.paidFee.bookFee);
-			$('#tot_uniform').text(data.uniformFee);
-			$('#bal_uniform').text(data.uniformFee-data.paidFee.uniformFee);
-			$('#tot_islamic').text(data.islamicStudies);
-			$('#bal_islamic').text(data.islamicStudies-data.paidFee.islamicStudies);
+			$('#tot_term').text(data.termFee);
+			$('#bal_term').text(data.termFee-data.paidFee.termFee);
+			$('#tot_book_uniform').text(data.bookUniformFee);
+			$('#bal_book_uniform').text(data.bookUniformFee-data.paidFee.bookUniformFee);
 			$('#tot_van').text(data.vanFee);
 			$('#bal_van').text(data.vanFee-data.paidFee.vanFee);
 			$('#tot_extra').text(data.extraFee);
 			$('#bal_extra').text(data.extraFee-data.paidFee.extrafee);
 			$('#scholarship').text(data.scholorship);
 			$('#total_fee').text(data.total);
-			paidfee=data.paidFee.schoolFee+data.paidFee.bookFee+data.paidFee.uniformFee+data.paidFee.islamicStudies+data.paidFee.vanFee;
+			paidfee=data.paidFee.termFee+data.paidFee.bookUniformFee+data.paidFee.vanFee+data.paidFee.extrafee;
 			$('#tot_balance').text(data.total - paidfee);
 			$('#balance').val(data.balance);
 		} 

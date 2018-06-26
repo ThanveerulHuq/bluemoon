@@ -41,11 +41,12 @@ public class FeeTxnController {
 	@RequestMapping(value={"/FeeTxn"},method = RequestMethod.GET)
 	public String feeTxn( HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		if(!SessionController.checkSession(request, response, session)) {
-			return "redirect:Login";
+			//return "redirect:Login";
 		}
 		FeeTxnModel feeTxnModel = new FeeTxnModel();
 		List<AcademicYear> academicYear = academicYearRepo.findAll();
 		request.setAttribute("academicYear", academicYear);
+		request.setAttribute("test", "test var");
 		request.setAttribute("FeeTxn", feeTxnModel);
 		return "Library/FeeTxn";
 	}
@@ -55,19 +56,13 @@ public class FeeTxnController {
 		FeeTxn feeTxn = new FeeTxn();
 		StudentYear studentYear = studentYearRepo.getStudentById(feeTxnModel.getStudentYearId());
 		feeTxn.setStudentYear(studentYear);
-//		feeTxn.setSchoolFee(feeTxnModel.getSchoolFee());
-//		feeTxn.setBookFee(feeTxnModel.getBookFee());
-//		feeTxn.setIslamicStudies(feeTxnModel.getIslamicStudies());
-//		feeTxn.setUniformFee(feeTxnModel.getUniformFee());
+		feeTxn.setTermFee(feeTxnModel.getTermFee());
+		feeTxn.setBookUniformFee(feeTxnModel.getBookUniformFee());
 		feeTxn.setVanFee(feeTxnModel.getVanFee());
 		feeTxn.setExtraFee(feeTxnModel.getExtraFee());
 		feeTxn.setAmountPaid(feeTxnModel.getAmountPaid());
 		feeTxn.setPaymentDate(new Timestamp(feeTxnModel.getPaymentDate()));
 		FeeTxn feeTxnSaved = feeTxnRepo.save(feeTxn);
-//		studentYear.setBalance(studentYear.getBalance()-feeTxnModel.getAmountPaid());
-//		studentYear.setPaid(studentYear.getPaid()+feeTxnModel.getAmountPaid());
-//		studentYearRepo.save(studentYear);
-		//request.setAttribute("Print", feeTxnSaved);
 		redirectAttributes.addFlashAttribute("Print", feeTxnSaved);
 		return "redirect:/PrintReceipt";
 	}

@@ -1,43 +1,46 @@
 package com.sdms.model;
 
-import javax.persistence.Column;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class FeeTxnModel {
 
 	private Long studentYearId;
+
+	private Long termFee;
 	
-	public Long getSchoolFee() {
-		return schoolFee;
+	private Long bookUniformFee;
+
+	private Long vanFee;
+	
+	private Long extraFee;	
+	
+	private Long amountPaid;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Long paymentDate;
+	
+	public Long getStudentYearId() {
+		return studentYearId;
 	}
 
-	public void setSchoolFee(Long schoolFee) {
-		this.schoolFee = schoolFee;
+	public void setStudentYearId(Long studentYearId) {
+		this.studentYearId = studentYearId;
 	}
 
-	public Long getBookFee() {
-		return bookFee;
+	public Long getTermFee() {
+		return termFee;
 	}
 
-	public void setBookFee(Long bookFee) {
-		this.bookFee = bookFee;
+	public void setTermFee(Long termFee) {
+		this.termFee = termFee;
 	}
 
-	public Long getUniformFee() {
-		return uniformFee;
+	public Long getBookUniformFee() {
+		return bookUniformFee;
 	}
 
-	public void setUniformFee(Long uniformFee) {
-		this.uniformFee = uniformFee;
-	}
-
-	public Long getIslamicStudies() {
-		return islamicStudies;
-	}
-
-	public void setIslamicStudies(Long islamicStudies) {
-		this.islamicStudies = islamicStudies;
+	public void setBookUniformFee(Long bookUniformFee) {
+		this.bookUniformFee = bookUniformFee;
 	}
 
 	public Long getVanFee() {
@@ -48,22 +51,13 @@ public class FeeTxnModel {
 		this.vanFee = vanFee;
 	}
 
-	private Long schoolFee;
-	
-	private Long bookFee;
+	public Long getExtraFee() {
+		return extraFee;
+	}
 
-	private Long uniformFee;
-	
-	private Long islamicStudies;
-	
-	private Long vanFee;
-	
-	private Long extraFee;	
-	
-	private Long amountPaid;
-	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Long paymentDate;
+	public void setExtraFee(Long extraFee) {
+		this.extraFee = extraFee;
+	}
 
 	public Long getAmountPaid() {
 		return amountPaid;
@@ -80,21 +74,4 @@ public class FeeTxnModel {
 	public void setPaymentDate(Long paymentDate) {
 		this.paymentDate = paymentDate;
 	}
-
-	public Long getStudentYearId() {
-		return studentYearId;
-	}
-
-	public void setStudentYearId(Long studentYearId) {
-		this.studentYearId = studentYearId;
-	}
-
-	public Long getExtraFee() {
-		return extraFee;
-	}
-
-	public void setExtraFee(Long extraFee) {
-		this.extraFee = extraFee;
-	}
-
 }
