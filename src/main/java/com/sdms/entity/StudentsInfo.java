@@ -15,10 +15,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "students_info")
 public class StudentsInfo {
-	
-	
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "student_id")

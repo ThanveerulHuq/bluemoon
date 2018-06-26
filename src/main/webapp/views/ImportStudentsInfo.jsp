@@ -68,6 +68,8 @@
 			event.preventDefault();
 			if($('#file').val() == '') {
 				showalert('Please select a file');
+			} else if ($('#file').val().match(/\.(.*?)$/)[0] !== '.xls' ) {
+				showalert('Please select file of .xls format');
 			} else {
 				uploadFile();
 			}
@@ -81,15 +83,16 @@
 				processData : false,
 				contentType : false,
 				dataType : "text",
-				success : function(data) {
-					//UploadSuccess();
-					// Notification('success','success','File
-					// Uploaded Successfully');
-					console.log('file uploaded successfully');
+				success : function(response) {
+					if(response != 'FAIL') {
+						showalert("Some Records were not processed successfully");
+						var win = window.open('downloadError?path='+response, '_blank');
+					} else {
+						showalert("File processed successfully");
+					}
 				},
-				error : function(request, status, error) {
-					// Notification('Failed','error','Upload
-					// Failed');
+				error : function(error) {
+					showalert("Error in processing, Please try again later");
 					console.log(error);
 				}
 			});
