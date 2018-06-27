@@ -217,10 +217,10 @@
 			$('#tot_van').text(data.vanFee);
 			$('#bal_van').text(data.vanFee-data.paidFee.vanFee);
 			$('#tot_extra').text(data.extraFee);
-			$('#bal_extra').text(data.extraFee-data.paidFee.extrafee);
+			$('#bal_extra').text(data.extraFee-data.paidFee.extraFee);
 			$('#scholarship').text(data.scholorship);
 			$('#total_fee').text(data.total);
-			paidfee=data.paidFee.termFee+data.paidFee.bookUniformFee+data.paidFee.vanFee+data.paidFee.extrafee;
+			var paidfee=data.paidFee.termFee+data.paidFee.bookUniformFee+data.paidFee.vanFee+data.paidFee.extraFee;
 			$('#tot_balance').text(data.total - paidfee);
 			$('#balance').val(data.balance);
 		} 
