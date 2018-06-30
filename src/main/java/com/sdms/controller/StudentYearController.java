@@ -84,6 +84,8 @@ public class StudentYearController {
 		studentsYearModel.setAcademicYear(studentYear.getCommonFee().getAcademicYear());
 		studentsYearModel.setAdmissionNo(studentYear.getStudentsInfo().getAdmissionNo());
 		studentsYearModel.setSection(studentYear.getSection());
+		studentsYearModel.setTerm_fee(studentYear.getTermFee());
+		studentsYearModel.setBook_uniform_fee(studentYear.getBookUniformFee());
 //		studentsYearModel.setVan_fee(studentYear.getVanFee());
 //		studentsYearModel.setBook_fee(studentYear.getBookFee());
 //		studentsYearModel.setUniform_fee(studentYear.getUniformFee());

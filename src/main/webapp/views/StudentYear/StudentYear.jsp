@@ -88,7 +88,6 @@
 						Fee:</span> </label>
 				<div class="col-md-3">
 					<div class="panel panel-default">
-						<!--   <div class="panel-heading"><h3 class="panel-title"></div> -->
 						<div class="panel-body">
 							<div class="form-group">
 								<label for="Area">Area</label> <select class="form-control"
@@ -124,8 +123,7 @@
 									</select>
 								</div>
 								<div class="form-group">
-									<form:input path="book_uniform_fee" name="book_uniform_fee"
-										class="form-control mtop-10" id="uniformFee" readonly="true" />
+									<input class="form-control mtop-10" id="uniformFee" readonly="true" value="${StudentYear.common_fee.uniformFee}" />
 								</div>
 							</div>
 						</div>
@@ -136,7 +134,7 @@
 				<label class="col-md-2"><span class="pull-right">Tution
 						Fee:</span> </label>
 				<div class="col-md-3">
-					<form:input id="tutionFee" path="term_fee" name="term_fee" class="form-control feeinput" readonly="true" type="number" value="${tutionfee}" />
+					<form:input id="tutionFee" path="term_fee" name="term_fee" class="form-control feeinput" readonly="true" type="number"  />
 				</div>
 				<div class="row">
 					<label class="col-md-2"><span class="pull-right">Book and Uniform

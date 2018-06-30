@@ -22,10 +22,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sdms.entity.AcademicYear;
 import com.sdms.entity.FeeTxn;
+import com.sdms.entity.PaidFee;
 import com.sdms.entity.StudentYear;
 import com.sdms.model.FeeTxnModel;
 import com.sdms.repository.AcademicYearRepo;
 import com.sdms.repository.FeeTxnRepo;
+import com.sdms.repository.PaidFeeRepo;
 import com.sdms.repository.StudentYearRepo;
 
 @Controller
@@ -37,6 +39,8 @@ public class FeeTxnController {
 	StudentYearRepo studentYearRepo;
 	@Autowired
 	AcademicYearRepo academicYearRepo;
+	@Autowired
+	PaidFeeRepo paidFeeRepo;
 	
 	@RequestMapping(value={"/FeeTxn"},method = RequestMethod.GET)
 	public String feeTxn( HttpServletRequest request, HttpServletResponse response, HttpSession session) {
@@ -61,9 +65,12 @@ public class FeeTxnController {
 		feeTxn.setVanFee(feeTxnModel.getVanFee());
 		feeTxn.setExtraFee(feeTxnModel.getExtraFee());
 		feeTxn.setAmountPaid(feeTxnModel.getAmountPaid());
+//		feeTxn.setExtraFee(feeTxnModel.getExtraFee());
 		feeTxn.setPaymentDate(new Timestamp(feeTxnModel.getPaymentDate()));
 		FeeTxn feeTxnSaved = feeTxnRepo.save(feeTxn);
-		redirectAttributes.addFlashAttribute("Print", feeTxnSaved);
+		updatePaidFee(feeTxnSaved);
+		FeeTxn feeTxnNew=feeTxnRepo.findOne(feeTxnSaved.getId());
+		redirectAttributes.addFlashAttribute("Print", feeTxnNew);
 		return "redirect:/PrintReceipt";
 	}
 	
@@ -104,6 +111,15 @@ public class FeeTxnController {
 	public String RePrintReceipt( HttpServletRequest request, HttpServletResponse response,@ModelAttribute("id") Long id) {
 		request.setAttribute("Print", feeTxnRepo.findOne(id));
 		return "Library/FeeRePrint";
+	}
+	
+	private void updatePaidFee(FeeTxn feeTxn){
+		PaidFee paidFee=feeTxn.getStudentYear().getPaidFee();
+		paidFee.setBookUniformFee(paidFee.getBookUniformFee()+feeTxn.getBookUniformFee());
+		paidFee.setTermFee(paidFee.getTermFee()+feeTxn.getTermFee());
+		paidFee.setVanFee(paidFee.getVanFee()+feeTxn.getVanFee());
+		paidFee.setExtraFee(paidFee.getExtraFee()+feeTxn.getExtraFee());
+		paidFeeRepo.save(paidFee);
 	}
 
 	

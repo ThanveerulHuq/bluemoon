@@ -45,9 +45,9 @@
 	<div align="left"><img src="<%=request.getContextPath()%>/resources/images/school_logo.jpg" height="50" width="50" style="margin-left: 20px;"/></div>
 	</td>
 	<td colspan="3" width="572">
-	<div align="center"><span style="font-family: 'Calibri', serif;"><span style="font-size: large;"><strong>DHAARUS SALAAM MATRICULATION SCHOOL</strong></span></span></div>
-	<div align="center"><span style="font-family: 'Calibri', serif;"><span style="font-size: small;">(Managed by : Dhaarus Salaam Trust, Salem &ndash; 636 005)</span></span></div>
-	<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><span style="font-family: 'Calibri', serif;"><span style="font-size: small;">Ph: (0427) 2442018, </span></span><span style="font-family: 'Calibri', serif;"><span style="font-size: small;">+91 98942 50320 | E-mail: <a>dhaarussalaam1@gmail.com</a></span></span></span></span></div>
+	<div align="center"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: large;"><strong>A.R. Matriculation School</strong></span></span></div>
+		<div align="center"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">Perumal Malai Road,Narasothipatti, Salem &ndash; 636 004</span></span></div>
+		<div align="center"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">Ph: 097892 17068, </span></span><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;"> | E-mail: <a>@gmail.com</a></span></span></div>
 	</td>
 	</tr>
 	<tr>

@@ -44,9 +44,9 @@
 		</div>
 		</td>
 			<td colspan="5" width="86%">
-		<div align="center"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: large;"><strong>DHAARUS SALAAM MATRICULATION SCHOOL</strong></span></span></div>
-		<div align="center"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">(Managed by : Dhaarus Salaam Trust, Salem &ndash; 636 005)</span></span></div>
-		<div align="center"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">Ph: (0427) 2442018, </span></span><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">+91 98942 50320 | E-mail: <a>dhaarussalaam1@gmail.com</a></span></span></div>
+		<div align="center"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: large;"><strong>A.R. Matriculation School</strong></span></span></div>
+		<div align="center"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">Perumal Malai Road,Narasothipatti, Salem &ndash; 636 004</span></span></div>
+		<div align="center"><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;">Ph: 097892 17068, </span></span><span style="font-family: 'Times New Roman', serif;"><span style="font-size: small;"> | E-mail: <a>@gmail.com</a></span></span></div>
 		</td>
 		</tr>
 		<tr valign="top" style="border-bottom:1px solid;">
@@ -122,13 +122,13 @@
 		<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">TUITION FEE</span></span></div>
 		</td>
 		<td width="26%" style="border: 1px solid">
-		<div align="center">${Print.studentYear.commonFee.schoolFee}</div>
+		<div align="center">${Print.studentYear.termFee}</div>
 		</td>
 		<td colspan="2" width="24%" style="border: 1px solid">
-		<div align="center">${Print.schoolFee}</div>
+		<div align="center">${Print.termFee}</div>
 		</td>
 		<td width="24%">
-		<div align="center">${Print.studentYear.commonFee.schoolFee - (Print.schoolFee + Print.studentYear.paidFee.schoolFee)}</div>
+		<div align="center">${Print.studentYear.termFee - (Print.studentYear.paidFee.termFee)}</div>
 		</td>
 		</tr>
 		<tr valign="top">
@@ -136,43 +136,43 @@
 		<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">BOOK FEE</span></span></div>
 		</td>
 		<td width="26%" style="border: 1px solid">
-		<div align="center">${Print.studentYear.commonFee.bookFee}</div>
+		<div align="center">${Print.studentYear.bookUniformFee}</div>
 		</td>
 		<td colspan="2" width="24%" style="border: 1px solid">
-		<div align="center">${Print.bookFee}</div>
+		<div align="center">${Print.bookUniformFee}</div>
 		</td>
 		<td width="24%">
-		<div align="center">${Print.studentYear.commonFee.bookFee - (Print.bookFee + Print.studentYear.paidFee.bookFee)}</div>
+		<div align="center">${Print.studentYear.bookUniformFee - (Print.studentYear.paidFee.bookUniformFee )}</div>
 		</td>
 		</tr>
-		<tr valign="top">
-		<td colspan="2" width="26%" style="border: 1px solid">
-		<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">UNIFORM FEE</span></span></div>
-		</td>
-		<td width="26%" style="border: 1px solid">
-		<div align="center">${Print.studentYear.uniformFee}</div>
-		</td>
-		<td colspan="2" width="24%" style="border: 1px solid">
-		<div align="center">${Print.uniformFee}</div>
-		</td>
-		<td width="24%">
-		<div align="center">${Print.studentYear.uniformFee - (Print.uniformFee + Print.studentYear.paidFee.uniformFee)}</div>
-		</td>
-		</tr>
-		<tr valign="top">
-		<td colspan="2" width="26%" style="border: 1px solid">
-		<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">ISLAMIC STUDIES</span></span></div>
-		</td>
-		<td width="26%" style="border: 1px solid">
-		<div align="center">${Print.studentYear.islamicStudies}</div>
-		</td>
-		<td colspan="2" width="24%" style="border: 1px solid">
-		<div align="center">${Print.islamicStudies}</div>
-		</td>
-		<td width="24%">
-		<div align="center">${Print.studentYear.islamicStudies - (Print.islamicStudies + Print.studentYear.paidFee.islamicStudies)}</div>
-		</td>
-		</tr>
+<!-- 		<tr valign="top"> -->
+<!-- 		<td colspan="2" width="26%" style="border: 1px solid"> -->
+<!-- 		<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">UNIFORM FEE</span></span></div> -->
+<!-- 		</td> -->
+<!-- 		<td width="26%" style="border: 1px solid"> -->
+<%-- 		<div align="center">${Print.studentYear.uniformFee}</div> --%>
+<!-- 		</td> -->
+<!-- 		<td colspan="2" width="24%" style="border: 1px solid"> -->
+<%-- 		<div align="center">${Print.uniformFee}</div> --%>
+<!-- 		</td> -->
+<!-- 		<td width="24%"> -->
+<%-- 		<div align="center">${Print.studentYear.uniformFee - (Print.uniformFee + Print.studentYear.paidFee.uniformFee)}</div> --%>
+<!-- 		</td> -->
+<!-- 		</tr> -->
+<!-- 		<tr valign="top"> -->
+<!-- 		<td colspan="2" width="26%" style="border: 1px solid"> -->
+<!-- 		<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">ISLAMIC STUDIES</span></span></div> -->
+<!-- 		</td> -->
+<!-- 		<td width="26%" style="border: 1px solid"> -->
+<%-- 		<div align="center">${Print.studentYear.islamicStudies}</div> --%>
+<!-- 		</td> -->
+<!-- 		<td colspan="2" width="24%" style="border: 1px solid"> -->
+<%-- 		<div align="center">${Print.islamicStudies}</div> --%>
+<!-- 		</td> -->
+<!-- 		<td width="24%"> -->
+<%-- 		<div align="center">${Print.studentYear.islamicStudies - (Print.islamicStudies + Print.studentYear.paidFee.islamicStudies)}</div> --%>
+<!-- 		</td> -->
+<!-- 		</tr> -->
 		<tr valign="top">
 		<td colspan="2" width="26%" style="border: 1px solid">
 		<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">VAN FEE</span></span></div>
@@ -184,7 +184,7 @@
 		<div align="center">${Print.vanFee}</div>
 		</td>
 		<td width="24%">
-		<div align="center">${Print.studentYear.vanFee - (Print.vanFee + Print.studentYear.paidFee.vanFee)}</div>
+		<div align="center">${Print.studentYear.vanFee - (Print.studentYear.paidFee.vanFee )}</div>
 		</td>
 		</tr>
 		<tr valign="top">
@@ -198,7 +198,7 @@
 		<div align="center">${Print.extraFee}</div>
 		</td>
 		<td width="24%">
-		<div align="center">${Print.studentYear.extraFee - (Print.extraFee + Print.studentYear.paidFee.extraFee)}</div>
+		<div align="center">${Print.studentYear.extraFee - (Print.studentYear.paidFee.extraFee )}</div>
 		</td>
 		</tr>
 		<tr valign="top">
@@ -236,7 +236,7 @@
 		<div align="right"><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;"><strong>BALANCE</strong></span></span></div>
 		</td>
 		<td colspan="3" width="48%">
-		<div><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">${Print.studentYear.total - (Print.amountPaid + Print.studentYear.paidFee.vanFee + Print.studentYear.paidFee.islamicStudies + Print.studentYear.paidFee.uniformFee + Print.studentYear.paidFee.bookFee + Print.studentYear.paidFee.schoolFee)}</span></span></div>
+		<div><span style="font-family: Calibri, sans-serif;"><span style="font-size: small;">${Print.studentYear.total - (Print.studentYear.paidFee.vanFee +  Print.studentYear.paidFee.bookUniformFee + Print.studentYear.paidFee.termFee+Print.studentYear.paidFee.extraFee)}</span></span></div>
 		</td>
 		</tr>
 		<tr valign="top">
