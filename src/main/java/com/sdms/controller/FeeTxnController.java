@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -63,11 +64,16 @@ public class FeeTxnController {
 		feeTxn.setAmountPaid(feeTxnModel.getAmountPaid());
 		feeTxn.setPaymentDate(new Timestamp(feeTxnModel.getPaymentDate()));
 		FeeTxn feeTxnSaved = feeTxnRepo.save(feeTxn);
+		List<FeeTxn> lastTxns = feeTxnRepo.getLastFiveTxn(feeTxnModel.getStudentYearId(),new PageRequest(0,5));
+		if(lastTxns.size()>5){
+			lastTxns = lastTxns.subList(0, 4);	
+		}
 //		studentYear.setBalance(studentYear.getBalance()-feeTxnModel.getAmountPaid());
 //		studentYear.setPaid(studentYear.getPaid()+feeTxnModel.getAmountPaid());
 //		studentYearRepo.save(studentYear);
 		//request.setAttribute("Print", feeTxnSaved);
 		redirectAttributes.addFlashAttribute("Print", feeTxnSaved);
+		redirectAttributes.addFlashAttribute("lastTxns",lastTxns);
 		return "redirect:/PrintReceipt";
 	}
 	
