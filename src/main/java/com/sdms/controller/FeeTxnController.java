@@ -5,6 +5,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -68,6 +70,7 @@ public class FeeTxnController {
 		if(lastTxns.size()>5){
 			lastTxns = lastTxns.subList(0, 4);	
 		}
+		Collections.reverse(lastTxns);
 //		studentYear.setBalance(studentYear.getBalance()-feeTxnModel.getAmountPaid());
 //		studentYear.setPaid(studentYear.getPaid()+feeTxnModel.getAmountPaid());
 //		studentYearRepo.save(studentYear);

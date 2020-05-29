@@ -68,25 +68,25 @@ td {
 						</td>
 					</tr>
 					<tr valign="top" style="border-bottom: 1px solid;">
-						<td width="14%">
+						<td width="10%">
 							<div>
 								<span style="font-family: Calibri, sans-serif;"><span
 									style="font-size: small;"><strong>DATE:</strong></span></span>
 							</div>
 						</td>
-						<td colspan="2" width="38%" style="border-right: 1px solid;">
+						<td colspan="2" width="40%" style="border-right: 1px solid;">
 							<div>
 								<span style="font-family: 'Calibri', serif;"><span
 									style="font-size: small;"><strong class="paymentDate"></strong></span></span>
 							</div>
 						</td>
-						<td width="15%">
+						<td colspan="1" width="20%">
 							<div>
 								<span style="font-family: 'Calibri', sans-serif;"><span
 									style="font-size: small;"><strong>RECEIPT # </strong></span></span>
 							</div>
 						</td>
-						<td colspan="2" width="38%">
+						<td colspan="2" width="30%">
 							<div>
 								<span style="font-family: 'Calibri', serif;"><span
 									style="font-size: small;"><strong class="feeTxnId"></strong></span></span>
@@ -102,58 +102,47 @@ td {
 						</td>
 					</tr>
 					<tr valign="top">
-						<td colspan="3" width="52%">
+						<td colspan="3" width="50%">
 							<div align="left">
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">ACADEMIC YEAR:</span></span>
+									style="font-size: small;">ACADEMIC YEAR: <span
+										style="padding: 15px;">${Print.studentYear.commonFee.academicYear.year}</span></span></span>
 							</div>
 						</td>
-						<td colspan="3" width="48%">
-							<div align="left">
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">${Print.studentYear.commonFee.academicYear.year}</span></span>
-							</div>
-						</td>
+						
+						<td colspan="3" width="50%">&nbsp;</td>
 					</tr>
 					<tr valign="top">
-						<td colspan="3" width="52%">
+						<td colspan="3" width="50%">
 							<div align="left">
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">STUDENT NAME :</span></span>
+									style="font-size: small;">STUDENT NAME :<span
+										style="padding: 15px;">${Print.studentYear.studentsInfo.name}</span></span></span>
 							</div>
 						</td>
-						<td colspan="3" width="48%">
-							<div align="left">
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">${Print.studentYear.studentsInfo.name}</span></span>
-							</div>
-						</td>
+						<td colspan="3" width="50%">&nbsp;</td>
 					</tr>
 					<tr valign="top">
-						<td colspan="2" width="26%">
+						<td colspan="1" width="10%">
 							<div align="left">
 								<span style="font-family: Calibri, sans-serif;"><span
 									style="font-size: small;">CLASS:</span></span>
 							</div>
 						</td>
-						<td width="26%">
+						<td colspan="1" width="10%">
 							<div align="left">
 								<span style="font-family: Calibri, sans-serif;"><span
 									style="font-size: small;">${Print.studentYear.commonFee.classInfo.className}</span></span>
 							</div>
 						</td>
-						<td colspan="2" width="24%">
+						<td colspan="1" width="30%">
 							<div align="left">
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">SECTION:</span></span>
+									style="font-size: small;">SECTION:<span
+										style="padding: 15px;"> ${Print.studentYear.section}</span></span></span>
 							</div>
 						</td>
-						<td width="24%">
-							<div align="left">
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">${Print.studentYear.section}</span></span>
-							</div>
-						</td>
+						<td colspan="3" width="50%">&nbsp;</td>
 					</tr>
 					<tr>
 						<td colspan="6" valign="top" width="100%">
@@ -165,25 +154,25 @@ td {
 						</td>
 					</tr>
 					<tr valign="top">
-						<td colspan="2" width="32%" style="border: 1px solid">
+						<td colspan="2" width="40%" style="border: 1px solid">
 							<div align="center">
 								<span style="font-family: Calibri, sans-serif;"><span
 									style="font-size: small;"><strong>DESCRIPTION</strong></span></span>
 							</div>
 						</td>
-						<td width="20%" style="border: 1px solid">
+						<td colspan="1" width="10%" style="border: 1px solid">
 							<div align="center">
 								<span style="font-family: Calibri, sans-serif;"><span
 									style="font-size: small;"><strong>AMOUNT (INR)</strong></span></span>
 							</div>
 						</td>
-						<td colspan="2" width="24%" style="border: 1px solid">
+						<td colspan="1" width="15%" style="border: 1px solid">
 							<div align="center">
 								<span style="font-family: Calibri, sans-serif;"><span
 									style="font-size: small;"><strong>PAID (INR)</strong></span></span>
 							</div>
 						</td>
-						<td width="24%">
+						<td colspan="2" width="35%">
 							<div align="center">
 								<span style="font-family: Calibri, sans-serif;"><span
 									style="font-size: small;"><strong>BALANCE (INR)</strong></span></span>
@@ -191,70 +180,70 @@ td {
 						</td>
 					</tr>
 					<tr valign="top">
-						<td colspan="2" width="32%" style="border: 1px solid">
+						<td colspan="2" width="40%" style="border: 1px solid">
 							<div align="center">
 								<span style="font-family: Calibri, sans-serif;"><span
 									style="font-size: small;">TUITION FEE</span></span>
 							</div>
 						</td>
-						<td width="20%" style="border: 1px solid">
+						<td colspan="1" width="10%" style="border: 1px solid">
 							<div align="center">${Print.studentYear.commonFee.schoolFee}</div>
 						</td>
-						<td colspan="2" width="24%" style="border: 1px solid">
+						<td width="15%" style="border: 1px solid">
 							<div align="center">${Print.schoolFee}</div>
 						</td>
-						<td width="24%">
+						<td colspan="2" width="35%">
 							<div align="center">${Print.studentYear.commonFee.schoolFee - (Print.schoolFee + Print.studentYear.paidFee.schoolFee)}</div>
 						</td>
 					</tr>
 					<tr valign="top">
-						<td colspan="2" width="32%" style="border: 1px solid">
+						<td colspan="2" width="30%" style="border: 1px solid">
 							<div align="center">
 								<span style="font-family: Calibri, sans-serif;"><span
 									style="font-size: small;">BOOK FEE</span></span>
 							</div>
 						</td>
-						<td width="20%" style="border: 1px solid">
+						<td colspan="1" width="20%" style="border: 1px solid">
 							<div align="center">${Print.studentYear.commonFee.bookFee}</div>
 						</td>
-						<td colspan="2" width="24%" style="border: 1px solid">
+						<td width=15% " style="border: 1px solid">
 							<div align="center">${Print.bookFee}</div>
 						</td>
-						<td width="24%">
+						<td colspan="2" width="35%">
 							<div align="center">${Print.studentYear.commonFee.bookFee - (Print.bookFee + Print.studentYear.paidFee.bookFee)}</div>
 						</td>
 					</tr>
 					<tr valign="top">
-						<td colspan="2" width="32%" style="border: 1px solid">
+						<td colspan="2" width="30%" style="border: 1px solid">
 							<div align="center">
 								<span style="font-family: Calibri, sans-serif;"><span
 									style="font-size: small;">UNIFORM FEE</span></span>
 							</div>
 						</td>
-						<td width="20%" style="border: 1px solid">
+						<td colspan="1" width="20%" style="border: 1px solid">
 							<div align="center">${Print.studentYear.uniformFee}</div>
 						</td>
-						<td colspan="2" width="24%" style="border: 1px solid">
+						<td width="15%" style="border: 1px solid">
 							<div align="center">${Print.uniformFee}</div>
 						</td>
-						<td width="24%">
+						<td colspan="2" width="35%">
 							<div align="center">${Print.studentYear.uniformFee - (Print.uniformFee + Print.studentYear.paidFee.uniformFee)}</div>
 						</td>
 					</tr>
 					<tr valign="top">
-						<td colspan="2" width="32%" style="border: 1px solid">
+						<td colspan="2" width="30%" style="border: 1px solid">
 							<div align="center">
 								<span style="font-family: Calibri, sans-serif;"><span
 									style="font-size: small;">ISLAMIC STUDIES</span></span>
 							</div>
 						</td>
-						<td width="20%" style="border: 1px solid">
+						<td colspan="1" width="20%" style="border: 1px solid">
 							<div align="center">${Print.studentYear.islamicStudies}</div>
 						</td>
-						<td colspan="2" width="24%" style="border: 1px solid">
+						<td width="15%" style="border: 1px solid">
 							<div align="center">${Print.islamicStudies}</div>
 						</td>
-						<td width="24%">
+						<td colspan="2" width="35%">
 							<div align="center">${Print.studentYear.islamicStudies - (Print.islamicStudies + Print.studentYear.paidFee.islamicStudies)}</div>
 						</td>
 					</tr>
@@ -268,10 +257,10 @@ td {
 						<td width="20%" style="border: 1px solid">
 							<div align="center">${Print.studentYear.vanFee}</div>
 						</td>
-						<td colspan="2" width="24%" style="border: 1px solid">
+						<td width="15%" style="border: 1px solid">
 							<div align="center">${Print.vanFee}</div>
 						</td>
-						<td width="24%">
+						<td colspan="2" width="25%">
 							<div align="center">${Print.studentYear.vanFee - (Print.vanFee + Print.studentYear.paidFee.vanFee)}</div>
 						</td>
 					</tr>
@@ -285,15 +274,15 @@ td {
 						<td width="20%" style="border: 1px solid">
 							<div align="center">${Print.studentYear.scholorship}</div>
 						</td>
-						<td colspan="2" width="24%" style="border: 1px solid">
+						<td width="15%" style="border: 1px solid">
 							<div>&nbsp;</div>
 						</td>
-						<td width="24%">
+						<td colspan="2" width="25s%">
 							<div>&nbsp;</div>
 						</td>
 					</tr>
 					<tr valign="top">
-						<td rowspan="3" colspan="2" width="32%"><span
+						<td rowspan="3" colspan="2" width="30%" style="font-size: 10px;"><span
 							style="font-weight: bold;">Payment History: </span> <c:forEach
 								var="txn" items="${lastTxns}">
 								(<span class="date"><c:out value="${txn.paymentDate}" /></span> -
@@ -307,7 +296,7 @@ td {
 									style="font-size: small;"><strong>TOTAL FEE</strong></span></span>
 							</div>
 						</td>
-						<td colspan="3" width="48%" style="border: 1px solid">
+						<td colspan="3" width="50%" style="border: 1px solid">
 							<div>
 								<span style="font-family: Calibri, sans-serif;"><span
 									style="font-size: small;">${Print.studentYear.total}</span></span>
@@ -315,13 +304,13 @@ td {
 						</td>
 					</tr>
 					<tr valign="top">
-						<td colspan="1" width="20%" style="border: 1px solid">
+						<td colspan="1" style="border: 1px solid">
 							<div align="right">
 								<span style="font-family: Calibri, sans-serif;"><span
 									style="font-size: small;"><strong>TOTAL PAID</strong></span></span>
 							</div>
 						</td>
-						<td colspan="3" width="48%">
+						<td colspan="3">
 							<div>
 								<span style="font-family: Calibri, sans-serif;"><span
 									style="font-size: small;">${Print.amountPaid}</span></span>
@@ -329,13 +318,13 @@ td {
 						</td>
 					</tr>
 					<tr valign="top">
-						<td colspan="1" width="52%" style="border: 1px solid">
+						<td colspan="1" style="border: 1px solid">
 							<div align="right">
 								<span style="font-family: Calibri, sans-serif;"><span
 									style="font-size: small;"><strong>BALANCE</strong></span></span>
 							</div>
 						</td>
-						<td colspan="3" width="48%">
+						<td colspan="3">
 							<div>
 								<span style="font-family: Calibri, sans-serif;"><span
 									style="font-size: small;">${Print.studentYear.total - (Print.amountPaid + Print.studentYear.paidFee.vanFee + Print.studentYear.paidFee.islamicStudies + Print.studentYear.paidFee.uniformFee + Print.studentYear.paidFee.bookFee + Print.studentYear.paidFee.schoolFee)}</span></span>
@@ -343,21 +332,21 @@ td {
 						</td>
 					</tr>
 					<tr valign="top">
-						<td width="14%" style="border: 1px solid">
+						<td  colspan="1" width="10%" style="border: 1px solid">
 							<div align="center">
 								<span style="font-family: Calibri, sans-serif;"><span
 									style="font-size: small;"><strong>AMOUNT IN
 											WORDS:</strong></span></span>
 							</div>
 						</td>
-						<td colspan="2" width="38%">
+						<td colspan="2" width="40%">
 							<div>
 								<span style="font-family: Calibri, sans-serif;"><span
 									style="font-size: small;">Rs. <span
 										class="amountInWords"></span></span></span>
 							</div>
 						</td>
-						<td colspan="3" width="48%" style="border: 1px solid">
+						<td colspan="3" width="50%" style="border: 1px solid">
 							<div>
 								<span style="font-family: Calibri, sans-serif;"><span
 									style="font-size: small;"><strong>RECEIVED BY :</strong></span></span>
@@ -389,8 +378,8 @@ td {
 						$('.amountInWords').html(amountInWords);
 						var mainReceipt = $('#mainReceipt').html();
 						$('hr').after(mainReceipt);
-						$('.date').each(function (i,el){
-							var date =new Date($(el).text());
+						$('.date').each(function(i, el) {
+							var date = new Date($(el).text());
 							$(el).text(convertDate(date));
 						});
 						//setTimeout(function(){printDiv('printArea');},10);
