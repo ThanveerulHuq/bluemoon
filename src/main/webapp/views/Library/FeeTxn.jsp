@@ -188,7 +188,7 @@
 			var admissionNo = $('#admissionNo').val();
 			var academicYear= $('#academicYear').val();
 			$.ajax({
-				url: '/SDMS/getStudentByAdNo',
+				url: '/SDMS_2020/getStudentByAdNo',
 				data: {admissionNo: admissionNo, academicYearId : academicYear },
 				method: 'GET',
 				success: function(res){

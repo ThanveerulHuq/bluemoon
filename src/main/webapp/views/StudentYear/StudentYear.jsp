@@ -60,7 +60,7 @@
 <!-- 			</div> -->
 <!-- 		</div> -->
 		
-		<form:form method="POST" action="/SDMS/MapStudent"
+		<form:form method="POST" action="/SDMS_2020/MapStudent"
 		commandName="StudentsYear" class="mtop-15"
 		enctype="multipart/form-data">
 		<div class="form-group col-md-12">
@@ -201,7 +201,7 @@
 // 	function SearchStudent(){
 // 		var admissionNo = $('#admissionNo').val();
 // 		$.ajax({
-// 		url: '/SDMS/getStudentInfoByAdNo?admissionNo='+admissionNo,
+// 		url: '/SDMS_2020/getStudentInfoByAdNo?admissionNo='+admissionNo,
 // 		method: 'GET',
 // 		success: function(res){
 // 			console.log(res);
@@ -227,7 +227,7 @@
 		var classId= $('#classId').val();
 		
 		$.ajax({
-			url: '/SDMS/getCommonFeeByClass?classId='+classId+'&academicYearId='+academicYearId,
+			url: '/SDMS_2020/getCommonFeeByClass?classId='+classId+'&academicYearId='+academicYearId,
 			method: 'GET',
 			success: function(res){
 				console.log(res);
@@ -290,7 +290,7 @@
 		
 		function checkUnique(id,year){
 			$.ajax({
-				url: '/SDMS/CheckStdFrUnique?academicYear='+year+'&&studentId='+id,
+				url: '/SDMS_2020/CheckStdFrUnique?academicYear='+year+'&&studentId='+id,
 				method: 'GET',
 				success: function(res){
 				if(res == "exist"){
@@ -313,7 +313,7 @@
 // 			var oldAdmissionNo= "${StudentsYear.admissionNo}";
 // 			if(admissionNo != oldAdmissionNo){
 // 			$.ajax({
-// 				url: '/SDMS/CheckStdFrUnique?academicYear='+academicYr+'&&admissionNo='+admissionNo,
+// 				url: '/SDMS_2020/CheckStdFrUnique?academicYear='+academicYr+'&&admissionNo='+admissionNo,
 // 				method: 'GET',
 // 				success: function(res){
 // 				if(res == "exist"){

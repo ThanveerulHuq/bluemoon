@@ -385,7 +385,7 @@ td {
 						//setTimeout(function(){printDiv('printArea');},10);
 						//printDiv('printArea');
 					} else {
-						window.location = "/SDMS/FeeTxn";
+						window.location = "/SDMS_2020/FeeTxn";
 					}
 
 					var transactionHistory = "${lastTxns}";

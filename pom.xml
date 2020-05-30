@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.sanmina.webapps</groupId>
-	<artifactId>SDMS</artifactId>
+	<artifactId>SDMS_2020</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SDMS Maven Webapp</name>
@@ -58,7 +58,7 @@
 				<spring.profile>dev</spring.profile>
 			</properties>
 			<build>
-				<finalName>SDMS</finalName>
+				<finalName>SDMS_2020</finalName>
 				<filters>
 					<filter>profiles/dev.properties</filter>
 				</filters>
@@ -380,7 +380,7 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<configuration>
 					<webApp>
-						<contextPath>/SDMS</contextPath>
+						<contextPath>/SDMS_2020</contextPath>
 					</webApp>
 				</configuration>
 				<version>9.2.0.v20140526</version>
