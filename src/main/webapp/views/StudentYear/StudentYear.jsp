@@ -158,15 +158,15 @@
 		var academicYr='${StudentsYear.academicYear.id}';
 		var classId= '${classId}';
 		var section = '${StudentsYear.section}';
-		if(academicYr == ''){
-		var d= new Date();
-		var year= d.getFullYear();
-		year = year -2017;
-		if(d.getMonth()<2){
-				year = year-1;
-			}
-		$('#academicYear').val(year);
-		}
+		// if(academicYr == ''){
+		// var d= new Date();
+		// var year= d.getFullYear();
+		// year = year -2017;
+		// if(d.getMonth()<2){
+		// 		year = year-1;
+		// 	}
+		// $('#academicYear').val(year);
+		// }
 		if(classId != ''){
 			$('#classId').val(classId);
 		}

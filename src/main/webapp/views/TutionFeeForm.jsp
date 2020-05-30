@@ -100,13 +100,13 @@
 			var academicYr = '${CommonFee.academicYear.id}';
 			var classId = '${CommonFee.classInfo.classId}';
 			if (academicYr == '') {
-				var d = new Date();
-				var year = d.getFullYear();
-				year = year - 2017;
-				if (d.getMonth() < 2) {
-					year = year - 1;
-				}
-				$('#academicYear').val(year);
+				// var d = new Date();
+				// var year = d.getFullYear();
+				// year = year - 2017;
+				// if (d.getMonth() < 2) {
+				// 	year = year - 1;
+				// }
+				// $('#academicYear').val(year);
 			}else{
 				$('#academicYear').val(academicYr);
 			}

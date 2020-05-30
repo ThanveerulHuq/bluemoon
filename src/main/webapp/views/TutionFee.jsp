@@ -90,14 +90,14 @@ $('document').ready(
 		}
 		
 		
-		var d= new Date();
-		var year= d.getFullYear();
-		year = year -2017;
-		if(d.getMonth()<2){
-				year = year-1;
-			}
-		$('#academicYear').val(year);
-		createGrid(year);
+		// var d= new Date();
+		// var year= d.getFullYear();
+		// year = year -2017;
+		// if(d.getMonth()<2){
+		// 		year = year-1;
+		// 	}
+		// $('#academicYear').val(year);
+		createGrid($('#academicYear').val());
 		$('#academicYear').change(function(){
 			console.log('changed');
 			var academicYear =$('#academicYear').val();

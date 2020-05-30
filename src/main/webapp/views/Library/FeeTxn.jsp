@@ -40,7 +40,7 @@
 <!-- 	</div> -->
 	
 	<div class=" mtop-15" style="display:block">
-		<form:form id="saveFeeForm" method="POST" action="/SDMS/SaveFeeTxn"
+		<form:form id="saveFeeForm" method="POST" action="/SDMS_2020/SaveFeeTxn"
 			commandName="FeeTxn" class="mtop-15"
 			enctype="multipart/form-data">
 			<div class="form-group col-md-12"><label class="col-md-2"><span class="pull-right">Academic Year:</span></label>

@@ -45,7 +45,7 @@
   <div class="modal-dialog">
 	<div class="modal-content">
 		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">ï¿½</span><span class="sr-only">Close</span></button>
 			<h3 class="modal-title" id="lineModalLabel">My Modal</h3>
 		</div>
 		<div class="modal-body">
@@ -361,14 +361,14 @@ document.body.removeChild(link);
 }
 }
 }
-var d= new Date();
-var year= d.getFullYear();
-year = year -2017;
-if(d.getMonth()<2){
-		year = year-1;
-	}
-$('#academicYear').val(year);
-createGrid(year);
+// var d= new Date();
+// var year= d.getFullYear();
+// year = year -2017;
+// if(d.getMonth()<2){
+// 		year = year-1;
+// 	}
+// $('#academicYear').val(year);
+createGrid($('#academicYear').val());
 $('#academicYear').change(function(){
 	console.log('changed');
 	var academicYear =$('#academicYear').val();
@@ -384,7 +384,7 @@ function formatGender(cell,option,row){
 }
 
 function formatEdit (cell,option,row){
-	return "<a href='/SDMS/editStudentYear?studentYrId="+cell+"' ><span class='glyphicon glyphicon-edit'></span></a>"
+	return "<a href='/SDMS_2020/editStudentYear?studentYrId="+cell+"' ><span class='glyphicon glyphicon-edit'></span></a>"
 }
 function totalBalance(cell,option,row){
 	console.log(row.paidFee.schoolFee);

@@ -32,7 +32,7 @@ td {
 
 		<div style="text-align: center; margin: 15px;">
 			<button id="printButton" class="btn btn-lg btn-default pull-left"
-				onclick="window.location='/SDMS/FeeTxn'">Go Back</button>
+				onclick="window.location='/SDMS_2020/FeeTxn'">Go Back</button>
 			<button id="printButton" class="btn btn-lg btn-info"
 				onclick="window.print();return false;">Print Receipt</button>
 		</div>
@@ -68,25 +68,27 @@ td {
 						</td>
 					</tr>
 					<tr valign="top" style="border-bottom: 1px solid;">
-						<td width="10%">
+						<td colspan="2">
 							<div>
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;"><strong>DATE:</strong></span></span>
+									style="font-size: small;"><strong>DATE: <span
+											style="padding: 25px;" class="paymentDate"></span></span></strong></span></span>
 							</div>
 						</td>
-						<td colspan="2" width="40%" style="border-right: 1px solid;">
-							<div>
-								<span style="font-family: 'Calibri', serif;"><span
-									style="font-size: small;"><strong class="paymentDate"></strong></span></span>
+						<td colspan="2">
+							<div align="center">
+								<span style="font-family: Calibri, sans-serif;"><span
+									style="font-size: small;"><strong>ACADEMIC
+											YEAR: <span style="padding: 15px;">${Print.studentYear.commonFee.academicYear.year}</span></span></strong></span></span>
 							</div>
 						</td>
-						<td colspan="1" width="20%">
+						<td colspan="1">
 							<div>
 								<span style="font-family: 'Calibri', sans-serif;"><span
 									style="font-size: small;"><strong>RECEIPT # </strong></span></span>
 							</div>
 						</td>
-						<td colspan="2" width="30%">
+						<td colspan="1">
 							<div>
 								<span style="font-family: 'Calibri', serif;"><span
 									style="font-size: small;"><strong class="feeTxnId"></strong></span></span>
@@ -105,24 +107,10 @@ td {
 						<td colspan="3" width="50%">
 							<div align="left">
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">ACADEMIC YEAR: <span
-										style="padding: 15px;">${Print.studentYear.commonFee.academicYear.year}</span></span></span>
-							</div>
-						</td>
-						
-						<td colspan="3" width="50%">&nbsp;</td>
-					</tr>
-					<tr valign="top">
-						<td colspan="3" width="50%">
-							<div align="left">
-								<span style="font-family: Calibri, sans-serif;"><span
 									style="font-size: small;">STUDENT NAME :<span
 										style="padding: 15px;">${Print.studentYear.studentsInfo.name}</span></span></span>
 							</div>
 						</td>
-						<td colspan="3" width="50%">&nbsp;</td>
-					</tr>
-					<tr valign="top">
 						<td colspan="1" width="10%">
 							<div align="left">
 								<span style="font-family: Calibri, sans-serif;"><span
@@ -142,8 +130,8 @@ td {
 										style="padding: 15px;"> ${Print.studentYear.section}</span></span></span>
 							</div>
 						</td>
-						<td colspan="3" width="50%">&nbsp;</td>
 					</tr>
+					
 					<tr>
 						<td colspan="6" valign="top" width="100%">
 							<div align="center">
@@ -332,7 +320,7 @@ td {
 						</td>
 					</tr>
 					<tr valign="top">
-						<td  colspan="1" width="10%" style="border: 1px solid">
+						<td colspan="1" width="10%" style="border: 1px solid">
 							<div align="center">
 								<span style="font-family: Calibri, sans-serif;"><span
 									style="font-size: small;"><strong>AMOUNT IN
