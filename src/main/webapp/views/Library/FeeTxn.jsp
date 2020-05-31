@@ -14,7 +14,7 @@
 </head>
 <body>
 	<c:import url="/views/shared/header.jsp"></c:import>
-	<div class="content container mtop-50">
+	<div class="content container mtop-50 mbottom-50">
 	<center>
 		<h2>Fee Payment</h2>
 	</center>

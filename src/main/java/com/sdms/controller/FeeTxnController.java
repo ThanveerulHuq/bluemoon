@@ -64,12 +64,12 @@ public class FeeTxnController {
 		feeTxn.setVanFee(feeTxnModel.getVanFee());
 		feeTxn.setAmountPaid(feeTxnModel.getAmountPaid());
 		feeTxn.setPaymentDate(new Timestamp(feeTxnModel.getPaymentDate()));
-		FeeTxn feeTxnSaved = feeTxnRepo.save(feeTxn);
 		List<FeeTxn> lastTxns = feeTxnRepo.getLastFiveTxn(feeTxnModel.getStudentYearId(),new PageRequest(0,5));
+		FeeTxn feeTxnSaved = feeTxnRepo.save(feeTxn);
 		if(lastTxns.size()>5){
 			lastTxns = lastTxns.subList(0, 4);	
 		}
-		Collections.reverse(lastTxns);
+//		Collections.reverse(lastTxns);
 //		studentYear.setBalance(studentYear.getBalance()-feeTxnModel.getAmountPaid());
 //		studentYear.setPaid(studentYear.getPaid()+feeTxnModel.getAmountPaid());
 //		studentYearRepo.save(studentYear);

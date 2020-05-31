@@ -16,6 +16,6 @@ public interface FeeTxnRepo extends JpaRepository<FeeTxn, Long> {
 	public ArrayList<FeeTxn> getFilterData(@Param("startTime") Date startTime,
 			@Param("endTime") Date endTime);
 
-	@Query("select a from FeeTxn a where a.studentYear.id=:id order by paymentDate desc")
+	@Query("select a from FeeTxn a where a.studentYear.id=:id order by a.paymentDate desc, a.id desc")
 	public ArrayList<FeeTxn> getLastFiveTxn(@Param("id") Long id, Pageable  pageable);
 }

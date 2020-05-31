@@ -42,12 +42,12 @@
 	<tbody>
 	<tr valign="top">
 	<td width="75" height="57">
-	<div align="left"><img src="<%=request.getContextPath()%>/resources/images/school_logo.jpg" height="50" width="50" style="margin-left: 20px;"/></div>
+	<div align="left"><img src="<%=request.getContextPath()%>/resources/images/school_logo.png" height="50" width="50" style="margin-left: 20px;"/></div>
 	</td>
 	<td colspan="3" width="572">
-	<div align="center"><span style="font-family: 'Calibri', serif;"><span style="font-size: large;"><strong>DHAARUS SALAAM MATRICULATION SCHOOL</strong></span></span></div>
+	<div align="center"><span style="font-family: 'Calibri', serif;"><span style="font-size: 15px;"><strong>DHAARUS SALAAM MATRICULATION HIGHER SECONDARY SCHOOL</strong></span></span></div>
 	<div align="center"><span style="font-family: 'Calibri', serif;"><span style="font-size: small;">(Managed by : Dhaarus Salaam Trust, Salem &ndash; 636 005)</span></span></div>
-	<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><span style="font-family: 'Calibri', serif;"><span style="font-size: small;">Ph: (0427) 2442018, </span></span><span style="font-family: 'Calibri', serif;"><span style="font-size: small;">+91 98942 50320 | E-mail: <a>dhaarussalaam1@gmail.com</a></span></span></span></span></div>
+	<div align="center"><span style="font-family: Calibri, sans-serif;"><span style="font-size: large;"><span style="font-family: 'Calibri', serif;"><span style="font-size: small;">Ph: (0427) 2442018, </span></span><span style="font-family: 'Calibri', serif;"><span style="font-size: small;">+91 98942 50320 | E-mail: <a>dhaarussalaam1@gmail.com</a>| website: <a>www.dhaarussalaam.in</a></span></span></span></span></div>
 	</td>
 	</tr>
 	<tr>
