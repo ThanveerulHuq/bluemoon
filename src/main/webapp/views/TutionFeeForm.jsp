@@ -76,6 +76,14 @@
 						required="true" type="number"  />
 				</div>
 			</div>
+			<div class="form-group col-md-12">
+				<label class="col-md-2"><span class="pull-right">Corona Concession
+						:</span> </label>
+				<div class="col-md-3">
+					<form:input id="corona_concession" class="form-control feeinput" path="corona_concession"
+						required="true" type="number"  />
+				</div>
+			</div>
 			<div class="col-md-7">
 				<div class="pull-right">
 					<form:button type="button" class="btn btn-danger btn-md"

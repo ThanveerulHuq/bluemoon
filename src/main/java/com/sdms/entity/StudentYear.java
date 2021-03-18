@@ -43,6 +43,10 @@ public class StudentYear {
 	@Column(name="scholorship",nullable=false,length=15)
 	private Long scholorship;
 	
+	
+	@Column(name="corona_concession",nullable=false,length=15)
+	private Long corona_concession;
+	
 	@Column(name="total",nullable=false,length=15)
 	private Long total;
 	
@@ -130,6 +134,14 @@ public class StudentYear {
 
 	public void setPaidFee(PaidFee paidFee) {
 		this.paidFee = paidFee;
+	}
+
+	public Long getCorona_concession() {
+		return corona_concession;
+	}
+
+	public void setCorona_concession(Long corona_concession) {
+		this.corona_concession = corona_concession;
 	}
 	
 	

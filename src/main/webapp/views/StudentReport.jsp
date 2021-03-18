@@ -151,7 +151,7 @@ view: false, del: false, add: false, edit: false, cloneToTop: false,search:false
 {}, // delete
 {
 }).navSeparatorAdd('#Pager');
-// jQuery("#Grid").jqGrid('filterToolbar',{searchOperators : true});
+jQuery("#Grid").jqGrid('filterToolbar',{searchOperators : true});
 $('#refresh_Grid div').append("<span>Reload</span>");
 $('INPUT[id^="gs_"]').addClass('form-control input-sm');
 jQuery("#Grid").jqGrid('navButtonAdd', "#Pager", {

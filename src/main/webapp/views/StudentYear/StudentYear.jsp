@@ -127,7 +127,12 @@
 			</div></div>
 			
 		</div>
-
+	<div class="form-group col-md-12">
+			<label class="col-md-2"><span class="pull-right">Corona Fee:</span> </label>
+			<div class="col-md-3">
+				<input id="corona_concession" name="corona_concession" class="form-control" disabled="true"/>
+			</div>
+		</div>
 		<div class="form-group col-md-12">
 			<label class="col-md-2"><span class="pull-right">Total Fee:</span> </label>
 			<div class="col-md-3">
@@ -233,6 +238,7 @@
 				console.log(res);
 			if(res.id != undefined){
 			$('#tutionFee').val(res.schoolFee);
+			$('#corona_concession').val(res.corona_concession);			
 			$('#bookFee').val(res.bookFee).change();
 			$('#FeeId').val(res.id);
 			$('.errMsgForAdmissionNo').hide();
@@ -262,6 +268,9 @@
 			if($('#scholorship').val() !=''){
 			total-=parseInt($('#scholorship').val());
 			}
+			if($('#corona_concession').val() !=''){
+				total-=parseInt($('#corona_concession').val());
+				}
 			$('#total').val(total);
 		}
 		

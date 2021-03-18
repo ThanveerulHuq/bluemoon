@@ -28,7 +28,9 @@ public class CommonFee {
 	
 	@Column(name="book_fee",nullable=false,length=15)
 	private Long bookFee;
-
+	
+	@Column(name="corona_concession",nullable=false,length=15)
+	private Long corona_concession;
 
 	@ManyToOne 
 	@JoinColumn(name="academic_year")
@@ -73,5 +75,14 @@ public class CommonFee {
 	public void setBookFee(Long bookFee) {
 		this.bookFee = bookFee;
 	}
+
+	public Long getCorona_concession() {
+		return corona_concession;
+	}
+
+	public void setCorona_concession(Long corona_concession) {
+		this.corona_concession = corona_concession;
+	}
+	
 
 }

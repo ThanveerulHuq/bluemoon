@@ -131,6 +131,8 @@
 			</tr>
 			<tr><td>(-)SCHOLORSHIP</td><td colspan=2><p id="scholarship"></p></td><td></td>
 			</tr>
+			<tr><td>(-)CORONA CONCESSION</td><td colspan=2><p id="corona_concession"></p></td><td></td>
+			</tr>
 			<tr><td>TOTAL</td><td><p id="total_fee"></p></td><td><p id="tot_balance"></p></td><td><form:input path="amountPaid" id="tot_paid" class="form-control" disabled="true"/></td>
 			</tr>
 			<tbody>
@@ -225,6 +227,7 @@
 			$('#tot_van').text(data.vanFee);
 			$('#bal_van').text(data.vanFee-data.paidFee.vanFee);
 			$('#scholarship').text(data.scholorship);
+			$('#corona_concession').text(data.commonFee.corona_concession);
 			$('#total_fee').text(data.total);
 			paidfee=data.paidFee.schoolFee+data.paidFee.bookFee+data.paidFee.uniformFee+data.paidFee.islamicStudies+data.paidFee.vanFee;
 			$('#tot_balance').text(data.total - paidfee);

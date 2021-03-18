@@ -282,6 +282,23 @@ td {
 						</td>
 					</tr>
 					<tr valign="top">
+						<td colspan="2" width="32%" style="border: 1px solid">
+							<div align="center">
+								<span style="font-family: Calibri, sans-serif;"><span
+									style="font-size: small;">CORONA CONCESSION(-)</span></span>
+							</div>
+						</td>
+						<td width="20%" style="border: 1px solid">
+							<div align="center">${Print.studentYear.corona_concession}</div>
+						</td>
+						<td width="15%" style="border: 1px solid">
+							<div>&nbsp;</div>
+						</td>
+						<td colspan="2" width="25s%">
+							<div>&nbsp;</div>
+						</td>
+					</tr>
+					<tr valign="top">
 						<td rowspan="3" colspan="2" width="30%" style="font-size: 10px;"><span
 							style="font-weight: bold;">Payment History: </span> <c:forEach
 								var="txn" items="${lastTxns}">
