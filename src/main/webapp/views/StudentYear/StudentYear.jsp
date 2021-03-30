@@ -128,9 +128,9 @@
 			
 		</div>
 	<div class="form-group col-md-12">
-			<label class="col-md-2"><span class="pull-right">Corona Fee:</span> </label>
+			<label class="col-md-2"><span class="pull-right">(-)Corona Concession:</span> </label>
 			<div class="col-md-3">
-				<input id="corona_concession" name="corona_concession" class="form-control" disabled="true"/>
+				<form:input path="corona_concession" id="corona_concession" name="corona_concession" class="form-control" type="number" required="true" />
 			</div>
 		</div>
 		<div class="form-group col-md-12">

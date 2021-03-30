@@ -112,6 +112,7 @@ public class StudentYearController {
 		studentYear.setSection(studentYearModel.getSection());
 		studentYear.setVanFee(studentYearModel.getVan_fee());
 		studentYear.setScholorship(studentYearModel.getScholorship());
+		studentYear.setCorona_concession(studentYearModel.getCorona_concession());
 //		studentYear.setBookFee(studentYearModel.getBook_fee());
 		studentYear.setUniformFee(studentYearModel.getUniform_fee());
 		studentYear.setIslamicStudies(studentYearModel.getIslamic_studies());

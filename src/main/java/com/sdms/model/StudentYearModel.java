@@ -28,6 +28,8 @@ public class StudentYearModel {
 	private Long islamic_studies;
 	
 	private Long scholorship;
+	
+	private Long corona_concession;
 
 	public AcademicYear getAcademicYear() {
 		return academicYear;
@@ -115,6 +117,14 @@ public class StudentYearModel {
 
 	public void setStudentYearId(Long studentYearId) {
 		this.studentYearId = studentYearId;
+	}
+
+	public Long getCorona_concession() {
+		return corona_concession;
+	}
+
+	public void setCorona_concession(Long corona_concession) {
+		this.corona_concession = corona_concession;
 	}
 	
 }
