@@ -25,6 +25,10 @@ td {
 	padding-right: 10px;
 	border-bottom: 1px solid;
 }
+
+span, div {
+	font-size: 11px;
+}
 </style>
 </head>
 <body>
@@ -56,14 +60,14 @@ td {
 							</div>
 							<div align="center">
 								<span style="font-family: 'Times New Roman', serif;"><span
-									style="font-size: small;">(Managed by : Dhaarus Salaam
-										Trust, Salem &ndash; 636 005)</span></span>
+									>(Managed by : Dhaarus Salaam Trust, Salem
+										&ndash; 636 005)</span></span>
 							</div>
 							<div align="center">
 								<span style="font-family: 'Times New Roman', serif;"><span
-									style="font-size: small;">Ph: (0427) 2442018, </span></span><span
+									>Ph: (0427) 2442018, </span></span><span
 									style="font-family: 'Times New Roman', serif;"><span
-									style="font-size: small;">+91 98942 50320 | E-mail: <a>dhaarussalaam1@gmail.com</a></span></span>
+									>+91 98942 50320 | E-mail: <a>dhaarussalaam1@gmail.com</a></span></span>
 							</div>
 						</td>
 					</tr>
@@ -71,25 +75,25 @@ td {
 						<td width="10%">
 							<div>
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;"><strong>DATE:</strong></span></span>
+									><strong>DATE:</strong></span></span>
 							</div>
 						</td>
 						<td colspan="2" width="40%" style="border-right: 1px solid;">
 							<div>
 								<span style="font-family: 'Calibri', serif;"><span
-									style="font-size: small;"><strong class="paymentDate"></strong></span></span>
+									><strong class="paymentDate"></strong></span></span>
 							</div>
 						</td>
 						<td colspan="1" width="20%">
 							<div>
 								<span style="font-family: 'Calibri', sans-serif;"><span
-									style="font-size: small;"><strong>RECEIPT # </strong></span></span>
+									><strong>RECEIPT # </strong></span></span>
 							</div>
 						</td>
 						<td colspan="2" width="30%">
 							<div>
 								<span style="font-family: 'Calibri', serif;"><span
-									style="font-size: small;"><strong class="feeTxnId"></strong></span></span>
+									><strong class="feeTxnId"></strong></span></span>
 							</div>
 						</td>
 					</tr>
@@ -97,7 +101,7 @@ td {
 						<td colspan="6" valign="top" width="100%">
 							<div align="center">
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;"><strong>RECEIVED FROM</strong></span></span>
+									><strong>RECEIVED FROM</strong></span></span>
 							</div>
 						</td>
 					</tr>
@@ -105,19 +109,17 @@ td {
 						<td colspan="3" width="50%">
 							<div align="left">
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">ACADEMIC YEAR: <span
-										style="padding: 15px;">${Print.studentYear.commonFee.academicYear.year}</span></span></span>
+									>ACADEMIC YEAR: <span style="padding: 15px;">${Print.studentYear.commonFee.academicYear.year}</span></span></span>
 							</div>
 						</td>
-						
+
 						<td colspan="3" width="50%">&nbsp;</td>
 					</tr>
 					<tr valign="top">
 						<td colspan="3" width="50%">
 							<div align="left">
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">STUDENT NAME :<span
-										style="padding: 15px;">${Print.studentYear.studentsInfo.name}</span></span></span>
+									>STUDENT NAME :<span style="padding: 15px;">${Print.studentYear.studentsInfo.name}</span></span></span>
 							</div>
 						</td>
 						<td colspan="3" width="50%">&nbsp;</td>
@@ -126,20 +128,20 @@ td {
 						<td colspan="1" width="10%">
 							<div align="left">
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">CLASS:</span></span>
+									>CLASS:</span></span>
 							</div>
 						</td>
 						<td colspan="1" width="10%">
 							<div align="left">
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">${Print.studentYear.commonFee.classInfo.className}</span></span>
+									>${Print.studentYear.commonFee.classInfo.className}</span></span>
 							</div>
 						</td>
 						<td colspan="1" width="30%">
 							<div align="left">
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">SECTION:<span
-										style="padding: 15px;"> ${Print.studentYear.section}</span></span></span>
+									>SECTION:<span style="padding: 15px;">
+											${Print.studentYear.section}</span></span></span>
 							</div>
 						</td>
 						<td colspan="3" width="50%">&nbsp;</td>
@@ -148,8 +150,7 @@ td {
 						<td colspan="6" valign="top" width="100%">
 							<div align="center">
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;"><strong>PAYMENT
-											DETAILS</strong></span></span>
+									><strong>PAYMENT DETAILS</strong></span></span>
 							</div>
 						</td>
 					</tr>
@@ -157,25 +158,25 @@ td {
 						<td colspan="2" width="40%" style="border: 1px solid">
 							<div align="center">
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;"><strong>DESCRIPTION</strong></span></span>
+									><strong>DESCRIPTION</strong></span></span>
 							</div>
 						</td>
 						<td colspan="1" width="10%" style="border: 1px solid">
 							<div align="center">
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;"><strong>AMOUNT (INR)</strong></span></span>
+									><strong>AMOUNT (INR)</strong></span></span>
 							</div>
 						</td>
 						<td colspan="1" width="15%" style="border: 1px solid">
 							<div align="center">
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;"><strong>PAID (INR)</strong></span></span>
+									><strong>PAID (INR)</strong></span></span>
 							</div>
 						</td>
 						<td colspan="2" width="35%">
 							<div align="center">
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;"><strong>BALANCE (INR)</strong></span></span>
+									><strong>BALANCE (INR)</strong></span></span>
 							</div>
 						</td>
 					</tr>
@@ -183,7 +184,7 @@ td {
 						<td colspan="2" width="40%" style="border: 1px solid">
 							<div align="center">
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">TUITION FEE</span></span>
+									>TUITION FEE</span></span>
 							</div>
 						</td>
 						<td colspan="1" width="10%" style="border: 1px solid">
@@ -200,7 +201,7 @@ td {
 						<td colspan="2" width="30%" style="border: 1px solid">
 							<div align="center">
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">BOOK FEE</span></span>
+									>BOOK FEE</span></span>
 							</div>
 						</td>
 						<td colspan="1" width="20%" style="border: 1px solid">
@@ -217,7 +218,7 @@ td {
 						<td colspan="2" width="30%" style="border: 1px solid">
 							<div align="center">
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">UNIFORM FEE</span></span>
+									>UNIFORM FEE</span></span>
 							</div>
 						</td>
 						<td colspan="1" width="20%" style="border: 1px solid">
@@ -234,7 +235,7 @@ td {
 						<td colspan="2" width="30%" style="border: 1px solid">
 							<div align="center">
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">ISLAMIC STUDIES</span></span>
+									>ISLAMIC STUDIES</span></span>
 							</div>
 						</td>
 						<td colspan="1" width="20%" style="border: 1px solid">
@@ -251,7 +252,7 @@ td {
 						<td colspan="2" width="32%" style="border: 1px solid">
 							<div align="center">
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">VAN FEE</span></span>
+									>VAN FEE</span></span>
 							</div>
 						</td>
 						<td width="20%" style="border: 1px solid">
@@ -268,7 +269,7 @@ td {
 						<td colspan="2" width="32%" style="border: 1px solid">
 							<div align="center">
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">SCHOLARSHIP(-)</span></span>
+									>SCHOLARSHIP(-)</span></span>
 							</div>
 						</td>
 						<td width="20%" style="border: 1px solid">
@@ -285,7 +286,7 @@ td {
 						<td colspan="2" width="32%" style="border: 1px solid">
 							<div align="center">
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">CORONA CONCESSION(-)</span></span>
+									>CORONA CONCESSION(-)</span></span>
 							</div>
 						</td>
 						<td width="20%" style="border: 1px solid">
@@ -310,13 +311,13 @@ td {
 						<td colspan="1" width="20%" style="border: 1px solid">
 							<div align="right">
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;"><strong>TOTAL FEE</strong></span></span>
+									><strong>TOTAL FEE</strong></span></span>
 							</div>
 						</td>
 						<td colspan="3" width="50%" style="border: 1px solid">
 							<div>
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">${Print.studentYear.total}</span></span>
+									>${Print.studentYear.total}</span></span>
 							</div>
 						</td>
 					</tr>
@@ -324,13 +325,13 @@ td {
 						<td colspan="1" style="border: 1px solid">
 							<div align="right">
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;"><strong>TOTAL PAID</strong></span></span>
+									><strong>TOTAL PAID</strong></span></span>
 							</div>
 						</td>
 						<td colspan="3">
 							<div>
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">${Print.amountPaid}</span></span>
+									>${Print.amountPaid}</span></span>
 							</div>
 						</td>
 					</tr>
@@ -338,35 +339,41 @@ td {
 						<td colspan="1" style="border: 1px solid">
 							<div align="right">
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;"><strong>BALANCE</strong></span></span>
+									><strong>BALANCE</strong></span></span>
 							</div>
 						</td>
 						<td colspan="3">
 							<div>
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">${Print.studentYear.total - (Print.amountPaid + Print.studentYear.paidFee.vanFee + Print.studentYear.paidFee.islamicStudies + Print.studentYear.paidFee.uniformFee + Print.studentYear.paidFee.bookFee + Print.studentYear.paidFee.schoolFee)}</span></span>
+									>${Print.studentYear.total - (Print.amountPaid + Print.studentYear.paidFee.vanFee + Print.studentYear.paidFee.islamicStudies + Print.studentYear.paidFee.uniformFee + Print.studentYear.paidFee.bookFee + Print.studentYear.paidFee.schoolFee)}</span></span>
 							</div>
 						</td>
 					</tr>
 					<tr valign="top">
-						<td  colspan="1" width="10%" style="border: 1px solid">
+						<td colspan="1" width="10%" style="border: 1px solid">
 							<div align="center">
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;"><strong>AMOUNT IN
-											WORDS:</strong></span></span>
+									><strong>AMOUNT IN WORDS:</strong></span></span>
 							</div>
 						</td>
 						<td colspan="2" width="40%">
 							<div>
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">Rs. <span
-										class="amountInWords"></span></span></span>
+									>Rs. <span class="amountInWords"></span></span></span>
 							</div>
 						</td>
 						<td colspan="3" width="50%" style="border: 1px solid">
 							<div>
 								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;"><strong>RECEIVED BY :</strong></span></span>
+									><strong>RECEIVED BY :</strong></span></span>
+							</div>
+						</td>
+					</tr>
+					<tr valign="top" style="height: 30px;">
+						<td colspan="6" width="100%" style="border: 1px solid">
+							<div>
+								<span style="font-family: Calibri, sans-serif;"><span
+									><strong>REMARKS :</strong></span></span>
 							</div>
 						</td>
 					</tr>

@@ -108,7 +108,7 @@ function createGrid(academicYear){
 var grid=$("#Grid");
 grid.jqGrid({
 url:'getStudentYearByYear?academicYear='+academicYear,
-colNames:['Edit','name', 'gender','Father Name','Admission No','EMIS No','Class','Section','Scholorship','Total'],
+colNames:['Edit','name', 'gender','Father Name','Admission No','EMIS No','Class','Section','Scholorship','Corona Concession','Total'],
 colModel:[
 {name:'id',index:'id', width:60,align:"center", sorttype:"int",search: false,formatter:formatEdit},
 {name:'studentsInfo.name',index:'studentsInfo.name', width:200, align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
@@ -119,6 +119,7 @@ colModel:[
 {name:'commonFee.classInfo.className',index:'commonFee.classInfo.className', width:200,align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 {name:'section',index:'section', width:200,align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 {name:'scholorship',index:'scholorship', width:200,align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
+{name:'corona_concession',index:'corona_concession', width:200,align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 {name:'total',index:'section', width:200,align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
 ],
 search:true,
