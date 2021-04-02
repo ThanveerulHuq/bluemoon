@@ -93,7 +93,7 @@ public class StudentYearController {
 		request.setAttribute("classId", studentYear.getCommonFee().getClassInfo().getClassId());
 		request.setAttribute("tutionfee", studentYear.getCommonFee().getSchoolFee());
 		request.setAttribute("bookfee", studentYear.getCommonFee().getBookFee());
-		
+		request.setAttribute("corona_concession", studentYear.getCommonFee().getCorona_concession());
 		return "StudentYear/StudentYear";
 	}
 
