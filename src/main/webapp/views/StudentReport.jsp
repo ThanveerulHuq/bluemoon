@@ -362,11 +362,7 @@ document.body.removeChild(link);
 }
 }
 var d= new Date();
-var year= d.getFullYear();
-year = year -2017;
-if(d.getMonth()<2){
-		year = year-1;
-	}
+var year= 1;
 $('#academicYear').val(year);
 createGrid(year);
 $('#academicYear').change(function(){

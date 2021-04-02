@@ -130,7 +130,7 @@
 	<div class="form-group col-md-12">
 			<label class="col-md-2"><span class="pull-right">(-)Corona Concession:</span> </label>
 			<div class="col-md-3">
-				<form:input path="corona_concession" id="corona_concession" name="corona_concession" class="form-control" disabled="true"
+				<form:input path="corona_concession" id="corona_concession" name="corona_concession" class="form-control" disabled="true" value="${corona_concession}"
 				 type="number" required="true" />
 			</div>
 		</div>
@@ -166,11 +166,12 @@
 		var section = '${StudentsYear.section}';
 		if(academicYr == ''){
 		var d= new Date();
-		var year= d.getFullYear();
-		year = year -2017;
-		if(d.getMonth()<2){
-				year = year-1;
-			}
+		var year= 1;
+// 			d.getFullYear();
+// 		year = year -2017;
+// 		if(d.getMonth()<2){
+// 				year = year-1;
+// 			}
 		$('#academicYear').val(year);
 		}
 		if(classId != ''){

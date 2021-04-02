@@ -320,12 +320,13 @@ document.body.removeChild(link);
 }
 }
 var d= new Date();
-var year= d.getFullYear();
-year = year -2017;
-if(d.getMonth()<2){
-		year = year-1;
-	}
-$('#academicYear').val(year);
+var year= 1;
+// 	d.getFullYear();
+// year = year -2017;
+// if(d.getMonth()<2){
+// 		year = year-1;
+// 	}
+$('#academicYear').val(1);
 createGrid(year);
 $('#academicYear').change(function(){
 // 	console.log('changed');

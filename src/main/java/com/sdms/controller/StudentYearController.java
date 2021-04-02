@@ -81,6 +81,7 @@ public class StudentYearController {
 //		studentsYearModel.setBook_fee(studentYear.getBookFee());
 		studentsYearModel.setUniform_fee(studentYear.getUniformFee());
 		studentsYearModel.setIslamic_studies(studentYear.getIslamicStudies());
+//		studentsYearModel.setCorona_concession(studentYear.getCorona_concession());
 		studentsYearModel.setScholorship(studentYear.getScholorship());
 		
 		List<AcademicYear> academicYear = academicYearRepo.findAll();
@@ -112,7 +113,7 @@ public class StudentYearController {
 		studentYear.setSection(studentYearModel.getSection());
 		studentYear.setVanFee(studentYearModel.getVan_fee());
 		studentYear.setScholorship(studentYearModel.getScholorship());
-		studentYear.setCorona_concession(studentYearModel.getCorona_concession());
+		studentYear.setCorona_concession(commonFee.getCorona_concession());
 //		studentYear.setBookFee(studentYearModel.getBook_fee());
 		studentYear.setUniformFee(studentYearModel.getUniform_fee());
 		studentYear.setIslamicStudies(studentYearModel.getIslamic_studies());
