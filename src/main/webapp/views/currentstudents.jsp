@@ -51,7 +51,7 @@
   <div class="modal-dialog">
 	<div class="modal-content">
 		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">ï¿½</span><span class="sr-only">Close</span></button>
 			<h3 class="modal-title" id="lineModalLabel">My Modal</h3>
 		</div>
 		<div class="modal-body">
@@ -319,11 +319,7 @@ document.body.removeChild(link);
 }
 }
 var d= new Date();
-var year= d.getFullYear();
-year = year -2017;
-if(d.getMonth()<2){
-		year = year-1;
-	}
+var year= 1;
 $('#academicYear').val(year);
 createGrid(year);
 $('#academicYear').change(function(){
