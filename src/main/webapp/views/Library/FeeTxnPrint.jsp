@@ -56,7 +56,7 @@ span, div {
 							<div align="center">
 								<span style="font-family: 'Times New Roman', serif;"><span
 									style="font-size: large;"><strong>DHAARUS
-											SALAAM MATRICULATION SCHOOL</strong></span></span>
+											SALAAM MATRICULATION HIGHER SECONDARY SCHOOL</strong></span></span>
 							</div>
 							<div align="center">
 								<span style="font-family: 'Times New Roman', serif;"><span
@@ -67,7 +67,7 @@ span, div {
 								<span style="font-family: 'Times New Roman', serif;"><span
 									>Ph: (0427) 2442018, </span></span><span
 									style="font-family: 'Times New Roman', serif;"><span
-									>+91 98942 50320 | E-mail: <a>dhaarussalaam1@gmail.com</a></span></span>
+									>+91 98942 50320 | E-mail: <a>dhaarussalaam1@gmail.com | website: <a>www.dhaarussalaam.in</a></span></span>
 							</div>
 						</td>
 					</tr>
