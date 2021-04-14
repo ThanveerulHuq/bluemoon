@@ -90,19 +90,19 @@
 			var pass = $('#password').val();
 /* 			if(uname == 'admin' && pass == 'admin') {
 				$('.errMsg').hide();
-				window.location = "/SDMS/Home";
+				window.location = "/SDMS_2021/Home";
 			} else {
 				$('.errMsg').show();
 				$('input').val('');
 			} */
 			$.ajax({
-				url:'/SDMS/GetLogin',
+				url:'/SDMS_2021/GetLogin',
 				data: {'username' : uname, 'password': pass},
 				method: 'POST',
 				success: function(res){
 					if(res == 'SUCCESS') {
 						$('.errMsg').hide();
-						window.location = "/SDMS/Home";
+						window.location = "/SDMS_2021/Home";
 					} else {
 						$('.errMsg').show();
 						$('input').val('');

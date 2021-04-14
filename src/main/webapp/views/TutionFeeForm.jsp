@@ -23,7 +23,7 @@
 		<div class="mtop-20 col-md-offset-4 col-md-4">
 			<h2 class="">Tution Fee</h2>
 		</div>
-<form:form method="POST" action="/SDMS/SetFee"
+<form:form method="POST" action="/SDMS_2021/SetFee"
 			commandName="CommonFee" class="mtop-15"
 			enctype="multipart/form-data">
 			<form:hidden path="id" name="id"/>
@@ -101,11 +101,7 @@
 			var classId = '${CommonFee.classInfo.classId}';
 			if (academicYr == '') {
 				var d = new Date();
-				var year = d.getFullYear();
-				year = year - 2017;
-				if (d.getMonth() < 2) {
-					year = year - 1;
-				}
+				var year = 1;
 				$('#academicYear').val(year);
 			}else{
 				$('#academicYear').val(academicYr);

@@ -25,6 +25,10 @@ td {
 	padding-right: 10px;
 	border-bottom: 1px solid;
 }
+
+span, div {
+	font-size: 11px;
+}
 </style>
 </head>
 <body>
@@ -32,7 +36,7 @@ td {
 
 		<div style="text-align: center; margin: 15px;">
 			<button id="printButton" class="btn btn-lg btn-default pull-left"
-				onclick="window.location='/SDMS/FeeTxn'">Go Back</button>
+				onclick="window.location='/SDMS_2021/FeeTxn'">Go Back</button>
 			<button id="printButton" class="btn btn-lg btn-info"
 				onclick="window.print();return false;">Print Receipt</button>
 		</div>
@@ -41,29 +45,29 @@ td {
 				style="border: 4px double; border-collapse: collapse; padding: 0">
 				<tbody>
 					<tr valign="middle" style="border-bottom: 4px double;">
-						<td width="14%" height="63">
+						<td width="10%" height="63">
 							<div>
 								<img
 									src="<%=request.getContextPath()%>/resources/images/school_logo.jpg"
-									height="50" width="50" style="margin-left: 20px;" />
+									height="50" width="50" style="margin-left: 10px;" />
 							</div>
 						</td>
-						<td colspan="5" width="86%">
+						<td colspan="5" width="90%">
 							<div align="center">
 								<span style="font-family: 'Times New Roman', serif;"><span
-									style="font-size: large;"><strong>DHAARUS
-											SALAAM MATRICULATION SCHOOL</strong></span></span>
+									style="font-size: 15px;"><strong>DHAARUS
+											SALAAM MATRICULATION HIGHER SECONDARY SCHOOL</strong></span></span>
 							</div>
 							<div align="center">
-								<span style="font-family: 'Times New Roman', serif;"><span>(Managed
-										by : Dhaarus Salaam Trust, Salem &ndash; 636 005)</span></span>
+								<span style="font-family: 'Times New Roman', serif;"><span
+									>(Managed by : Dhaarus Salaam
+										Trust, Salem &ndash; 636 005)</span></span>
 							</div>
 							<div align="center">
-								<span style="font-family: 'Times New Roman', serif;"><span>Ph:
-										(0427) 2442018, </span></span><span
-									style="font-family: 'Times New Roman', serif;"><span>+91
-										98942 50320 | E-mail: <a>dhaarussalaam1@gmail.com</a>
-								</span></span>
+								<span style="font-family: 'Times New Roman', serif;"><span
+									>Ph: (0427) 2442018, </span></span><span
+									style="font-family: 'Times New Roman', serif;"><span
+									>+91 98942 50320 | E-mail: <a>dhaarussalaam1@gmail.com</a> | website: <a>www.dhaarussalaam.in</a></span></span>
 							</div>
 						</td>
 					</tr>
@@ -261,7 +265,7 @@ td {
 					<tr valign="top">
 						<td colspan="2" width="32%" style="border: 1px solid">
 							<div align="center">
-								<span style="font-family: Calibri, sans-serif;"><span>SCHOLARSHIP(-)</span></span>
+								<span style="font-family: Calibri, sans-serif;"><span>SCHOLARSHIP (-)</span></span>
 							</div>
 						</td>
 						<td width="20%" style="border: 1px solid">
@@ -381,7 +385,7 @@ td {
 						//setTimeout(function(){printDiv('printArea');},10);
 						//printDiv('printArea');
 					} else {
-						window.location = "/SDMS/FeeTxn";
+						window.location = "/SDMS_2021/FeeTxn";
 					}
 
 					var transactionHistory = "${lastTxns}";

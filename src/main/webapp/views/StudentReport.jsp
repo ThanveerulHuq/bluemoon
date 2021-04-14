@@ -362,11 +362,7 @@ document.body.removeChild(link);
 }
 }
 var d= new Date();
-var year= d.getFullYear();
-year = year -2017;
-if(d.getMonth()<2){
-		year = year-1;
-	}
+var year= 1;
 $('#academicYear').val(year);
 createGrid(year);
 $('#academicYear').change(function(){
@@ -384,7 +380,7 @@ function formatGender(cell,option,row){
 }
 
 function formatEdit (cell,option,row){
-	return "<a href='/SDMS/editStudentYear?studentYrId="+cell+"' ><span class='glyphicon glyphicon-edit'></span></a>"
+	return "<a href='/SDMS_2021/editStudentYear?studentYrId="+cell+"' ><span class='glyphicon glyphicon-edit'></span></a>"
 }
 function totalBalance(cell,option,row){
 	console.log(row.paidFee.schoolFee);

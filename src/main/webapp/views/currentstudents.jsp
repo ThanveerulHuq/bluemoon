@@ -108,7 +108,7 @@ function createGrid(academicYear){
 var grid=$("#Grid");
 grid.jqGrid({
 url:'getStudentYearByYear?academicYear='+academicYear,
-colNames:['Edit','name', 'gender','Father Name','Admission No','EMIS No','Class','Section','Scholorship','Total'],
+colNames:['Edit','name', 'gender','Father Name','Admission No','EMIS No','Class','Section','Scholarship','Total'],
 colModel:[
 {name:'id',index:'id', width:60,align:"center", sorttype:"int",search: false,formatter:formatEdit},
 {name:'studentsInfo.name',index:'studentsInfo.name', width:200, align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
@@ -337,7 +337,7 @@ function formatGender(cell,option,row){
 }
 
 function formatEdit (cell,option,row){
-	return "<a href='/SDMS/editStudentYear?studentYrId="+cell+"' ><span class='glyphicon glyphicon-edit'></span></a>"
+	return "<a href='/SDMS_2021/editStudentYear?studentYrId="+cell+"' ><span class='glyphicon glyphicon-edit'></span></a>"
 }
 
 function searchClicked(){

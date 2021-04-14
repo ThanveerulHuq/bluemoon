@@ -60,7 +60,7 @@
 <!-- 			</div> -->
 <!-- 		</div> -->
 		
-		<form:form method="POST" action="/SDMS/MapStudent"
+		<form:form method="POST" action="/SDMS_2021/MapStudent"
 		commandName="StudentsYear" class="mtop-15"
 		enctype="multipart/form-data">
 		<div class="form-group col-md-12">
@@ -121,7 +121,7 @@
 				<form:input path="uniform_fee" name="uniform_fee" class="form-control feeinput" type="number" required="true" />
 			</div>
 			<div class="row">
-			<label class="col-md-2"><span class="pull-right">(-)Scholorship:</span> </label>
+			<label class="col-md-2"><span class="pull-right">(-) Scholarship:</span> </label>
 			<div class="col-md-3">
 				<form:input path="scholorship" name="scholorship" class="form-control" id="scholorship"  type="number" required="true" />
 			</div></div>
@@ -161,10 +161,7 @@
 		if(academicYr == ''){
 		var d= new Date();
 		var year= d.getFullYear();
-		year = year -2017;
-		if(d.getMonth()<2){
-				year = year-1;
-			}
+		year = 1;
 		$('#academicYear').val(year);
 		}
 		if(classId != ''){
@@ -227,7 +224,7 @@
 		var classId= $('#classId').val();
 		
 		$.ajax({
-			url: '/SDMS/getCommonFeeByClass?classId='+classId+'&academicYearId='+academicYearId,
+			url: '/SDMS_2021/getCommonFeeByClass?classId='+classId+'&academicYearId='+academicYearId,
 			method: 'GET',
 			success: function(res){
 				console.log(res);
@@ -290,7 +287,7 @@
 		
 		function checkUnique(id,year){
 			$.ajax({
-				url: '/SDMS/CheckStdFrUnique?academicYear='+year+'&&studentId='+id,
+				url: '/SDMS_2021/CheckStdFrUnique?academicYear='+year+'&&studentId='+id,
 				method: 'GET',
 				success: function(res){
 				if(res == "exist"){

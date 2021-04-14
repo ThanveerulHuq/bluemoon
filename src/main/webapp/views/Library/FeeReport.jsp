@@ -306,7 +306,7 @@ function formatDate(paymentdate){
 }
 function formatPrint (cell,option,row){
 	
-	return "<a href='/SDMS/RePrintReceipt?id="+cell+"' ><span class='glyphicon glyphicon-print'></span></a>"
+	return "<a href='/SDMS_2021/RePrintReceipt?id="+cell+"' ><span class='glyphicon glyphicon-print'></span></a>"
 }
 </script>
 

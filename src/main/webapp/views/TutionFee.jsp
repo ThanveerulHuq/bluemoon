@@ -34,7 +34,7 @@
 
 			<div class="col-md-4 mtop-40"
 				style="padding: 0px; margin-left: -70px;">
-				<a class="btn btn-info" href="/SDMS/TutionFeeForm">Add</a>
+				<a class="btn btn-info" href="/SDMS_2021/TutionFeeForm">Add</a>
 			</div>
 		</div>
 
@@ -91,11 +91,7 @@ $('document').ready(
 		
 		
 		var d= new Date();
-		var year= d.getFullYear();
-		year = year -2017;
-		if(d.getMonth()<2){
-				year = year-1;
-			}
+		var year= 1;
 		$('#academicYear').val(year);
 		createGrid(year);
 		$('#academicYear').change(function(){
@@ -107,7 +103,7 @@ $('document').ready(
 
 		function formatEdit (cell,option,row){
 			
-			return "<a href='/SDMS/EditTutionFee?Feeid="+cell+"' ><span class='glyphicon glyphicon-edit'></span></a>"
+			return "<a href='/SDMS_2021/EditTutionFee?Feeid="+cell+"' ><span class='glyphicon glyphicon-edit'></span></a>"
 		}
  	
 
