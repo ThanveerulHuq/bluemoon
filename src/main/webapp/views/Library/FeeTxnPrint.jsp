@@ -25,6 +25,10 @@ td {
 	padding-right: 10px;
 	border-bottom: 1px solid;
 }
+
+span, div {
+	font-size: 11px;
+}
 </style>
 </head>
 <body>
@@ -32,7 +36,7 @@ td {
 
 		<div style="text-align: center; margin: 15px;">
 			<button id="printButton" class="btn btn-lg btn-default pull-left"
-				onclick="window.location='/SDMS/FeeTxn'">Go Back</button>
+				onclick="window.location='/SDMS_2021/FeeTxn'">Go Back</button>
 			<button id="printButton" class="btn btn-lg btn-info"
 				onclick="window.print();return false;">Print Receipt</button>
 		</div>
@@ -41,72 +45,71 @@ td {
 				style="border: 4px double; border-collapse: collapse; padding: 0">
 				<tbody>
 					<tr valign="middle" style="border-bottom: 4px double;">
-						<td width="14%" height="63">
+						<td width="10%" height="63">
 							<div>
 								<img
 									src="<%=request.getContextPath()%>/resources/images/school_logo.jpg"
-									height="50" width="50" style="margin-left: 20px;" />
+									height="50" width="50" style="margin-left: 10px;" />
 							</div>
 						</td>
-						<td colspan="5" width="86%">
+						<td colspan="5" width="90%">
 							<div align="center">
 								<span style="font-family: 'Times New Roman', serif;"><span
-									style="font-size: large;"><strong>DHAARUS
-											SALAAM MATRICULATION SCHOOL</strong></span></span>
+									style="font-size: 15px;"><strong>DHAARUS
+											SALAAM MATRICULATION HIGHER SECONDARY SCHOOL</strong></span></span>
 							</div>
 							<div align="center">
 								<span style="font-family: 'Times New Roman', serif;"><span
-									style="font-size: small;">(Managed by : Dhaarus Salaam
+									>(Managed by : Dhaarus Salaam
 										Trust, Salem &ndash; 636 005)</span></span>
 							</div>
 							<div align="center">
 								<span style="font-family: 'Times New Roman', serif;"><span
-									style="font-size: small;">Ph: (0427) 2442018, </span></span><span
+									>Ph: (0427) 2442018, </span></span><span
 									style="font-family: 'Times New Roman', serif;"><span
-									style="font-size: small;">+91 98942 50320 | E-mail: <a>dhaarussalaam1@gmail.com</a></span></span>
+									>+91 98942 50320 | E-mail: <a>dhaarussalaam1@gmail.com</a> | website: <a>www.dhaarussalaam.in</a></span></span>
 							</div>
 						</td>
 					</tr>
 					<tr valign="top" style="border-bottom: 1px solid;">
 						<td width="10%">
 							<div>
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;"><strong>DATE:</strong></span></span>
+								<span style="font-family: Calibri, sans-serif;"><span><strong>DATE:</strong></span></span>
 							</div>
 						</td>
 						<td colspan="2" width="40%" style="border-right: 1px solid;">
 							<div>
-								<span style="font-family: 'Calibri', serif;"><span
-									style="font-size: small;"><strong class="paymentDate"></strong></span></span>
+								<span style="font-family: 'Calibri', serif;"><span><strong
+										class="paymentDate"></strong></span></span>
 							</div>
 						</td>
 						<td colspan="1" width="20%">
 							<div>
-								<span style="font-family: 'Calibri', sans-serif;"><span
-									style="font-size: small;"><strong>RECEIPT # </strong></span></span>
+								<span style="font-family: 'Calibri', sans-serif;"><span><strong>RECEIPT
+											# </strong></span></span>
 							</div>
 						</td>
 						<td colspan="2" width="30%">
 							<div>
-								<span style="font-family: 'Calibri', serif;"><span
-									style="font-size: small;"><strong class="feeTxnId"></strong></span></span>
+								<span style="font-family: 'Calibri', serif;"><span><strong
+										class="feeTxnId"></strong></span></span>
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="6" valign="top" width="100%">
 							<div align="center">
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;"><strong>RECEIVED FROM</strong></span></span>
+								<span style="font-family: Calibri, sans-serif;"><span><strong>RECEIVED
+											FROM</strong></span></span>
 							</div>
 						</td>
 					</tr>
 					<tr valign="top">
 						<td colspan="3" width="50%">
 							<div align="left">
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">ACADEMIC YEAR: <span
-										style="padding: 15px;">${Print.studentYear.commonFee.academicYear.year}</span></span></span>
+								<span style="font-family: Calibri, sans-serif;"><span>ACADEMIC
+										YEAR: <span style="padding: 15px;">${Print.studentYear.commonFee.academicYear.year}</span>
+								</span></span>
 							</div>
 						</td>
 						
@@ -115,9 +118,9 @@ td {
 					<tr valign="top">
 						<td colspan="3" width="50%">
 							<div align="left">
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">STUDENT NAME :<span
-										style="padding: 15px;">${Print.studentYear.studentsInfo.name}</span></span></span>
+								<span style="font-family: Calibri, sans-serif;"><span>STUDENT
+										NAME :<span style="padding: 15px;">${Print.studentYear.studentsInfo.name}</span>
+								</span></span>
 							</div>
 						</td>
 						<td colspan="3" width="50%">&nbsp;</td>
@@ -125,20 +128,17 @@ td {
 					<tr valign="top">
 						<td colspan="1" width="10%">
 							<div align="left">
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">CLASS:</span></span>
+								<span style="font-family: Calibri, sans-serif;"><span>CLASS:</span></span>
 							</div>
 						</td>
 						<td colspan="1" width="10%">
 							<div align="left">
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">${Print.studentYear.commonFee.classInfo.className}</span></span>
+								<span style="font-family: Calibri, sans-serif;"><span>${Print.studentYear.commonFee.classInfo.className}</span></span>
 							</div>
 						</td>
 						<td colspan="1" width="30%">
 							<div align="left">
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">SECTION:<span
+								<span style="font-family: Calibri, sans-serif;"><span>SECTION:<span
 										style="padding: 15px;"> ${Print.studentYear.section}</span></span></span>
 							</div>
 						</td>
@@ -147,8 +147,7 @@ td {
 					<tr>
 						<td colspan="6" valign="top" width="100%">
 							<div align="center">
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;"><strong>PAYMENT
+								<span style="font-family: Calibri, sans-serif;"><span><strong>PAYMENT
 											DETAILS</strong></span></span>
 							</div>
 						</td>
@@ -156,34 +155,33 @@ td {
 					<tr valign="top">
 						<td colspan="2" width="40%" style="border: 1px solid">
 							<div align="center">
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;"><strong>DESCRIPTION</strong></span></span>
+								<span style="font-family: Calibri, sans-serif;"><span><strong>DESCRIPTION</strong></span></span>
 							</div>
 						</td>
 						<td colspan="1" width="10%" style="border: 1px solid">
 							<div align="center">
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;"><strong>AMOUNT (INR)</strong></span></span>
+								<span style="font-family: Calibri, sans-serif;"><span><strong>AMOUNT
+											(INR)</strong></span></span>
 							</div>
 						</td>
 						<td colspan="1" width="15%" style="border: 1px solid">
 							<div align="center">
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;"><strong>PAID (INR)</strong></span></span>
+								<span style="font-family: Calibri, sans-serif;"><span><strong>PAID
+											(INR)</strong></span></span>
 							</div>
 						</td>
 						<td colspan="2" width="35%">
 							<div align="center">
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;"><strong>BALANCE (INR)</strong></span></span>
+								<span style="font-family: Calibri, sans-serif;"><span><strong>BALANCE
+											(INR)</strong></span></span>
 							</div>
 						</td>
 					</tr>
 					<tr valign="top">
 						<td colspan="2" width="40%" style="border: 1px solid">
 							<div align="center">
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">TUITION FEE</span></span>
+								<span style="font-family: Calibri, sans-serif;"><span>TUITION
+										FEE</span></span>
 							</div>
 						</td>
 						<td colspan="1" width="10%" style="border: 1px solid">
@@ -199,8 +197,8 @@ td {
 					<tr valign="top">
 						<td colspan="2" width="30%" style="border: 1px solid">
 							<div align="center">
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">BOOK FEE</span></span>
+								<span style="font-family: Calibri, sans-serif;"><span>BOOK
+										FEE</span></span>
 							</div>
 						</td>
 						<td colspan="1" width="20%" style="border: 1px solid">
@@ -216,8 +214,8 @@ td {
 					<tr valign="top">
 						<td colspan="2" width="30%" style="border: 1px solid">
 							<div align="center">
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">UNIFORM FEE</span></span>
+								<span style="font-family: Calibri, sans-serif;"><span>UNIFORM
+										FEE</span></span>
 							</div>
 						</td>
 						<td colspan="1" width="20%" style="border: 1px solid">
@@ -233,8 +231,8 @@ td {
 					<tr valign="top">
 						<td colspan="2" width="30%" style="border: 1px solid">
 							<div align="center">
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">ISLAMIC STUDIES</span></span>
+								<span style="font-family: Calibri, sans-serif;"><span>ISLAMIC
+										STUDIES</span></span>
 							</div>
 						</td>
 						<td colspan="1" width="20%" style="border: 1px solid">
@@ -250,8 +248,8 @@ td {
 					<tr valign="top">
 						<td colspan="2" width="32%" style="border: 1px solid">
 							<div align="center">
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">VAN FEE</span></span>
+								<span style="font-family: Calibri, sans-serif;"><span>VAN
+										FEE</span></span>
 							</div>
 						</td>
 						<td width="20%" style="border: 1px solid">
@@ -267,8 +265,7 @@ td {
 					<tr valign="top">
 						<td colspan="2" width="32%" style="border: 1px solid">
 							<div align="center">
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">SCHOLARSHIP(-)</span></span>
+								<span style="font-family: Calibri, sans-serif;"><span>SCHOLARSHIP (-)</span></span>
 							</div>
 						</td>
 						<td width="20%" style="border: 1px solid">
@@ -292,64 +289,67 @@ td {
 							</c:forEach></td>
 						<td colspan="1" width="20%" style="border: 1px solid">
 							<div align="right">
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;"><strong>TOTAL FEE</strong></span></span>
+								<span style="font-family: Calibri, sans-serif;"><span><strong>TOTAL
+											FEE</strong></span></span>
 							</div>
 						</td>
 						<td colspan="3" width="50%" style="border: 1px solid">
 							<div>
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">${Print.studentYear.total}</span></span>
+								<span style="font-family: Calibri, sans-serif;"><span>${Print.studentYear.total}</span></span>
 							</div>
 						</td>
 					</tr>
 					<tr valign="top">
 						<td colspan="1" style="border: 1px solid">
 							<div align="right">
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;"><strong>TOTAL PAID</strong></span></span>
+								<span style="font-family: Calibri, sans-serif;"><span><strong>TOTAL
+											PAID</strong></span></span>
 							</div>
 						</td>
 						<td colspan="3">
 							<div>
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">${Print.amountPaid}</span></span>
+								<span style="font-family: Calibri, sans-serif;"><span>${Print.amountPaid}</span></span>
 							</div>
 						</td>
 					</tr>
 					<tr valign="top">
 						<td colspan="1" style="border: 1px solid">
 							<div align="right">
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;"><strong>BALANCE</strong></span></span>
+								<span style="font-family: Calibri, sans-serif;"><span><strong>BALANCE</strong></span></span>
 							</div>
 						</td>
 						<td colspan="3">
 							<div>
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">${Print.studentYear.total - (Print.amountPaid + Print.studentYear.paidFee.vanFee + Print.studentYear.paidFee.islamicStudies + Print.studentYear.paidFee.uniformFee + Print.studentYear.paidFee.bookFee + Print.studentYear.paidFee.schoolFee)}</span></span>
+								<span style="font-family: Calibri, sans-serif;"><span>${Print.studentYear.total - (Print.amountPaid + Print.studentYear.paidFee.vanFee + Print.studentYear.paidFee.islamicStudies + Print.studentYear.paidFee.uniformFee + Print.studentYear.paidFee.bookFee + Print.studentYear.paidFee.schoolFee)}</span></span>
 							</div>
 						</td>
 					</tr>
 					<tr valign="top">
 						<td  colspan="1" width="10%" style="border: 1px solid">
 							<div align="center">
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;"><strong>AMOUNT IN
-											WORDS:</strong></span></span>
+								<span style="font-family: Calibri, sans-serif;"><span><strong>AMOUNT
+											IN WORDS:</strong></span></span>
 							</div>
 						</td>
 						<td colspan="2" width="40%">
 							<div>
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;">Rs. <span
-										class="amountInWords"></span></span></span>
+								<span style="font-family: Calibri, sans-serif;"><span>Rs.
+										<span class="amountInWords"></span>
+								</span></span>
 							</div>
 						</td>
 						<td colspan="3" width="50%" style="border: 1px solid">
 							<div>
-								<span style="font-family: Calibri, sans-serif;"><span
-									style="font-size: small;"><strong>RECEIVED BY :</strong></span></span>
+								<span style="font-family: Calibri, sans-serif;"><span><strong>RECEIVED
+											BY :</strong></span></span>
+							</div>
+						</td>
+					</tr>
+					<tr valign="top" style="height: 30px;">
+						<td colspan="6" width="100%" style="border: 1px solid">
+							<div>
+								<span style="font-family: Calibri, sans-serif;"><span><strong>REMARKS
+											:</strong></span></span>
 							</div>
 						</td>
 					</tr>
@@ -385,7 +385,7 @@ td {
 						//setTimeout(function(){printDiv('printArea');},10);
 						//printDiv('printArea');
 					} else {
-						window.location = "/SDMS/FeeTxn";
+						window.location = "/SDMS_2021/FeeTxn";
 					}
 
 					var transactionHistory = "${lastTxns}";

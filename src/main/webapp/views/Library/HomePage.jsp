@@ -17,7 +17,7 @@
 	<section class="container mtop-50">
             <!-- ./Team member -->
             <!-- Team member -->
-            <a href="/SDMS/StudentInfo">
+            <a href="/SDMS_2021/StudentInfo">
             <div class="col-xs-12 col-sm-4 col-md-3" >
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
@@ -43,7 +43,7 @@
             </a>
             <!-- ./Team member -->
             <!-- Team member -->
-            <a href="/SDMS/CurrentStudents">
+            <a href="/SDMS_2021/CurrentStudents">
             <div class="col-xs-12 col-sm-4 col-md-3">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
@@ -70,7 +70,7 @@
             </a>
             <!-- ./Team member -->
             <!-- Team member -->
-            <a href="/SDMS/FeeTxn">
+            <a href="/SDMS_2021/FeeTxn">
             <div class="col-xs-12 col-sm-4 col-md-3">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
@@ -96,7 +96,7 @@
             </a>
             <!-- ./Team member -->
             <!-- Team member -->
-             <a href="/SDMS/StudentReport">
+             <a href="/SDMS_2021/StudentReport">
             <div class="col-xs-12 col-sm-4 col-md-3">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
@@ -123,7 +123,7 @@
             </a>
             <!-- ./Team member -->
             <!-- Team member -->
-              <a href="/SDMS/FeeReport">
+              <a href="/SDMS_2021/FeeReport">
             <div class="col-xs-12 col-sm-4 col-md-3">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
@@ -148,7 +148,7 @@
                 </div>
             </div>
             </a>
-             <a href="/SDMS/TutionFee">
+             <a href="/SDMS_2021/TutionFee">
             <div class="col-xs-12 col-sm-4 col-md-3">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">

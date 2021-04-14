@@ -97,7 +97,7 @@ view: false, del: false, add: false, edit: false, cloneToTop: false,search:false
 {}, // delete
 {
 }).navSeparatorAdd('#Pager');
-// jQuery("#Grid").jqGrid('filterToolbar',{searchOperators : true});
+jQuery("#Grid").jqGrid('filterToolbar',{searchOperators : true});
 $('#refresh_Grid div').append("<span>Reload</span>");
 $('INPUT[id^="gs_"]').addClass('form-control input-sm');
 
@@ -306,7 +306,7 @@ function formatDate(paymentdate){
 }
 function formatPrint (cell,option,row){
 	
-	return "<a href='/SDMS/RePrintReceipt?id="+cell+"' ><span class='glyphicon glyphicon-print'></span></a>"
+	return "<a href='/SDMS_2021/RePrintReceipt?id="+cell+"' ><span class='glyphicon glyphicon-print'></span></a>"
 }
 </script>
 

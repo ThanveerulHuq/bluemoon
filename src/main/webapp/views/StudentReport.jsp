@@ -45,7 +45,7 @@
   <div class="modal-dialog">
 	<div class="modal-content">
 		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">ï¿½</span><span class="sr-only">Close</span></button>
 			<h3 class="modal-title" id="lineModalLabel">My Modal</h3>
 		</div>
 		<div class="modal-body">
@@ -151,7 +151,7 @@ view: false, del: false, add: false, edit: false, cloneToTop: false,search:false
 {}, // delete
 {
 }).navSeparatorAdd('#Pager');
-// jQuery("#Grid").jqGrid('filterToolbar',{searchOperators : true});
+jQuery("#Grid").jqGrid('filterToolbar',{searchOperators : true});
 $('#refresh_Grid div').append("<span>Reload</span>");
 $('INPUT[id^="gs_"]').addClass('form-control input-sm');
 jQuery("#Grid").jqGrid('navButtonAdd', "#Pager", {
@@ -362,11 +362,7 @@ document.body.removeChild(link);
 }
 }
 var d= new Date();
-var year= d.getFullYear();
-year = year -2017;
-if(d.getMonth()<2){
-		year = year-1;
-	}
+var year= 1;
 $('#academicYear').val(year);
 createGrid(year);
 $('#academicYear').change(function(){
@@ -384,7 +380,7 @@ function formatGender(cell,option,row){
 }
 
 function formatEdit (cell,option,row){
-	return "<a href='/SDMS/editStudentYear?studentYrId="+cell+"' ><span class='glyphicon glyphicon-edit'></span></a>"
+	return "<a href='/SDMS_2021/editStudentYear?studentYrId="+cell+"' ><span class='glyphicon glyphicon-edit'></span></a>"
 }
 function totalBalance(cell,option,row){
 	console.log(row.paidFee.schoolFee);

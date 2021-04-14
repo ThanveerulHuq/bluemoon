@@ -40,7 +40,7 @@
 <!-- 	</div> -->
 	
 	<div class=" mtop-15" style="display:block">
-		<form:form id="saveFeeForm" method="POST" action="/SDMS/SaveFeeTxn"
+		<form:form id="saveFeeForm" method="POST" action="/SDMS_2021/SaveFeeTxn"
 			commandName="FeeTxn" class="mtop-15"
 			enctype="multipart/form-data">
 			<div class="form-group col-md-12"><label class="col-md-2"><span class="pull-right">Academic Year:</span></label>
@@ -129,7 +129,7 @@
 			<tr><td>VAN FEE</td><td><p id="tot_van"></p></td><td><p id="bal_van"></p></td><td><form:input path="vanFee" id="vanFee" class="form-control fee-input" type="number"
 						required="true" /></td>
 			</tr>
-			<tr><td>(-)SCHOLORSHIP</td><td colspan=2><p id="scholarship"></p></td><td></td>
+			<tr><td>(-) SCHOLARSHIP</td><td colspan=2><p id="scholarship"></p></td><td></td>
 			</tr>
 			<tr><td>TOTAL</td><td><p id="total_fee"></p></td><td><p id="tot_balance"></p></td><td><form:input path="amountPaid" id="tot_paid" class="form-control" disabled="true"/></td>
 			</tr>
@@ -188,7 +188,7 @@
 			var admissionNo = $('#admissionNo').val();
 			var academicYear= $('#academicYear').val();
 			$.ajax({
-				url: '/SDMS/getStudentByAdNo',
+				url: '/SDMS_2021/getStudentByAdNo',
 				data: {admissionNo: admissionNo, academicYearId : academicYear },
 				method: 'GET',
 				success: function(res){

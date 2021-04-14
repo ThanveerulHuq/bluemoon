@@ -51,7 +51,7 @@
   <div class="modal-dialog">
 	<div class="modal-content">
 		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">ï¿½</span><span class="sr-only">Close</span></button>
 			<h3 class="modal-title" id="lineModalLabel">My Modal</h3>
 		</div>
 		<div class="modal-body">
@@ -108,7 +108,7 @@ function createGrid(academicYear){
 var grid=$("#Grid");
 grid.jqGrid({
 url:'getStudentYearByYear?academicYear='+academicYear,
-colNames:['Edit','name', 'gender','Father Name','Admission No','EMIS No','Class','Section','Scholorship','Total'],
+colNames:['Edit','name', 'gender','Father Name','Admission No','EMIS No','Class','Section','Scholarship','Total'],
 colModel:[
 {name:'id',index:'id', width:60,align:"center", sorttype:"int",search: false,formatter:formatEdit},
 {name:'studentsInfo.name',index:'studentsInfo.name', width:200, align:"center", searchoptions: { sopt: ['cn','bw','eq', 'ew']}},
@@ -319,11 +319,7 @@ document.body.removeChild(link);
 }
 }
 var d= new Date();
-var year= d.getFullYear();
-year = year -2017;
-if(d.getMonth()<2){
-		year = year-1;
-	}
+var year= 1;
 $('#academicYear').val(year);
 createGrid(year);
 $('#academicYear').change(function(){
@@ -341,7 +337,7 @@ function formatGender(cell,option,row){
 }
 
 function formatEdit (cell,option,row){
-	return "<a href='/SDMS/editStudentYear?studentYrId="+cell+"' ><span class='glyphicon glyphicon-edit'></span></a>"
+	return "<a href='/SDMS_2021/editStudentYear?studentYrId="+cell+"' ><span class='glyphicon glyphicon-edit'></span></a>"
 }
 
 function searchClicked(){
