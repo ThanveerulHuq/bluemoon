@@ -288,11 +288,11 @@ function formatActive (cell,option,row){
 }
 function formatEdit (cell,option,row){
 	
-	return "<a href='/SDMS/EditStudent?student_id="+cell+"' ><span class='glyphicon glyphicon-edit'></span></a>"
+	return "<a href='/SDMS_2022/EditStudent?student_id="+cell+"' ><span class='glyphicon glyphicon-edit'></span></a>"
 }
 function formatPrint (cell,option,row){
 	
-	return "<a href='/SDMS/PrintStudentInfo?studentId="+cell+"' ><span class='glyphicon glyphicon-print'></span></a>"
+	return "<a href='/SDMS_2022/PrintStudentInfo?studentId="+cell+"' ><span class='glyphicon glyphicon-print'></span></a>"
 }
 function formatDate(paymentdate){
 	var date=new Date(paymentdate);

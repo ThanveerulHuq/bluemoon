@@ -18,7 +18,7 @@
 	<center>
 		<h2>Admission Form</h2>
 	</center>
-	<form:form method="POST" action="/SDMS/SaveStudent"
+	<form:form method="POST" action="/SDMS_2022/SaveStudent"
 		modelAttribute="StudentsInfo" class="mtop-25"
 		enctype="multipart/form-data">
 		<form:hidden path="studentId" name="studentId" id="studentId" />

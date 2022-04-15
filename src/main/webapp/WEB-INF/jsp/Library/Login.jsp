@@ -96,13 +96,13 @@
 				$('input').val('');
 			} */
 			$.ajax({
-				url:'/SDMS/GetLogin',
+				url:'/SDMS_2022/GetLogin',
 				data: {'username' : uname, 'password': pass},
 				method: 'POST',
 				success: function(res){
 					if(res == 'SUCCESS') {
 						$('.errMsg').hide();
-						window.location = "/SDMS/Home";
+						window.location = "/SDMS_2022/Home";
 					} else {
 						$('.errMsg').show();
 						$('input').val('');

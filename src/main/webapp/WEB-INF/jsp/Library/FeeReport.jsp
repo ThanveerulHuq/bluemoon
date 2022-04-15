@@ -42,7 +42,7 @@ $('document').ready(
 function () {
 var grid=$("#Grid");
 grid.jqGrid({
-url:'SDMS/GetFeeReport',
+url:'GetFeeReport',
 
 colNames:['Admission No', 'Student Name', 'Academic Year','Class','Section','Fee Amount', 'Total Amount Paid','Payment Date','School Fee','Book Fee','Islamic Studies Fee','Uniform Fee','Van Fee','Reprint'],
 colModel:[
@@ -306,7 +306,7 @@ function formatDate(paymentdate){
 }
 function formatPrint (cell,option,row){
 	
-	return "<a href='/SDMS/RePrintReceipt?id="+cell+"' ><span class='glyphicon glyphicon-print'></span></a>"
+	return "<a href='/SDMS_2022/RePrintReceipt?id="+cell+"' ><span class='glyphicon glyphicon-print'></span></a>"
 }
 </script>
 

@@ -34,7 +34,7 @@
 
 			<div class="col-md-4 mtop-40"
 				style="padding: 0px; margin-left: -70px;">
-				<a class="btn btn-info" href="/SDMS/TutionFeeForm">Add</a>
+				<a class="btn btn-info" href="/SDMS_2022/TutionFeeForm">Add</a>
 			</div>
 		</div>
 
@@ -103,7 +103,7 @@ $('document').ready(
 
 		function formatEdit (cell,option,row){
 			
-			return "<a href='/SDMS/EditTutionFee?Feeid="+cell+"' ><span class='glyphicon glyphicon-edit'></span></a>"
+			return "<a href='/SDMS_2022/EditTutionFee?Feeid="+cell+"' ><span class='glyphicon glyphicon-edit'></span></a>"
 		}
  	
 

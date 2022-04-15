@@ -23,7 +23,7 @@
 		<div class="mtop-20 col-md-offset-4 col-md-4">
 			<h2 class="">Tution Fee</h2>
 		</div>
-<form:form method="POST" action="/SDMS/SetFee"
+<form:form method="POST" action="/SDMS_2022/SetFee"
 			modelAttribute="CommonFee" class="mtop-15"
 			enctype="multipart/form-data">
 			<form:hidden path="id" name="id"/>

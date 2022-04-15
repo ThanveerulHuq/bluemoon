@@ -34,7 +34,7 @@ span, div {
 
 		<div style="text-align: center; margin: 15px;">
 			<button id="printButton" class="btn btn-lg btn-default pull-left"
-				onclick="window.location='/SDMS/FeeReport'">Go Back</button>
+				onclick="window.location='/SDMS_2022/FeeReport'">Go Back</button>
 			<button id="printButton" class="btn btn-lg btn-info"
 				onclick="window.print();return false;">Print Receipt</button>
 		</div>
@@ -379,7 +379,7 @@ span, div {
 						//setTimeout(function(){printDiv('printArea');},10);
 						//printDiv('printArea');
 					} else {
-						window.location = "/SDMS/FeeTxn";
+						window.location = "/SDMS_2022/FeeTxn";
 					}
 					function printDiv(div) {
 						var divToPrint = document.getElementById(div);

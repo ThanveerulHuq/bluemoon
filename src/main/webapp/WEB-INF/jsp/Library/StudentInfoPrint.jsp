@@ -34,7 +34,7 @@
 <body>
 <div id="printArea" class="container">
 	<div style="text-align:center;margin:15px;">
-		<button id="printButton" class="btn btn-lg btn-default pull-left" onclick="window.location='/SDMS/StudentInfo'" >Go Back</button>
+		<button id="printButton" class="btn btn-lg btn-default pull-left" onclick="window.location='/SDMS_2022/StudentInfo'" >Go Back</button>
 		<button id="printButton" class="btn btn-lg btn-info" onclick="window.print();return false;" >Print Document</button>
 	</div>
 
@@ -77,7 +77,7 @@
 	<div align="center">
 	<c:choose>
     	<c:when test="${not empty PhotoId}">
-			<img src="/SDMS/GetFile?docId=${PhotoId}" alt="No Photo Available" width="170" height="230"/>    
+			<img src="/SDMS_2022/GetFile?docId=${PhotoId}" alt="No Photo Available" width="170" height="230"/>    
 		</c:when>
     	<c:otherwise>
         	No Photo Available
@@ -286,7 +286,7 @@
 			$('#dob').html(dob.toLocaleDateString('en-GB'));
 			//printDiv('printArea');
 		} else {
-			window.location = "/SDMS/AddStudent";
+			window.location = "/SDMS_2022/AddStudent";
 		}
 		
 		function printDiv(div) 

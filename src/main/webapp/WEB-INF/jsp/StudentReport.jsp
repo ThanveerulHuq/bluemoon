@@ -380,7 +380,7 @@ function formatGender(cell,option,row){
 }
 
 function formatEdit (cell,option,row){
-	return "<a href='/SDMS/editStudentYear?studentYrId="+cell+"' ><span class='glyphicon glyphicon-edit'></span></a>"
+	return "<a href='/SDMS_2022/editStudentYear?studentYrId="+cell+"' ><span class='glyphicon glyphicon-edit'></span></a>"
 }
 function totalBalance(cell,option,row){
 	console.log(row.paidFee.schoolFee);

@@ -15,7 +15,7 @@
 <body>
 	<c:import url="../shared/header.jsp"></c:import>
 	<section class="container mtop-50"> <!-- Team member --> <a
-		href="/SDMS/StudentInfo">
+		href="/SDMS_2022/StudentInfo">
 		<div class="col-xs-12 col-sm-4 col-md-3">
 			<div class="image-flip"
 				ontouchstart="this.classList.toggle('hover');">
@@ -47,7 +47,7 @@
 			</div>
 		</div>
 	</a> <!-- ./Team member --> <!-- Team member --> <a
-		href="/SDMS/CurrentStudents">
+		href="/SDMS_2022/CurrentStudents">
 		<div class="col-xs-12 col-sm-4 col-md-3">
 			<div class="image-flip"
 				ontouchstart="this.classList.toggle('hover');">
@@ -80,7 +80,7 @@
 			</div>
 		</div>
 	</a> <!-- ./Team member --> <!-- Team member --> <a
-		href="/SDMS/FeeTxn">
+		href="/SDMS_2022/FeeTxn">
 		<div class="col-xs-12 col-sm-4 col-md-3">
 			<div class="image-flip"
 				ontouchstart="this.classList.toggle('hover');">
@@ -111,7 +111,7 @@
 			</div>
 		</div>
 	</a> <!-- ./Team member --> <!-- Team member --> <a
-		href="/SDMS/StudentReport">
+		href="/SDMS_2022/StudentReport">
 		<div class="col-xs-12 col-sm-4 col-md-3">
 			<div class="image-flip"
 				ontouchstart="this.classList.toggle('hover');">
@@ -142,7 +142,7 @@
 			</div>
 		</div>
 	</a> <!-- ./Team member --> <!-- Team member --> <a
-		href="/SDMS/FeeReport">
+		href="/SDMS_2022/FeeReport">
 		<div class="col-xs-12 col-sm-4 col-md-3">
 			<div class="image-flip"
 				ontouchstart="this.classList.toggle('hover');">
@@ -171,7 +171,7 @@
 				</div>
 			</div>
 		</div>
-	</a> <a href="/SDMS/TutionFee">
+	</a> <a href="/SDMS_2022/TutionFee">
 		<div class="col-xs-12 col-sm-4 col-md-3">
 			<div class="image-flip"
 				ontouchstart="this.classList.toggle('hover');">

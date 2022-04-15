@@ -18,7 +18,7 @@ public class SessionController {
 			}
 		} catch (NullPointerException e) {
 			session.invalidate();
-			//response.sendRedirect("/SDMS/Login");
+			//response.sendRedirect("/SDMS_2022/Login");
 			return false;
 			
 		}
