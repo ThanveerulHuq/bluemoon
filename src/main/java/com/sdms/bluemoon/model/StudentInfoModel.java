@@ -3,8 +3,6 @@ package com.sdms.bluemoon.model;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 

@@ -1,12 +1,8 @@
 package com.sdms.bluemoon.controller;
 
-import java.io.IOException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.springframework.web.bind.annotation.ResponseBody;
 
 
 public class SessionController {
@@ -18,7 +14,6 @@ public class SessionController {
 			}
 		} catch (NullPointerException e) {
 			session.invalidate();
-			//response.sendRedirect("/SDMS_2022/Login");
 			return false;
 			
 		}

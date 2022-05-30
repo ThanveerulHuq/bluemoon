@@ -16,5 +16,6 @@ public interface FeeTxnRepo extends JpaRepository<FeeTxn, Long> {
 			@Param("endTime") Date endTime);
 
 	@Query("select a from FeeTxn a where a.studentYear.id=:id order by paymentDate desc")
-	public ArrayList<FeeTxn> getLastFiveTxn(@Param("id") Long id);
+	public ArrayList<FeeTxn> findByStudentYearId(@Param("id") Long id);
+	
 }
