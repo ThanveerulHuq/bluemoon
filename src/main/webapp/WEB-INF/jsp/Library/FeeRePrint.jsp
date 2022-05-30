@@ -223,8 +223,9 @@
 										<tr valign="top">
 											<td colspan="2" width="30%" style="border: 1px solid">
 												<div align="center">
-													<span style="font-family: Calibri, sans-serif;"><span>IS/Spl., Extra Curr.. & Others
-													</span></span>
+													<span style="font-family: Calibri, sans-serif;"><span>IS/Spl., Extra
+															Curr.. & Others
+														</span></span>
 												</div>
 											</td>
 											<td colspan="1" width="20%" style="border: 1px solid">
