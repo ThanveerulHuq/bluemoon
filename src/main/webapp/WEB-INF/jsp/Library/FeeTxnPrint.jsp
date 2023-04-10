@@ -399,7 +399,7 @@
                                         'nineteen '];
                                     var b = ['', '', 'twenty', 'thirty', 'forty', 'fifty',
                                         'sixty', 'seventy', 'eighty', 'ninety'];
-                                    var feeTxnId = "${Print.id}";
+                                    var feeTxnId = "${Print.id} / ${Print.studentYear.commonFee.academicYear.year}";
 
                                     if (feeTxnId != '') {
                                         var d = new Date("${Print.paymentDate}");
