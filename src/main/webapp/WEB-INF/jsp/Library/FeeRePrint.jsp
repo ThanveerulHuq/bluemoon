@@ -221,25 +221,6 @@
 											</td>
 										</tr>
 										<tr valign="top">
-											<td colspan="2" width="30%" style="border: 1px solid">
-												<div align="center">
-													<span style="font-family: Calibri, sans-serif;"><span>IS/Spl., Extra
-															Curr.. & Others
-														</span></span>
-												</div>
-											</td>
-											<td colspan="1" width="20%" style="border: 1px solid">
-												<div align="center">${Print.studentYear.islamicStudies}</div>
-											</td>
-											<td width="15%" style="border: 1px solid">
-												<div align="center">${Print.islamicStudies}</div>
-											</td>
-											<td colspan="2" width="35%">
-												<div align="center">${Print.studentYear.islamicStudies -
-													(Print.studentYear.paidFee.islamicStudies)}</div>
-											</td>
-										</tr>
-										<tr valign="top">
 											<td colspan="2" width="32%" style="border: 1px solid">
 												<div align="center">
 													<span style="font-family: Calibri, sans-serif;"><span>VAN
@@ -294,7 +275,6 @@
 													<span style="font-family: Calibri, sans-serif;"><span><strong>CURRENT
 																BALANCE (Rs. ${Print.studentYear.total} - Rs.
 																${Print.studentYear.paidFee.vanFee +
-																Print.studentYear.paidFee.islamicStudies +
 																Print.studentYear.paidFee.uniformFee +
 																Print.studentYear.paidFee.bookFee +
 																Print.studentYear.paidFee.schoolFee-Print.amountPaid}
@@ -306,7 +286,6 @@
 													<span style="font-family: Calibri, sans-serif;"><span>Rs.
 															${Print.studentYear.total + Print.amountPaid
 															-(Print.studentYear.paidFee.vanFee +
-															Print.studentYear.paidFee.islamicStudies +
 															Print.studentYear.paidFee.uniformFee +
 															Print.studentYear.paidFee.bookFee +
 															Print.studentYear.paidFee.schoolFee)}</span></span>
@@ -339,7 +318,6 @@
 													<span style="font-family: Calibri, sans-serif;"><span>Rs.
 															${Print.studentYear.total - (
 															Print.studentYear.paidFee.vanFee +
-															Print.studentYear.paidFee.islamicStudies +
 															Print.studentYear.paidFee.uniformFee +
 															Print.studentYear.paidFee.bookFee +
 															Print.studentYear.paidFee.schoolFee)}</span></span>

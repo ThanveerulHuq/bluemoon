@@ -19,7 +19,7 @@
 
 				<body>
 					<c:import url="./shared/header.jsp"></c:import>
-					<div class="mtop-50">
+					<div class="container mtop-50">
 						<div class="row col-md-12">
 							<div class="col-md-4">
 								<div class="col-md-5 mtop-35 mleft-30">

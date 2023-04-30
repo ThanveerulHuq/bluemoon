@@ -1,9 +1,8 @@
 package com.sdms.bluemoon.repository;
 
+import com.sdms.bluemoon.entity.AcademicYear;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.sdms.bluemoon.entity.AcademicYear;
-
-public interface AcademicYearRepo extends JpaRepository<AcademicYear,Long> {
+public interface AcademicYearRepo extends JpaRepository<AcademicYear, Long> {
 
 }

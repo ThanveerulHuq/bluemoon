@@ -1,83 +1,67 @@
 package com.sdms.bluemoon.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "paid_fee")
 public class PaidFee {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Long id;
-	
-	@Column(name="school_fee",nullable=false,length=15)
-	private Long schoolFee;
-	
-	@Column(name="book_fee",nullable=false,length=15)
-	private Long bookFee;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
 
-	@Column(name="uniform_fee",nullable=false,length=15)
-	private Long uniformFee;
-	
-	@Column(name="islamic_studies",nullable=false,length=15)
-	private Long islamicStudies;
-	
-	@Column(name="van_fee",nullable=false,length=15)
-	private Long vanFee;
+    @Column(name = "school_fee", nullable = false, length = 15)
+    private Long schoolFee;
 
-	public Long getId() {
-		return id;
-	}
+    @Column(name = "book_fee", nullable = false, length = 15)
+    private Long bookFee;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Column(name = "uniform_fee", nullable = false, length = 15)
+    private Long uniformFee;
 
-	public Long getSchoolFee() {
-		return schoolFee;
-	}
+    @Column(name = "van_fee", nullable = false, length = 15)
+    private Long vanFee;
 
-	public void setSchoolFee(Long schoolFee) {
-		this.schoolFee = schoolFee;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public Long getBookFee() {
-		return bookFee;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setBookFee(Long bookFee) {
-		this.bookFee = bookFee;
-	}
+    public Long getSchoolFee() {
+        return schoolFee;
+    }
 
-	public Long getUniformFee() {
-		return uniformFee;
-	}
+    public void setSchoolFee(Long schoolFee) {
+        this.schoolFee = schoolFee;
+    }
 
-	public void setUniformFee(Long uniformFee) {
-		this.uniformFee = uniformFee;
-	}
+    public Long getBookFee() {
+        return bookFee;
+    }
 
-	public Long getIslamicStudies() {
-		return islamicStudies;
-	}
+    public void setBookFee(Long bookFee) {
+        this.bookFee = bookFee;
+    }
 
-	public void setIslamicStudies(Long islamicStudies) {
-		this.islamicStudies = islamicStudies;
-	}
+    public Long getUniformFee() {
+        return uniformFee;
+    }
 
-	public Long getVanFee() {
-		return vanFee;
-	}
+    public void setUniformFee(Long uniformFee) {
+        this.uniformFee = uniformFee;
+    }
 
-	public void setVanFee(Long vanFee) {
-		this.vanFee = vanFee;
-	}
-	
-	
+    public Long getVanFee() {
+        return vanFee;
+    }
+
+    public void setVanFee(Long vanFee) {
+        this.vanFee = vanFee;
+    }
+
+
 }

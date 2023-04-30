@@ -4,86 +4,77 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class FeeTxnModel {
 
-	private Long studentYearId;
-	
-	public Long getSchoolFee() {
-		return schoolFee;
-	}
+    private Long studentYearId;
+    private Long schoolFee;
+    private Long bookFee;
+    private Long uniformFee;
+    private Long vanFee;
+    private Long amountPaid;
+    private String remarks;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Long paymentDate;
 
-	public void setSchoolFee(Long schoolFee) {
-		this.schoolFee = schoolFee;
-	}
+    public Long getSchoolFee() {
+        return schoolFee;
+    }
 
-	public Long getBookFee() {
-		return bookFee;
-	}
+    public void setSchoolFee(Long schoolFee) {
+        this.schoolFee = schoolFee;
+    }
 
-	public void setBookFee(Long bookFee) {
-		this.bookFee = bookFee;
-	}
+    public Long getBookFee() {
+        return bookFee;
+    }
 
-	public Long getUniformFee() {
-		return uniformFee;
-	}
+    public void setBookFee(Long bookFee) {
+        this.bookFee = bookFee;
+    }
 
-	public void setUniformFee(Long uniformFee) {
-		this.uniformFee = uniformFee;
-	}
+    public Long getUniformFee() {
+        return uniformFee;
+    }
 
-	public Long getIslamicStudies() {
-		return islamicStudies;
-	}
+    public void setUniformFee(Long uniformFee) {
+        this.uniformFee = uniformFee;
+    }
 
-	public void setIslamicStudies(Long islamicStudies) {
-		this.islamicStudies = islamicStudies;
-	}
+    public Long getVanFee() {
+        return vanFee;
+    }
 
-	public Long getVanFee() {
-		return vanFee;
-	}
+    public void setVanFee(Long vanFee) {
+        this.vanFee = vanFee;
+    }
 
-	public void setVanFee(Long vanFee) {
-		this.vanFee = vanFee;
-	}
+    public Long getAmountPaid() {
+        return amountPaid;
+    }
 
-	private Long schoolFee;
-	
-	private Long bookFee;
+    public void setAmountPaid(Long amountPaid) {
+        this.amountPaid = amountPaid;
+    }
 
-	private Long uniformFee;
-	
-	private Long islamicStudies;
-	
-	private Long vanFee;
-	
-	
-	private Long amountPaid;
-	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Long paymentDate;
+    public Long getPaymentDate() {
+        return paymentDate;
+    }
 
-	public Long getAmountPaid() {
-		return amountPaid;
-	}
+    public void setPaymentDate(Long paymentDate) {
+        this.paymentDate = paymentDate;
+    }
 
-	public void setAmountPaid(Long amountPaid) {
-		this.amountPaid = amountPaid;
-	}
+    public Long getStudentYearId() {
+        return studentYearId;
+    }
 
-	public Long getPaymentDate() {
-		return paymentDate;
-	}
+    public void setStudentYearId(Long studentYearId) {
+        this.studentYearId = studentYearId;
+    }
 
-	public void setPaymentDate(Long paymentDate) {
-		this.paymentDate = paymentDate;
-	}
+    public String getRemarks() {
+        return remarks;
+    }
 
-	public Long getStudentYearId() {
-		return studentYearId;
-	}
-
-	public void setStudentYearId(Long studentYearId) {
-		this.studentYearId = studentYearId;
-	}
-
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
 }

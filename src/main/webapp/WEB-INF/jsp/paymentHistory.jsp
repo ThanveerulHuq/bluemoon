@@ -166,7 +166,7 @@
                                             });
 
                                             function setupSaveFeeForm(data) {
-                                                const paidFee = data.paidFee.schoolFee + data.paidFee.bookFee + data.paidFee.uniformFee + data.paidFee.islamicStudies + data.paidFee.vanFee;
+                                                const paidFee = data.paidFee.schoolFee + data.paidFee.bookFee + data.paidFee.uniformFee + data.paidFee.vanFee;
                                                 $('#totalFee').html('Rs. ' + data.total);
                                                 $('#balanceFee').html('Rs. ' + (data.total - paidFee));
                                                 $('#className').html(data.commonFee.classInfo.className);
@@ -180,13 +180,11 @@
                                                 $('#bal_book').text(data.commonFee.bookFee - data.paidFee.bookFee);
                                                 $('#tot_uniform').text(data.uniformFee);
                                                 $('#bal_uniform').text(data.uniformFee - data.paidFee.uniformFee);
-                                                $('#tot_islamic').text(data.islamicStudies);
-                                                $('#bal_islamic').text(data.islamicStudies - data.paidFee.islamicStudies);
                                                 $('#tot_van').text(data.vanFee);
                                                 $('#bal_van').text(data.vanFee - data.paidFee.vanFee);
                                                 $('#scholarship').text(data.scholorship);
                                                 $('#total_fee').text(data.total);
-                                                paidfee = data.paidFee.schoolFee + data.paidFee.bookFee + data.paidFee.uniformFee + data.paidFee.islamicStudies + data.paidFee.vanFee;
+                                                paidfee = data.paidFee.schoolFee + data.paidFee.bookFee + data.paidFee.uniformFee + data.paidFee.vanFee;
                                                 $('#tot_balance').text(data.total - paidfee);
                                                 $('#balance').val(data.balance);
                                             }

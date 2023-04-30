@@ -1,11 +1,9 @@
 package com.sdms.bluemoon.repository;
 
+import com.sdms.bluemoon.entity.PaidFee;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.sdms.bluemoon.entity.PaidFee;
+public interface PaidFeeRepo extends JpaRepository<PaidFee, Long> {
 
-public interface PaidFeeRepo  extends JpaRepository<PaidFee, Long>{
-	
-	
 
 }

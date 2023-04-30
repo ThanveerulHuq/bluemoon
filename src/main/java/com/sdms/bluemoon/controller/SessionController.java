@@ -6,17 +6,17 @@ import javax.servlet.http.HttpSession;
 
 
 public class SessionController {
-	public static Boolean checkSession(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws NullPointerException {
-		try {
-			if(session.getAttribute("name").equals("Admin")) {
-				System.out.println("In Session");
-				return true;
-			}
-		} catch (NullPointerException e) {
-			session.invalidate();
-			return false;
-			
-		}
-		return false;
-	}
+    public static Boolean checkSession(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws NullPointerException {
+        try {
+            if (session.getAttribute("name").equals("Admin")) {
+                System.out.println("In Session");
+                return true;
+            }
+        } catch (NullPointerException e) {
+            session.invalidate();
+            return false;
+
+        }
+        return false;
+    }
 }

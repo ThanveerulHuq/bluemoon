@@ -34,102 +34,102 @@ import java.util.List;
 @RequestMapping(value = BlueMoonConstants.PREFIX_URL)
 public class FeeTxnController {
 
-	@Autowired
-	FeeTxnRepo feeTxnRepo;
-	@Autowired
-	StudentYearRepo studentYearRepo;
-	@Autowired
-	AcademicYearRepo academicYearRepo;
-	@Autowired
-	PaidFeeRepo paidFeeRepo;
+    @Autowired
+    FeeTxnRepo feeTxnRepo;
+    @Autowired
+    StudentYearRepo studentYearRepo;
+    @Autowired
+    AcademicYearRepo academicYearRepo;
+    @Autowired
+    PaidFeeRepo paidFeeRepo;
 
-	@RequestMapping(value={"/FeeTxn"},method = RequestMethod.GET)
-	public String feeTxn( HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-		if(!SessionController.checkSession(request, response, session)) {
-			return "redirect:Login";
-		}
-		FeeTxnModel feeTxnModel = new FeeTxnModel();
-		List<AcademicYear> academicYear = academicYearRepo.findAll();
-		request.setAttribute("academicYear", academicYear);
-		request.setAttribute("FeeTxn", feeTxnModel);
-		return "Library/FeeTxn";
-	}
+    @RequestMapping(value = {"/FeeTxn"}, method = RequestMethod.GET)
+    public String feeTxn(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+        if (!SessionController.checkSession(request, response, session)) {
+            return "redirect:Login";
+        }
+        FeeTxnModel feeTxnModel = new FeeTxnModel();
+        List<AcademicYear> academicYear = academicYearRepo.findAll();
+        request.setAttribute("academicYear", academicYear);
+        request.setAttribute("FeeTxn", feeTxnModel);
+        return "Library/FeeTxn";
+    }
 
-	@RequestMapping(value={"/SaveFeeTxn"},method = RequestMethod.POST)
-	public String saveFeeTxn(@ModelAttribute("FeeTxn") FeeTxnModel feeTxnModel, HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes) {
-		FeeTxn feeTxn = new FeeTxn();
+    @RequestMapping(value = {"/SaveFeeTxn"}, method = RequestMethod.POST)
+    public String saveFeeTxn(@ModelAttribute("FeeTxn") FeeTxnModel feeTxnModel, HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes) {
+        FeeTxn feeTxn = new FeeTxn();
         StudentYear studentYear = studentYearRepo.getStudentById(feeTxnModel.getStudentYearId());
         List<FeeTxn> lastTxns = feeTxnRepo.findByStudentYearId(feeTxnModel.getStudentYearId());
         if (lastTxns.size() > 5) {
             lastTxns = lastTxns.subList(0, 4);
         }
-		Collections.reverse(lastTxns);
-		feeTxn.setStudentYear(studentYear);
-		feeTxn.setSchoolFee(feeTxnModel.getSchoolFee());
-		feeTxn.setBookFee(feeTxnModel.getBookFee());
-		feeTxn.setIslamicStudies(feeTxnModel.getIslamicStudies());
-		feeTxn.setUniformFee(feeTxnModel.getUniformFee());
-		feeTxn.setVanFee(feeTxnModel.getVanFee());
-		feeTxn.setAmountPaid(feeTxnModel.getAmountPaid());
-		feeTxn.setPaymentDate(new Timestamp(feeTxnModel.getPaymentDate()));
-		FeeTxn feeTxnSaved = feeTxnRepo.save(feeTxn);
-		PaidFee paidFee = studentYear.getPaidFee();
-		paidFee.setSchoolFee(paidFee.getSchoolFee() + feeTxn.getSchoolFee());
-		paidFee.setBookFee(paidFee.getBookFee() + feeTxn.getBookFee());
-		paidFee.setIslamicStudies(paidFee.getIslamicStudies() + feeTxn.getIslamicStudies());
-		paidFee.setUniformFee(paidFee.getUniformFee() + feeTxn.getUniformFee());
-		paidFee.setVanFee(paidFee.getVanFee() + feeTxn.getVanFee());
-		paidFeeRepo.save(paidFee);
-		redirectAttributes.addFlashAttribute("Print", feeTxnSaved);
-		redirectAttributes.addFlashAttribute("lastTxns",lastTxns);
-		return "redirect:PrintReceipt";
-	}
+        Collections.reverse(lastTxns);
+        feeTxn.setStudentYear(studentYear);
+        feeTxn.setSchoolFee(feeTxnModel.getSchoolFee());
+        feeTxn.setBookFee(feeTxnModel.getBookFee());
+        feeTxn.setUniformFee(feeTxnModel.getUniformFee());
+        feeTxn.setVanFee(feeTxnModel.getVanFee());
+        feeTxn.setAmountPaid(feeTxnModel.getAmountPaid());
+        feeTxn.setPaymentDate(new Timestamp(feeTxnModel.getPaymentDate()));
+        feeTxn.setRemarks(feeTxnModel.getRemarks());
+        FeeTxn feeTxnSaved = feeTxnRepo.save(feeTxn);
+        PaidFee paidFee = studentYear.getPaidFee();
+        paidFee.setSchoolFee(paidFee.getSchoolFee() + feeTxn.getSchoolFee());
+        paidFee.setBookFee(paidFee.getBookFee() + feeTxn.getBookFee());
+        paidFee.setUniformFee(paidFee.getUniformFee() + feeTxn.getUniformFee());
+        paidFee.setVanFee(paidFee.getVanFee() + feeTxn.getVanFee());
+        paidFeeRepo.save(paidFee);
+        redirectAttributes.addFlashAttribute("Print", feeTxnSaved);
+        redirectAttributes.addFlashAttribute("lastTxns", lastTxns);
+        return "redirect:PrintReceipt";
+    }
 
-	@RequestMapping(value={"/PrintReceipt"},method = RequestMethod.GET)
-	public String printReceipt( HttpServletRequest request, HttpServletResponse response) {
-		return "Library/FeeTxnPrint";
-	}
+    @RequestMapping(value = {"/PrintReceipt"}, method = RequestMethod.GET)
+    public String printReceipt(HttpServletRequest request, HttpServletResponse response) {
+        return "Library/FeeTxnPrint";
+    }
 
-	@RequestMapping(value={"/FeeReport"}, method = RequestMethod.GET)
-	public String feeReport( HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-		if(!SessionController.checkSession(request, response, session)) {
-			return "redirect:Login";
-		}
-		return "Library/FeeReport";
-	}
+    @RequestMapping(value = {"/FeeReport"}, method = RequestMethod.GET)
+    public String feeReport(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+        if (!SessionController.checkSession(request, response, session)) {
+            return "redirect:Login";
+        }
+        return "Library/FeeReport";
+    }
 
-	@ResponseBody
-	@RequestMapping(value={"/GetFeeReport"}, method = RequestMethod.GET)
-	public List getFeeReport( @ModelAttribute("startTime") String startTime, @ModelAttribute("endTime") String endTime, HttpServletRequest request, HttpServletResponse response) throws ParseException {
-		List feeReport = new ArrayList();
-		if(startTime.isEmpty() || endTime.isEmpty()){
-			feeReport = feeTxnRepo.findAll();
-		} else {
-			DateFormat dF = new SimpleDateFormat("dd-MM-yyyy");
-			Date startDate = dF.parse(startTime);
-			Date endDate = dF.parse(endTime);
-			feeReport = feeTxnRepo.getFilterData(startDate, endDate);
-		}
-		return feeReport;
-	}
+    @ResponseBody
+    @RequestMapping(value = {"/GetFeeReport"}, method = RequestMethod.GET)
+    public List getFeeReport(@ModelAttribute("startTime") String startTime, @ModelAttribute("endTime") String endTime, HttpServletRequest request, HttpServletResponse response) throws ParseException {
+        List feeReport = new ArrayList();
+        if (startTime.isEmpty() || endTime.isEmpty()) {
+            feeReport = feeTxnRepo.findAll();
+        } else {
+            DateFormat dF = new SimpleDateFormat("dd-MM-yyyy");
+            Date startDate = dF.parse(startTime);
+            Date endDate = dF.parse(endTime);
+            feeReport = feeTxnRepo.getFilterData(startDate, endDate);
+        }
+        return feeReport;
+    }
 
-	@ResponseBody
-	@RequestMapping(value={"/GetPaymentHistory"}, method = RequestMethod.GET)
-	public List<FeeTxn> getFeeReportByStudent( @ModelAttribute("studentYearId") Long studentYearId, HttpServletRequest request, HttpServletResponse response) throws ParseException {
-		if ( studentYearId == null ) return Collections.emptyList();
-		return feeTxnRepo.findByStudentYearId(studentYearId);
-	}
-	@ResponseBody
-	@RequestMapping(value = { "/getAllStudentyearq" }, method = RequestMethod.GET)
-	public List<StudentYear> getAllStudentyearq(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("q") String q,@ModelAttribute("academicYear") Long academicYear) {
-	return studentYearRepo.getstudentbyname(academicYear,q);
-	}
+    @ResponseBody
+    @RequestMapping(value = {"/GetPaymentHistory"}, method = RequestMethod.GET)
+    public List<FeeTxn> getFeeReportByStudent(@ModelAttribute("studentYearId") Long studentYearId, HttpServletRequest request, HttpServletResponse response) throws ParseException {
+        if (studentYearId == null) return Collections.emptyList();
+        return feeTxnRepo.findByStudentYearId(studentYearId);
+    }
 
-	@RequestMapping(value={"/RePrintReceipt"},method = RequestMethod.GET)
-	public String RePrintReceipt( HttpServletRequest request, HttpServletResponse response,@ModelAttribute("id") Long id) {
-		request.setAttribute("Print", feeTxnRepo.findById(id).get());
-		return "Library/FeeRePrint";
-	}
+    @ResponseBody
+    @RequestMapping(value = {"/getAllStudentyearq"}, method = RequestMethod.GET)
+    public List<StudentYear> getAllStudentyearq(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("q") String q, @ModelAttribute("academicYear") Long academicYear) {
+        return studentYearRepo.getstudentbyname(academicYear, q);
+    }
+
+    @RequestMapping(value = {"/RePrintReceipt"}, method = RequestMethod.GET)
+    public String RePrintReceipt(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("id") Long id) {
+        request.setAttribute("Print", feeTxnRepo.findById(id).get());
+        return "Library/FeeRePrint";
+    }
 
 
 }

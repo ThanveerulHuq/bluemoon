@@ -3,118 +3,108 @@ package com.sdms.bluemoon.model;
 import com.sdms.bluemoon.entity.AcademicYear;
 
 public class StudentYearModel {
-	
-	
-	private Long studentYearId;
-	
-	private AcademicYear academicYear;
-	
-//	private CommonFee commonFee;
-	
-	private Long FeeId;
-	
-	private Long StudentId;
-	
-	private Long admissionNo;
-	
-	private String section;
-	
-	private Long van_fee;
-	
-//	private Long book_fee;
-	
-	private Long uniform_fee;
-	
-	private Long islamic_studies;
-	
-	private Long scholorship;
 
-	public AcademicYear getAcademicYear() {
-		return academicYear;
-	}
 
-	public void setAcademicYear(AcademicYear academicYear) {
-		this.academicYear = academicYear;
-	}
+    private Long studentYearId;
 
-	public String getSection() {
-		return section;
-	}
+    private AcademicYear academicYear;
 
-	public void setSection(String section) {
-		this.section = section;
-	}
+    //	private CommonFee commonFee;
 
-	public Long getVan_fee() {
-		return van_fee;
-	}
+    private Long FeeId;
 
-	public void setVan_fee(Long van_fee) {
-		this.van_fee = van_fee;
-	}
+    private Long StudentId;
 
-//	public Long getBook_fee() {
-//		return book_fee;
-//	}
-//
-//	public void setBook_fee(Long book_fee) {
-//		this.book_fee = book_fee;
-//	}
+    private Long admissionNo;
 
-	public Long getUniform_fee() {
-		return uniform_fee;
-	}
+    private String section;
 
-	public void setUniform_fee(Long uniform_fee) {
-		this.uniform_fee = uniform_fee;
-	}
+    private Long van_fee;
 
-	public Long getIslamic_studies() {
-		return islamic_studies;
-	}
+    //	private Long book_fee;
 
-	public void setIslamic_studies(Long islamic_studies) {
-		this.islamic_studies = islamic_studies;
-	}
+    private Long uniform_fee;
 
-	public Long getScholorship() {
-		return scholorship;
-	}
+    private Long scholorship;
 
-	public void setScholorship(Long scholorship) {
-		this.scholorship = scholorship;
-	}
+    public AcademicYear getAcademicYear() {
+        return academicYear;
+    }
 
-	public Long getStudentId() {
-		return StudentId;
-	}
+    public void setAcademicYear(AcademicYear academicYear) {
+        this.academicYear = academicYear;
+    }
 
-	public void setStudentId(Long studentId) {
-		StudentId = studentId;
-	}
+    public String getSection() {
+        return section;
+    }
 
-	public Long getAdmissionNo() {
-		return admissionNo;
-	}
+    public void setSection(String section) {
+        this.section = section;
+    }
 
-	public void setAdmissionNo(Long admissionNo) {
-		this.admissionNo = admissionNo;
-	}
+    public Long getVan_fee() {
+        return van_fee;
+    }
 
-	public Long getFeeId() {
-		return FeeId;
-	}
+    public void setVan_fee(Long van_fee) {
+        this.van_fee = van_fee;
+    }
 
-	public void setFeeId(Long FeeId) {
-		this.FeeId = FeeId;
-	}
+    //	public Long getBook_fee() {
+    //		return book_fee;
+    //	}
+    //
+    //	public void setBook_fee(Long book_fee) {
+    //		this.book_fee = book_fee;
+    //	}
 
-	public Long getStudentYearId() {
-		return studentYearId;
-	}
+    public Long getUniform_fee() {
+        return uniform_fee;
+    }
 
-	public void setStudentYearId(Long studentYearId) {
-		this.studentYearId = studentYearId;
-	}
-	
+    public void setUniform_fee(Long uniform_fee) {
+        this.uniform_fee = uniform_fee;
+    }
+
+    public Long getScholorship() {
+        return scholorship;
+    }
+
+    public void setScholorship(Long scholorship) {
+        this.scholorship = scholorship;
+    }
+
+    public Long getStudentId() {
+        return StudentId;
+    }
+
+    public void setStudentId(Long studentId) {
+        StudentId = studentId;
+    }
+
+    public Long getAdmissionNo() {
+        return admissionNo;
+    }
+
+    public void setAdmissionNo(Long admissionNo) {
+        this.admissionNo = admissionNo;
+    }
+
+    public Long getFeeId() {
+        return FeeId;
+    }
+
+    public void setFeeId(Long FeeId) {
+        this.FeeId = FeeId;
+    }
+
+    public Long getStudentYearId() {
+        return studentYearId;
+    }
+
+    public void setStudentYearId(Long studentYearId) {
+        this.studentYearId = studentYearId;
+    }
+
 }

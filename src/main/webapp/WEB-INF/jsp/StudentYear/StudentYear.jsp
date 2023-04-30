@@ -19,13 +19,12 @@
 
 				<body>
 					<c:import url="../shared/header.jsp"></c:import>
-					<div class="mtop-50">
+					<div class="mtop-50 container">
 						<div class="mtop-20 col-md-offset-4 col-md-4">
 							<h2 class="">Student Class and Fees</h2>
 						</div>
 
 						<div class="form-group col-md-12 mtop-20">
-							<!-- 			<span class="pull-right" style="color:red">*</span> -->
 							<label class="col-md-2"><span class="pull-right">Academic Year:</span></label>
 							<div class="col-md-2">
 								<select path="academicYear" name="academicYear" class="form-control" id="academicYear"
@@ -110,37 +109,31 @@
 									<form:input path="van_fee" name="van_fee" class="form-control feeinput"
 										type="number" required="true" />
 								</div>
-								<div class="row">
-									<label class="col-md-2"><span class="pull-right">Islamic Studies:</span> </label>
-									<div class="col-md-3">
-										<form:input path="islamic_studies" name="islamic_studies"
-											class="form-control feeinput" type="number" required="true" />
-									</div>
-								</div>
-							</div>
-
-							<div class="form-group col-md-12">
 								<label class="col-md-2"><span class="pull-right">Uniform Fee:</span> </label>
 								<div class="col-md-3">
 									<form:input path="uniform_fee" name="uniform_fee" class="form-control feeinput"
-										type="number" required="true" />
+												type="number" required="true" />
 								</div>
-								<div class="row">
+							</div>
+							<div class="form-group col-md-12">
 									<label class="col-md-2"><span class="pull-right">(-) Scholarship:</span> </label>
 									<div class="col-md-3">
-										<form:input path="scholorship" name="scholorship" class="form-control"
-											id="scholorship" type="number" required="true" />
+										<form:input path="scholorship" name="scholorship" class="form-control feeinput"
+													type="number" required="true" />
 									</div>
-								</div>
+									<label class="col-md-2"><span class="pull-right">Total Fee:</span> </label>
+									<div class="col-md-3">
+										<input id="total" class="form-control" disabled="true" />
+									</div>
 
 							</div>
 
-							<div class="form-group col-md-12">
-								<label class="col-md-2"><span class="pull-right">Total Fee:</span> </label>
-								<div class="col-md-3">
-									<input id="total" name="scholorship" class="form-control" disabled="true" />
-								</div>
-							</div>
+<%--							<div class="form-group col-md-12">--%>
+<%--								<label class="col-md-2"><span class="pull-right">Total Fee:</span> </label>--%>
+<%--								<div class="col-md-3">--%>
+<%--									<input id="total" class="form-control" disabled="true" />--%>
+<%--								</div>--%>
+<%--							</div>--%>
 							<div class="col-md-10">
 								<div class="pull-right">
 									<form:button type="button" class="btn btn-danger btn-md" onclick="clearInput()">
@@ -151,14 +144,6 @@
 							</div>
 						</form:form>
 					</div>
-					<!-- 	<div class="container" style="margin-top: 25px;"> -->
-					<!-- 		<div class="row"> -->
-					<!-- 			<legend></legend> -->
-					<!-- 			<p> -->
-					<!-- 				<span class="pull-right"><a href="#">Privacy</a> |</span> -->
-					<!-- 			</p> -->
-					<!-- 		</div> -->
-					<!-- 	</div> -->
 
 					<script>
 						$('document').ready(function () {

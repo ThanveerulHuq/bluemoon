@@ -55,7 +55,7 @@
 
 					<body>
 						<c:import url="../shared/header.jsp"></c:import>
-						<div class="loginContainer container">
+						<div class="container" style="margin-top: 15%">
 							<div class="row">
 								<div class="col-md-offset-5 col-md-4">
 									<div class="form-login">

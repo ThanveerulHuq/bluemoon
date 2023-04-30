@@ -20,25 +20,6 @@
 								<h2>Fee Payment</h2>
 							</center>
 
-							<!-- 	<div class="searchStudentDialog mtop-15"> -->
-							<%-- <form id="searchStudentForm"> --%>
-
-								<!-- 	<div class="form-group col-md-12"> -->
-								<!-- 		<label class="col-md-2"><span class="pull-right">Admission No:</span></label> -->
-								<!-- 		<div class="col-md-3"> -->
-								<!-- 			<input id="admissionNo" name="admissionNo" class="form-control" required="true" /> -->
-								<!-- 		</div> -->
-								<!-- 		<div class="col-md-2"> -->
-								<!-- 			<div class="pull-left"> -->
-								<!-- 				<button type="submit" class="btn btn-success">Search</button> -->
-								<!-- 			</div> -->
-								<!-- 		</div> -->
-								<!-- 		</div> -->
-								<!-- 		<label class="col-md-2"><span class="pull-right errMsgForAdmissionNo" style="color:red;display:none">Please enter valid admission number...</span></label> -->
-
-
-								<%-- </form> --%>
-									<!-- 	</div> -->
 
 									<div class=" mtop-15" style="display:block">
 										<form:form id="saveFeeForm" method="POST" action="/SDMS/SaveFeeTxn"
@@ -63,11 +44,6 @@
 												</div>
 											</div>
 											<div class="form-group col-md-12">
-												<!-- 			<span class="pull-right" style="color:red">*</span> -->
-												<!-- 				<label class="col-md-2"><span class="pull-right">Admission No:</span></label> -->
-												<!-- 				<div class="col-md-3"> -->
-												<!-- 					<input id="admissionIdFound" class="form-control" value="" readonly="true" /> -->
-												<!-- 				</div> -->
 
 												<div class="row">
 													<label class="col-md-2"><span class="pull-right">Student
@@ -89,23 +65,11 @@
 											</div>
 											<div class="form-group col-md-12">
 
-												<!-- 				<label class="col-md-2"><span class="pull-right">Balance:</span></label> -->
-												<!-- 				<div class="col-md-3"> -->
-												<!-- 					<input class="form-control" id="balance" type="number" readonly="true" /> -->
-												<!-- 				</div> -->
 
 												<form:hidden path="studentYearId" name="studentYearId"
 													id="studentYearId" value="" />
-
-
-												<%-- <label class="col-md-2"><span class="pull-right">Amount
-														Paid:</span></label>
-													<div class="col-md-3">
-														<form:input path="amountPaid" id="amountPaid"
-															class="form-control" type="number" required="true" />
-													</div> --%>
 											</div>
-											<div class="form-group col-md-8 col-md-offset-2">
+											<div class="form-group col-md-8 col-md-offset-1">
 												<table class="table table-bordered">
 													<tr>
 														<th class="col-md-1">
@@ -164,20 +128,6 @@
 														</td>
 													</tr>
 													<tr>
-														<td>IS/Spl., Extra Curr.. & Others</td>
-														<td>
-															<p id="tot_islamic"></p>
-														</td>
-														<td>
-															<p id="bal_islamic"></p>
-														</td>
-														<td>
-															<form:input path="islamicStudies" id="islamicStudies"
-																class="form-control fee-input" type="number"
-																required="true" />
-														</td>
-													</tr>
-													<tr>
 														<td>VAN FEE</td>
 														<td>
 															<p id="tot_van"></p>
@@ -211,10 +161,13 @@
 																class="form-control" disabled="true" />
 														</td>
 													</tr>
-													<tbody>
-														<tr>
-														</tr>
-													</tbody>
+													<tr>
+														<td>REMARKS</td>
+														<td colspan=3>
+															<form:textarea path="remarks" id="remarks"
+																		class="form-control"  />
+														</td>
+													</tr>
 												</table>
 											</div>
 
@@ -304,13 +257,11 @@
 									$('#bal_book').text(data.commonFee.bookFee - data.paidFee.bookFee);
 									$('#tot_uniform').text(data.uniformFee);
 									$('#bal_uniform').text(data.uniformFee - data.paidFee.uniformFee);
-									$('#tot_islamic').text(data.islamicStudies);
-									$('#bal_islamic').text(data.islamicStudies - data.paidFee.islamicStudies);
 									$('#tot_van').text(data.vanFee);
 									$('#bal_van').text(data.vanFee - data.paidFee.vanFee);
 									$('#scholarship').text(data.scholorship);
 									$('#total_fee').text(data.total);
-									paidfee = data.paidFee.schoolFee + data.paidFee.bookFee + data.paidFee.uniformFee + data.paidFee.islamicStudies + data.paidFee.vanFee;
+									paidfee = data.paidFee.schoolFee + data.paidFee.bookFee + data.paidFee.uniformFee + data.paidFee.vanFee;
 									$('#tot_balance').text(data.total - paidfee);
 									$('#balance').val(data.balance);
 								}

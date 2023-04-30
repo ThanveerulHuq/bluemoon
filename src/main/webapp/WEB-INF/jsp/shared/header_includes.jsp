@@ -15,4 +15,6 @@
 <link href="<%=request.getContextPath()%>/styles/select2.min.css" rel='stylesheet' type='text/css'/>
 <link href="<%=request.getContextPath()%>/styles/main.css" rel='stylesheet' type='text/css'/>
 <link href="<%=request.getContextPath()%>/styles/pnotify.custom.css" rel='stylesheet' type='text/css'/>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">

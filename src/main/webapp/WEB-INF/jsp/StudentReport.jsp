@@ -115,7 +115,7 @@
 									var grid = $("#Grid");
 									grid.jqGrid({
 										url: 'getStudentYearByYear?academicYear=' + academicYear,
-										colNames: ['StudentName', 'Class', 'Section', 'gender', 'Admission No', 'Total', 'Total Balance', 'Balance Tution Fee', 'Balance Book Fee', 'Balance Islamic Studies Fee', 'Balance Uniform Fee', 'Balance Van Fee'],
+										colNames: ['StudentName', 'Class', 'Section', 'gender', 'Admission No', 'Total', 'Total Balance', 'Balance Tution Fee', 'Balance Book Fee', 'Balance Uniform Fee', 'Balance Van Fee'],
 										colModel: [
 											{ name: 'studentsInfo.name', index: 'studentsInfo.name', width: 230, align: "center", searchoptions: { sopt: ['cn', 'bw', 'eq', 'ew'] } },
 											{ name: 'commonFee.classInfo.className', index: 'commonFee.classInfo.className', width: 100, align: "center", search: false },
@@ -126,7 +126,6 @@
 											{ name: 'commonFee', index: 'commonFee', width: 200, align: "center", searchoptions: { sopt: ['eq', 'lt', 'gt'] }, formatter: totalBalance },
 											{ name: 'paidFee', index: 'paidFee', width: 200, align: "center", searchoptions: { sopt: ['eq', 'lt', 'gt'] }, formatter: tutionBalance },
 											{ name: 'paidFee.bookFee', index: 'paidFee.bookFee', width: 200, align: "center", searchoptions: { sopt: ['eq', 'lt', 'gt'] }, formatter: bookBalance },
-											{ name: 'islamicStudies', index: 'islamicStudies', width: 200, align: "center", searchoptions: { sopt: ['eq', 'lt', 'gt'] }, formatter: islamicBalance },
 											{ name: 'uniformFee', index: 'uniformFee', width: 200, align: "center", searchoptions: { sopt: ['eq', 'lt', 'gt'] }, formatter: uniformBalance },
 											{ name: 'vanFee', index: 'vanFee', width: 200, align: "center", searchoptions: { sopt: ['eq', 'lt', 'gt'] }, formatter: vanBalance }
 										],
@@ -397,7 +396,7 @@
 						}
 						function totalBalance(cell, option, row) {
 							console.log(row.paidFee.schoolFee);
-							var paid = parseInt(row.paidFee.schoolFee) + parseInt(row.paidFee.bookFee) + parseInt(row.paidFee.islamicStudies) + parseInt(row.paidFee.uniformFee) + parseInt(row.paidFee.vanFee);
+							var paid = parseInt(row.paidFee.schoolFee) + parseInt(row.paidFee.bookFee) + parseInt(row.paidFee.uniformFee) + parseInt(row.paidFee.vanFee);
 							return parseInt(row.total) - paid;
 						}
 						function tutionBalance(cell, option, row) {
@@ -405,9 +404,6 @@
 						}
 						function bookBalance(cell, option, row) {
 							return parseInt(row.commonFee.bookFee) - parseInt(row.paidFee.bookFee);
-						}
-						function islamicBalance(cell, option, row) {
-							return parseInt(row.islamicStudies) - parseInt(row.paidFee.islamicStudies);
 						}
 						function uniformBalance(cell, option, row) {
 							return parseInt(row.uniformFee) - parseInt(row.paidFee.uniformFee);

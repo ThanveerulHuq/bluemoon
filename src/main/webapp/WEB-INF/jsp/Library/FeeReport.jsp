@@ -48,7 +48,7 @@
 								grid.jqGrid({
 									url: 'GetFeeReport',
 
-									colNames: ['Admission No', 'Student Name', 'Academic Year', 'Class', 'Section', 'Fee Amount', 'Total Amount Paid', 'Payment Date', 'School Fee', 'Book Fee', 'Islamic Studies Fee', 'Uniform Fee', 'Van Fee', 'Reprint'],
+									colNames: ['Admission No', 'Student Name', 'Academic Year', 'Class', 'Section', 'Fee Amount', 'Total Amount Paid', 'Payment Date', 'School Fee', 'Book Fee', 'Uniform Fee', 'Van Fee', 'Reprint'],
 									colModel: [
 										{ name: 'studentYear.studentsInfo.admissionNo', index: 'studentYear.studentsInfo.admissionNo', width: 180, align: "center", sorttype: "int", searchoptions: { sopt: ['cn', 'bw', 'eq', 'ne'] } },
 										{ name: 'studentYear.studentsInfo.name', index: 'studentYear.studentsInfo.name', width: 200, align: "center", searchoptions: { sopt: ['cn', 'bw', 'cn', 'bw', 'eq', 'ew'] } },
@@ -60,7 +60,6 @@
 										{ name: 'paymentDate', index: 'pamentDate', width: 180, align: "center", sorttype: "date", searchoptions: { sopt: ['cn', 'bw', 'eq', 'ew'] }, formatter: dobFormatter },
 										{ name: 'schoolFee', index: 'schoolFee', width: 180, align: "center", sorttype: "int", searchoptions: { sopt: ['cn', 'bw', 'eq', 'ew'] } },
 										{ name: 'bookFee', index: 'bookFee', width: 180, align: "center", sorttype: "int", searchoptions: { sopt: ['cn', 'bw', 'eq', 'ew'] } },
-										{ name: 'islamicStudies', index: 'islamicStudies', width: 180, align: "center", sorttype: "int", searchoptions: { sopt: ['cn', 'bw', 'eq', 'ew'] } },
 										{ name: 'uniformFee', index: 'uniformFee', width: 180, align: "center", sorttype: "int", searchoptions: { sopt: ['cn', 'bw', 'eq', 'ew'] } },
 										{ name: 'vanFee', index: 'vanFee', width: 180, align: "center", sorttype: "int", searchoptions: { sopt: ['cn', 'bw', 'eq', 'ew'] } },
 										{ name: 'id', index: 'id', width: 180, align: "center", sorttype: "int", searchoptions: { sopt: ['cn', 'bw', 'eq', 'ew'] }, formatter: formatPrint }
